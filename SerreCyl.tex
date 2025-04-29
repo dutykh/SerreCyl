@@ -113,6 +113,9 @@
 \DeclareMathOperator{\sech}{sech}
 
 \usepackage{dsfont}
+% Use scalable Latin Modern fonts
+\usepackage[T1]{fontenc}
+% \usepackage{lmodern}
 
 \newcommand{\R}{\mathds{R}}
 \renewcommand{\O}{\mathcal{O}}
@@ -167,7 +170,7 @@ The Korteweg-de Vries (KdV) and Benjamin-Bona-Mahony (BBM) equations are classic
 
 In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The modulational instability analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
 
-This manuscript is organized as follows. First, in \cref{sec:model}, we describe the parent-level mathematical model along with the physical assumptions on which it is based.
+This manuscript is organized as follows. First, in \cref{sec:model}, we describe the parent-level mathematical model along with the physical assumptions on which it is based. Finally, Appendix~\ref{sec:windkessel} presents a Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations.
 
 \section{Mathematical modelling}
 \label{sec:model}
@@ -810,12 +813,12 @@ subject to the boundary conditions
 
 \paragraph{Normal–mode ansatz.} We consider normal modes of the form
 \begin{equation*}
-  u\,\left(x,r,t\right)=u_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),\qquad
-  v\,\left(x,r,t\right)=v_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
+  u\,\left(x,r,t\right)=u_{\,0}\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),\qquad
+  v\,\left(x,r,t\right)=v_{\,0}\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
 \end{equation*}
 \begin{equation*}
   \eta\,\left(x,t\right)=\eta_{\,0}\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),\qquad
-  p\,\left(x,r,t\right)=p_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
+  p\,\left(x,r,t\right)=p_{\,0}\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
 \end{equation*}
 and substitute these expressions into the linearised Euler system. The axial velocity amplitude $u_{\,0}\left(r\right)$ then satisfies the modified Bessel equation
 \begin{equation}\label{eq:lin_bessel}
@@ -919,8 +922,6 @@ No experimental data were used in the preparation of this study. However, any ot
 \printglossary[type=\acronymtype]
 
 \bibliography{biblio}
-
-% \graphicalabstract{example-image-1x1}{Please check the journal's author guildines for whether a graphical abstract, key points, new findings, or other items are required for display in the Table of Contents.}
 
 \appendix
 \section{A Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations}\label{sec:windkessel}
