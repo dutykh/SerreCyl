@@ -1,0 +1,1012 @@
+% Document class options:
+% =======================
+% blind: Anonymise all author, affiliation, correspondence
+%        and funding information.
+%
+% lineno: Adds line numbers.
+%
+% serif: Sets the body font to be serif. 
+%
+% twocolumn: Sets the body text in two-column layout. 
+% 
+% num-refs: Uses numerical citation and references style 
+%           (Vancouver-authoryear).
+%
+% alpha-refs: Uses author-year citation and references style
+%             (rss).
+%
+% Using other bibliography styles:
+% =======================
+%
+% To specify a different bibiography style
+%
+% 1) Do not use either num-refs or alpha-refs in documentclass.
+% 2) Load natbib package with the options set as needed.
+% 3) Use the \bibliographystyle command to specify the style
+% 
+% Included NJD styles are: 
+%   WileyNJD-ACS
+%   WileyNJD-AMA
+%   WileyNJD-AMS
+%   WileyNJD-APA
+%   WileyNJD-Harvard
+%   WileyNJD-VANCOUVER
+%
+% or you may upload an alternative .bst file 
+% (if requested by the journal).
+%
+% Examples:
+% =======================
+%% Example: Using numerical, sort-by-authors citations.
+\documentclass[alpha-refs, 12pt]{wiley-article}
+
+%% Example: Using author-year citations and anonymising submission
+% \documentclass[blind,alpha-refs]{wiley-article}
+
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\usepackage[capitalize, nameinlink, sort&compress, noabbrev]{cleveref}
+
+\hypersetup{
+  colorlinks=true, % enable colored links
+  linkcolor=blue,  % set link color to blue
+  urlcolor=cyan,  % color for external URLs
+  citecolor=blue, % color for citations
+}
+
+\usepackage{subcaption}
+\graphicspath{{figs/}} % Set the path to the 'figs' subfolder
+
+% Add additional packages here if required
+\usepackage{siunitx}
+
+\usepackage{mathtools}
+
+%%% User defined macroses:
+% \newcommand{\nm}[1]{\textsc{#1}}
+
+% Update article type if known
+\papertype{Research Article}
+
+% Include section in journal if known, otherwise delete
+\paperfield{Applied Mathematics}
+
+\title{Nonlinear Dynamics of Pulsatile Blood Flow in Viscoelastic Vessels: A Dispersive Wave Approach}
+
+% List abbreviations here, if any. Please note that it is preferred that abbreviations be defined at the first instance they appear in the text, rather than creating an abbreviations list.
+% \abbrevs{ABC, a black cat; DEF, doesn't ever fret; GHI, goes home immediately.}
+
+% Include full author names and degrees, when required by the journal.
+% Use the \authfn to add symbols for additional footnotes and present addresses, if any. Usually start with 1 for notes about author contributions; then continuing with 2 etc if any author has a different present address.
+\author[1\authfn{1}]{Rim El Cheikh}
+\author[2\authfn{1}]{Denys Dutykh}
+\author[3\authfn{1}]{Dimitrios Mitsotakis}
+\author[4\authfn{1}]{Alexey Cheviakov}
+
+\contrib[\authfn{1}]{Equally contributing authors.}
+
+% Include full affiliation details for all authors
+\affil[1]{Univ. Grenoble Alpes, Univ. Savoie Mont Blanc, CNRS, LAMA, 73000 Chamb\'ery, France.}
+\affil[2]{Mathematics Department, Khalifa University of Science and Technology, PO Box 127788, Abu Dhabi, United Arab Emirates}
+\affil[3]{Victoria University of Wellington, School of Mathematics and Statistics, PO Box 600, Wellington 6149, New Zealand}
+\affil[4]{Department of Mathematics and Statistics, University of Saskatchewan, Saskatoon, Canada}
+
+\corraddress{Mathematics Department, Khalifa University of Science and Technology, PO Box 127788, Abu Dhabi, United Arab Emirates}
+\corremail{denys.dutykh@ku.ac.ae}
+
+% \presentadd[\authfn{2}]{Department, Institution, City, State or Province, Postal Code, Country}
+
+\fundinginfo{This publication is based upon work supported by the Khalifa University of Science and Technology under Award No. FSU-2023-014. AC is grateful to NSERC of Canada for support through a Discovery grant RGPIN-2024-04308.}
+
+% Include the name of the author that should appear in the running header
+\runningauthor{El Cheikh, Dutykh \emph{et al.}}
+
+\usepackage[acronym]{glossaries}
+
+\makeglossaries
+
+\newacronym{ibvp}{IBVP}{Initial Boundary Value Problem}
+\newacronym{sgn}{SGN}{Serre-Green-Naghdi}
+\newacronym{pde}{PDE}{Partial Differential Equation}
+
+\DeclareMathOperator{\sech}{sech}
+
+\usepackage{dsfont}
+
+\newcommand{\R}{\mathds{R}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\ui}{\mathrm{i}}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\eqdef}{\mathrel{\mathop:}=}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\maketitle
+
+\begin{abstract}
+
+In this study, we investigate the dynamics of pulsatile flow in viscoelastic vessels, beginning with the axisymmetric full Euler equations with a free surface. Though highly accurate, this comprehensive model presents considerable analytical and computational challenges. To address these difficulties, we derive the fully nonlinear cylindrical Serre equations, which describe the propagation of long-crested pulses in cylindrical vessels. However, due to the complexity of these equations, we proceed by applying the weak nonlinearity assumption, leading to the derivation of the cylindrical Boussinesq equations. These equations offer a more tractable model while still capturing essential dispersive and nonlinear effects. In the final step, we derive the classical unidirectional approximations, such as the Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) equations, further simplifying the wave propagation analysis in this setting. Additionally, we investigate the modulation of periodic waves and establish the existence of modulational instability within this context, providing new insights into the stability of wave trains in cylindrical geometries. The results presented in this work contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in modelling blood flow in large arteries.
+
+% Please include a maximum of five keywords
+\keywords{blood flows; axisymmetric flows; compliant vessels; long wave model; nonlinear dispersive systems}
+\end{abstract}
+
+\end{frontmatter}
+
+\section{Introduction}
+
+\begin{epigraph}{George E.P. Box}
+All models are approximations. Essentially, all models are wrong, but some are useful. However, the approximate nature of the model must always be borne in mind.
+\end{epigraph}
+
+The study of pulsatile flow in viscoelastic vessels is a fundamental topic in fluid dynamics with significant applications in biomedical science, particularly in the modelling of blood flow in large arteries \cite{Fung1997a}. Accurately describing fluid-structure interactions within vessels is critical to understanding hemodynamic processes, such as the propagation of pressure pulses generated by the heart. Large arteries exhibit both elastic and viscoelastic properties, storing elastic energy during the systolic phase and releasing it during diastole, which makes their modelling mathematically challenging \cite{Chandran2012, Quarteroni2004, VandeVosse2011}. The present manuscript builds upon the PhD thesis of the first author, Rim El Cheikh, and aims to develop a systematic framework to describe the dynamics of such flows using asymptotic modelling techniques.
+
+The Euler equations, which describe the motion of an inviscid fluid, provide a starting point for analyzing blood flow, but they neglect the viscous effects that are present in real blood vessels. Although blood is not a perfect inviscid fluid, these effects can be assumed to be small in large arteries, where the flow is fast, and the diameter is large, as compared to smaller vessels where viscous effects become more significant. Furthermore, the assumption of axisymmetry simplifies the problem by reducing the number of spatial dimensions to two, which is a common approach in fluid mechanics. However, it is important to note that real blood vessels may have complex geometries, especially at bifurcations and bends. The choice of a cylindrical geometry allows for a more manageable mathematical treatment, and it is a common approximation for long, straight vessels.
+
+Previous research has proposed several models to tackle the complexities of fluid flow in elastic and viscoelastic vessels. In \cite{Mitsotakis2018}, the authors derived new asymptotic one-dimensional equations of Boussinesq type, which are weakly nonlinear and weakly dispersive, for the study of inviscid and irrotational fluid flow in elastic vessels. These models serve as an alternative to the Euler equations and offer significant computational advantages while maintaining accuracy in simulating blood flow in arteries. Additionally, the work extended these models to incorporate dissipative effects arising from fluid viscosity, providing a more comprehensive framework for arterial blood flow.
+
+Building on the framework developed in \cite{Mitsotakis2018}, the subsequent study \cite{Mitsotakis2019} considered the inclusion of viscoelastic effects in the vessel walls, further refining the model to account for the realistic biomechanical behaviour of arteries. This study introduced asymptotic models describing the propagation of solitary and periodic waves in viscoelastic vessels, providing valuable insights into the wave dynamics in such systems. These two contributions laid the groundwork for investigating more complex interactions between the fluid and the vessel walls, including both dispersive and nonlinear effects.
+
+In this manuscript, we advance this line of research by investigating the dynamics of pulsatile flow in viscoelastic vessels, beginning with the axisymmetric full Euler equations with a free surface. While this comprehensive model offers a high degree of accuracy, it also presents significant analytical and computational challenges. To mitigate these complexities, we derive the fully nonlinear cylindrical \acrfull{sgn} equations, which provide a more tractable model for the propagation of long-crested pulses in cylindrical geometries. Subsequently, we simplify the system further by applying the weak nonlinearity assumption, leading to the derivation of the cylindrical Boussinesq equations, which capture essential dispersive and nonlinear effects while being more amenable to analysis and computation.
+
+The \acrshort{sgn} equations, despite being one-dimensional (1D) models, still retain the fully nonlinear character of the Euler equations, which can be important for capturing certain types of wave propagation effects. By retaining the nonlinear terms, the Serre equations allow for the modelling of phenomena such as wave steepening and the formation of shocks, which may arise in pulsatile blood flow. However, unlike the full Euler equations, the Serre equations do not require solving a system of partial differential equations in two spatial dimensions, but rather, they reduce the dimensionality of the problem, leading to a more efficient computational approach. It is important to note that the Serre equations are derived under the assumption of long waves, which means that they are most accurate when the wavelength of the disturbances is significantly larger than the vessel radius. They provide a framework for studying the propagation of pressure pulses in arteries, but their limitations are clear: the one-dimensional representation is a significant simplification of the actual complex geometry of the circulatory system, and they are less accurate when the wavelength of the pressure and flow disturbances becomes comparable to or smaller than the vessel radius.
+
+The cylindrical Boussinesq equations are derived from the \acrshort{sgn} equations under a weak nonlinearity assumption, and they maintain some dispersive effects that are essential for capturing certain aspects of wave propagation in blood vessels. The balance between nonlinear and dispersive effects is known to be important for understanding the formation of stable pulses, and these equations allow the study of this balance through various analytical and numerical techniques. The Boussinesq equations, like the Serre equations, are also 1D models. However, by applying this assumption, they will generally lose their capacity to model the steepening of waves or shocks as they are derived under the assumption that nonlinear terms are small. While they are mathematically simpler than the Serre equations, they may still require significant computational resources for numerical wave propagation and stability studies.
+
+Finally, we derive classical unidirectional approximations, including the Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) equations, to further simplify the wave propagation analysis. These unidirectional models are particularly useful in studying wave modulation and stability. Notably, we explore the modulation of periodic waves and establish the existence of modulational instability, which provides new insights into the stability of wave trains in cylindrical vessels. Our findings contribute to a deeper understanding of fluid-structure interactions in biomedical applications and offer new perspectives on the modelling of blood flow in large arteries. The results presented in this paper contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in the modelling of blood flow in large arteries. By providing a hierarchy of models ranging from the full Euler equations to simplified unidirectional approximations, this work offers a comprehensive framework for analyzing pulsatile flow in viscoelastic vessels across various scales and levels of complexity.
+
+The Korteweg-de Vries (KdV) and Benjamin-Bona-Mahony (BBM) equations are classical unidirectional models which describe wave propagation, and they are widely used in various fields of physics and engineering to study long-wave phenomena. Both of these equations are further simplifications of the Boussinesq system. While the KdV and BBM equations are both unidirectional models, they differ in their treatment of dispersive effects. The KdV equation captures the balance between nonlinearity and dispersion in a certain way, which leads to solitary wave solutions. On the other hand, the BBM equation is a valid alternative model when one is interested in modelling phenomena in which dispersion is dominated by a different type of balance than that provided by the KdV. They can also both be more amenable to wave modulation and stability study due to their relatively simple form. The KdV and BBM equations are derived under strong assumptions, including that the wave propagation is primarily unidirectional and that nonlinear and dispersive effects are weak, so their applicability is limited to specific regimes of the flow. While these models may not fully capture the complexity of blood flow, they offer valuable insight into the basic mechanisms of wave propagation and can be useful for studying wave modulation and stability.
+
+In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The modulational instability analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
+
+This manuscript is organized as follows. First, in \cref{sec:model}, we describe the parent-level mathematical model along with the physical assumptions on which it is based.
+
+\section{Mathematical modelling}
+\label{sec:model}
+
+Roughly speaking, the mathematical models in this field range from the complex three-dimensional CFD-type models \cite{Roe2005} to very simplified zero-dimensional lumped models \cite{Milisic2004, Alastruey2008}. In the present study, we take an intermediate point of view, where we follow the system's evolution in time and along the longitudinal direction\footnote{The so-called unsteady one-dimensional models.} \cite{Sherwin2003, Alastruey2011} while the processes taking place in the transversal direction are being modelled based on the long wave assumption \cite{Lavrentiev1947, Serre1956, BCL, Khakimzyanov2019}. This point of view has already been adopted in our previous studies \cite{Mitsotakis2018, Mitsotakis2019} in the weakly nonlinear regime. In the present study, we relieve this assumption in our developments as far as it will be possible.
+
+We assume that we have an incompressible flow\footnote{Rough estimates show that the Mach number for blood flows is of the order of $\O\,(10^{-3})$ which justifies the compressibility assumption.} of an ideal and homogeneous\footnote{The fluid homogeneity assumption is justified by comparing the typical pressure variations with the bulk modulus of the blood. A simple computation shows that the relative variation of the density is of the order of $\O\,(5\times 10^{-6})\,$, which justifies our homogeneity assumption.} fluid. This flow takes place in an elastic cylindrical vessel as schematically depicted in \cref{fig:sketch3d}. Moreover, the blood flow in large arteries is mostly laminar\footnote{The laminarity assumption can be discussed further. Despite the relatively high velocities in large arteries, the blood viscosity and the vessels' small diameter keep the Reynolds number in a range where laminar flow predominates. Moreover, the blood flow in arteries is pulsatile due to the rhythmic pumping of the heart. This pulsatility can actually stabilize the flow and delay the transition to turbulence.}. In order to simplify the problem and reduce its physical dimensionality, we assume the flow and, consequently, the deformation of the vessel's walls to be axi-symmetric\footnote{This approximate symmetry applies particularly to major arteries, such as the aorta and carotid arteries, which are approximately cylindrical with a nearly circular cross-section under normal physiological conditions. The lack of curvature minimizes asymmetrical flow disturbances in straight sections of arteries, supporting the axisymmetric assumption.}. The difference between an axi-symmetric and general deformation is schematically depicted in \cref{fig:axisym}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\linewidth]{sketch.pdf}
+    \caption{Sketch of a cylindrical elastic vessel subject to an axi-symmetric deformation filled with an ideal fluid.}
+    \label{fig:sketch3d}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Axis.pdf}
+        \caption{An axi-symmetric deformation.}
+        \label{fig:axi}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Gen.pdf}
+        \caption{A generic deformation.}
+        \label{fig:gen}
+    \end{subfigure}
+    \caption{A schematic illustration of an axi-symmetric (left panel) and a generic (right panel) deformations of initially cylindrical vessel cross-section. In the sequel, we are going to employ the polar coordinates in the $Oyz$ plane.}
+    \label{fig:axisym}
+\end{figure}
+
+Finally, we apply the long wave approximation \cite{Dutykh2007, Khakimzyanov2019}. This simplifying assumption can be justified in the following way. Indeed, the Moens--Korteweg celerity $c_{MK} = \O\,(10^2)$ \si{cm \per s} \cite{Tijsseling2012, Lagree2000} and the hear pulsation period is $t_{h} = \O\,(1)$ \si{s}. Consequently, the pulse wavelength can be estimated to be $\lambda = c_{MK}\cdot t_{h} = \O\,(10^2)$ \si{cm}, which is much larger than a typical diameter or arteries approximately equal to $\O\,(1)$ \si{cm}. Henceforth, the long wave assumption can be justified in this way. It is also well-known that long waves are much less affected by the viscosity \cite{Boussinesq1895, Lamb1932, Dutykh2007}, which allows us to adopt the ideal fluid assumption. If necessary, the dissipative effects can be added later along the lines of our previous works on this topic \cite{DutykhDias2007, Dutykh2008a, Dutykh2009c, Mitsotakis2019}. We would like to mention that the long wave approximation is not new \emph{per se}. However, historically, it has been employed to derive hydrostatic models, \emph{cf.} \cite{Lambert1958, Formaggia2003, Quarteroni2004, Delestre2013}. The models resulting from this approach are usually of the hyperbolic type similar to Saint-Venant equations stemming from hydraulics and water pipe flows modelling \cite{Bourdarias2007a, Bourdarias2007, Bourdarias2012}. The peculiarity of our approach is that we go one step further in the hierarchy of models, and we include frequency dispersion effects \cite{Khakimzyanov2016c}.
+
+\subsection{Base model: dimensional formulation}
+
+Taking into account the simplifying assumptions stated above, we can finally formulate our base model in scaled (physical and dimensional) variables by following \cite{Mitsotakis2018, Mitsotakis2019}:
+\begin{alignat}{1}
+   u_{\,t}\ +\ u\,u_{\,x}\ +\ v\,u_{\,r}\ +\ \frac{1}{\rho}\;p_{\,x}\ &=\ 0\,, \label{eq:momu} \\
+   v_{\,t}\ +\ u\,v_{\,x}\ +\ v\,v_{\,r}\ +\ \frac{1}{\rho}\;p_{\,r}\ &=\ 0\,, \label{eq:momv} \\
+   r\,u_{\,x}\,+\,(\,r\,v\,)_{\,r}\ &=\ 0\,, \label{eq:inc}
+\end{alignat}
+where $\rho$ is the constant fluid density, $u$ and $v$ are horizontal and radial particle velocity vector components, respectively, and $p$ is the fluid pressure. The subscripts with independent variables denote the partial derivatives with respect to those variables. We denote by $r^{w}\,(x,t)$ the distance between the cylinder axis and the elastic vessel's wall at a distance $x$ and at time instance $t\ \geq\ 0\,$. The static equilibrium position of the elastic wall is denoted by $r_{0}\,(x)$. See the sketch of the fluid/solid domain in \cref{fig:sketch3d}. The elastic wall radial excursion will be denoted by $\eta\,(x,t)$ and the following relation holds:
+\begin{equation*}
+    r^{w}\,(x,t) = r_{0}\,(x) + \eta\,(x,t)\,.
+\end{equation*}
+\cref{eq:momu,eq:momv,eq:inc} should be supplemented with appropriate initial and boundary conditions to obtain a well-posed\footnote{The well-posedness proof for this \gls{ibvp} is left to future works on this subject.} \gls{ibvp}. In order to avoid some obvious singularities, we impose the following condition:
+\begin{equation*}
+    v\,(x,\,0,\,t)\ =\ 0\,.
+\end{equation*}
+The elastic wall kinematic impermeability condition reads:
+\begin{equation*}
+  \eta_{t}\ +\ r^{w}_{x}\cdot u\ =\ v\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,.
+\end{equation*}
+The dynamic boundary condition is nothing else but the expression of the forces balance written on vessel walls:
+\begin{equation*}
+    \rho^{w}\,h\,\eta_{tt}\ =\ p^{w}\ -\ \frac{E\,h}{r_{\,0}^{\,2}\,(1\,-\,\nu^2)}\:\eta\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,,
+\end{equation*}
+where $\rho^{w}$ is the wall density, $p^{w}$ is the pressure exerted by the fluid on the elastic wall, $h$ is the wall thickness, $E$ and $\nu$ characterize the elastic properties (Young modulus and Poisson ratio correspondingly) of the vessel. In this study, we assume for simplicity that $E$, $\nu$, $\rho^{w}$, and $h$ are constants.
+
+\subsection{Base model: dimensionless formulation}
+
+In this Section, we elaborate on the scaled formulation for the Euler equations in cylindrical coordinates presented above. The first step consists of introducing non-dimensional independent variables, which are defined as follows:
+\begin{equation*}
+  \eta^{\,\star}\,=\;\frac{\eta}{\,a}\;,\quad x^{\,\star}\,=\;\frac{x}{\,\lambda}\;,\quad r^{\,\star}\,=\;\frac{r}{R}\;,\quad t^{\,\star}\,=\;\frac{t}{T}\;,\quad u^{\,\star}\,=\;\frac{1}{\eps\, \tilde{\,c}}\;u, \quad v^{\,\star}\,=\;\frac{1}{\eps\,\delta\,\tilde{c}}\;v, \quad p^{\,\star}\,=\;\frac{1}{\eps\,\rho\, \tilde{c}^{\,2}}\;p\,,
+\end{equation*}
+where $a$ is a typical amplitude of the vessel wall displacement, $\lambda$ a typical wavelength of a pulse, $R$ is a vessel's typical radius, $ t\,=\,\lambda$\,/\,\,$\tilde{c}\,$ the characteristic timescale, while $\tilde{c}\,=\,\sqrt{E\,h\,/\,2\, \rho\,R}$ is the Moens-Korteweg characteristic speed \cite{Fung1997a}. The parameters $\eps$ and $\delta$ characterize the non-linearity and the non-hydrostatic effects in the system:
+\begin{equation*}
+  \eps\,\coloneqq\, \frac{a}{R}\;, \quad \delta\,\coloneqq\,\frac{R}{\lambda}\;.
+\end{equation*}
+In the present work, we aim to keep $\eps = \O(1)$ as long as possible while assuming from the outset that $\delta^2 \ll 1$ is a small parameter.
+
+Omitting the $\star$ symbol from the notation below for the sake of simplicity, the non-dimensional form of the Euler takes the form (holding for $0\, < \,r\, <\, r^{\,w}\,\coloneqq\,r_{\,0}\,+\,\eps\,\eta$) \cite{Mitsotakis2018}:
+\begin{equation}\label{eq:momentx}
+  u_{\,t}\,+\,\eps\,u\,u_{\,x}\,+\,\eps\,v\, u_{\,r}\,+\,p_{\,x}\ =\ 0\,,
+\end{equation}
+\begin{equation}\label{eq:momenty}
+  \delta^{\,2}\,(\,v_{\,t}\,+\,\eps\,u\,v_{\,x}\,+\,\eps\,v \,v_{\,r}\,)\,+\,p_{\,r}\ =\ 0\,,
+\end{equation}
+\begin{equation}\label{eq:cont}
+  r\,u_{\,x}\,+\,(\,r\,v\,)_{\,r}\ =\ 0\,.
+\end{equation}
+We also add the dimensionless flow irrotationality condition that will be needed in our developments below \cite{Landau1987}:
+\begin{equation}\label{eq:irr}
+  \delta^{\,2}\,v_{\,x}\ =\ u_{\,r}\,.
+\end{equation}
+The scaled version of the kinematic boundary condition reads
+\begin{equation}\label{eq:kin}
+  v\,(\,x\,,\,r^{\,w},\,t\,)\ =\ \eta_{\;t}\,(\,x,\,t\,)\,+\,r_{\,x}^{\,w}\,u\,(\,x,\,r^{\,w},\,t\,)\,,
+\end{equation}
+while the dynamic boundary condition reads
+\begin{equation}\label{eq:dyn}
+  p^{\,w}\,(\,x,\,t\,)\,=\,p\,(\,x,\,r^{\,w},\,t\,)\ =\ \alpha\,\delta^{\,2}\,\eta_{\;tt}\,(\,x,\,t\,)\,+\,\beta\,(\,x\,)\,\eta\,(\,x,\,t\,)\,+\,\delta^{\,2}\beta\,\gamma\,\eta_{\;t}\,.
+\end{equation}
+The non-singularity condition along the symmetry axis reads:
+\begin{equation}\label{eq:zero}
+  v\,(\,x,\,0,\,t\,)\ =\ 0\,.
+\end{equation}
+Above, we introduced the following notations:
+\begin{equation*}
+  \tilde{\alpha}\,\coloneqq\;\frac{\rho^{\,w}\,h}{\rho}\; \quad \text{and} \ \quad \tilde{\beta}(\,x\,)\,\coloneqq\, \frac{E\,h}{\rho\,r_{\,0}^{\,2}\,(\,x\,)}\;. 
+\end{equation*}
+Then,
+\begin{equation*}
+  \alpha\,\coloneqq\,\frac{\tilde{\alpha}}{\,R}\;, \quad  \ \quad  \beta\,(\,x\,)\,\coloneqq\,\frac{2\,R^{\,2}\,\rho}{E\,h}\,\tilde{\beta}\,(\,x\,) \quad \text{and} \ \quad \gamma\,\coloneqq\,\tilde{\frac{\gamma }{\delta^{\,2}\,T}\;}\,,
+\end{equation*}
+where $\rho^{\,w}$ is the wall density, $h$ is the thickness of the vessel wall, $E$ is the young modulus of elasticity, $R$ is a vessel's radius, $T\, \coloneqq \;\displaystyle\frac{\lambda}{c}$ is the characteristic timescale. Below, we use the scaled governing equations in order to propose a simplified model.
+
+\subsection{Derivation of a new fully nonlinear weakly dispersive model}
+
+In this Section, we perform the dimensionality reduction of the axi-symmetric Euler system presented above. In order to achieve this goal, we use essentially two mathematical tools: depth averaging and asymptotic expansions. In the derivation below, we follow the footsteps of our previous works on this topic \cite{Dutykh2011a, Clamond2015c, Khakimzyanov2019, Clamond2024}.
+
+The horizontal velocity is approximated by its depth-averaged value:
+\begin{equation}\label{eq:avg}
+  \bar{u}(x,t)\ \coloneqq\ \frac{1}{r_{\,0}\;+\,\eps\,\eta}\;\displaystyle \int_{\,0}^{\,r^{\,w}}\,u\,(\,x,\,r,\,t\,)\,\ud\,r\,.
+\end{equation}
+We start the derivation by integrating the continuity \cref{eq:cont}:
+\begin{equation*}
+  \int_{\,0}^{\,r^{\,w}}\,r\,u_{\,x}\,\ud\,r \,+\, \int_{\,0}^{\,r^{\,w}}(\,r\,v\,)_{\,r}\,\ud\,r\,=\,0\,,
+\end{equation*}
+where the second term can be readily integrated:
+\begin{equation*}
+  \int_{\,0}^{\,r^{\,w}}r\,u_{\,x}\,\ud\,r\,+\, r^{\,w}\,v\,(\,x,\,r^{\,w},\,t\,)\,-\,r^{\,w}\,v\,(\,x,\,0,\,t\,)\,=\,0\,.
+\end{equation*}
+After taking into account boundary conditions given in \cref{eq:kin,eq:zero}, we obtain
+\begin{equation}\label{eq:contint}
+  \int_{\,0}^{\,r^{\,w}}r\,u_{\,x}\,\ud\,r\;+\,r^{\,w} \eta_{\;t}\,(\,x,\,t\,)\,+\,r^{\,w}\,r_{\,x}^{\,w}\,u\,(\,x,\,r^{\,w},\,t\,)\,=\,0\,.
+\end{equation}
+
+In a similar way, we integrate the axial momentum balance \cref{eq:momentx}:
+\begin{equation}\label{eq:ut}
+  \int_{\,0}^{\,r^{\,w}}u_{\,t}\,\ud\,r\;+\,\eps\, \int_{\,0}^{\,r^{\,w}}\,u\,u_{\,x}\,\ud\,r\;+\,\eps\, \int_{\,0}^{\,r^{\,w}}\,v\,u_{\,r}\,\ud\,r\,=\, -\, \int_{\,0}^{\,r^{\,w}}\,p_{\,x}\,\ud\,r\;.
+\end{equation}
+The integral of the pressure on the right-hand side can be transformed using the classical Leibniz rule and the dynamic boundary condition expressed in \cref{eq:dyn} to yield
+\begin{equation}\label{eq:px}
+  \int_{\,0}^{\,r^{\,w}}p_{\,x}\,\ud\,r\;=\,\frac{\partial}{\partial\,x}\,\int_{\,0}^{\,r^{\,w}}p\,\ud\,r\; -\,p\,(\,x,\,r^{\,w},\,t\,)\,r^{\,w}_{\,x}\,=\,\bigl[r^{\,w}\,\bar{p}\,\bigr]_{\,x}\,-\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\,+\,\eta\,\beta\,+\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)\,r^{\,w}_{\,x}\,,
+\end{equation}
+where $\bar{p}$ denotes the depth-averaged value of the pressure defined similarly to \cref{eq:avg}. In order to calculate $\bar{p}\,$, we use the radial momentum balance \cref{eq:momenty} recast as
+\begin{equation*}
+  p_{\,r}\,(\,x,\,r,\,t\,)\,=\,-\,\delta^{\,2}\,\Gamma\,(\,x,\,r,\,t\,)\,, \qquad \text{with} \qquad \Gamma\,\coloneqq\, v_{\,t}\ +\ \eps\,u\,v_{\,x}\ +\ \eps\,v\,v_{\,r}\,.
+\end{equation*}
+Integrating the derivative $p_r$ from $r$ to $r^w$, we obtain:
+\begin{equation*}
+  p\,(\,x,\,r^{\,w},\,t\,)\,-\,p\,(\,x,\,r,\,t\,)\,=\,-\,\delta^{\,2}\,\displaystyle \int_{\,r}^{\,r^{\,w}}\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z
+\end{equation*}
+and after a slight rewrite
+\begin{equation*}
+  -\,p\,(\,x,\,r,\,t\,)\,=\,-\,p\,(\,x,\,r^{\,w},\,t\,)\,-\,\delta^{\,2} \displaystyle \int_{\,r}^{\,r^{\,w}}\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z\,.
+\end{equation*}
+Integrating the last equation one more time over $r$ from $0$ to $r^w$ and by substituting the dynamic boundary condition \eqref{eq:dyn} for $p\,(\,x,\,r^{\,w},\,t\,)$, we obtain:
+\begin{equation*}
+  -\,\int_{\,0}^{\,r^{\,w}}\,p\,(\,x,\,r,\,t\,)\,\mathrm{d}\,r\,=\,-\,
+\displaystyle\int_{\,0}^{\,r^{\,w}}\,(\,\alpha\,\delta^{\,2} \,\eta_{\;tt}\,+\,\beta\,\eta\,+\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,)\,\mathrm{d}\,r\,-\,\delta^{\,2}\displaystyle \int_{\,0}^{\,r^{\,w}}\displaystyle \int_{\,r}^{\,r^{\,w}}\,\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z\,\mathrm{d}\,r\,.
+\end{equation*}
+After introducing the depth-averaged pressure $\bar{p}$ and computing the first integral on the right-hand side, we obtain:
+\begin{equation*}
+  \,r^{\,w}\,\bar{p}\,=\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\, + \,\beta\,\eta\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)\,r^{\,w}\,+
+    \,\delta^{\,2}\,\displaystyle \int_{\,0}^{r^{\,w}}\,\displaystyle \int_{\,r}^{\,r^{w}}\,\Gamma\,(\,x,\,z,\,t\,)\,\,\mathrm{d}\,z\,\mathrm{d}\,r\,.
+\end{equation*}
+With this result in hands, we can return to \cref{eq:px} to substitute $r^{\,w}\,\bar{p}$ there to find:
+\begin{multline*}
+  \bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\, + \,\beta\,\eta\,+\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)\,r^{\,w}_{\,x}\, + \,\bigl(\,\alpha\, \delta^{\,2}\,\eta_{\;tt}\, + \,\beta\,\eta\,+\,\delta^{\,2}\, \beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}\,r^{\,w}\, + \\
+  \delta^{\,2}\,\frac{\partial}{\partial\,x}\;\int_{0}^{r^{\,w}} \int_{\,r}^{\,r^{\,w}}\,\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z\,\mathrm{d}\,r - \,\bigl(\,\alpha\, \delta^{\,2}\,\eta_{\;tt}\, + \,\beta\,\eta\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)r^{\,w}_{\,x}\,.
+\end{multline*}
+Finally, we can now determine the integral of $p_x\,$:
+\begin{equation*}
+  \int_{\,0}^{\,r^{\,w}}\,p_{\,x}\,\mathrm{d}\,r\,=\, \bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\, + \,\beta\, \eta\,+\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}r^{\,w}\, +
+    \,\delta^{\,2}\frac{\partial}{\partial\,x}\; \int_{\,0}^{\,r^{\,w}} \int_{\,r}^{\,r^{\,w}}\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z\,\mathrm{d}\,r\,.
+\end{equation*}
+After substituting the last equation into \cref{eq:ut}, we obtain
+\begin{multline*}
+  \int_{\,0}^{\,r^{\,w}}u_{\,t}\,\mathrm{d}\,r\,+\,\eps\, \int_{\,0}^{\,r^{\,w}}u\,u_{\,x}\,\mathrm{d}\,r\,+\,\bigl(\,\alpha\, \delta^{\,2}\,\eta_{\;tt}\,+\,\beta\,\eta\,\,+\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\bigr)_{\,x}r^{\,w}\, + \\
+  \delta^{\,2}\,\frac{\partial}{\partial\,x}\; \int_{\,0}^{\,r^{\,w}} \int_{\,r}^{\,r^{\,w}}\,\Gamma\,(\,x,\,z,\,t\,)\,\mathrm{d}\,z\;\mathrm{d}\,r\,=\,-\,\eps\,\int_{\,0}^{\,r^{\,w}}v\, u_{\,r}\,\mathrm{d}\,r\,.
+\end{multline*}
+Further progress can be made after we approximate the horizontal velocity variable dependence on the flow depth.
+
+\subsubsection{Velocity field asymptotic expansion}
+
+The horizontal velocity variable will be approximated with its second-order Taylor expansion around the cylinder axis $r = 0$:
+\begin{equation}\label{eq:uT}
+  u\,(\,x,\,r,\,t\,)\,=\, u_{\,0}\,(\,x,\,t\,)\,-\;\frac{1}{4}\;\delta^{\,2}r^{\,2}\;\frac{\partial^{\,2}\,u_{\,0}}{\partial\,x^{\,2}}\; +\, \O\,(\,\delta^{\,4}\,)\,,
+\end{equation}
+Notice that the incompressibility condition \eqref{eq:cont} on the velocity fields implies the following approximation of the second (vertical) velocity component:
+\begin{equation}\label{eq:vT}
+  v\,(\,x,\,r,\,t\,)\,=\,-\;\frac{r}{2}\;\frac{\partial\, u_{\,0}}{\partial\,x}\; + \,\O\,(\,\delta^{\,2}\,)\,.
+\end{equation}
+Averaging of \cref{eq:uT} yields the following relation:
+\begin{equation*}
+  u_{\,0}\,=\,\bar{u}\,+\;\frac{1}{12}\;\delta^{2}\,(\,r^{\,w})^{\,2}\;\frac{\partial^{\,2}\bar{u}}{\partial x^{\,2}}\; + \,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+Thus, the variable $u_0$ can be eliminated from \cref{eq:uT} for the profit of the depth-averaged horizontal velocity variable:
+\begin{equation}\label{eq:urep}
+  u\,(\,x,\,r,\,t\,)\,=\, \bar{u}\,+\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\;\frac{\partial^{\,2}\bar{u}}{\partial x^{\,2}}\;-\;\frac{1}{4}\;\delta^{\,2}\,r^{\,2}\;\frac{\partial^{\,2}\,\bar{u}}{\partial\,x^{\,2}}\; + \,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation}
+The same substitution can be made in \cref{eq:vT} as well:
+\begin{equation}\label{eq:vTb}
+  v\,(\,x,\,r,\,t\,)\,=\,- \;\frac{r}{2}\; \frac{\partial\,
+\bar{u}}{\partial\,x}\; + \,\O\,(\,\delta^{\,2}\,)\,.
+\end{equation}
+\cref{eq:urep} allows us also to approximate the derivative $u_x\,$:
+\begin{equation*}
+  u_{\,x}\,=\,\bar{u}_{\,x}\,+\,\frac{1}{12}\;\delta^{\,2}\,2\,r^{\,w}_{\,x}\,r^{\,w}\,\bar{u}_{\,xx}\,+\,\frac{1}{12}\,\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xxx}\,-\,\frac{1}{4}\;\delta^{\,2}\,r^{\,2}\,\bar{u}_{\,xxx}\,+\,\O\,(\,\delta^{\,4}\,)
+\end{equation*}
+along with the nonlinear product $u\,u_x\,$:
+\begin{multline*}
+  u\,u_{\,x}\,=\,\bar{u}\bar{u}_{\,x}\,+\;\frac{1}{6}\;\delta^{\,2}\,r^{\,w}_{\,x}\,r^{\,w}\,\bar{u}\,\bar{u}_{\,xx}\,+\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w})^{\,2}\,\bar{u}\,\bar{u}_{\,xxx}\,-\;\frac{1}{4}\;\delta^{\,2}\,r^{\,2}\,\bar{u}\,\bar{u}_{\,xxx} \\
+  +\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w})^{\,2}\,\bar{u}_{\,xx}\,\bar{u}_{\,x}\,
+  -\;\frac{1}{4}\;\delta^{\,2}r^{\,2}\,\bar{u}_{\,xx}\,\bar{u}_{\,x}\,+\,\O\,(\,\delta^{\,4}\,)\,.
+\end{multline*}
+These asymptotic representations allow us to evaluate also the integrals over fluid depth of $u\,u_x\,$:
+\begin{equation*}
+  \int_{\,0}^{\,r^{\,w}}u\,u_{\,x}\,\mathrm{d}\,r\, = \,r^{\,w}\,\bar{u}\,\bar{u}_{\,x}\, +\,\frac{1}{6}\;\delta^{\,2}\,r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}\,\bar{u}_{\,xx}\,+\,\O\,(\,\delta^{\,4}\,)
+\end{equation*}
+and of $u_t\,$:
+\begin{equation*}
+  \int_{\,0}^{\,r^{\,w}}u_{\,t}\,\mathrm{d}\,r\,=\,r^{\,w}\,\bar{u}_{\,t}\,+\;\frac{1}{6}\;\delta^{\,2}\,r^{\,w}_{\,t}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,+\,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+The asymptotic evaluation of the following integral requires the representation \eqref{eq:vTb} along with the irrotationality condition \eqref{eq:irr}:
+\begin{multline*}
+  \int_{\,0}^{\,r^{\,w}}v\,u_{\,r}\,\mathrm{d}\,r\, = \,\delta^{\,2}\int_{\,0}^{\,r^{\,w}}v\,v_{\,x}\,\mathrm{d}\,r\, = \, \delta^{\,2} \int_{\,0}^{\,r^{\,w}}\Bigl(\;\frac{-r}{2}\;\frac{\partial \,\bar{u}}{\partial\, x}\;\Bigr)\,\Bigl(\;\frac{-r}{2}\;\frac{\partial^{\,2}\,\bar{u}}{\partial\, x^{\,2}}\; \Bigr)\, \mathrm{d}\,r\, + \,\O\,(\,\delta^{\,4}\,) \\
+  \equiv \,\delta^{\,2}\, \int_{\,0}^{\,r^{\,w}}\frac{r^{\,2}}{4}\; \bar{u}_{\,x}\, \bar{u}_{\,xx}\, \mathrm{d}\,r\, + \,\O\,(\,\delta^{\,4}\,) = \;\frac{1}{12}\;\delta^{\,2}\, \bar{u}_{\,x}\, \bar{u}_{\,xx}\,(\,r^{\,w}\,)^{\,3}\, + \,\O\,(\,\delta^{\,4}\,)\,.
+\end{multline*}
+\cref{eq:vTb} can be substituted into the fluid particle vertical acceleration $\Gamma\,(\,x,\,r,\,t\,)$ to obtain the following asymptotic approximation:
+\begin{multline*}
+  \Gamma\,(\,x,\,r,\,t\,)\,=\,v_{\,t}\,+\,\eps\,u\,v_{\,x}\,+\,\eps\,v\,v_{\,r}\ =\ -\;\frac{r}{2}\;\bar{u}_{\,xt}\,-\;\frac{r}{2}\;\eps\,\bar{u}\,\bar{u}_{\,xx}\,+\,\eps\; \frac{r}{4}\;(\,\bar{u}_{\,x}\,)^{\,2}\, +\, \O\,(\,\delta^{\,2}\,)\, =\\ 
+  -\,\frac{r}{2}\;\bigl[\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\,\frac{\eps}{2}\;(\,\bar{u}_{\,x}\,)^{\,2}\,\bigr]\, + \,\O\,(\,\delta^{\,2}\,)\,.
+\end{multline*}
+Combining the previous developments, we can state asymptotically one of the governing equations of the cylindrical \acrfull{sgn} system:
+\begin{multline*}
+  r^{\,w}\,\bar{u}_{\,t}\,+\;\frac{\delta^{\,2}}{6}\;r^{\,w}_{\,t}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,+\,\eps\, r^{\,w}\,\bar{u}\,\bar{u}_{\,x}\,+\;\frac{\eps\,\delta^{\,2}}{6}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}\,\bar{u}_{\,xx}\,+\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\,+\,\beta\,\eta\, +\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}r^{\,w}
+   + \\
+   \frac{\eps\,\delta^{\,2}}{12}\;(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,x}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{6}\;\frac{\partial}{\partial\,x}\;\bigl[\,(\,r^{\,w}\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\, \bar{u}_{\,xx}\, - \,\frac{\eps}{2}\;(\,\bar{u}_{\,x}\,)^{\,2}\,\bigr]
+   =\,O\,(\,\delta^{\,4}\,)\,.
+\end{multline*}
+
+\subsubsection{The mass conservation}
+
+In this Section, we are going to derive the second equation of what will become the cylindrical \acrshort{sgn} system. Namely, this equation will play the r\^ole of the mass conservation equation in more classical shallow water-type systems \cite{Dutykh2013, Dutykh2011b, Dutykh2014c, Dutykh2014f, Clamond2019}. For this, we return to the integrated version of the continuity \cref{eq:contint}, and we substitute the approximation \eqref{eq:urep} for the horizontal velocity:
+\begin{multline*}
+  \int_{\,0}^{\,r^{\,w}}r\,u_{\,x}\,\mathrm{d}\,r\,=\, \int_{\,0}^{\,r^{\,w}}r\,\biggl(\,\bar{u}\,+\,\Bigl(\,\frac{1}{12}\;\delta^{\,2}\,(\,r^{w}\,)^{\,2}\,-\;\frac{1}{4}\;\delta^{\,2}r^{\,2}\,\Bigr)\,\bar{u}_{\,xx}\,\biggr)_{\,x}\,\mathrm{d}\,r\,+\,\O\,(\,\delta^{\,4}\,)\ =\\
+  \bar{u}_{\,x}\int_{\,0}^{\,r^{\,w}}r\,\mathrm{d}\,r\,+\; \frac{\delta^{\,2}}{6}\;r^{\,w}_{\,x}r^{\,w}\,\bar{u}_{\,xx} \int_{\,0}^{\,r^{\,w}}r\,\mathrm{d}\,r\,+\;\frac{\delta^{2}}{12}\;\bar{u}_{\,xxx}\int_{\,0}^{\,r^{\,w}}r\,(\,r^{\,w}\,)^{\,2}\,\mathrm{d}\,r\,-\;\frac{\delta^{\,2}}{4}\;\bar{u}_{\,xxx} \int_{0}^{r^{\,w}}r^{\,3}\,\mathrm{d}r\ =\\
+  \bar{u}_{\,x}\;\frac{(r^{\,w}\,)^{\,2}}{2}\;+\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,3}\,r^{\,w}_{\,x}\,\bar{u}_{\,xx}\,+\;\frac{1}{12}\;\delta^{\,2}\,\bar{u}_{\,xxx}\;\frac{(\,r^{\,w})^{\,4}}{2}\;-\;\frac{1}{4}\;\delta^{\,2}\,\bar{u}_{\,xxx}\;\frac{(\,r^{\,w}\,)^{\,4}}{4}\; +\,\O\,(\,\delta^{\,4}\,)\,.
+\end{multline*}
+After a slight rewriting of the last integral, \cref{eq:contint} can be represented asymptotically as
+\begin{equation*}
+  \frac{(\,r^{\,w}\,)^{\,2}}{2}\;\bar{u}_{\,x}\,+\;\frac{\delta^{\,2}}{12}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{48}\;(\,r^{\,w}\,)^{\,4}\,\bar{u}_{\,xxx}\,+\,r^{\,w}\,\eta_{\;t}\,+\,r^{\,w}\,r^{\,w}_{\,x}\,u^{\,w}\,(\,x,\,t\,)\, = \, \O\,(\,\delta^{\,4})\,.
+\end{equation*}
+The last equation after division by $r^w$ constitutes the desired mass conservation equation that will be explicitly written in the following Section.
+
+\subsubsection{Intermediate conclusions}
+
+In this Section, we would like to summarize the developments made so far. We also remind that no assumption on the nonlinearity parameter has been made so far, \emph{i.e.} $\eps\,=\,\O\,(\,1\,)\,$. On the other hand, all this progress has been made thanks to the long wave assumption that can be expressed as $\delta\, \ll \, 1\,$. We summarize below the two governing equations, which will be the prototype of the future cylindrical \acrshort{sgn} system to be presented below after some little additional efforts\footnote{In reality, we just divided both equations by $r^{w} > 0$ which does not vanish in normal (healthy) conditions.}:
+\begin{equation}\label{eq:se1}
+  \frac{r^{\,w}}{2}\;\bar{u}_{\,x}\,+\;\frac{\delta^{\,2}}{12}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{48}\;(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,xxx}\,+\,\eta_{\;t}\,+\,r^{\,w}_{\,x}\,u^{\,w}\,(\,x,\,t\,)\ =\ \O\,(\,\delta^{\,4}\,)\,,
+\end{equation}
+\begin{multline}\label{eq:se2}
+   \bar{u}_{\,t}\,+\;\frac{\delta^{\,2}}{6}\;r^{\,w}_{\,t}\,r^{\,w}\,\bar{u}_{\,xx}\,+\,\eps\, r^{\,w}\,\bar{u}\,\bar{u}_{\,x}\,+\;\frac{\eps\,\delta^{\,2}}{6}\;r^{\,w}_{\,x}\,r^{\,w}\,\bar{u}\,\bar{u}_{\,xx}\,+\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\,+\,\beta\,\eta\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}\, +\\
+   \frac{\eps\,\delta^{\,2}}{12}\;(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,x}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{6\,r^{\,w}}\;\frac{\partial}{\partial x}\;\biggl[ \,(\,r^{\,w}\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\;\frac{\eps}{2}\;(\,\bar{u}_{\,x}\,)^{\,2}\,\biggr]\,=\,\O\,(\,\delta^{\,4}\,)\,.
+\end{multline}
+In order to achieve our goals, we have to determine the trace of the horizontal velocity $u^{\,w}$ at the vessel wall. The following Section is entirely devoted to this task.
+
+\subsubsection{Horizontal velocity trace at the vessel wall}
+
+The integration of the irrotationality condition \eqref{eq:irr} over $r$ from $r$ to $r^{\,w}$ yields
+\begin{equation}\label{eq:irrint}
+  u\,(\,x,\,r,\,t\,)\,=\,u\,(\,x,\,r^{\,w},\,t\,)\,-\,\delta^{\,2}\,\int_{\,r}^{\,r^{\,w}} v_{\,x}\,(\,x,\,s,\,t\,)\,\mathrm{d}\,s\,.
+\end{equation}
+We introduce the following function\footnote{In the literature this quantity is usually referred to as the average volume flux.} by following the steps of \cite{Mitsotakis2019}:
+\begin{equation*}
+  Q\,(\,x,\,r,\,t\,)\,=\;\frac{1}{r}\; \int_{\,0}^{\,r} s\,u\,(\,x,\,s,\,t\,)\,\mathrm{d}\,s\,.
+\end{equation*}
+An asymptotic expression of this function $Q$ can be readily obtained by using the just obtained horizontal velocity exact representation \eqref{eq:irrint}:
+\begin{equation}\label{eq:Qass}
+  Q\,(\,x,\,r,\,t\,)\,=\;\frac{1}{r}\; \int_{\,0}^{\,r}s\,u^{\,w}\,(\,x,\,t\,)\,\mathrm{d}\,s\,+\,\O\,(\,\delta^{\,2}\,)\,=\;\frac{r}{2}\;u^{\,w}\,(\,x,\,t\,)\,+\,\O\,(\,\delta^{\,2}\,)\,.
+\end{equation}
+The integration of the continuity \cref{eq:cont} this time from $r = 0$ to $r = r^{\,w}$, we obtain:
+\begin{equation*}
+  \int_{\,0}^{\,r}(\,s\,v\,)_{\,s}\,\mathrm{d}\,s\,=\,-\,\int_{\,0}^{\,r} s\,u_{\,x}\,\mathrm{d}\,s\,,
+\end{equation*}
+and after an elementary evaluation of the integral on the left-hand side by using the condition \eqref{eq:zero}, we come to the following \emph{exact} representation of the vertical velocity variable:
+\begin{equation*}
+  v\,(\,x,\,r,\,t\,)\,=\,-\;\frac{1}{r}\;\int_{\,0}^{\,r}s\,u_{\,x}\,\mathrm{d}\,s\, \equiv \,-\,Q_{\,x}\,(\,x,\,r,\,t\,)\,.
+\end{equation*}
+Combining the last identity with the asymptotic formula \eqref{eq:Qass}, we obtain:
+\begin{equation}\label{eq:l6}
+  v\,(\,x,\,r,\,t\,)\,=\,-\;\frac{r}{2}\;u^{\,w}_{\,x}\,(\,x,\,t\,)\,+\,\O\,(\,\delta^{\,2}\,)\,.
+\end{equation}
+The last asymptotic formula can be used to eliminate the vertical velocity from the \cref{eq:irrint}:
+\begin{equation*}
+  u\,(\,x,\,r,\,t\,)\,=\,u^{\,w}\,(\,x,\,t\,)\,+\,\delta^{\,2}\, \int_{\,r}^{\,r^{\,w}}\;\frac{s}{2}\;u^{\,w}_{\,xx}\,(\,x,\,t\,)\,\mathrm{d}\,s\,+\,O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+After evaluating the integral and flipping the equality sides of variables $u$ and $u^{\,w}$, we obtain:
+\begin{equation*}
+  u^{\,w}\,(\,x,\,t\,)\, = \,u\,(\,x,\,r,\,t\,)\,-\,\delta^{\,2}\,u^{\,w}_{\,xx}\,(\,x,\,t\,)\;\frac{(\,r^{\,w})^{\,2}\,-\,r^{\,2}}{4}\; + \,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+Using the last asymptotic formula recursively, one obtains:
+\begin{equation*}
+  u^{\,w}\,(\,x,\,t\,)\,=\,u\,-\,\delta^{\,2}\,\bigl(\,u\,(\,x,\,r,\,t\,)\,-\,\delta^{\,2}\,u^{\,w}_{\,xx}\;\frac{(r^{\,w})^{\,2}\,-\,r^{\,2}}{4}\;\bigr)_{\,xx}\cdot\frac{(\,r^{\,w}\,)^{\,2}\,-\,r^{\,2}}{4}\;+\,\O\,(\,\delta^{\,4}\,)
+\end{equation*}
+and after some simplification, we get the following simple formula:
+\begin{equation*}
+  u^{\,w}\,(\,x,\,t\,)\,=\,u\,-\,\delta^{\,2}\,u_{\,xx}\,(\,x,\,r,\,t\,)\;\frac{(r^{\,w}\,)^{\,2}\,-\,r^{\,2}}{4}\;+\,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+In the last equation, we may use the asymptotic representation \eqref{eq:urep} for $u\,(x,\,r,\,t)$ in terms of $\bar{u}\,(\,x,\,t\,)\,$:
+\begin{multline*}
+  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\,(\,x,\,t\,)\,+\,\delta^{\,2}\,\bigl[\;\frac{1}{12}\;(\,r^{\,w}\,)^{\,2}\,-\;\frac{1}{4}\;r^{\,2}\,\bigr]\,\bar{u}_{\,xx}\,(\,x,\,t\,)\\ 
+  -\,\delta^{\,2}\,\bigr(\,\bar{u}\,(\,x,\,t\,)\, +\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,(\,x,\,t\,)\,-\;\frac{1}{4}\;\delta^{\,2}\,r^{\,2}\,\bar{u}_{\,xx}\,(\,x,\,t\,)\,\bigr)_{\,xx}\cdot\frac{(\,r^{\,w}\,)^{\,2}\,-\,r^{\,2}}{\,4}\;+\,\O\,(\,\delta^{\,4}\,)
+\end{multline*}
+and after a series of asymptotic simplifications, we obtain the final result of this Section:
+\begin{equation*}
+  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\, - 
+  \;\frac{1}{6}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\, + \,\O\,(\,\delta^{\,4}\,)\,.
+\end{equation*}
+
+\subsubsection{Fully nonlinear weakly dispersive equations}
+
+The asymptotic formula obtained in the previous Section allows us to rewrite the intermediate system \eqref{eq:se1}, \eqref{eq:se2} in terms of the depth-averaged velocity variable:
+\begin{equation*}
+  \frac{(\,r^{\,w}\,)^{\,2}}{2}\;\bar{u}_{\,x}\,-\;\frac{\delta^{\,2}}{12}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{48}\;\,(\,r^{\,w}\,)^{\,4}\,\bar{u}_{\,xxx}\,+\,r^{\,w}\,\eta_{\;t}\,+\,r^{\,w}\,r^{\,w}_{\,x}\,\bar{u}\,=\,\O\,(\,\delta^{\,4}\,)\,,
+\end{equation*}
+\begin{multline*}
+  r^{\,w}\,\bar{u}_{\,t}\,+\;\frac{\delta^{\,2}}{6}\;r^{\,w}_{\,t}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,+\,\eps\, r^{\,w}\,\bar{u}\,\bar{u}_{\,x}\,+\,\frac{\eps\,\delta^{\,2}}{6}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}\,\bar{u}_{\,xx}\,+\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\,+\,\beta\,\eta\, +\,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}\,r^{\,w}
+   +\\
+   \frac{\eps\,\delta^{\,2}}{12}\;(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,x}\,\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{6}\;\frac{\partial}{\partial x}\;\bigl[ \,(\,r^{\,w}\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\bigr]\,=\,\O\,(\,\delta^{\,4}\,)\,.
+\end{multline*}
+In order to close the system above, we can remember that $r^{\,w}$ can be expressed through a known function and the unknown $\eta$ as $r^{\,w}\,\equiv\, r_{\,0}\,(\,x\,)\,+\,\eps\,\eta\,(\,x,\,t\,)\,$. Then, we obtain the following system of \acrshort{pde}s with variable coefficients, which constitute the celebrated fully nonlinear weakly dispersive \acrfull{sgn} equations in the cylindrical axi-symmetric setting:
+\begin{equation}\label{eq:sgn1}
+  \frac{r_{\,0}}{2}\,\bar{u}_{\;x} \,+\,\eps\,\frac{\eta}{2}\,\bar{u}_{\;x}\,-\,\frac{\eps\,\delta^{\,2}}{12}\,\eta_{\,x}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,2}\,\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{48}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,3}\,\bar{u}_{\,xxx}+\,\eta_{\,t} \,+\,\eps\,\eta_{\,x}\,\bar{u}\,=\,0,
+\end{equation}
+\begin{multline}\label{eq:sgn2}
+  \bar{u}_{\,t}\,+\,\eps\,\bar{u}\bar{u}_{\,x}\,+\,\frac{\eps\,\delta^{\,2}}{6}\,\eta_{\,t}\,(\,r_{\,0}\,+\eps\,\eta\,)\,\bar{u}_{\;xx}\,+\,\frac{\eps^{\,2}\,\delta^{\,2}}{6}\,\eta_{\,x}\,(\,r_{\,0}\,+\,\eps\,\eta\,)\,\bar{u}\,\bar{u}_{\,xx}\,+\,\biggl(\alpha\,\delta^{\,2}\,\eta_{\,tt}\,+\,\beta\,\eta\,+\,\delta^{\,2}\beta\,\gamma\,\eta_{\,t}\,\biggr)_{\,x}\,+\\
+  \frac{\eps\,\delta^{\,2}}{12}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,2}\,\bar{u}_{\,x}\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{6\,(r_{\,0}+\eps\,\eta)}\,\frac{\partial}{\partial x}\;\biggl[ \,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-
+\,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\biggr]=\,0.
+\end{multline}
+
+\subsection{Classical cylindrical Boussinesq equations}
+
+The cylindrical \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} presented above currently seems to be intractable to our analytical and numerical techniques. In order to be able to continue our investigation, we would like to adopt the simplifying assumption of weak nonlinearity while staying in the so-called Boussinesq regime \cite{DMII, Dutykh2014f, Dutykh2007, DMS1}, \emph{i.e.} $\eps\ \ll\ 1$ while $\frac{\eps}{\delta^2}\ =\ \O(1)\,$. For the sake of simplicity, we shall also assume that the vessel radius $r_0\ =\ \mathrm{const}$. Under these assumptions, the \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} can be simplified to the following classical Boussinesq-type equations:
+\begin{equation}\label{eq:5.1}
+  \frac{r^{\,w}}{2}\;\bar{u}_{\,x}\,-\;\frac{\delta^{\,2}}{48}\;\,(\,r_{\,0}\,)^{\,3}\,\bar{u}_{\,xxx}\,+\,\eta_{\;t}\,+\,r^{\,w}_{\,x}\,\bar{u}\,=\,\O\,(\,\delta^{\,4}\,+\,\eps\,\delta^{\,2}\,)\,,
+\end{equation}
+\begin{equation}\label{eq:5.2}
+  \bar{u}_{\,t}\, + \,\eps\,\bar{u}\,\bar{u}_{\,x}\, + \,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\, + \,\beta\,\eta\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}\, - \,\frac{\delta^{\,2}}{6}\;r_{\,0}^{\,2}\,\bar{u}_{\,xxt}\, =\, \O\,(\,\delta^{\,4}\,+\,\eps\,\delta^{\,2}\,)\,.
+\end{equation}
+Substituting $r^{\,w}\,\equiv\, r_{\,0}\,+\,\eps\,\eta\,(\,x,\,t\,)$ in the last Boussinesq system, we obtain
+\begin{equation*}
+  \frac{r_{\,0}}{2}\;\bar{u}_{\,x}\, + \,\,\frac{\eps}{2}\,\eta\;\bar{u}_{\,x}\, -\;\frac{\delta^{\,2}}{48}\;\,r_{\,0}^{\,3}\,\bar{u}_{\,xxx}\, + \,\eta_{\;t}\, + \,\eps\,\eta_{\,x}\,\bar{u}\, = \,\O\,(\,\delta^{\,4}\,+\,\eps\,+\,\delta^{\,2}\,)\,,
+\end{equation*}
+\begin{equation*}
+  \bar{u}_{\,t}\, + \,\eps\,\bar{u}\,\bar{u}_{\,x}\, + \,\alpha\,\delta^{\,2}\,\eta_{\;xtt}\, + \,\beta\,\eta_{\,x}\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;xt}\, - \,\frac{\delta^{\,2}}{6}\;r_{\,0}^{\,2}\,\bar{u}_{\,xxt}\, = \,\O\,(\,\delta^{\,4}\,+\,\eps\,+\,\delta^{\,2}\,)\,.
+\end{equation*}
+The last system can be easily recast in physical variables after neglecting the asymptotically small terms on the right-hand side:
+\begin{equation}\label{eq:bouss1}
+  \frac{r_{\,0}}{2}\;\bar{u}_{\,x}\,+\;\frac{\eta}{2}\;\bar{u}_{\,x}\,+\,\eta_{\;t}\,-\;\frac{r_{\,0}^{\,3}}{48}\,\;\bar{u}_{\,xxx}\,+\,\eta_{\,x}\,\bar{u}\,=\,0\,,
+\end{equation}
+\begin{equation}\label{eq:bouss2}
+  \bar{u}_{\,t}\, + \,\bar{u}\,\bar{u}_{\,x}\, + \,\tilde{\alpha}\,\eta_{\;xtt}\, + \,\tilde{\beta}\,\eta_{\;x}\, + \,\tilde{\beta}\,\tilde{\gamma}\,\eta_{\;xt}\, - \,\frac{r_{\,0}^{\,2}}{6}\;\bar{u}_{\,xxt}\, = \,0\,,
+\end{equation}
+where $r_{\,0}\,>\,0$ is the vessel constant radius.
+
+To compare the present model with that proposed in \cite{Mitsotakis2019}, one observes that the latter employed the potential flow formulation, whereas the current study utilises a velocity–pressure formulation. Furthermore, their model incorporates a viscous frequency parameter associated with Rayleigh damping, which is set to zero in our analysis. Accordingly, these distinctions underscore that the two systems are not equivalent representations of the Boussinesq model.
+
+\subsection{Unidirectional model equations}\label{sec:nondim}
+
+In this Section, we continue the derivation of simplified weakly dispersive models for axi-symmetric flows. Namely, we are about to apply the unidirectional\footnote{In some works, mostly in the field of optics, \emph{e.g.} \cite{Agrawal1979}, it is also referred to as the paraxial approximation.} wave propagation approximation. For this, we introduce the following non-dimensional variables:
+\begin{equation*}
+   \eta^{\star}\,=\;\frac{\eta}{a}\,, \qquad x^{\,\star}\,=\,\frac{x}{\lambda}\,, \qquad r^{\,\star}\,=\,\frac{r}{r_{\,0}}\,,\,\qquad t^{\star}\,=\,\frac{t}{T}\,,\qquad u^{\star}\,=\,\frac{u}{c_{\,0}}\,,
+\end{equation*}
+where here $c_{\;0}\,=\,\displaystyle\frac{a}{r_{\;0}}\,\sqrt{\frac{2\,E\,h}{ \rho\,r_{\;0}}}$ is a modified Moens-Korteweg characteristic speed and and $T\,=\,2\,\displaystyle\frac{a\,\lambda}{r_{\;0}\,c_{\;0}}$. System \eqref{eq:bouss1}, \eqref{eq:bouss2} in these dimensionless variables reads
+\begin{equation}\label{eq:bouss1d}
+  \eta^{\;\star}_{\;t^{\star}}\,+\,u^{\;\star}_{\;x^{\star}} \,+\, \eps\,\eta^{\;\star}\,u^{\;\star}_{\;x^{\;\star}}\,+\,2\,\eps\,\eta^{\;\star}_{\;x^{\star}}\,u^{\;\star}\,-\,\frac{\delta^{\;2}}{24}\,u^{\;\star}_{\;x^{\star}x^{ \star}x{\star}}\,=\,0\,,
+\end{equation}
+\begin{equation}\label{eq:bouss2d}
+  u^{\;\star}_{\;t^{\star}}\, + \,\eta^{\;\star}_{\;x^{\star}}\, + \,2\,\eps\,u^{\;\star}\,u^{\;\star}_{\;x^{\,\star}}\, + \;\frac{1}{2}\,\delta^{\;2}\,\alpha\,\eta^{\;\star}_{\;x^{\star}t^{\star}t^{\star}}\, + \,\gamma^{\;\star}\,\delta^{\;2}\,\eta^{\;\star}_{\;x^{\star}\,t^{\star}}\, - \;\frac{1}{6}\;\delta^{\;2}\,u^{\;\star}_{\,x^{\star}x^{\star}t^{\star}}\,=\,0,
+\end{equation}
+where $\gamma^{\;\star}\,\eqdef\,\displaystyle\frac{1}{2}\,\frac{\sigma}{\eps\,\delta^{\;2}}\,\gamma\,$, $\sigma\,\eqdef\,\frac{c_{\;0}}{\lambda}\,$,  and $\eps\,\eqdef\frac{a}{r_{\;0}}\,$, $\delta\,\eqdef\,\frac{r_{\;0}}{\lambda}\,$. As it is well known, all previous systems of equations describe the two-way propagation of nonlinear waves. In this Section, we will derive equations that describe nonlinear waves travelling essentially in one chosen direction. The two most celebrated models of this class are the KdV and BBM equations \cite{KdV, bona, Bona1975a, Zabusky1971, Dutykh2013a, Dutykh2014d, Dutykh2014a}.
+
+In order to derive such models, we observe first that \cref{eq:bouss1d} can be read to the first order as
+\begin{equation*}
+  \eta^{\;\star}_{\;t^{\star}}\,=\,-\,u^{\;\star}_{\;x^{\star}}\,+\,\O\,(\,\eps\,+\,\delta^{\;2}\,)
+\end{equation*}
+and thus
+\begin{equation*}
+  \eta^{\;\star}_{\;x^{\star}t^{\star}}\, = \,-u^{\;\star}_{\;x^{\star}x^{\star}}\,+\,\O\,(\,\eps\,+\,\delta^{\;2}\,)
+\end{equation*}
+and also
+\begin{equation*}
+  \eta^{\;\star}_{\;x^{\star}t^{\star}t^{\star}}\, = \,-\,u^{\;\star}_{\,x^{\star}x^{\star}t^{\star}}\,+\,\O\,(\,\eps\,+\,\delta^{\;2}\,)\,.
+\end{equation*}
+Following Whitham’s low-order approximation for predominantly right–running waves \cite{Whitham1999, Dutykh2007}, we postulate the leading-order kinematic relation between the dimensionless horizontal velocity and the free-surface elevation,
+\begin{equation}\label{eq:relation}
+  u^{\star}\;=\;\eta^{\star}\;+\;\eps\,A\;+\;\delta^{2}\,B\; + \;\O\,(\eps^{2},\,\delta^{4},\,\eps\delta^{2}),
+\end{equation}
+where the yet-unknown corrections $A(x^{\star},\,t^{\star})$ and $B(x^{\star},\,t^{\star})$ are smooth functions to be determined. Substituting this relation into \cref{eq:bouss1d,eq:bouss2d} we obtain
+\begin{equation}\label{eq:5.6}
+  \eta^{\;\star}_{x^{\star}}\,+\,\eta^{\;\star}_{t^{\star}}\,+\,
+  \eps\bigl(A_{x^{\star}}\,+\,3\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}\bigr)\,+\,
+  \delta^{2}\bigl(B_{x^{\star}}\,-\,\frac{1}{24}\,\eta^{\;\star}_{x^{\star}x^{\star}x^{\star}}\bigr)
+  \,=\,\O\,\bigl(\eps^{2},\,\delta^{4},\,\eps\,\delta^{2}\bigr)\,,
+\end{equation}
+\begin{multline}\label{eq:5.7}
+  \eta^{\;\star}_{x^{\star}}\,+\,\eta^{\;\star}_{t^{\star}}\,+\,
+  \eps\bigl(A_{t^{\star}}\,+\,2\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}\bigr)\,+\,
+  \delta^{2}\bigl(B_{t^{\star}}\,-\,\frac{\alpha}{2}\,\eta^{\;\star}_{x^{\star}x^{\star}t^{\star}}\,-\,
+  \gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}x^{\star}}\,-\,\frac{1}{6}\,\eta^{\;\star}_{x^{\star}x^{\star}t^{\star}}\bigr)\ =\ \O\,\bigl(\eps^{2},\,\delta^{4},\,\eps\,\delta^{2}\bigr)\,.
+\end{multline}
+Adding \cref{eq:5.6} and \cref{eq:5.7} and equating the coefficients of
+$\eps$ and $\delta^{2}$ to zero yields
+\begin{equation}\label{eq:5.8}
+  \eps:\quad
+  A_{x^{\star}}\,+\,3\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}\,-\,A_{t^{\star}}\,-\,2\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}\,=\,0\,,
+\end{equation}
+\begin{equation}\label{eq:5.9}
+  \delta^{2}:\quad
+  B_{x^{\star}}\,-\,B_{t^{\star}}\,-\,\frac{1}{24}\,\eta^{\;\star}_{x^{\star}x^{\star}x^{\star}}\,+\,\frac{\alpha}{2}\,
+  \eta^{\;\star}_{x^{\star}x^{\star}t^{\star}}
+  \,+\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}x^{\star}}\,+\,\frac{1}{6}\,\eta^{\;\star}_{x^{\star}x^{\star}t^{\star}}\,=\,0\,.
+\end{equation}
+Assuming $\partial_{x^{\star}} = -\,\partial_{t^{\star}} + \O\,(\varepsilon^{2},\delta^{4},\varepsilon\delta^{2})$, \cref{eq:5.8,eq:5.9} give
+\begin{equation*}
+  A_{x^{\star}}=-\,\frac{1}{2}\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}, \qquad
+  B_{x^{\star}}=\Bigl(\frac{5+12\,\alpha}{48}\Bigr)\,\eta^{\;\star}_{x^{\star}x^{\star}x^{\star}}
+  -\,\frac{1}{2}\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}x^{\star}}\,.
+\end{equation*}
+Integrating the last relations in~$x^{\star}$ we obtain
+\begin{equation*}
+  A=-\,\frac{1}{4}\,{\eta^{\;\star}}^{2},\qquad
+  B=\Bigl(\frac{5+12\,\alpha}{48}\Bigr)\,\eta^{\;\star}_{x^{\star}x^{\star}}
+  -\,\frac{1}{2}\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}}\,,
+\end{equation*}
+and the resulting KdV--Burgers equation reads
+\begin{equation}\label{eq:5.10}
+  \eta^{\;\star}_{t^{\star}}\,+\,\eta^{\;\star}_{x^{\star}}
+  \,+\,\frac{5}{2}\,\varepsilon\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}
+  \,+\,\delta^{2}\Bigl(\frac{12\,\alpha+3}{48}\Bigr)\,\eta^{\;\star}_{x^{\star}x^{\star}x^{\star}}
+  \,-\,\frac{1}{2}\,\delta^{2}\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}x^{\star}}\,=\,0\,.
+\end{equation}
+
+\paragraph{Dimensional form.} Restoring physical variables as in Section~\ref{sec:nondim}, \cref{eq:5.10} becomes
+\begin{equation}\label{eq:KdVdim}
+  \eta_{t}\,+\,\tilde{c}\,\eta_{x}\,+\,\frac{5}{2\,r_{0}}\,\tilde{c}\,\eta\,\eta_{x}\, + \,\frac{\tilde{c}\,r_{0}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)}{48}\,\eta_{xxx}\, - \,\frac{r_{0}}{4}\,\tilde{\beta}\,\gamma\,\eta_{xx}\,=\,0\,,
+\end{equation}
+where $\tilde{c}=\sqrt{E\,h/(2\,\rho\,r_{0})}$ is the classical Moens--Korteweg velocity
+\cite{Fung1997a}. The associated dispersion relation is
+\begin{equation*}
+  \omega=\tilde{c}\,k - \frac{r_{0}\,\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)}{48}\,k^{3} - \frac{\ui}{4}\,r_{0}\,\gamma\,\tilde{\beta}\,k^{2}\,.
+\end{equation*}
+
+\paragraph{BBM--Burgers limit.} Replacing the third‐order spatial derivative by its BBM proxy yields
+\begin{equation}\label{eq:5.11}
+  \eta^{\;\star}_{t^{\star}}\,+\,\eta^{\;\star}_{x^{\star}}
+  \,+\,\frac{5}{2}\,\varepsilon\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}
+  \,-\,\delta^{2}\Bigl(\frac{12\,\alpha+3}{48}\Bigr)\,\eta^{\;\star}_{x^{\star}x^{\star}t^{\star}}
+  \,-\,\frac{1}{2}\,\delta^{2}\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}x^{\star}}\,=\,0\,.
+\end{equation}
+In dimensional variables, the last equation becomes
+\begin{equation}\label{eq:BBMdim}
+  \eta_{t}\,+\,\tilde{c}\,\eta_{x}
+  \,+\,\frac{5}{2\,r_{0}}\,\tilde{c}\,\eta\,\eta_{x}
+  \,-\,\frac{r_{0}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)}{48}\,\eta_{xxt}
+  \,-\,\frac{r_{0}}{4}\,\gamma\,\tilde{\beta}\,\eta_{xx}\,=\,0\,.
+\end{equation}
+The linear dispersion relation of this model can be easily computed:
+\begin{equation}
+  \omega=\frac{48\,\tilde{c}\,k}{48\,+\,r_{0}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)k^{2}}
+        -\ui\,\frac{12\,\gamma\,r_{0}\,\tilde{\beta}\,k^{2}}
+                 {48\,+\,r_{0}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)k^{2}}.
+\end{equation}
+
+\paragraph{Classical solitary waves (dissipation‐free).} If $\gamma=0$, \cref{eq:KdVdim} supports solitary waves propagating with $c_{s} = \tilde{c}\bigl(1+5A/(6\,r_{0})\bigr)$:
+\begin{equation*}
+  \eta(x,t)=\frac{6\bigl(c_{s}-\tilde{c}\bigr)r_{0}}{5\tilde{c}}\;
+  \sech^{2}\,\biggl(\sqrt{\frac{12\bigl(c_{s}-\tilde{c}\bigr)}{\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}}\;(x-c_{s}t)\biggr).
+\end{equation*}
+A parallel computation for \cref{eq:BBMdim} furnishes
+\begin{equation*}
+  \eta(x,t)=\frac{6\bigl(c_{s}-\tilde{c}\bigr)r_{0}}{5\tilde{c}}\;
+  \sech^{2}\,\biggl(\,\sqrt{\frac{12\bigl(c_{s}-\tilde{c}\bigr)}{c_{s}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}}\;(x-c_{s}t)\,\biggr).
+\end{equation*}
+Indeed, setting $\eta=\eta(\zeta)$ with $\zeta=x-c_{s}t$, substituting into \cref{eq:KdVdim},
+integrating twice delivers
+\begin{equation*}
+  \frac{\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}{96}\,(\eta')^{2}
+  \,+\,\frac{(-c_{s}+\tilde{c})}{2}\,\eta^{2}
+  \,+\,\frac{5}{12}\,\frac{\tilde{c}}{r_{0}}\,\eta^{3}\,=\,0,
+\end{equation*}
+whose closed‐form solution matches the profiles given above.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/KdVBBMSW.eps}
+  \caption{\emph{Comparison of travelling–wave profiles generated by the KdV and BBM equations at several successive instants~$t$.}}
+  \label{fig:2}
+\end{figure}
+
+The initial disturbance is a solitary wave of amplitude $A\,=\,0.0035$. The near-perfect overlap of the two families of curves at all reported times confirms that the BBM regularisation reproduces, to leading order, the dispersive and nonlinear balance captured by the KdV equation, thereby validating the asymptotic model for the haemodynamic parameters considered here. Figure~\ref{fig:2} juxtaposes the solitary–wave solutions obtained from the KdV and BBM models for a vessel of undisturbed radius $r_{\,0}=0.01\,\mathsf{m}$, wall thickness $h=3\times10^{-4}\,\mathsf{m}$, Young’s modulus $E=4.1\times10^{5}\,\mathsf{kg\,m^{-1}\,s^{-2}}$, wall density $\rho^{\;\omega}=10^{3}\,\mathsf{kg\,m^{-3}}$, and computational length $L=0.4\,\mathsf{m}$.
+
+\subsubsection{Travelling–wave reduction of the cylindrical model}
+\label{sec:cyl_travelling_wave}
+
+In this Section, we derive exact solitary–wave solutions for the variable–coefficient cylindrical Boussinesq-type model \eqref{eq:bouss1}, \eqref{eq:bouss2}. The derivation follows the computer–algebra strategy of \cite{Dutykh2007}, implemented symbolically in \textsc{Maple}. We look for solutions that depend on a single travelling coordinate
+\begin{equation*}
+  \zeta \;\coloneqq\; x - c\,t,
+\end{equation*}
+so that
+\begin{equation*}
+  \bar{u}\,(x,t)\ =\ \bar{u}\,(\zeta), \qquad \eta\,(x,t)\ =\ \eta\,(\zeta), \qquad r^{\,w}\ =\ r_{\,0}+\eta, \qquad r_{\,0}=\text{const}.
+\end{equation*}
+
+\paragraph{Reduction of the governing equations.} Using the low–order approximation of the continuity \cref{eq:l6} together with the boundary condition \eqref{eq:kin}, one finds\footnote{Terms of order $\O\,(\delta^{\,4})$ and higher are consistently neglected throughout.}
+\begin{equation*}
+  \eta_{\,x t t}\ =\ -\,\Bigl(\,\frac{1}{2}\,r^{\,w}\,\bar{u}_{\,x}\ +\ r^{\,w}_{\,x}\,\bar{u}\,\Bigr)_{x t}\ +\ \O\,(\delta^{\,2}).
+\end{equation*}
+Substituting this expression into \cref{eq:5.2} yields the cylindrical Boussinesq system
+\begin{align}
+  \eta_{\,t}
+  &\;+\; \frac{r_{\,0}}{2}\,\bar{u}_{\,x}
+       \;+\;\frac{\eps}{2}\,\eta\,\bar{u}_{\,x}
+       \;+\;\eps\,\eta_{\,x}\,\bar{u}
+       \;-\;\frac{\delta^{\,2}}{48}\,r_{\,0}^{\,3}\,\bar{u}_{\,xxx}
+       =\O\,\bigl(\delta^{\,4},\eps\,\delta^{\,2}\bigr), 
+  \label{eq:bousnew1}\\
+  \bar{u}_{\,t}
+  &\;+\;\eps\,\bar{u}\,\bar{u}_{\,x}
+       \;-\;\frac{\alpha\,r_{\,0}}{2}\,\delta^{\,2}\,\bar{u}_{\,xxt}
+       \;+\;\beta\,\eta_{\,x}
+       \;+\;\delta^{\,2}\,\beta\,\gamma\,\eta_{\,x t}
+       \;-\;\frac{\delta^{\,2}}{6}\,r_{\,0}^{\,2}\,\bar{u}_{\,xxt}
+       =\O\,\bigl(\delta^{\,4},\eps\,\delta^{\,2}\bigr).
+  \label{eq:bousnew2}
+\end{align}
+Henceforth, we set $\gamma = 0$ (the purely elastic wall case). Introducing the convenience coefficients
+\begin{equation*}
+  a=\frac{r_{\,0}}{2}, \qquad  
+  b=\frac{r_{\,0}^{\,3}}{48}, \qquad
+  d=\frac{\alpha\,r_{\,0}}{2}, \qquad
+  e=\beta, \qquad
+  f=\frac{r_{\,0}^{\,2}}{6},
+\end{equation*}
+and rewriting \cref{eq:bousnew1,eq:bousnew2} in the travelling frame leads, after one integration with respect to~$\zeta$, to the coupled third–order ODE system
+\begin{align}
+  c\,\eta^{\,\prime}
+  &\;+\;a\,\bar{u}^{\,\prime}
+       \;+\;\frac{\eps}{2}\,\eta\,\bar{u}^{\,\prime}
+       \;+\;\eps\,\eta^{\,\prime}\,\bar{u}
+       \;-\;\delta^{\,2}\,b\,\bar{u}^{\,\prime\prime\prime}
+       \;=\;0,
+  \label{eq:5.9a} \\
+  c\,\bar{u}^{\,\prime}
+  &\;+\;\eps\,\bar{u}\,\bar{u}^{\,\prime}
+       \;-\;\delta^{\,2}\,d\,c\,\bar{u}^{\,\prime\prime\prime}
+       \;+\;e\,\eta^{\,\prime}
+       \;-\;\delta^{\,2}\,f\,c\,\bar{u}^{\,\prime\prime\prime}
+       \;=\;0,
+  \label{eq:5.10a}
+\end{align}
+where primes denote differentiation with respect to~$\zeta$. Because solitary waves are spatially localised, all dependent variables and their derivatives vanish as $\zeta\ \to\ \pm\infty\,$.
+
+\paragraph{Proportional flow ansatz.} Guided by extensive numerical experimentation, we set
+\begin{equation}\label{eq:5.11a}
+  \bar{u}\,(\zeta)\ =\ A\,\eta\,(\zeta)\,,
+\end{equation}
+where the proportionality constant $A$ will be determined self-consistently. Substituting \cref{eq:5.11a} into \cref{eq:5.9a,eq:5.10a}, integrating once under the zero–boundary conditions, and collecting like terms gives the pair
+\begin{align}
+  (c+aA)\,\eta \;-\;\delta^{\,2}\,b\,A\,\eta^{\,\prime\prime}\ &=\ -\frac{3}{4}\,\eps\,A\,\eta^{\,2}, \label{eq:5.13} \\
+  (cA+e)\,\eta \;-\;\delta^{\,2}\,cA\,(d+f)\,\eta^{\,\prime\prime}\ &=\ -\frac{1}{2}\,\eps\,A^{\,2}\,\eta^{\,2}. \label{eq:5.14}
+\end{align}
+Demanding that the algebraic factors multiplying $\eta$ and $\eta^{\,\prime\prime}$ coincide in \cref{eq:5.13,eq:5.14} (otherwise only the trivial solution $\eta\equiv0$ would be admissible) yields the linear system
+\begin{equation}\label{eq:compat}
+  2Ac\ +\ 2aA^{\,2}\ =\ 3Ac\ +\ 3e\,, \qquad -Ac\ +\ 2aA^{\,2}\ =\ 3e\,,
+\end{equation}
+whose unique positive solution is\footnote{The positive root is selected to guarantee a right-propagating pulse ($c>0$).}
+\begin{equation*}
+  A^{\,2}\ =\ \frac{9\,e\,(d+f)}{6\,a\,(d+f)\ -\ 2\,b}, \qquad c\ =\ \frac{2\,b}{3\,(d+f)}\,A.
+\end{equation*}
+Restoring the original parameters,
+\begin{equation*}
+  A\ =\ 6\,\sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}, \qquad
+  c\ =\ \frac{r_{\,0}}{6\alpha+2}\,\sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}\,.
+\end{equation*}
+
+\paragraph{Scalar solitary wave equation.} With the compatibility conditions \eqref{eq:compat} enforced, either of the relations \eqref{eq:5.13}, \eqref{eq:5.14} becomes
+\begin{equation}
+  A_{\,1}\,\eta^{\,\prime}
+  \;-\;
+  B_{\,1}\,\eta^{\,\prime\prime\prime}
+  \;=\;
+  \eta\,\eta^{\,\prime},
+  \qquad
+  A_{\,1}:=\frac{4be+6ae(d+f)}{9e(d+f)\,\eps},
+  \quad
+  B_{\,1}:=\frac{2b\,\delta^{\,2}}{3\,\eps},
+  \label{eq:lem}
+\end{equation}
+which is a well-known integrable third–order ODE of the KdV type \cite{Newell1977}.  Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
+\begin{equation*}
+  \eta(\zeta)\ =\ 3\,A_{\,1}\,
+  \sech^{2}\,\Bigl[
+    \frac12\,\sqrt{A_{\,1}/B_{\,1}}\;(\zeta-\zeta_{\,0})
+  \Bigr], \qquad \zeta_{\,0}\ \in\ \R.
+\end{equation*}
+Re-expressed through the physical parameters,
+\begin{equation}
+  \eta(\zeta)\ =\ -\,\frac{3\,r_{\,0}\,(7+18\alpha)}{54\alpha+18}\,
+  \sech^{2}\,\Bigl[\frac{\zeta}{2\delta}\,\sqrt{\frac{28+72\alpha}{r_{\,0}^{\,2}(3\alpha+1)}}\Bigr], \label{eq:solitarybouss1}
+\end{equation}
+and, by virtue of \eqref{eq:5.11},
+\begin{equation}
+  \bar{u}(\zeta)\ =\ \frac{r_{\,0}\,(7+18\alpha)}{3\alpha+1}\,
+  \sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}\,
+  \sech^{2}\,\Bigl[\frac{\zeta}{2\delta}\,\sqrt{\frac{28+72\alpha}{r_{\,0}^{\,2}(3\alpha+1)}}\Bigr]. \label{eq:solitarybouss2}
+\end{equation}
+The entire derivation has been cross-checked symbolically in \textsc{Maple}; the annotated worksheet is provided in the accompanying codes repository.
+
+\section{Dispersion relations}
+\label{sec:disp}
+
+We first examine the linear dispersion characteristics of the full three-dimensional model and compare them with those obtained from the linearised Euler equations by following \cite{Mitsotakis2018}:
+\begin{equation}\label{eq:lin_u}
+  u_{\,t}\;+\;\frac{1}{\rho}\,p_{\,x}\;=\;0,
+\end{equation}
+\begin{equation}\label{eq:lin_v}
+  v_{\,t}\;+\;\frac{1}{\rho}\,p_{\,r}\;=\;0,
+\end{equation}
+\begin{equation}\label{eq:lin_cont}
+  u_{\,x}\;+\;v_{\,r}\;+\;\frac{1}{r}\,v\;=\;0,
+\end{equation}
+subject to the boundary conditions
+\begin{equation}\label{eq:lin_bc_kin}
+  v\,\left(x,r^{\,w},t\right)\;=\;\eta_{\,t}\,\left(x,t\right), 
+\end{equation}
+\begin{equation}\label{eq:lin_bc_dyn}
+  p^{\,w}\,\left(x,t\right)\; = \;\rho^{\,w}h\,\eta_{\,tt}\,\left(x,t\right)\; + \;\frac{E\,h}{\rho_{\,0}^{\,2}}\,
+  \eta\,\left(x,t\right),
+\end{equation}
+\begin{equation}\label{eq:lin_bc_axis}
+  v\,\left(x,0,t\right)\; = \;0.
+\end{equation}
+
+\paragraph{Normal–mode ansatz.} We consider normal modes of the form
+\begin{equation*}
+  u\,\left(x,r,t\right)=u_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),\qquad
+  v\,\left(x,r,t\right)=v_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
+\end{equation*}
+\begin{equation*}
+  \eta\,\left(x,t\right)=\eta_{\,0}\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),\qquad
+  p\,\left(x,r,t\right)=p_{\,0}\,\left(r\right)\exp\,\bigl(\ui\left(kx-\omega t\right)\bigr),
+\end{equation*}
+and substitute these expressions into the linearised Euler system. The axial velocity amplitude $u_{\,0}\left(r\right)$ then satisfies the modified Bessel equation
+\begin{equation}\label{eq:lin_bessel}
+  r\,u_{\,0}^{\,\prime\prime}\left(r\right)\;+\;u_{\,0}^{\,\prime}\left(r\right)\;-\;r\,k^{\,2}\,
+  u_{\,0}\left(r\right)\;=\;0,
+\end{equation}
+together with the regularity condition
+\begin{equation}\label{eq:lin_bc_centre}
+  u_{\,0}^{\,\prime}\left(0\right)\;=\;0
+\end{equation}
+and the wall conditions
+\begin{align}
+  u_{\,0}^{\,\prime}\left(r_{\,0}\right) & \;=\;\omega k\,\eta_{\,0}, \label{eq:lin_bc_wall_kin}\\
+  \rho^{\,w}h\,\omega^{\,2}\,\eta_{\,0} & \;+\;\frac{\rho\omega}{k}\,u_{\,0}\left(r_{\,0}\right)
+  \;-\;\frac{E\,h}{r_{\,0}^{\,2}}\,\eta_{\,0}\;=\;0.
+  \label{eq:lin_bc_wall_dyn}
+\end{align}
+The Bessel problem \eqref{eq:lin_bessel}--\eqref{eq:lin_bc_wall_kin} admits the solution
+\[
+  u_{\,0}\left(r\right)\;=\;\eta_{\,0}\,\omega\,
+  \frac{I_{\,0}\left(kr\right)}{I_{\,1}\left(kr_{\,0}\right)},
+\]
+where $I_{\,0}$ and $I_{\,1}$ are the modified Bessel functions of the first kind.  Inserting this expression into \eqref{eq:lin_bc_wall_dyn} yields the \emph{exact} linear dispersion relation
+\begin{equation}\label{eq:disp_euler}
+  \omega_{\,\eps}^{\,2}\left(k\right)\;=\;
+  \frac{E\,h}{\rho\,r_{\,0}^{\,3}}\,
+  \frac{r_{\,0}k\,I_{\,1}\left(kr_{\,0}\right)}
+       {\displaystyle\frac{\rho^{\,w}h}{\rho r_{\,0}}\,
+       r_{\,0}k\,I_{\,1}\left(kr_{\,0}\right)\;+\;I_{\,0}\left(kr_{\,0}\right)}.
+\end{equation}
+
+\paragraph{Reduced Boussinesq system.} We next linearise the depth-averaged system \eqref{eq:5.1}--\eqref{eq:5.2} and again insert the normal-mode ansatz.  This procedure leads to
+\begin{align}
+  \frac{r_{\,0}}{2}\,\ui k\,\bar{u}_{\,0}\;-\;\ui\omega\,\eta_{\,0}
+  &\;-\;\frac{\delta^{\,2}}{48}\,r_{\,0}^{\,3}\,(\ui k)^{3}\bar{u}_{\,0}
+  \;=\;0, \label{eq:lin_red1}\\
+  -\ui\omega\,\bar{u}_{\,0}
+  &\;-\;\alpha\delta^{\,2}\,k\omega^{\,2}\eta_{\,0}
+  \;+\;\ui k\,\beta\,\eta_{\,0}
+  \;+\;\delta^{\,2}\,\beta\gamma\,(\ui k)\omega\,\eta_{\,0}
+  \;+\;\frac{\delta^{\,2}}{6}\,r_{\,0}^{\,2}\,k^{\,2}\omega\,\bar{u}_{\,0}
+  \;=\;0. \label{eq:lin_red2}
+\end{align}
+Elimination of $\bar{u}_{\,0}$ gives the quadratic dispersion relation
+\begin{equation}\label{eq:disp_bous}
+  \Bigl(24\,r_{\,0}k\;+\;r_{\,0}^{\,3}k^{\,3}\Bigr)\Bigl(\alpha k\;+\;
+  \frac{48\;+\;8\,\delta^{\,2}r_{\,0}^{\,2}k^{\,2}}{24\,r_{\,0}k\;+\;r_{\,0}^{\,3}k^{\,3}}\Bigr)\omega^{\,2}
+  \;+\;\ui\,\delta^{\,2}\,\beta\gamma\,k\,\omega\;-\;\beta\,k\;=\;0.
+\end{equation}
+
+\paragraph{Modified Boussinesq system.} For the refined system \eqref{eq:bousnew1}--\eqref{eq:bousnew2} we proceed analogously and obtain the alternate quadratic
+\begin{equation}\label{eq:disp_mod_bous}
+  \Bigl(24\,r_{\,0}k\;+\;\delta^{\,2}r_{\,0}^{\,3}k^{\,3}\Bigr)
+  \bigl(-48\;-\;24\,\alpha\delta^{\,2}r_{\,0}^{\,2}k^{\,2}\;
+  -\;8\,\delta^{\,2}r_{\,0}^{\,2}k^{\,2}\bigr)\omega^{\,2}
+  \;-\;\ui\,\delta^{\,2}\,\beta\gamma\,k\,\omega
+  \;+\;\beta\,k\;=\;0.
+\end{equation}
+
+\paragraph{Comparison of phase speeds.} The phase speeds furnished by \eqref{eq:disp_euler}, \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous}, together with those of the classical KdV and BBM reductions, are depicted in \cref{fig:disp} for
+\[
+  r_{\,0}=0.01\,\mathsf{m}, \qquad
+  h=3\times10^{-4}\,\mathsf{m}, \qquad
+  E=4.1\times10^{\,5}\,\mathsf{kg}\,\mathsf{m}^{-1}\,\mathsf{s}^{-2}, \qquad
+  \rho^{\,\omega}=10^{3}\,\mathsf{kg}\,\mathsf{m}^{-3}, \qquad
+  \rho=1060\,\mathsf{kg}\,\mathsf{m}^{-3}.
+\]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figs/disp1.eps}
+  \includegraphics[width=\textwidth]{figs/disp4.eps}
+  \caption{\em Comparison of linear phase speeds predicted by various Boussinesq-type approximations with the reference Euler result.}
+  \label{fig:disp}
+\end{figure}
+
+\paragraph{Remarks.} The algebraic relations \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous} demonstrate that both the classical and the modified depth-averaged models reproduce the low-frequency branch of the exact dispersion curve with the correct slope.  The modified formulation retains this agreement while reducing the high-frequency error introduced by the classical Boussinesq truncation, thereby reinforcing its suitability for simulating arterial pulse waves over physiologically relevant wavelengths.
+
+
+
+\vspace*{1.5em}
+\section*{Acknowledgements}
+
+DD and REC would like to acknowledge the invaluable support of Prof. St\'ephane Gerbi (University Savoie Mont Blanc, France), without whom this work would have appeared much later, or perhaps not at all.
+
+\section*{Conflict of interest}
+
+The authors declare that there are no conflicts of interest regarding the publication of this article.
+
+\section*{Supporting Information}
+
+Further details are available in the PhD manuscript of Rim El Cheikh, which serves as supplementary material to this article.
+
+\section*{Data availability statement}
+
+No experimental data were used in the preparation of this study. However, any other data or materials related to this research are available from the corresponding author upon reasonable request by email.
+
+\printendnotes
+
+% Generate the acronym list
+\printglossary[type=\acronymtype]
+
+\bibliography{biblio}
+
+% \graphicalabstract{example-image-1x1}{Please check the journal's author guildines for whether a graphical abstract, key points, new findings, or other items are required for display in the Table of Contents.}
+
+\appendix
+\section{A Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations}\label{sec:windkessel}
+
+In the late nineteenth century, Otto Frank developed the \emph{Windkessel} model, drawing an analogy between the cardiovascular system and a closed hydraulic circuit. In his description, the heart functions as a pump connected to a chamber that is almost entirely filled with water except for a small pocket of air; compression of the water forces air out of the chamber in a manner reminiscent of ventricular ejection. Windkessel representations are therefore routinely employed to quantify the load placed upon the heart during a cardiac cycle \cite{Catanho2012}.
+
+When modelling the cardiac cycle, the Windkessel approach accounts for \emph{arterial compliance, peripheral resistance,} and \emph{inertia}. For a hydraulic system, it may be regarded as the counterpart of Poiseuille's law, comparing blood motion through arteries to viscous flow in pipes.
+
+Windkessel and other lumped-parameter models are often derived from electrical-circuit analogies in which current represents volumetric blood flow rate and voltage represents arterial pressure \cite{Avolio1980, Segers1998, Milisic2004}. In this picture, electrical resistances mimic viscous losses, capacitors represent vascular compliance (volume storage), and inductors reproduce the inertial effects of the blood column.
+
+In the electrical analogy, pressure plays the role of voltage, whereas flow rate corresponds to current.  A two-element Windkessel model incorporates arterial compliance and total peripheral resistance. Here the compliance of the systemic arteries is represented by a capacitor \(\!C\) \(\bigl[\mathsf{cm^{3}\,mmHg^{-1}}\bigr]\), and the peripheral vascular resistance is represented by a resistor \(\!R\) \(\bigl[\mathsf{mmHg\,s\,cm^{-3}}\bigr]\). The inflow rate \(Q(t)\) \([\mathsf{cm^{3}\,s^{-1}}]\) corresponds to an electric current, whereas the outlet pressure \(P(t)\) \([\mathsf{mmHg}]\) corresponds to a voltage source.
+
+In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous BBM-type equation,
+\begin{equation}\label{eq:chap6.1}
+  \eta_{\,t}
+  +\tilde{c}\,\eta_{\,x}
+  +\frac{5}{2}\,\frac{\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  -\frac{(12\tilde{\alpha}+3r_{\,0})\,r_{\,0}}{48}\,\eta_{\,xxt}
+  -\frac{r_{\,0}}{4}\,\gamma\,\tilde{\beta}\,\eta_{\,xx}=0.
+\end{equation}
+Assuming
+\(\eta_{\,x}=-\eta_{\,t}+O(\eps,\delta^{2})\) and substituting this
+relation into~\eqref{eq:chap6.1} we obtain
+\begin{equation}\label{eq:chap6.2}
+  \eta_{\,t}
+  +\tilde{c}\,\eta_{\,x}
+  +\frac{5}{2}\,\frac{\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  +\frac{(12\tilde{\alpha}+3r_{\,0})\,r_{\,0}}{48}\,\eta_{\,xtt}
+  -\frac{r_{\,0}}{4}\,\gamma\,\tilde{\beta}\,\eta_{\,tt}=0.
+\end{equation}
+Multiplication by \(48\) yields
+\begin{equation}\label{eq:chap6.3}
+  48\,\eta_{\,t}
+  +48\,\tilde{c}\,\eta_{\,x}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  +(12\tilde{\alpha}+3r_{\,0})\,r_{\,0}\,\eta_{\,xtt}
+  -12\,r_{\,0}\,\gamma\,\tilde{\beta}\,\eta_{\,tt}=0.
+\end{equation}
+Introducing
+\[
+  A^{\prime}=48,\qquad
+  B^{\prime}=(12\tilde{\alpha}+3r_{\,0})\,r_{\,0},\qquad
+  C^{\prime}=-12\,r_{\,0}\,\gamma\,\tilde{\beta},
+\]
+equation~\eqref{eq:chap6.3} becomes
+\begin{equation}
+  A^{\prime}\,\eta_{\,t}
+  +48\,\tilde{c}\,\eta_{\,x}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  +B^{\prime}\,\eta_{\,xtt}
+  +C^{\prime}\,\eta_{\,tt}=0.
+\end{equation}
+Integrating over \(x\in[a,b]\) gives
+\begin{multline}\label{eq:chap6.4}
+  A^{\prime}\int_{a}^{b}\eta_{\,t}\,\ud x
+  +48\,\tilde{c}\int_{a}^{b}\eta_{\,x}\,\ud x
+  +\frac{120\,\tilde{c}}{r_{\,0}}\int_{a}^{b}\eta\,\eta_{\,x}\,\ud x
+  +B^{\prime}\int_{a}^{b}\eta_{\,xtt}\,\ud x\\
+  +C^{\prime}\int_{a}^{b}\eta_{\,tt}\,\ud x=0.
+\end{multline}
+Defining
+\[
+  \hat{\eta}(t)=\frac{1}{b-a}\int_{a}^{b}\eta(x,t)\,\ud x,\qquad
+  \eta_{1}(t)=\eta(a,t),\qquad
+  \eta_{2}(t)=\eta(b,t),
+\]
+and setting
+\(A=A^{\prime}(b-a)\), \(B=B^{\prime}(b-a)\) and
+\(C=C^{\prime}(b-a)\), we obtain the lumped relation
+\begin{equation}\label{eq:chap6.5}
+  A\,\dot{\hat{\eta}}
+  +B\,\ddot{\eta}_{2}
+  -B\,\ddot{\eta}_{1}
+  +C\,\ddot{\hat{\eta}}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\bigl(\eta_{2}^{2}-\eta_{1}^{2}\bigr)
+  +48\,\tilde{c}\,(\eta_{2}-\eta_{1})=0.
+\end{equation}
+Following \cite{Milisic2004} we close the system by the
+approximation \(\hat{\eta}\approx\eta_{2}\), which finally yields
+\begin{equation*}
+  (A+C+B)\,\dot{\eta}_{2}
+  -B\,\ddot{\eta}_{1}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\bigl(\eta_{2}^{2}-\eta_{1}^{2}\bigr)
+  +48\,\tilde{c}\,(\eta_{2}-\eta_{1})=0.
+\end{equation*}
+
+By integrating the governing BBM-type equation over space, we have derived a consistent 0D system that provides a compact yet accurate description of the haemodynamics in a compliant arterial segment. Such lumped models, when embedded in larger cardiovascular networks, furnish an invaluable tool for predicting pressure–flow relations and assessing ventricular afterload in both physiological and pathological conditions.
+
+\end{document}
