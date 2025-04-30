@@ -25,6 +25,7 @@
 *.snm
 *.vrb
 *.xdv
+*.gz
 *.ps
 *.dvi
 *.thm
