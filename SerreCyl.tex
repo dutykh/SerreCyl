@@ -270,8 +270,116 @@ while the kinematic boundary conditions read
 Equations \eqref{eq:bernouli}--\eqref{eq:bc2p} furnish the starting point for the long-wave asymptotics carried out in the sequel of this study.
 
 \subsubsection{Variational principles}
+\label{sec:var_principles}
 
+Two complementary variational frameworks are commonly employed for irrotational surface-wave problems: Luke's Lagrangian formulation \cite{Luke1967} and the Hamiltonian formulation of Petrov and Zakharov \cite{Petrov1964, Zakharov1968}. Surveys by \cite{Radder1999} and \cite{Zakharov1997} provide extensive historical background. Luke's principle incorporates the velocity potential directly and imposes irrotationality \emph{a priori}, whereas Zakharov's Hamiltonian requires both incompressibility and bottom impermeability to be satisfied identically, thereby rendering it more restrictive. In either case the free‐surface conditions arise from the stationarity of an action functional in which part of the bulk dynamics is built in exactly and the remainder is obtained by variation. The earliest use of a pressure‐based Lagrangian is due to \cite{Clebsch1859} and \cite{Hargreaves1908}, although the concomitant free‐surface boundary conditions were not explicitly recognised at the time. The following derivation highlights this connection. Recently, the variational techniques have been successfully applied to model water waves in various asymptotic regimes \cite{Clamond2009,Clamond2024}.
 
+\paragraph{Lagrangian formulation.} First, for the irrotational case, let $\phi\,(x,\,r,\,t\,)$ be the velocity potential of a fluid lying between $r\,=\,0$ and $r\,=\,r^{\,w}\,(\,x,\,t\,)\,$. The variational principle (\cite{Luke1967}) is given by
+\begin{equation}\label{eq:chap5.1}
+  \delta J\,=\,\delta\,\int_{\,t_{1}}^{\,t_{2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\mathcal{L}\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,,\quad \text{with} \quad \mathcal{L}\,=\,\int_{\,0}^{\,r^{\,w}}\,\biggl(\phi_{\,t} \,+\,\frac{1}{2}\;\phi_{\,x}^{\,2} \,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\mathrm{d}r\,-\,\frac{1}{2}\;\alpha\,\eta_{\,t}^{\,2} \,-\,\frac{1}{2}\,\beta\,\eta^{\,2}\,+\,p^{\,w}\,\eta\,,
+\end{equation}
+where $\phi\,(\,x,\,r,\,t\,)$ and $r^{\,w}\,(\,x,\,t\,)$ are allowed to vary subject to the restrictions $\delta\,\phi\,=\,0$ and $\delta \,r^{\,w}\,=\,0$ at $x_{\,1},\,x_{\,2},\,t_{\,1}$ and $t_{\,2}$. The only difference from classical formulations using pressure expressions is that $r^{\,w}\,(\,x,\,t\,)$ variations are permitted here. Following standard procedures from the calculus of variations, equation \eqref{eq:chap5.1} becomes
+\begin{multline}
+  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\Biggr]_{\,r\,=\,r^{\,w}}\,\delta r^{\,w}
+  \\[0.5em]
+  +\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,\phi_{\,x}\,\delta \phi_{\,x}\,+\,\phi_{\,r}\,\delta \phi_{\,r}\,+\,\delta \phi_{\,t}\,\bigr)\,r\,\mathrm{d}r\,\Biggr]\,\mathrm{d}x\,\mathrm{d}t
+  \\[0.5em]
+  +\,\delta\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\biggl(\,\frac{1}{2}\;\alpha\,\eta_{\,t}^{\,2} \,-\,\frac{1}{2}\;\beta\,\eta^{\,2} \,-\,p^{\,w}\,\eta\,\biggr)\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,.
+\end{multline}
+Natural boundary conditions at $r\,=\,0$ and $r\,=\,r^{\,w}$ follow from the careful integration of \eqref{eq:chap5.1}. We consider the decomposition:
+\begin{enumerate}
+\item $\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,x}\,\delta \phi_{\,x}\,\mathrm{d}r\,=\,\int_{\,0}^{\,r^{\,w}}\,\bigl[\,r\,\phi_{\,x}\,\delta \phi\,\bigr]_{\,x}\,\mathrm{d}r\,-\,\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,xx}\,\delta \phi\,\mathrm{d}r =\,-\,r_{\,x}^{\,w}\,r^{\,w}\,\phi_{\,x}\,\delta \phi\,\biggr|_{\,r\,=\,r^{\,w}}\,+\,\partial_{\,x}\,\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,x}\,\delta \phi\,\mathrm{d}r\,,$
+\item $\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,r}\,\delta \phi_{\,r}\,\mathrm{d}r\,=\,\bigl[\,r\,\phi_{\,r}\,\delta \phi\,\bigr]_{\,r\,=\,0}^{\,r\,=\,r^{\,w}}\,-\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,\phi_{\,r}\,+\,r\,\phi_{\,rr}\,\bigr)\,\delta \phi\,\mathrm{d}r\,,$
+\item $\int_{\,0}^{\,r^{\,w}}\,r\,\delta \phi_{\,t}\,\mathrm{d}r\,=\,\int_{\,0}^{\,r^{\,w}}\,\partial_{\,t}\,(r\,\delta \phi)\,\mathrm{d}r\,=\,-\,r^{\,w}\,r_{\,t}\,\delta \phi\,\biggr|_{\,r\,=\,r^{\,w}}\,+\,\partial_{\,t}\,\int_{\,0}^{\,r^{\,w}}\,r\,\delta \phi\,\mathrm{d}r\,.$
+\end{enumerate}
+Additionally, we compute
+\begin{equation*}
+  \delta\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\biggl(\,-\,\frac{1}{2}\;\alpha\,\eta_{\,t}^{\,2}\,-\,\frac{1}{2}\;\beta\,\eta^{\,2}\,+\,p^{\,w}\,\eta\,\biggr)\,\mathrm{d}x\,\mathrm{d}t\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\bigl(\,-\,\alpha\,\eta_{\,t}\,\delta \eta_{\,t}\,-\,\beta\,\eta\,\delta \eta\,+\,p^{\,w}\,\delta \eta\,\bigr)\,\mathrm{d}x\,\mathrm{d}t\,.
+\end{equation*}
+Substituting all these contributions into \eqref{eq:chap5.1}, we obtain
+\begin{multline*}
+  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\Biggr]_{\,r\,=\,r^{\,w}}\,\delta r^{\,w} \\
+  -\,\bigl[\,r\,\phi_{\,r}\,\delta \phi\,\bigr]_{\,r\,=\,0} \,-\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,r\,\phi_{\,xx}\,+\,\phi_{\,r}\,+\,r\,\phi_{\,rr}\,\bigr)\,\delta \phi\,\mathrm{d}r\,\Biggr]\,\mathrm{d}x\,\mathrm{d}t \\
+  +\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\bigl(\,-\,\alpha\,\eta_{\,tt}\,-\,\beta\,\eta\,+\,p^{\,w}\,\bigr)\,\delta \eta\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,.
+\end{multline*}
+Taking $\delta r^{\,w}\,=\,0$ and assuming $\delta \phi\big|_{\,r\,=\,r^{\,w}}\,=\,\delta \phi\big|_{\,r\,=\,0}\,=\,0\,$, and noting that $\delta \phi$ is otherwise arbitrary, we deduce the following system:
+\begin{align}
+  \phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,-\,\alpha\,\eta_{\,tt}\,-\,\beta\,\eta\,+\,p^{\,w} &=\,0 \,, & r\,=\,r^{\,w}\,(x,\,t)\,, \label{eq:chap5.2}\\[0.5em]
+  r\,\phi_{\,xx}\,+\,(\,r\,\phi_{\,r}\,)_{\,r} &=\,0 \,, & 0\,<\,r\,<\,r^{\,w}\,(x,\,t)\,, \label{eq:chap5.3}\\[0.5em]
+  \phi_{\,r} &=\,0\,, & r\,=\,0\,, \label{eq:chap5.4}\\[0.5em]
+  \phi_{\,r} &=\,\eta_{\,t}\,+\,r^{\,w}_{\,x}\,\phi_{\,x}\,, & r\,=\,r^{\,w}\,(x,\,t)\,, \label{eq:chap5.5}\\[0.5em]
+  p^{w} &=\,\alpha\,\eta_{\,tt}\,+\,\beta\,\eta\,, & r\,=\,r^{\,w}\,(x,\,t)\,. \label{eq:chap5.6}
+\end{align}
+
+Thus, we observe that the variational principle \eqref{eq:chap5.1} elegantly recovers the complete potential flow formulation for our problem. Equation \eqref{eq:chap5.3} represents the Laplace equation in cylindrical coordinates, which governs the irrotational flow in the fluid domain. The boundary conditions are given by the impermeability condition at the axis of symmetry \eqref{eq:chap5.4} and the kinematic condition at the vessel wall \eqref{eq:chap5.5}. The dynamic condition \eqref{eq:chap5.2} corresponds to the Cauchy--Lagrange integral at the vessel wall, while \eqref{eq:chap5.6} describes the pressure law for the viscoelastic wall. This demonstrates the power of variational methods in deriving the governing equations for fluid-structure interaction problems in a systematic and physically consistent manner.
+
+\paragraph{Hamiltonian formulation.}
+
+This section belongs to the relatively recent trend of applying concepts from Hamiltonian mechanics to problems in fluid dynamics. By 'Hamiltonian mechanics', we refer to the entirety of classical mechanics in the spirit of foundational texts such as \cite{Lanczos1970, Goldstein2001,Arnold1997}, encompassing both particle mechanics and field theory. Hamiltonian approaches have proven indispensable in classical and quantum theories of particles and fields. If their only contribution were a reformulation of known results, they would be of limited value. However, substantial evidence indicates that classical mechanics methods offer a powerful and unifying framework in fluid dynamics as well. Several factors account for the effectiveness of Hamiltonian approaches. Firstly, Hamilton's formalism provides an elegant and economical representation of dynamics. Secondly, the well-established connection between symmetries of the Hamiltonian and conservation laws facilitates the construction of approximate models that preserve analogues of exact invariants. Thirdly, Hamiltonian formulations are coordinate-invariant and thus adaptable to diverse geometrical settings. In Hamiltonian perturbation theory, for instance, dynamical approximations are naturally associated with transformations of the dependent variables. This flexibility enables one to simultaneously adjust the physical description and its mathematical representation to obtain models in their simplest possible form.
+
+We now consider the motion governed by equations \eqref{eq:chap5.2}–\eqref{eq:chap5.6}. The total energy of the system comprises the kinetic energy, potential energy, and surface energy, and is normalised such that the total energy vanishes in the quiescent state. The evolution equations take the abstract Hamiltonian form
+\begin{equation}
+  \begin{pmatrix}
+    \eta_{\,t} \\
+    \psi_{\,t}
+  \end{pmatrix}
+  \,=\,\mathcal{J}
+  \begin{pmatrix}
+    \displaystyle\frac{\delta\mathcal{H}}{\delta\,\eta} \\[0.8em]
+    \displaystyle\frac{\delta\mathcal{H}}{\delta\,\psi}
+  \end{pmatrix},
+  \qquad
+  \mathcal{J}\,=\,\begin{pmatrix}
+    0 & \mathbb{I} \\
+    -\mathbb{I} & 0
+  \end{pmatrix},
+\end{equation}
+where $\delta\mathcal{H}$ denotes the Gâteaux (variational) derivative, $\psi\,\equiv\,\phi\,(\,x,\,r,\,t\,)|_{\,r\,=\,r^{\,w}\,(\,x,\,t\,)}$ is the surface potential, and the Hamiltonian density and total energy are given by
+\begin{equation}
+  H\,=\,\frac{1}{2}\,\int_{0}^{\eta}\,|\,\nabla\phi\,|^{\,2}\,\mathrm{d}r\,+\,\biggl(\,-\,\frac{1}{2}\,\alpha\,\eta_{\,t}^{\,2}\,-\,\frac{1}{2}\,\beta\,\eta^{\,2}\,+\,p^{\,w}\,\eta\,\biggr), \qquad
+  \mathcal{H}\,=\,\int_{\mathbb{R}}\,H\,\mathrm{d}x\,.
+\end{equation}
+We now compute the variation of the Hamiltonian functional under the perturbation $\eta \mapsto \eta + \delta \eta$:
+\begin{multline*}
+  \mathcal{H}\,[\,\eta\,+\,\delta\eta,\,\phi\,]\,-\,\mathcal{H}\,[\,\eta,\,\phi\,]
+  \,=\,\frac{1}{2}\,\int_{\mathbb{R}}\,\int_{0}^{\eta+\delta\eta}\,|\,\nabla\phi\,|^{\,2}\,\mathrm{d}r\,\mathrm{d}x
+  \\[0.5em]
+  -\,\frac{1}{2}\,\alpha\,\int_{\mathbb{R}}\,(\,\eta\,+\,\delta\eta\,)_{\,t}^{\,2}\,\mathrm{d}x
+  -\,\frac{1}{2}\,\beta\,\int_{\mathbb{R}}\,(\,\eta\,+\,\delta\eta\,)^{\,2}\,\mathrm{d}x
+  +\,\int_{\mathbb{R}}\,p^{\,w}\,(\,\eta\,+\,\delta\eta\,)\,\mathrm{d}x
+  \\[0.5em]
+  -\,\frac{1}{2}\,\int_{\mathbb{R}}\,\int_{0}^{\eta}\,|\,\nabla\phi\,|^{\,2}\,\mathrm{d}r\,\mathrm{d}x
+  +\,\frac{1}{2}\,\alpha\,\int_{\mathbb{R}}\,\eta_{\,t}^{\,2}\,\mathrm{d}x
+  +\,\frac{1}{2}\,\beta\,\int_{\mathbb{R}}\,\eta^{\,2}\,\mathrm{d}x
+  -\,\int_{\mathbb{R}}\,p^{\,w}\,\eta\,\mathrm{d}x\,.
+\end{multline*}
+After simplification, we obtain
+\begin{equation*}
+  \mathcal{H}\,[\,\eta\,+\,\delta\eta,\,\phi\,]\,-\,\mathcal{H}\,[\,\eta,\,\phi\,]
+  \,=\,\frac{1}{2}\,\int_{\mathbb{R}}\,\int_{\eta}^{\eta+\delta\eta}\,|\,\nabla\phi\,|^{\,2}\,\mathrm{d}r\,\mathrm{d}x\,-\,\alpha\,\int_{\mathbb{R}}\,\eta_{\,t}\,\delta\eta_{\,t}\,\mathrm{d}x\,-\,\beta\,\int_{\mathbb{R}}\,\eta\,\delta\eta\,\mathrm{d}x
+  +\,\int_{\mathbb{R}}\,p^{\,w}\,\delta\eta\,\mathrm{d}x\,.
+\end{equation*}
+Applying the mean value theorem to the integral over the interval $[\eta,\,\eta+\delta\eta]$, we finally obtain
+\begin{equation*}
+  \mathcal{H}\,[\,\eta\,+\,\delta\eta,\,\phi\,]\,-\,\mathcal{H}\,[\,\eta,\,\phi\,]
+  \,=\,\frac{1}{2}\,\int_{\mathbb{R}}\,\bigl[\,|\,\nabla\phi\,|^{\,2}\,\bigr]_{\,r\,=\,r^{\,w}}\,\delta\eta\,\mathrm{d}x\,-\,\alpha\,\int_{\mathbb{R}}\,\eta_{\,tt}\,\delta\eta\,\mathrm{d}x
+  -\,\beta\,\int_{\mathbb{R}}\,\eta\,\delta\eta\,\mathrm{d}x
+  +\,\int_{\mathbb{R}}\,p^{\,w}\,\delta\eta\,\mathrm{d}x\,.
+\end{equation*}
+Therefore, the non-canonical Hamiltonian evolution equations take the form
+\begin{equation}
+  \begin{pmatrix}
+    \eta_{\,t} \\
+    \psi_{\,t}
+  \end{pmatrix}
+  \,=\,\begin{pmatrix}
+    \phi_{\,r}\,-\,r^{\,w}_{\,x}\,\phi_{\,x} \\
+    -\,\frac{1}{2}\,|\,\nabla\phi\,|^{\,2}\,+\,\alpha\,\eta_{\,tt}\,+\,\beta\,\eta\,-\,p^{\,w}
+  \end{pmatrix},
+\end{equation}
+which recover the dynamic and kinematic boundary conditions \eqref{eq:chap5.2} and \eqref{eq:chap5.5}, respectively. It is important to emphasise that the operator $\mathcal{J}$ is skew-symmetric and satisfies the Jacobi identity (cf. \cite{Nutku1987}), thus qualifying as a legitimate Hamiltonian operator.
+
+In conclusion, the derivation and analysis of the non-canonical Hamiltonian structure provide a robust and systematic framework for investigating complex dynamical systems governed by nonlinear wave equations. The geometric properties of the Hamiltonian operator, including skew-symmetry and the Jacobi identity, ensure consistency with the underlying physics. This insight not only strengthens the theoretical foundations but also enhances the practical modelling of nonlinear dispersive systems in mathematical physics.
 
 \subsection{Potential model: dimensionless formulation and the first derivation of the long wave model}\label{sec:dimless_longwave}
 
@@ -1685,7 +1793,7 @@ corresponding to spatial and temporal translations. The induced one-parameter gr
   (x,\,t+\varepsilon_{2},\,\eta,\,\bar{u}).
 \]
 
-\paragraph{Conservation laws and symmetries of the full cylindrical model (variable unperturbed radius)}\label{par:variable_r0} For $r_{0}=r_{0}(x)$ and $r^{w}=r_{0}(x)+\eta(x,t)$ the governing equations assume the form \eqref{eq:c1}-\eqref{eq:c2}.  Only a single non-trivial multiplier survives, $\lambda_{1}=1$, $\lambda_{2}=0$, giving the conservation law
+\paragraph{Conservation laws and symmetries of the full cylindrical model (variable unperturbed radius)}\label{par:variable_r0} For $r_{0}=r_{0}(x)$ and $r^{w}=r_{0}(x)+\eta(x,t)$ the governing equations assume the form \eqref{eq:sgn1}, \eqref{eq:sgn2}. Only a single non-trivial multiplier survives, $\lambda_{1}=1$, $\lambda_{2}=0$, giving the conservation law
 \begin{equation}
   \Bigl[\eta\,r_{0}+\tfrac12\,\eta^{2}\Bigr]_{t}
   +\Bigl[
@@ -1799,7 +1907,31 @@ grow exponentially in time, a manifestation of the \emph{Benjamin--Feir (modulat
 \end{theorem}
 Theorem~\ref{thm:MI} furnishes the standard Benjamin--Feir instability criterion and will serve as the reference point for the modulational stability of the KdV- and BBM-derived NLS envelopes obtained in the preceding sections.
 
+\section{Conclusions and discussion}
 
+In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels featuring viscoelastic walls. Grounded in the assumption of axisymmetric flow and considering an ideal fluid for simplicity, we have developed a coherent hierarchy of asymptotic models that capture the complex dynamics governing these intricate systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axi-symmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}.
+
+Acknowledging the impact of viscous stresses in bio-fluids, we extended our study to incorporate these effects, traditionally addressed through hyperbolic systems of equations. The constraints posed by cylindrical symmetry prompted us to propose various weakly dispersive extensions, enhancing the accuracy of fluid dynamics representation in deformable vessels. Our research began with an in-depth scrutiny of the fully nonlinear regime, resulting in the formulation of a Serre--Green--Naghdi (SGN) system in cylindrical geometry. This system generalises the planar SGN equations to realistic vascular settings and serves as the parent model from which all subsequent approximations descend.
+
+To enhance tractability, we presented a derivation of the weakly nonlinear counterpart of our Serre-type system. Additionally, we introduced one-dimensional reductions exemplified by Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) type equations, further simplifying the system while preserving essential dynamics.
+
+Our analytical exploration provided valuable insights into the fundamental characteristics of these newly formulated systems. We systematically examined symmetries, conservation laws, and Whitham solitons, offering a comprehensive perspective on their behavior. Linear properties, such as dispersion relations, were meticulously discussed in relation to the base model. Furthermore, through multi-scale analysis, we derived Nonlinear Schrödinger equations and investigated modulational instability, shedding light on the emergence of Stokes waves from both KdV and BBM equations.
+
+The methodologies and insights developed in this work contribute significantly to our understanding of pulsatile flow within deformable vessels and represent a valuable addition to the broader fields of fluid dynamics and mathematical modeling. As we conclude, we anticipate that our findings will stimulate further investigations and contribute to the ongoing dialogue in this dynamic field, positioning this research at the forefront of discussions on complex fluid systems.
+
+\section{Perspectives}
+
+This work provides a foundational understanding of the mathematical and numerical modeling of nonlinear wave propagation in fluid systems. However, several aspects remain open to further exploration and offer opportunities for extending the research presented here. Building upon the results of this study, we identify multiple promising directions for future research that would expand the scope of our analysis.
+
+A natural extension of this work involves the study of solitary wave solutions for the Serre--Green--Naghdi system in cylindrical coordinates. A comprehensive numerical investigation of this system would provide valuable insights into the stability, shape, and velocity of such solitary waves. Moreover, understanding how these waves interact in cylindrical settings would significantly enhance our knowledge of wave dynamics in confined geometries.
+
+The reduced 0D system derived in this article offers a simplified framework for analyzing complex fluid dynamics. A detailed numerical study of this system would enable validation of the theoretical results and exploration of its dynamical features. Such an analysis could uncover critical aspects of its solution space, including fixed points, oscillatory behavior, and transitions between regimes, helping identify practical scenarios where this reduced model can serve as a reliable approximation for more complex systems.
+
+Further advancement in this field would benefit from deriving and studying the nonlinear Schr\"odinger (NLS) equations for the Serre--Green--Naghdi system in cylindrical coordinates and for the Boussinesq system. This investigation would include examining modulation instability phenomena in these systems, shedding light on the stability and evolution of wave trains in cylindrical geometries.
+
+Additionally, finding and characterizing Stokes waves in the Serre--Green--Naghdi and Boussinesq systems in cylindrical coordinates represents an essential step toward a complete understanding of these models. This analysis would complement the solitary wave solutions and provide further insights into the dynamics of nonlinear waves in such configurations.
+
+These perspectives aim to extend the theoretical and numerical framework developed in this study, contributing to a deeper understanding of nonlinear wave propagation in fluid dynamics. The proposed extensions not only advance the theoretical and numerical understanding of the systems studied in this work but also hold significant implications for biomedical applications. The investigation of nonlinear wave phenomena in cylindrical geometries is particularly relevant for modeling blood flow in arteries, where such configurations naturally occur. By addressing these perspectives, future research can provide deeper insights into the mechanics of pulse propagation in blood vessels, bridging the gap between mathematical modeling and physiological applications, and offering new tools for understanding and predicting hemodynamic behaviors in real-world scenarios.
 
 \vspace*{1.5em}
 \section*{Acknowledgements}
