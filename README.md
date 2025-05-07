@@ -18,9 +18,9 @@ The approach provides insight into the interplay between nonlinearity, dispersio
 ## Authors
 
 - Rim El Cheikh (Univ. Grenoble Alpes, Univ. Savoie Mont Blanc, CNRS, LAMA, Chambéry, France)
+- Alexey Cheviakov (Department of Mathematics and Statistics, University of Saskatchewan, Saskatoon, Canada)
 - Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates)
 - Dimitrios Mitsotakis (Victoria University of Wellington, School of Mathematics and Statistics, Wellington, New Zealand)
-- Alexey Cheviakov (Department of Mathematics and Statistics, University of Saskatchewan, Saskatoon, Canada)
 
 ## How to Compile
 
@@ -46,6 +46,12 @@ latexmk -pdf SerreCyl.tex
 - `figs/` — Figures used in the manuscript
 - `*.sty` — Style files (if any)
 - `.gitignore` — Ignores LaTeX build artifacts except the final PDF
+
+## Code availability
+
+All Maple (Maplesoft™) scripts developed and used in this work, as well as the complete LaTeX source files of this article, are openly available in this repository:
+
+[https://github.com/dutykh/SerreCyl/](https://github.com/dutykh/SerreCyl/)
 
 ## License
 
