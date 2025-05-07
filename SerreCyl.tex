@@ -926,7 +926,7 @@ Restoring the original parameters,
   B_{\,1}:=\frac{2b\,\delta^{\,2}}{3\,\eps},
   \label{eq:lem}
 \end{equation}
-which is a well-known integrable third-order ODE of the KdV type \cite{Newell1977}.  Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
+which is a well-known integrable third-order ODE of the KdV type \cite{Newell1977}. Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
 \begin{equation*}
   \eta(\zeta)\ =\ 3\,A_{\,1}\,
   \sech^{2}\,\Bigl[
@@ -2038,7 +2038,120 @@ These findings underscore the complex interplay between nonlinearity, dispersion
 
 \subsection{Modulational instability analysis in BBM wave packets}
 
+The Benjamin--Bona--Mahony (BBM) equation models the unidirectional propagation of long waves in dispersive systems, offering an alternative to the Korteweg-de Vries (KdV) equation with improved high-frequency behavior. In normalized variables, the viscous BBM equation is:
+\begin{equation}\label{eq:BBM1}
+  \partial_t \eta + \tilde{c} \partial_x \eta + \frac{5}{2} \frac{1}{r_0} \tilde{c} \eta \partial_x \eta - \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48} \partial_x^2 \partial_t \eta - \frac{r_0}{4} \gamma \tilde{\beta} \partial_x^2 \eta = 0,
+\end{equation}
+where $\eta(x,t)$ is the wave field, $\tilde{c}$ is a characteristic speed, $r_0$, $\tilde{\alpha}$, $\tilde{\beta}$, and $\gamma$ are system parameters, and subscripts denote partial derivatives.
 
+To study nonlinear wave packets, we assume a slowly modulated wave train solution of the form:
+\begin{equation}\label{eq:nb1}
+  \eta(x,t) = \eps A(\xi, \tau) \exp(i \theta) + \text{c.c.},
+\end{equation}
+where $A(\xi, \tau)$ is the complex amplitude, $\theta = k x - \omega t$ with wave number $k$ and frequency $\omega$, and ``c.c.'' denotes the complex conjugate. The slow scales are:
+\begin{equation}\label{eq:nb2}
+  \xi = \eps (x - p t), \qquad \tau = \eps^2 t,
+\end{equation}
+where $\eps \ll 1$ is a small parameter and $p$ is the group velocity to be determined. We expand the solution as an asymptotic series:
+\begin{equation}\label{eq:nb3}
+  \eta(x,t) = \eps \eta_1 + \eps^2 \eta_2 + \eps^3 \eta_3 + \dots.
+\end{equation}
+
+Substituting \eqref{eq:nb3} into \eqref{eq:BBM1}, applying the slow scales \eqref{eq:nb2}, and collecting terms at $\O(\eps)$, we obtain:
+\begin{equation}\label{eq:first_order}
+  \left(\partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right)\eta_1 = 0,
+\end{equation}
+where $a = \tilde{c}$, $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$, $c = \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $d = -\frac{r_0}{4} \gamma \tilde{\beta}$. For $\eta_1 = A(\xi, \tau) \exp(i \theta) + \text{c.c.}$, this yields the dispersion relation:
+\begin{equation}\label{eq:dispersion_bbm}
+  \omega = \frac{a k}{1 + c k^2} + \ui \frac{d k^2}{1 + c k^2}.
+\end{equation}
+The group velocity is:
+\[
+  p = \frac{d \omega}{d k} = \frac{a (1 - c k^2) + 2 \ui d k}{(1 + c k^2)^2}.
+\]
+
+At $\O(\eps^2)$, the equation is:
+\begin{equation}\label{eq:second_order}
+  \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_2 = \left( p \partial_\xi - a \partial_\xi + 2 c \partial_t \partial_x \partial_\xi - c p \partial_x^2 \partial_\xi - 2 d \partial_x \partial_\xi \right) \eta_1 - b \partial_x (\eta_1 \eta_1).
+\end{equation}
+The right-hand side includes terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_2$, resonant terms proportional to $\exp(\pm \ui \theta)$ are set to zero, confirming the group velocity $p$ above. The non-resonant terms give:
+\begin{equation}\label{eq:second_order_nonresonant}
+  \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_2 = - b \ui k A^2 \exp(2 \ui \theta) + \text{c.c.}.
+\end{equation}
+Assuming a solution:
+\begin{equation}\label{eq:eta2_solution}
+  \eta_2 = B(\xi, \tau) \exp(2 \ui \theta) + \text{c.c.} + C(\xi, \tau),
+\end{equation}
+we find:
+\begin{equation}\label{eq:B_solution}
+  B(\xi, \tau) = \sigma A^2, \quad \sigma = \frac{b (1 + c k^2)}{6 a c k^2 + 4 \ui c d k^3 - 2 \ui d k}.
+\end{equation}
+
+At $\O(\eps^3)$, the equation is:
+\begin{multline}\label{eq:third_order}
+  \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_3 = - \left( \partial_\tau - c \partial_\tau \partial_\xi^2 + 2 c p \partial_x \partial_\xi^2 - c \partial_x^2 \partial_\tau + d \partial_\xi^2 \right) \eta_1 \\
+- \left( -p \partial_\xi + a \partial_\xi - 2 c \partial_t \partial_x \partial_\xi + c p \partial_x^2 \partial_\xi + 2 d \partial_x \partial_\xi \right) \eta_2 - b \partial_x (\eta_1 \eta_2).
+\end{multline}
+Substituting \eqref{eq:nb1} and \eqref{eq:eta2_solution}, we eliminate resonant terms. The $\theta$-independent terms give:
+\begin{equation}\label{eq:C_equation}
+  (p - a) \partial_\xi C + b \partial_\xi |A|^2 = 0,
+\end{equation}
+yielding:
+\[
+  C(\xi, \tau) = \nu |A|^2, \qquad \nu = \frac{b}{p - a} = \frac{b (1 + c k^2)^2}{-3 a c k^2 + 2 \ui d k - a c^2 k^4}.
+\]
+The $\exp(i \theta)$ resonant terms yield:
+\begin{equation}\label{eq:resonance_bbm}
+  \left( -\partial_\tau - \ui \omega c \partial_\xi^2 - 2 \ui k p c \partial_\xi^2 - c \ui k^2 \partial_\tau - d \partial_\xi^2 \right) A - b \ui k (A C + A^* B) = 0.
+\end{equation}
+Substituting $B$ and $C$, we obtain the NLS equation:
+\begin{equation}\label{eq:NLSBBM}
+  \partial_\tau A + \ui M \partial_\xi^2 A + \ui N A |A|^2 = 0,
+\end{equation}
+where:
+\[
+  M = \frac{\omega c + 2 k p c - \ui d}{1 + c k^2}, \qquad N = \frac{b k (\nu + \sigma)}{1 + c k^2}.
+\]
+
+The derivation of the NLS equation \eqref{eq:NLSBBM} from the viscous BBM equation provides a framework for understanding the modulation of wave packets in dispersive systems with viscosity. The coefficients $M$ and $N$ encapsulate the effects of dispersion, dissipation, and nonlinearity, offering insights into wave stability and dynamics in applications such as water waves.
+
+\subsubsection{Instability Analysis}
+
+Modulational instability (MI) is a key phenomenon in nonlinear wave systems, where small perturbations to a plane wave can grow exponentially, leading to complex dynamics. Here, we analyze the stability of plane wave solutions to the Nonlinear Schrödinger (NLS) equation \eqref{eq:NLSBBM} derived from the viscous Benjamin--Bona--Mahony (BBM) equation:
+\[
+  \partial_\tau A + \ui M \partial_\xi^2 A + \ui N A |A|^2 = 0,
+\]
+where $M = \dfrac{\omega c + 2 k p c - \ui d}{1 + c k^2}$, $N = \dfrac{b k (\nu + \sigma)}{1 + c k^2}$, and the coefficients are defined as in the previous derivation. The NLS equation \eqref{eq:NLSBBM} admits a plane wave solution of the form:
+\begin{equation}\label{eq:plane_wave_bbm}
+  A_0(\tau) = a_0 \exp(-\ui N a_0^2 \tau),
+\end{equation}
+where $a_0 \in \mathbb{R}^+$ is the constant amplitude. To study its stability, we introduce a small perturbation:
+\begin{equation}\label{eq:perturbation_bbm}
+  A(\xi, \tau) = a_0 e^{-\ui N a_0^2 \tau} [1 + a(\xi, \tau)], \qquad |a| \ll 1.
+\end{equation}
+Substituting \eqref{eq:perturbation_bbm} into \eqref{eq:NLSBBM} and linearizing, we obtain:
+\begin{equation}\label{eq:linearized_bbm}
+  \ui \partial_\tau a - M \partial_\xi^2 a - N a_0^2 (a + a^*) = 0,
+\end{equation}
+where $a^*$ is the complex conjugate of $a$. Assuming $a = u(\xi, \tau) + \ui v(\xi, \tau)$ with real $u$ and $v$, we rewrite \eqref{eq:linearized_bbm} as a system:
+\begin{equation}\label{eq:matrix_bbm}
+  \partial_\tau \begin{pmatrix} u \\ v \end{pmatrix} = \begin{pmatrix}
+  0 & M \partial_\xi^2 \\
+  M \partial_\xi^2 - 2 N a_0^2 & 0
+\end{pmatrix} \begin{pmatrix} u \\ v \end{pmatrix}.
+\end{equation}
+Seeking solutions of the form $(u, v) \propto \exp(i q \xi - i \lambda \tau)$, we substitute into \eqref{eq:matrix_bbm} to obtain the dispersion relation:
+\begin{equation}\label{eq:dispersion_bbm}
+  \lambda^2 = M^2 q^4 - 2 N M a_0^2 q^2.
+\end{equation}
+The stability of the plane wave depends on the sign of $\lambda^2$:
+\begin{itemize}
+  \item If $\lambda^2 > 0$, perturbations oscillate, indicating stability.
+  \item If $\lambda^2 < 0$, perturbations grow exponentially, indicating modulational instability.
+\end{itemize}
+Instability occurs when $M N > 0$ and $q^2 < \dfrac{2 N a_0^2}{M}$, as the quadratic term dominates for small $q$. The interplay between $M$ (dispersion/dissipation) and $N$ (nonlinearity) governs the instability threshold.
+
+The dispersion relation \eqref{eq:dispersion_bbm} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous BBM system. The coefficients $M$ and $N$, derived from the BBM parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
 
 \section{Conclusions and discussion}
 
@@ -2110,7 +2223,7 @@ In what follows, we obtain a zero-dimensional (0D) ordinary differential system 
   -\frac{r_{\,0}}{4}\,\gamma\,\tilde{\beta}\,\eta_{\,xx}=0.
 \end{equation}
 Assuming
-\(\eta_{\,x}=-\eta_{\,t}+O(\eps,\delta^{2})\) and substituting this
+\(\eta_{\,x}=-\eta_{\,t} + \O(\eps,\delta^{2})\) and substituting this
 relation into~\eqref{eq:chap6.1} we obtain
 \begin{equation}\label{eq:chap6.2}
   \eta_{\,t}
