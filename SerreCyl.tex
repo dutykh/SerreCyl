@@ -386,11 +386,110 @@ In conclusion, the derivation and analysis of the non-canonical Hamiltonian stru
 
 \subsection{Potential model: dimensionless formulation and the first derivation of the long wave model}\label{sec:dimless_longwave}
 
+To model blood flow in a vessel, we derive simplified equations from the Euler equations using non-dimensional variables and asymptotic techniques. This approach, relevant to arterial pulse propagation, accounts for nonlinearity and dispersion while simplifying the complex fluid-structure interaction at the vessel wall \cite{Fung1993}.
 
+We introduce non-dimensional and scaled variables to normalize the Euler equations:
+\begin{equation}\label{eq:ndv}
+  \eta^* = \frac{\eta}{a}, \quad x^* = \frac{x}{\lambda}, \quad r^* = \frac{r}{R}, \quad t^* = \frac{t}{T}, \quad \phi^* = \frac{\phi}{\lambda \varepsilon \tilde{c}}, \quad p^* = \frac{p}{\varepsilon \rho \tilde{c}^2},
+\end{equation}
+where $\eta$ is the vessel wall displacement, $a$ is the typical wall deviation, $\lambda$ is the typical wavelength, $R$ is the vessel radius, $T = \lambda / \tilde{c}$ is the time scale, $\tilde{c} = \sqrt{E h / 2 \rho R}$ is the Moens-Korteweg speed, $\phi$ is the velocity potential, $p$ is the pressure, $\rho$ is the fluid density, $E$ is the Young's modulus, and $h$ is the wall thickness \cite{Fung1993}. The non-dimensional parameters are:
+\begin{equation}\label{eq:parameters}
+  \eps = \frac{a}{R}, \qquad \delta = \frac{R}{\lambda},
+\end{equation}
+where $\eps = O(1)$ characterizes nonlinearity, and $\delta^2 \ll 1$ indicates weak dispersion. The external pressure is assumed zero, typical for blood flow models.
+
+In non-dimensional form (dropping asterisks for simplicity), the governing equations and boundary conditions are:
+\begin{align}
+& \partial_t \phi + \frac{\varepsilon}{2} (\partial_x \phi)^2 + \frac{\varepsilon}{2 \delta^2} (\partial_r \phi)^2 + p + \varepsilon \kappa \phi = 0, \quad \text{at } r = r^w, \label{eq:bernoulli} \\
+& \delta^2 r \partial_x^2 \phi + \partial_r (r \partial_r \phi) = 0, \quad 0 < r < r^w, \label{eq:laplace} \\
+& \partial_r \phi = 0, \quad \text{at } r = 0, \label{eq:center_bc} \\
+& \partial_r \phi = \delta^2 \partial_t \eta + \delta^2 [r_0(x) + \varepsilon \eta] \partial_x \phi, \quad \text{at } r = r^w, \label{eq:wall_bc} \\
+& p = \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta), \quad \text{at } r = r^w, \label{eq:pressure}
+\end{align}
+where $r^w = r_0(x) + \varepsilon \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \varepsilon / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \cite{Mitsotakis2019}). Following standard asymptotic techniques \cite{BCS}, we expand the velocity potential $\phi$ as:
+\begin{equation}\label{eq:potential}
+  \phi(x, r, t) = \sum_{m=0}^\infty r^m \phi_m(x, t).
+\end{equation}
+Substituting into \eqref{eq:laplace}, we obtain the recurrence relation:
+\begin{equation}\label{eq:recurr}
+  \delta^2 \partial_x^2 \phi_{2m} + (2m + 2)^2 \phi_{2m+2} = 0, \quad \phi_{2m+1} = 0,
+\end{equation}
+for $m = 0, 1, 2, \dots$. This yields:
+\begin{equation}\label{eq:phi2}
+  \phi_2 = -\frac{\delta^2}{4} \partial_x^2 \phi_0,
+\end{equation}
+and for $m = 1, 2, \dots$:
+\begin{equation}\label{eq:phim}
+  \phi_{2m+2} = \frac{\delta^4}{(2m + 2)^2 (2m)^2} \partial_x^4 \phi_{2m-2} = \O(\delta^4).
+\end{equation}
+  Thus, the velocity potential up to $\O(\delta^6)$ is:
+\begin{equation}\label{eq:potapr}
+  \phi(x, r, t) = \phi_0(x, t) - \delta^2 \frac{r^2}{4} \partial_x^2 \phi_0(x, t) + \delta^4 \frac{r^4}{64} \partial_x^4 \phi_0(x, t) + \O(\delta^6).
+\end{equation}
+Using \eqref{eq:potapr} in the boundary condition \eqref{eq:wall_bc} at $r = r^w$, we approximate the mass conservation equation:
+\begin{equation}\label{eq:massp1}
+  \partial_t \eta + r^w_x \partial_x \phi_0 + \frac{r^w}{2} \partial_x^2 \phi_0 - \delta^2 \frac{(r^w)^2 r^w_x}{4} \partial_x^3 \phi_0 - \delta^2 \frac{(r^w)^3}{16} \partial_x^4 \phi_0 = O(\delta^4).
+\end{equation}
+Substituting \eqref{eq:potapr} and \eqref{eq:pressure} into the Bernoulli equation \eqref{eq:bernoulli} at $r = r^w$, we eliminate pressure to obtain the momentum equation:
+\begin{equation}\label{eq:momentump1}
+\begin{split}
+\partial_t \phi_0 & - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \partial_t \phi_0 + \frac{\varepsilon}{2} \left[ (\partial_x \phi_0)^2 - \delta^2 \frac{(r^w)^2}{2} \partial_x \phi_0 \partial_x^3 \phi_0 \right] + \frac{\varepsilon \delta^2}{8} (r^w)^2 (\partial_x^2 \phi_0)^2 \\
+& + \varepsilon \kappa \left[ \phi_0 - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \phi_0 \right] + \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta) = O(\delta^4).
+\end{split}
+\end{equation}
+Defining the horizontal velocity at the vessel center as $w(x, t) = \partial_x \phi_0(x, t)$, we rewrite \eqref{eq:massp1} and \eqref{eq:momentump1} as:
+\begin{equation}\label{eq:massp2}
+  \partial_t \eta + r^w_x w + \frac{r^w}{2} \partial_x w - \delta^2 \frac{(r^w)^2 r^w_x}{4} \partial_x^2 w - \delta^2 \frac{(r^w)^3}{16} \partial_x^3 w = \O(\delta^4),
+\end{equation}
+\begin{equation}\label{eq:momentump2}
+  \partial_t w + \partial_x (\beta \eta) + \varepsilon w \partial_x w - \frac{\delta^2}{4} \partial_x \left[ (r^w)^2 \Gamma \right] + \varepsilon \kappa \left[ w - \frac{\delta^2}{4} \partial_x \left( (r^w)^2 \partial_x w \right) \right] + \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta) = \O(\delta^4),
+\end{equation}
+where:
+\begin{equation}\label{eq:gamma}
+  \Gamma = \partial_x \partial_t w + \varepsilon w \partial_x^2 w - \frac{\varepsilon}{2} (\partial_x w)^2.
+\end{equation}
+
+The system \eqref{eq:massp2}--\eqref{eq:momentump2} resembles a Serre-type system, capturing the leading-order dynamics of blood flow in a compliant vessel. The equations account for nonlinearity ($\varepsilon$), dispersion ($\delta^2$), and vessel wall effects ($\alpha$, $\beta$, $\gamma$). Higher-order approximations of the velocity potential could further refine this model, enhancing its accuracy for physiological applications \cite{Mitsotakis2019}.
 
 \subsubsection{Enhanced Serre-type system}\label{sec:cbsys}
 
+In this section, we refine the Serre-type system derived in \eqref{eq:massp2}--\eqref{eq:momentump2} by evaluating the horizontal velocity at any radius within the vessel, improving the model's applicability to blood flow dynamics. We also briefly introduce a second approach using incompressible Euler equations, which will be explored further in subsequent analyses.
 
+To enhance the system \eqref{eq:massp2}--\eqref{eq:momentump2}, we consider the horizontal velocity at any radius $r = \theta r^w$, where $0 \leq \theta \leq 1$ and $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius. From the velocity potential expansion \eqref{eq:potapr}, the horizontal velocity is:
+\[
+  u(x, r, t) = \partial_x \phi = \partial_x \phi_0 - \delta^2 \frac{r^2}{4} \partial_x^3 \phi_0 + \O(\delta^4).
+\]
+Defining $w(x, t) = \partial_x \phi_0(x, t)$ and evaluating at $r = \theta r^w$, we obtain:
+\begin{equation}\label{eq:generalu}
+  u^\theta(x, t) \doteq u(x, \theta r^w, t) = w(x, t) - \delta^2 \frac{\theta^2 (r^w)^2}{4} \partial_x^2 w(x, t) + \O(\delta^4).
+\end{equation}
+Inverting this, we express $w$ in terms of $u^\theta$:
+\begin{equation}\label{eq:w_from_utheta}
+  w(x, t) = u^\theta(x, t) + \delta^2 \frac{\theta^2 (r^w)^2}{4} \partial_x^2 u^\theta(x, t) + \O(\delta^4).
+\end{equation}
+Substituting \eqref{eq:w_from_utheta} into the mass equation \eqref{eq:massp2}, we obtain:
+\begin{equation}\label{eq:massp4}
+  \partial_t \eta + r^w_x u^\theta + \frac{r^w}{2} \partial_x u^\theta + \delta^2 \frac{(2 \theta^2 - 1) (r^w)^2 r^w_x}{4} \partial_x^2 u^\theta + \delta^2 \frac{(2 \theta^2 - 1) (r^w)^3}{16} \partial_x^3 u^\theta = \O(\delta^4).
+\end{equation}
+Using the vessel wall velocity $r^w_t = \varepsilon \partial_t \eta$ and approximating from \eqref{eq:massp4}:
+\begin{equation}\label{eq:rw_t}
+  r^w_t = \varepsilon \partial_t \eta = -\varepsilon r^w_x u^\theta - \varepsilon \frac{r^w}{2} \partial_x u^\theta + \O(\varepsilon \delta^2),
+\end{equation}
+we substitute \eqref{eq:w_from_utheta} into the momentum equation \eqref{eq:momentump2} to obtain:
+\begin{equation}\label{eq:momentump4}
+  \partial_t u^\theta + \partial_x (\beta \eta) + \varepsilon u^\theta \partial_x u^\theta + \frac{\delta^2}{4} \left\{ \theta^2 (r^w)^2 \partial_x \Gamma - \partial_x [(r^w)^2 \Gamma] \right\} + \varepsilon \kappa Q + R = \O(\delta^4),
+\end{equation}
+where:
+\begin{equation}\label{eq:gamman}
+\begin{aligned}
+  \Gamma &= \partial_x \partial_t u^\theta + \varepsilon u^\theta \partial_x^2 u^\theta - \frac{\varepsilon}{2} (\partial_x u^\theta)^2, \\
+  Q &= u^\theta + \frac{\delta^2}{4} (\theta^2 - 1) (r^w)^2 \partial_x^2 u^\theta - \delta^2 r^w r^w_x \partial_x u^\theta, \\
+  R &= \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta).
+\end{aligned}
+\end{equation}
+Choosing $\theta^2 = \frac{1}{2}$ simplifies \eqref{eq:massp4} and \eqref{eq:momentump4}, yielding a familiar Serre-type formulation that balances dispersion and nonlinearity effectively for blood flow modeling. The refined system \eqref{eq:massp4}--\eqref{eq:momentump4} generalizes the velocity to any radial position, enhancing the model's flexibility for capturing blood flow variations across the vessel cross-section. The parameter $\theta$ allows tuning to specific radial locations, with $\theta^2 = \frac{1}{2}$ recovering a standard Serre-type system. The terms involving $\Gamma$, $Q$, and $R$ account for higher-order dispersive, nonlinear, and wall interaction effects, critical for accurate modeling of arterial waves \cite{Mitsotakis2019}.
+
+As an alternative approach, the mathematical modeling of blood flow suggests using the incompressible, ideal, and radially symmetric Euler equations. This framework, which assumes inviscid flow, will be developed further to complement the asymptotic system derived above, offering additional insights into arterial pulse dynamics.
 
 \subsection{Base model: dimensionless formulation}
 
@@ -436,7 +535,7 @@ Above, we introduced the following notations:
 \end{equation*}
 Then,
 \begin{equation*}
-  \alpha\,\coloneqq\,\frac{\tilde{\alpha}}{\,R}\;, \quad  \ \quad  \beta\,(\,x\,)\,\coloneqq\,\frac{2\,R^{\,2}\,\rho}{E\,h}\,\tilde{\beta}\,(\,x\,) \quad \text{and} \ \quad \gamma\,\coloneqq\,\tilde{\frac{\gamma }{\delta^{\,2}\,T}\;}\,,
+  \alpha\,\coloneqq\,\frac{\tilde{\alpha}}{\,R}\;, \quad \ \quad \beta\,(\,x\,)\,\coloneqq\,\frac{2\,R^{\,2}\,\rho}{E\,h}\,\tilde{\beta}\,(\,x\,) \quad \text{and} \ \quad \gamma\,\coloneqq\,\tilde{\frac{\gamma }{\delta^{\,2}\,T}\;}\,,
 \end{equation*}
 where $\rho^{\,w}$ is the wall density, $h$ is the thickness of the vessel wall, $E$ is the young modulus of elasticity, $R$ is a vessel's radius, $T\, \coloneqq \;\displaystyle\frac{\lambda}{c}$ is the characteristic timescale. Below, we use the scaled governing equations in order to propose a simplified model.
 
@@ -865,7 +964,7 @@ Substituting this expression into \cref{eq:5.2} yields the cylindrical Boussines
 \end{align}
 Henceforth, we set $\gamma = 0$ (the purely elastic wall case). Introducing the convenience coefficients
 \begin{equation*}
-  a=\frac{r_{\,0}}{2}, \qquad  
+  a=\frac{r_{\,0}}{2}, \qquad
   b=\frac{r_{\,0}^{\,3}}{48}, \qquad
   d=\frac{\alpha\,r_{\,0}}{2}, \qquad
   e=\beta, \qquad
@@ -1010,7 +1109,7 @@ where $I_{\,0}$ and $I_{\,1}$ are the modified Bessel functions of the first kin
        r_{\,0}k\,I_{\,1}\left(kr_{\,0}\right)\;+\;I_{\,0}\left(kr_{\,0}\right)}.
 \end{equation}
 
-\paragraph{Reduced Boussinesq system.} We next linearise the depth-averaged system \eqref{eq:5.1}--\eqref{eq:5.2} and again insert the normal-mode ansatz.  This procedure leads to
+\paragraph{Reduced Boussinesq system.} We next linearise the depth-averaged system \eqref{eq:5.1}--\eqref{eq:5.2} and again insert the normal-mode ansatz. This procedure leads to
 \begin{align}
   \frac{r_{\,0}}{2}\,\ui k\,\bar{u}_{\,0}\;-\;\ui\omega\,\eta_{\,0}
   &\;-\;\frac{\delta^{\,2}}{48}\,r_{\,0}^{\,3}\,(\ui k)^{3}\bar{u}_{\,0}
@@ -1055,7 +1154,7 @@ Elimination of $\bar{u}_{\,0}$ gives the quadratic dispersion relation
   \label{fig:disp}
 \end{figure}
 
-\paragraph{Remarks.} The algebraic relations \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous} demonstrate that both the classical and the modified depth-averaged models reproduce the low-frequency branch of the exact dispersion curve with the correct slope.  The modified formulation retains this agreement while reducing the high-frequency error introduced by the classical Boussinesq truncation, thereby reinforcing its suitability for simulating arterial pulse waves over physiologically relevant wavelengths.
+\paragraph{Remarks.} The algebraic relations \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous} demonstrate that both the classical and the modified depth-averaged models reproduce the low-frequency branch of the exact dispersion curve with the correct slope. The modified formulation retains this agreement while reducing the high-frequency error introduced by the classical Boussinesq truncation, thereby reinforcing its suitability for simulating arterial pulse waves over physiologically relevant wavelengths.
 
 \section{Stokes expansions}
 
@@ -1132,7 +1231,7 @@ A particular solution of \eqref{eq:h3} is then
 The above sequence of calculations can be summarized in the form of the following theorem, which provides a closed-form expression for the periodic wave solution and the corresponding nonlinear dispersion relation up to third order in the perturbation parameter.
 
 \begin{theorem}\label{thm:stokes_periodic}
-Let $\eps\ll1$ and let $k>0$ be fixed.  To third order in $\eps$ the KdV equation \eqref{eq:kdv_red} possesses a $2\pi/k$-periodic Stokes wave of the form
+Let $\eps\ll1$ and let $k>0$ be fixed. To third order in $\eps$ the KdV equation \eqref{eq:kdv_red} possesses a $2\pi/k$-periodic Stokes wave of the form
 \begin{equation}\label{eq:eta_series}
   \frac{\eta}{r_{0}}
   =\eps\cos\theta
@@ -1164,7 +1263,7 @@ Consider the Benjamin-Bona-Mahony (BBM) reduction obtained from the long-wave mo
   -\frac{(12\tilde{\alpha}+3r_{0})\,r_{0}}{48}\,\eta_{xxt}
   =0,
 \end{equation}
-where, for simplicity, $\gamma=0$ has been set.  Denoting
+where, for simplicity, $\gamma=0$ has been set. Denoting
 \[
   a^{\ast}=\tilde{c},\qquad
   b^{\ast}=\frac{5\tilde{c}}{2r_{0}},\qquad
@@ -1188,7 +1287,7 @@ with $\eps \ll 1$.
   (\omega-a^{\ast}k)\,\xi_{2}'-c^{\ast}\,\omega\,k^{2}\,\xi_{2}''' &=b^{\ast}k\,\xi_{1}\xi_{1}',\label{eq:bbm_h2}\\
   (\omega-a^{\ast}k)\,\xi_{3}'-c^{\ast}\,\omega\,k^{2}\,\xi_{3}''' &=b^{\ast}k\,(\xi_{1}^{2})'
           -\omega_{2}\,\xi_{1}'
-          +c^{\ast}\omega_{2}k^{2}\,\xi_{1}'''.  \label{eq:bbm_h3}
+          +c^{\ast}\omega_{2}k^{2}\,\xi_{1}'''.\label{eq:bbm_h3}
 \end{align}
 The dispersion relation is again expanded as
 \[
@@ -1266,14 +1365,13 @@ Every transformation that maps the solution manifold of a system of differential
 
 Information about a PDE system's conservation laws is indispensable for a profound understanding of its symmetry structure. Conservation laws encode the fundamental physical invariants of the underlying process and underpin analytical results on existence, uniqueness, and stability \cite{Olver1993, Evans2010}. They likewise play a pivotal rôle in geometric analyses of solution manifolds \cite{Bluman1987} and in the design of robust numerical schemes that preserve key physical quantities \cite{LeVeque2002}.
 
-In this section we introduce the recently developed \textsc{Maple} package \texttt{GeM} \cite{Cheviakov2007}. The package provides fully automated routines for the local symmetry analysis of ODEs and PDEs and for the systematic search of conservation laws.  All determining equations are generated symbolically in a form amenable to efficient automatic reduction and solution.
+In this section we introduce the recently developed \textsc{Maple} package \texttt{GeM} \cite{Cheviakov2007}. The package provides fully automated routines for the local symmetry analysis of ODEs and PDEs and for the systematic search of conservation laws. All determining equations are generated symbolically in a form amenable to efficient automatic reduction and solution.
 
 \subsection{Conservation laws}\label{ssec:CL}
 
-Divergence expressions that vanish on the solution set of a PDE system represent its \emph{local conservation laws}.  
-Such laws arise ubiquitously: classical examples include the conservation of mass, momentum, charge, and energy. For time-dependent systems on bounded domains they yield first integrals, while for ODEs they provide conserved quantities \cite{Cheviakov2010}. Conservation laws play a decisive rôle in the analytical theory of nonlinear PDEs, notably in the study of stability and in the construction of numerical schemes \cite{Lax1968, Knops1984}. Moreover, a local conservation law often serves to introduce non-local (potential) variables, thereby generating auxiliary PDE systems with identical solution sets \cite{Bluman1987, Sjoberg2004}.
+Divergence expressions that vanish on the solution set of a PDE system represent its \emph{local conservation laws}. Such laws arise ubiquitously: classical examples include the conservation of mass, momentum, charge, and energy. For time-dependent systems on bounded domains they yield first integrals, while for ODEs they provide conserved quantities \cite{Cheviakov2010}. Conservation laws play a decisive rôle in the analytical theory of nonlinear PDEs, notably in the study of stability and in the construction of numerical schemes \cite{Lax1968, Knops1984}. Moreover, a local conservation law often serves to introduce non-local (potential) variables, thereby generating auxiliary PDE systems with identical solution sets \cite{Bluman1987, Sjoberg2004}.
 
-The four standard flux-construction techniques, together with the direct method for conservation-law derivation, have all been implemented symbolically in \texttt{GeM} \cite{Cheviakov2007}.  Package routines return the determining equations in a form suitable for automatic reduction and solution. They are capable of treating high-order systems with numerous dependent and independent variables and can typically be executed on a standard desktop computer.
+The four standard flux-construction techniques, together with the direct method for conservation-law derivation, have all been implemented symbolically in \texttt{GeM} \cite{Cheviakov2007}. Package routines return the determining equations in a form suitable for automatic reduction and solution. They are capable of treating high-order systems with numerous dependent and independent variables and can typically be executed on a standard desktop computer.
 
 Consider an $N$-equation PDE system of order $K$ for
 \[
@@ -1464,7 +1562,7 @@ For the cylindrical Boussinesq system \eqref{eq:bouss1}, \eqref{eq:bouss2} with 
         +\frac{1}{3}\,\tilde{\alpha}\,\eta_{tt}\Bigr]_{x}=0 .
 \end{multline}
 Here $\tilde{\alpha}= \mathsf{\rho^{w}\,h/\rho}$ and
-$\tilde{\beta}(x)=\mathsf{E\,h/(\rho\,r_{0}^{2})}$.  
+$\tilde{\beta}(x)=\mathsf{E\,h/(\rho\,r_{0}^{2})}$.
 The corresponding multipliers are
 \begin{itemize}
   \item $\lambda_{1}(t,x,\eta,\bar{u},\dots)=0$,
@@ -1663,7 +1761,7 @@ The cubic \emph{non-linear Schrödinger} (NLS) equation,
   +|\psi|^{2}\psi
   =0,
 \end{equation}
-is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \cite{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretisations \cite{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968).  Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the NLS to lower-order models such as the KdV and BBM equations; see the reviews by Peregrine (1983) and Hammack \&\ Henderson (1993) for historical details.
+is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \cite{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretisations \cite{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968). Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the NLS to lower-order models such as the KdV and BBM equations; see the reviews by Peregrine (1983) and Hammack \&\ Henderson (1993) for historical details.
 
 \subsection{Plane waves and modulational instability}
 
@@ -1691,7 +1789,7 @@ grow exponentially in time, a manifestation of the \emph{Benjamin--Feir (modulat
 
 \begin{theorem}[Benjamin--Feir criterion]\label{thm:MI}
   Let $\psi_{0}$ be the plane-wave solution \eqref{eq:plane_wave} of the
-  focusing NLS equation \eqref{eq:NLS}.  Then $\psi_{0}$ is modulationally
+  focusing NLS equation \eqref{eq:NLS}. Then $\psi_{0}$ is modulationally
   unstable: for every wavenumber $q$ satisfying
   \(
     0<q^{2}<2|A|^{2},
@@ -1709,7 +1807,7 @@ grow exponentially in time, a manifestation of the \emph{Benjamin--Feir (modulat
     \sigma(q)=q\sqrt{2|A|^{2}-q^{2}}>0.
   \)
   Conversely, all perturbations with $q^{2}\ge2|A|^{2}$ remain
-  neutral.  Hence the homogeneous state \eqref{eq:plane_wave} is unstable
+  neutral. Hence the homogeneous state \eqref{eq:plane_wave} is unstable
   to side-band perturbations whose wavelengths exceed the critical value
   \(
     \lambda_{\mathrm{c}}=\pi/|A|.
@@ -1776,18 +1874,16 @@ c_g = \frac{d \omega}{d k} = a - 3 c k^2.
 \]
 
 At $\O(\eps^2)$, the equation becomes:
-\begin{equation}
-\label{eq:second_order}
-\left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
+\begin{equation}\label{eq:second_order}
+  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
 \end{equation}
 where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side includes terms proportional to $\exp(\pm i \theta)$ and $\exp(\pm 2 i \theta)$. The resonant terms proportional to $\exp(\pm i \theta)$ would lead to secular growth in $\eta_1$ and must be eliminated by imposing:
-\begin{equation}
-\label{eq:secular_elimination}
-\left( \partial_{T_1} + c_g \partial_X \right) \eta_0 = 0 \implies A(X, T_1, T_2) = A(X - c_g T_1, T_2).
+\begin{equation}\label{eq:secular_elimination}
+  \left( \partial_{T_1} + c_g \partial_X \right) \eta_0 = 0 \implies A(X, T_1, T_2) = A(X - c_g T_1, T_2).
 \end{equation}
 This indicates that the amplitude $A$ propagates at the group velocity $c_g$. The remaining non-resonant term is:
 \[
-\partial_x \left( \frac{1}{2} \eta_0^2 \right) = i k A^2 \exp(2 i \theta) + \text{c.c.}.
+  \partial_x \left( \frac{1}{2} \eta_0^2 \right) = i k A^2 \exp(2 i \theta) + \text{c.c.}.
 \]
 We assume a solution for $\eta_1$ of the form:
 \begin{equation}\label{eq:eta1_form}
@@ -1799,22 +1895,21 @@ Substituting into \eqref{eq:second_order} and matching terms proportional to $\e
 \end{equation}
 while $B_0$ and $B_1$ remain undetermined at this order.
 
-At $O(\eps^3)$, the equation is:
+At $\O(\eps^3)$, the equation is:
 \begin{equation}\label{eq:third_order}
   \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
 \end{equation}
-To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm i \theta)$. The $\theta$-independent terms give:
+To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm \ui \theta)$. The $\theta$-independent terms give:
 \begin{equation}\label{eq:B0_equation}
   \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
 \end{equation}
 yielding:
 \[
-B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
+  B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
 \]
 where $\phi$ is an arbitrary function. The terms proportional to $\exp(i \theta)$ give:
-\begin{equation}
-\label{eq:resonant_theta}
-i \partial_{T_2} A - 3 k \partial_X^2 A + \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 + i k b \left( A B_0 + A^* B_2 \right) = 0.
+\begin{equation}\label{eq:resonant_theta}
+  \ui \partial_{T_2} A - 3 k \partial_X^2 A + \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 + i k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
 To ensure $B_1$ depends only on $X - c_g T_1$, we set:
 \[
@@ -1826,7 +1921,7 @@ since $a - 3 c k^2 = c_g$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_
 \end{equation*}
 Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the NLS equation:
 \begin{equation}\label{eq:NLS_final}
-  i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0.
+  \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0.
 \end{equation}
 
 \subsubsection{Multi-Scale Analysis with Significant Dissipation}
@@ -1968,22 +2063,19 @@ where $a_0 \in \mathbb{R}^+$ is the amplitude. To study stability, we introduce 
   A(\zeta, T_2) = A_0(T_2) [1 + a(\zeta, T_2)], \quad |a| \ll 1.
 \end{equation}
 Substituting into \eqref{eq:NLS1} and linearizing, we obtain:
-\begin{equation}
-\label{eq:linearized_case1}
+\begin{equation}\label{eq:linearized_case1}
   \ui \partial_{T_2} a = 3 k \partial_{\zeta}^2 a - \beta a_0^2 (a + a^*),
 \end{equation}
 where $a^*$ is the complex conjugate of $a$. Assuming $a = u(\zeta, T_2) + \ui v(\zeta, T_2)$ with real $u$ and $v$, we get:
-\begin{equation}
-\label{eq:matrix_case1}
-\partial_{T_2} \begin{pmatrix} u \\ v \end{pmatrix} = \begin{pmatrix}
+\begin{equation}\label{eq:matrix_case1}
+  \partial_{T_2} \begin{pmatrix} u \\ v \end{pmatrix} = \begin{pmatrix}
 0 & 3 k \partial_\zeta^2 \\
 -3 k \partial_\zeta^2 + 2 \beta a_0^2 & 0
 \end{pmatrix} \begin{pmatrix} u \\ v \end{pmatrix}.
 \end{equation}
 Seeking solutions of the form $(u, v) \propto \exp(i q \zeta - i \lambda T_2)$, the dispersion relation is:
-\begin{equation}
-\label{eq:dispersion_case1}
-\lambda^2 = 9 k^2 q^4 + 6 \beta k a_0^2 q^2.
+\begin{equation}\label{eq:dispersion_case1}
+  \lambda^2 = 9 k^2 q^4 + 6 \beta k a_0^2 q^2.
 \end{equation}
 If $\beta k > 0$, then for small $q^2 < -\frac{2 \beta a_0^2}{3 k}$, $\lambda^2 < 0$, indicating instability due to imaginary $\lambda$.
 
@@ -2212,7 +2304,7 @@ When modelling the cardiac cycle, the Windkessel approach accounts for \emph{art
 
 Windkessel and other lumped-parameter models are often derived from electrical-circuit analogies in which current represents volumetric blood flow rate and voltage represents arterial pressure \cite{Avolio1980, Segers1998, Milisic2004}. In this picture, electrical resistances mimic viscous losses, capacitors represent vascular compliance (volume storage), and inductors reproduce the inertial effects of the blood column.
 
-In the electrical analogy, pressure plays the role of voltage, whereas flow rate corresponds to current.  A two-element Windkessel model incorporates arterial compliance and total peripheral resistance. Here the compliance of the systemic arteries is represented by a capacitor \(\!C\) \(\bigl[\mathsf{cm^{3}\,mmHg^{-1}}\bigr]\), and the peripheral vascular resistance is represented by a resistor \(R\) \(\bigl[\mathsf{mmHg\,s\,cm^{-3}}\bigr]\). The inflow rate \(Q(t)\) \([\mathsf{cm^{3}\,s^{-1}}]\) corresponds to an electric current, whereas the outlet pressure \(P(t)\) \([\mathsf{mmHg}]\) corresponds to a voltage source.
+In the electrical analogy, pressure plays the role of voltage, whereas flow rate corresponds to current. A two-element Windkessel model incorporates arterial compliance and total peripheral resistance. Here the compliance of the systemic arteries is represented by a capacitor \(\!C\) \(\bigl[\mathsf{cm^{3}\,mmHg^{-1}}\bigr]\), and the peripheral vascular resistance is represented by a resistor \(R\) \(\bigl[\mathsf{mmHg\,s\,cm^{-3}}\bigr]\). The inflow rate \(Q(t)\) \([\mathsf{cm^{3}\,s^{-1}}]\) corresponds to an electric current, whereas the outlet pressure \(P(t)\) \([\mathsf{mmHg}]\) corresponds to a voltage source.
 
 In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous BBM-type equation,
 \begin{equation}\label{eq:chap6.1}
