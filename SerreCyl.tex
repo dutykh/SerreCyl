@@ -1821,10 +1821,9 @@ To ensure $B_1$ depends only on $X - c_g T_1$, we set:
 \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 = 0,
 \]
 since $a - 3 c k^2 = c_g$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta}, we obtain:
-\begin{equation}
-\label{eq:NLS_intermediate}
-i \partial_{T_2} A - 3 k \partial_X^2 A + \frac{b^2 k A |A|^2}{6 c k^2} - \frac{k b A \phi}{3 c k^2} = 0.
-\end{equation}
+\begin{equation*}%\label{eq:NLS_intermediate}
+  \ui \partial_{T_2} A - 3 k \partial_X^2 A + \frac{b^2 k A |A|^2}{6 c k^2} - \frac{k b A \phi}{3 c k^2} = 0\,.
+\end{equation*}
 Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the NLS equation:
 \begin{equation}\label{eq:NLS_final}
   i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0.
@@ -1832,7 +1831,7 @@ Assuming $\phi = 0$ (a common simplification for initial conditions), and defini
 
 \subsubsection{Multi-Scale Analysis with Significant Dissipation}
 
-In this section, we extend the multi-scale analysis of the KdV-Burgers equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified Nonlinear Schr\"odinger (NLS) equation.
+In this section, we extend the multi-scale analysis of the KdV--Burgers equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified Nonlinear Schr\"odinger (NLS) equation.
 
 Substituting the ansatz \eqref{eq:ansatz} into the KdV-Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:leading_order_diss}
@@ -1895,9 +1894,9 @@ Assuming $B_1$ depends only on $X - c_g T_1$, we set:
 \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 = 0,
 \]
 since $a - 3 c k^2 = \text{Re}(c_g)$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta_diss}, and assuming $\phi = 0$, we obtain:
-\begin{equation}\label{eq:NLS_intermediate_diss}
+\begin{equation*}%\label{eq:NLS_intermediate_diss}
   \partial_{T_2} A + 3 \ui k \partial_X^2 A + d \partial_X^2 A + i k b^2 \left( \frac{1}{6 c k^2 - 2 \ui d k} - \frac{1}{3 c k^2 - 2 \ui d k} \right) |A|^2 A = 0.
-\end{equation}
+\end{equation*}
 Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \frac{1}{3 c k^2 - 2 \ui d k}$, and rewriting in standard form, we obtain the modified NLS equation:
 \begin{equation}\label{eq:NLS_final_diss}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + i d \partial_\zeta^2 A + i k b^2 (m - n) |A|^2 A = 0.
@@ -1938,18 +1937,17 @@ where $\phi$ is an arbitrary function. For simplicity, we set $\phi = 0$. The te
   \partial_{T_2} A + 3 \ui k \partial_X^2 A - k^2 \tilde{d} A + \ui k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
 Substituting $B_0$ and $B_2$, and defining $\zeta = X - c_g T_1$, we obtain:
-\begin{equation}\label{eq:NLS_intermediate}
+\begin{equation*}%\label{eq:NLS_intermediate}
   \partial_{T_2} A + 3 \ui k \partial_\zeta^2 A - k^2 \tilde{d} A + \nu^\star A |A|^2 = 0,
-\end{equation}
+\end{equation*}
 where:
 \[
   \nu^\star = \frac{-2 \ui k b^2 + \ui k b}{c k^2} = \frac{\ui k b (1 - 2 b)}{c k^2}.
 \]
 Rewriting in standard NLS form:
-\begin{equation}
-\label{eq:NLS_final_intermediate}
+\begin{equation*}%\label{eq:NLS_final_intermediate}
 i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
-\end{equation}
+\end{equation*}
 
 \subsubsection{Instability analysis}
 
