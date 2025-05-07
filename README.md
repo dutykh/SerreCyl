@@ -55,7 +55,11 @@ All Maple (Maplesoft™) scripts developed and used in this work, as well as the
 
 ## License
 
-This repository is intended for academic and research purposes. Please contact the corresponding author for reuse or collaboration inquiries.
+This repository is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0).
+
+You are free to use, modify, and distribute this work under the terms of the LGPL-3.0. For more details, see the [LICENSE.md](LICENSE.md) file in this repository or visit the [official license page](https://www.gnu.org/licenses/lgpl-3.0.html).
+
+If you use this work or code, please cite the manuscript and acknowledge the authors.
 
 ## Contact
 
