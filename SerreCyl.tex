@@ -1736,11 +1736,11 @@ Here, \(a\) relates to linear advection, \(b\) to non-linear steepening, \(c\) t
 To study the slowly varying dynamics of a wave train, we employ a multi-scale perturbation approach. We seek a solution of the form (\emph{cf.} \cite{Dias2005}):
 \begin{equation}
   \label{eq:ansatz}
-  \eta(x,t) = \epsilon \left( \eta_0 + \epsilon \eta_1(x, X, t, T_1, T_2) + \epsilon^2 \eta_2(x, X, t, T_1, T_2) + \epsilon^3 \eta_3(x, X, t, T_1, T_2) + \dots \right),
+  \eta(x,t) = \eps \left( \eta_0 + \eps \eta_1(x, X, t, T_1, T_2) + \eps^2 \eta_2(x, X, t, T_1, T_2) + \eps^3 \eta_3(x, X, t, T_1, T_2) + \dots \right),
 \end{equation}
-where $\epsilon \ll 1$ is a small parameter, and the slow scales are defined as:
+where $\eps \ll 1$ is a small parameter, and the slow scales are defined as:
 \[
-  X = \epsilon x, \quad T_1 = \epsilon t, \quad T_2 = \epsilon^2 t.
+  X = \eps x, \quad T_1 = \eps t, \quad T_2 = \eps^2 t.
 \]
 Here, $\eta_0$ represents the leading-order wave train, and $\eta_1, \eta_2, \eta_3, \dots$ are higher-order corrections that depend on both fast scales ($x, t$) and slow scales ($X, T_1, T_2$). We assume the leading-order solution $\eta_0$ is a slowly modulated plane wave:
 \begin{equation}\label{eq:wave_train}
@@ -1748,15 +1748,15 @@ Here, $\eta_0$ represents the leading-order wave train, and $\eta_1, \eta_2, \et
 \end{equation}
 where $A(X, T_1, T_2)$ is the complex amplitude modulating on the slow scales, $\theta(x, t) = K x - \omega t$ is the phase with wave number $K$ and frequency $\omega$, and ``c.c.'' denotes the complex conjugate. This form captures a rapidly oscillating wave with slowly varying amplitude. To account for the multiple scales, we expand the partial derivatives as follows:
 \begin{equation*}\label{eq:derivative_expansion}
-  \partial_t \rightarrow \partial_t + \epsilon \partial_{T_1} + \epsilon^2 \partial_{T_2}, \quad \partial_x \rightarrow \partial_x + \epsilon \partial_X, \partial_x^3 \rightarrow \partial_x^3 + 3 \epsilon \partial_x^2 \partial_X + 3 \epsilon^2 \partial_x \partial_X^2 + \epsilon^3 \partial_X^3.
+  \partial_t \rightarrow \partial_t + \eps \partial_{T_1} + \eps^2 \partial_{T_2}, \quad \partial_x \rightarrow \partial_x + \eps \partial_X, \partial_x^3 \rightarrow \partial_x^3 + 3 \eps \partial_x^2 \partial_X + 3 \eps^2 \partial_x \partial_X^2 + \eps^3 \partial_X^3.
 \end{equation*}
-These expansions reflect the contributions of derivatives across both fast and slow scales, enabling us to separate the dynamics at different orders of $\epsilon$.
+These expansions reflect the contributions of derivatives across both fast and slow scales, enabling us to separate the dynamics at different orders of $\eps$.
 
 \subsubsection{Multi-Scale Analysis with Small Dissipation}
 
-In this section, we continue the multi-scale analysis of the KdV--Burgers equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\epsilon^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the Nonlinear Schr\"odinger (NLS) equation for the amplitude of the wave train.
+In this section, we continue the multi-scale analysis of the KdV--Burgers equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\eps^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the Nonlinear Schr\"odinger (NLS) equation for the amplitude of the wave train.
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\epsilon)$, we obtain:
+Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}
 \label{eq:leading_order}
 \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0,
@@ -1775,7 +1775,7 @@ indicating dispersion since $s$ depends on the wave number $k$. The group veloci
 c_g = \frac{d \omega}{d k} = a - 3 c k^2.
 \]
 
-At $\O(\epsilon^2)$, the equation becomes:
+At $\O(\eps^2)$, the equation becomes:
 \begin{equation}
 \label{eq:second_order}
 \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
@@ -1799,12 +1799,10 @@ Substituting into \eqref{eq:second_order} and matching terms proportional to $\e
 \end{equation}
 while $B_0$ and $B_1$ remain undetermined at this order.
 
-At $O(\epsilon^3)$, the equation is:
-\begin{multline}
-\label{eq:third_order}
-\left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 \\
-- b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
-\end{multline}
+At $O(\eps^3)$, the equation is:
+\begin{equation}\label{eq:third_order}
+  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
+\end{equation}
 To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm i \theta)$. The $\theta$-independent terms give:
 \begin{equation}\label{eq:B0_equation}
   \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
@@ -1836,7 +1834,7 @@ Assuming $\phi = 0$ (a common simplification for initial conditions), and defini
 
 In this section, we extend the multi-scale analysis of the KdV-Burgers equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified Nonlinear Schr\"odinger (NLS) equation.
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV-Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\epsilon)$, we obtain:
+Substituting the ansatz \eqref{eq:ansatz} into the KdV-Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:leading_order_diss}
   \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_0 = 0,
 \end{equation}
@@ -1850,7 +1848,7 @@ The group velocity, accounting for dissipation, is:
 \end{equation}
 The imaginary component in $c_g$ reflects the dissipative effect on wave packet propagation.
 
-At $\O(\epsilon^2)$, the equation is:
+At $\O(\eps^2)$, the equation is:
 \begin{equation}\label{eq:second_order_diss}
   \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X + 2 \ui d k \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
 \end{equation}
@@ -1873,7 +1871,7 @@ B_2 = \frac{b}{6 c k^2 - 2 \ui d k} A^2,
 \end{equation}
 while $B_0$ and $B_1$ remain undetermined at this order.
 
-At $\O(\epsilon^3)$, the equation is:
+At $\O(\eps^3)$, the equation is:
 \begin{multline}
 \label{eq:third_order_diss}
 \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 + d \partial_X^2 \right) \eta_0 \\
@@ -1907,80 +1905,76 @@ Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \f
 
 \subsubsection{Multi-scale Analysis with Intermediate Dissipation}
 
-In this section, we perform a multi-scale analysis of the KdV--Burgers equation for the case where the dissipative term coefficient is $d = \O(\epsilon^2)$, \emph{i.e.}, $d = \epsilon^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified Nonlinear Schr\"odinger (NLS) equation. 
+In this section, we perform a multi-scale analysis of the KdV--Burgers equation for the case where the dissipative term coefficient is $d = \O(\eps^2)$, \emph{i.e.}, $d = \eps^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified Nonlinear Schr\"odinger (NLS) equation. 
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers}, the equations at $\O(\epsilon)$ and $\O(\epsilon^2)$ are identical to those in the first case ($d = \O(\epsilon^3)$), as the dissipative term $d \partial_x^2 \eta$ only appears at $\O(\epsilon^3)$ or higher. Thus, we have:
+Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers}, the equations at $\O(\eps)$ and $\O(\eps^2)$ are identical to those in the first case ($d = \O(\eps^3)$), as the dissipative term $d \partial_x^2 \eta$ only appears at $\O(\eps^3)$ or higher. Thus, we have:
 \begin{itemize}
-    \item At $\O(\epsilon)$: The leading-order equation \eqref{eq:leading_order} and dispersion relation \eqref{eq:dispersion}:
+    \item At $\O(\eps)$: The leading-order equation \eqref{eq:leading_order} and dispersion relation \eqref{eq:dispersion}:
     \[
     \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0, \quad \omega = a k - c k^3,
     \]
     with group velocity $c_g = a - 3 c k^2$.
-    \item At $O(\epsilon^2)$: The second-order equation \eqref{eq:second_order}, secular condition \eqref{eq:secular_elimination}, and solution for $B_2$ \eqref{eq:B2_solution}:
+    \item At $O(\eps^2)$: The second-order equation \eqref{eq:second_order}, secular condition \eqref{eq:secular_elimination}, and solution for $B_2$ \eqref{eq:B2_solution}:
     \[
     A(X, T_1, T_2) = A(X - c_g T_1, T_2), \quad B_2 = \frac{b}{6 c k^2} A^2.
     \]
 \end{itemize}
 The coefficients are $a = \tilde{c}$, $b = \dfrac{5}{2} \dfrac{1}{r_0} \tilde{c}$, and $c = \dfrac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$.
 
-At $\O(\epsilon^3)$, the dissipative term introduces a difference. The equation is:
+At $\O(\eps^3)$, the dissipative term introduces a difference. The equation is:
 \begin{equation}\label{eq:third_order_intermediate}
-\left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 + \tilde{d} \partial_x^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
+  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 + \tilde{d} \partial_x^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
 \end{equation}
 The $\theta$-independent resonant terms yield the same equation as in the first case \eqref{eq:B0_equation}:
 \[
-\left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
+  \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
 \]
 giving:
 \[
-B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
+  B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
 \]
 where $\phi$ is an arbitrary function. For simplicity, we set $\phi = 0$. The terms proportional to $\exp(i \theta)$ give:
-\begin{equation}
-\label{eq:resonant_theta_intermediate}
-\partial_{T_2} A + 3 i k \partial_X^2 A - k^2 \tilde{d} A + i k b \left( A B_0 + A^* B_2 \right) = 0.
+\begin{equation}\label{eq:resonant_theta_intermediate}
+  \partial_{T_2} A + 3 \ui k \partial_X^2 A - k^2 \tilde{d} A + \ui k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
 Substituting $B_0$ and $B_2$, and defining $\zeta = X - c_g T_1$, we obtain:
-\begin{equation}
-\label{eq:NLS_intermediate}
-\partial_{T_2} A + 3 i k \partial_\zeta^2 A - k^2 \tilde{d} A + \nu^\star A |A|^2 = 0,
+\begin{equation}\label{eq:NLS_intermediate}
+  \partial_{T_2} A + 3 \ui k \partial_\zeta^2 A - k^2 \tilde{d} A + \nu^\star A |A|^2 = 0,
 \end{equation}
 where:
 \[
-\nu^\star = \frac{-2 i k b^2 + i k b}{c k^2} = \frac{i k b (1 - 2 b)}{c k^2}.
+  \nu^\star = \frac{-2 \ui k b^2 + \ui k b}{c k^2} = \frac{\ui k b (1 - 2 b)}{c k^2}.
 \]
 Rewriting in standard NLS form:
 \begin{equation}
 \label{eq:NLS_final_intermediate}
-i \partial_{T_2} A - 3 k \partial_\zeta^2 A + i k^2 \tilde{d} A - i \nu^\star A |A|^2 = 0.
+i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
 \end{equation}
 
 \subsubsection{Instability analysis}
 
-Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \cite{benjamin1967, yuen1975, yuen1980, remoissenet1996} and light waves in optical fibers \cite{tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic Nonlinear Schr\"odinger (NLS) equation on periodic domains reveal recurrent behavior reminiscent of the Fermi-Pasta-Ulam phenomenon \cite{fermi1955, yuen1978, hafizi1981}.
+Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \cite{Benjamin1967a, Yuen1975, Yuen1980, Remoissenet1996} and light waves in optical fibers \cite{Tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic Nonlinear Schr\"odinger (NLS) equation on periodic domains reveal recurrent behavior reminiscent of the Fermi--Pasta--Ulam phenomenon \cite{Fermi1955, Yuen1978, Hafizi1981}.
 
-\subsubsection*{Case 1: Negligible Dissipation ($d = O(\epsilon^3)$)}
+\subsubsection*{Case 1: Negligible Dissipation ($d = \O(\eps^3)$)}
 
-For the NLS equation \eqref{eq:NLS1}:
+For the NLS equation \eqref{eq:NLS_final}:
 \[
-i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0, \quad \beta = \frac{b^2}{6 c k}, \quad \zeta = X - c_g T_1,
+  \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0, \quad \beta = \frac{b^2}{6 c k}, \quad \zeta = X - c_g T_1,
 \]
 a plane wave solution is:
-\begin{equation}
-\label{eq:plane_wave_case1}
-A_0(T_2) = a_0 \exp(i \beta a_0^2 T_2),
+\begin{equation}\label{eq:plane_wave_case1}
+  A_0(T_2) = a_0 \exp(\ui \beta a_0^2 T_2),
 \end{equation}
 where $a_0 \in \mathbb{R}^+$ is the amplitude. To study stability, we introduce a small perturbation:
-\begin{equation}
-\label{eq:perturbation_case1}
-A(\zeta, T_2) = A_0(T_2) [1 + a(\zeta, T_2)], \quad |a| \ll 1.
+\begin{equation}\label{eq:perturbation_case1}
+  A(\zeta, T_2) = A_0(T_2) [1 + a(\zeta, T_2)], \quad |a| \ll 1.
 \end{equation}
 Substituting into \eqref{eq:NLS1} and linearizing, we obtain:
 \begin{equation}
 \label{eq:linearized_case1}
-i \partial_{T_2} a = 3 k \partial_{\zeta}^2 a - \beta a_0^2 (a + a^*),
+  \ui \partial_{T_2} a = 3 k \partial_{\zeta}^2 a - \beta a_0^2 (a + a^*),
 \end{equation}
-where $a^*$ is the complex conjugate of $a$. Assuming $a = u(\zeta, T_2) + i v(\zeta, T_2)$ with real $u$ and $v$, we get:
+where $a^*$ is the complex conjugate of $a$. Assuming $a = u(\zeta, T_2) + \ui v(\zeta, T_2)$ with real $u$ and $v$, we get:
 \begin{equation}
 \label{eq:matrix_case1}
 \partial_{T_2} \begin{pmatrix} u \\ v \end{pmatrix} = \begin{pmatrix}
@@ -2038,9 +2032,9 @@ The stability depends on the sign and magnitude of $6 N k - 2 d Q$, with instabi
 The multi-scale analysis of the KdV--Burgers equation \eqref{eq:kdv_burgers} for a slowly modulated wave train $\eta_0 = A \exp(\ui \theta) + \text{c.c.}$ reveals how dissipation affects the governing Nonlinear Schr\"odinger (NLS) equations and the modulational instability of plane wave solutions. The results vary with the dissipation coefficient $d$:
 
 \begin{description}
-  \item{\textbf{Negligible Dissipation ($d = O(\epsilon^3)$):}} The NLS equation \eqref{eq:NLS1} is purely dispersive with a cubic nonlinearity. The modulational instability analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
+  \item{\textbf{Negligible Dissipation ($d = O(\eps^3)$):}} The NLS equation \eqref{eq:NLS1} is purely dispersive with a cubic nonlinearity. The modulational instability analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
   \item{\textbf{Significant Dissipation ($d = O(1)$):}} The modified NLS equation \eqref{eq:NLS_final_diss} includes a dissipative term $i d \partial_\zeta^2 A$, altering the dynamics. The instability condition \eqref{eq:dispersion_case2} depends on the coefficient $6 N k - 2 d Q$, indicating that dissipation modifies the range of unstable wave numbers, potentially stabilizing or destabilizing the wave depending on system parameters.
-  \item{\textbf{Intermediate Dissipation ($d = O(\epsilon^2)$, $d = \epsilon^2 \tilde{d}$):}} The NLS equation \eqref{eq:NLS_final_intermediate} introduces a linear dissipative term $i k^2 \tilde{d} A$. While modulational instability was not analyzed here, the presence of dissipation suggests a modified instability threshold, requiring further perturbation analysis.
+  \item{\textbf{Intermediate Dissipation ($d = O(\eps^2)$, $d = \eps^2 \tilde{d}$):}} The NLS equation \eqref{eq:NLS_final_intermediate} introduces a linear dissipative term $i k^2 \tilde{d} A$. While modulational instability was not analyzed here, the presence of dissipation suggests a modified instability threshold, requiring further perturbation analysis.
 \end{description}
 These findings underscore the complex interplay between nonlinearity, dispersion, and dissipation in nonlinear wave dynamics. The derived NLS equations and instability conditions provide critical insights into the stability of wave trains in dispersive media, with applications to physical systems like water waves and optical fibers.
 
