@@ -390,7 +390,7 @@ To model blood flow in a vessel, we derive simplified equations from the Euler e
 
 We introduce non-dimensional and scaled variables to normalize the Euler equations:
 \begin{equation}\label{eq:ndv}
-  \eta^* = \frac{\eta}{a}, \quad x^* = \frac{x}{\lambda}, \quad r^* = \frac{r}{R}, \quad t^* = \frac{t}{T}, \quad \phi^* = \frac{\phi}{\lambda \varepsilon \tilde{c}}, \quad p^* = \frac{p}{\varepsilon \rho \tilde{c}^2},
+  \eta^* = \frac{\eta}{a}, \quad x^* = \frac{x}{\lambda}, \quad r^* = \frac{r}{R}, \quad t^* = \frac{t}{T}, \quad \phi^* = \frac{\phi}{\lambda \eps \tilde{c}}, \quad p^* = \frac{p}{\eps \rho \tilde{c}^2},
 \end{equation}
 where $\eta$ is the vessel wall displacement, $a$ is the typical wall deviation, $\lambda$ is the typical wavelength, $R$ is the vessel radius, $T = \lambda / \tilde{c}$ is the time scale, $\tilde{c} = \sqrt{E h / 2 \rho R}$ is the Moens-Korteweg speed, $\phi$ is the velocity potential, $p$ is the pressure, $\rho$ is the fluid density, $E$ is the Young's modulus, and $h$ is the wall thickness \cite{Fung1993}. The non-dimensional parameters are:
 \begin{equation}\label{eq:parameters}
@@ -400,13 +400,13 @@ where $\eps = O(1)$ characterizes nonlinearity, and $\delta^2 \ll 1$ indicates w
 
 In non-dimensional form (dropping asterisks for simplicity), the governing equations and boundary conditions are:
 \begin{align}
-& \partial_t \phi + \frac{\varepsilon}{2} (\partial_x \phi)^2 + \frac{\varepsilon}{2 \delta^2} (\partial_r \phi)^2 + p + \varepsilon \kappa \phi = 0, \quad \text{at } r = r^w, \label{eq:bernoulli} \\
+& \partial_t \phi + \frac{\eps}{2} (\partial_x \phi)^2 + \frac{\eps}{2 \delta^2} (\partial_r \phi)^2 + p + \eps \kappa \phi = 0, \quad \text{at } r = r^w, \label{eq:bernoulli} \\
 & \delta^2 r \partial_x^2 \phi + \partial_r (r \partial_r \phi) = 0, \quad 0 < r < r^w, \label{eq:laplace} \\
 & \partial_r \phi = 0, \quad \text{at } r = 0, \label{eq:center_bc} \\
-& \partial_r \phi = \delta^2 \partial_t \eta + \delta^2 [r_0(x) + \varepsilon \eta] \partial_x \phi, \quad \text{at } r = r^w, \label{eq:wall_bc} \\
+& \partial_r \phi = \delta^2 \partial_t \eta + \delta^2 [r_0(x) + \eps \eta] \partial_x \phi, \quad \text{at } r = r^w, \label{eq:wall_bc} \\
 & p = \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta), \quad \text{at } r = r^w, \label{eq:pressure}
 \end{align}
-where $r^w = r_0(x) + \varepsilon \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \varepsilon / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \cite{Mitsotakis2019}). Following standard asymptotic techniques \cite{BCS}, we expand the velocity potential $\phi$ as:
+where $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \eps / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \cite{Mitsotakis2019}). Following standard asymptotic techniques \cite{BCS}, we expand the velocity potential $\phi$ as:
 \begin{equation}\label{eq:potential}
   \phi(x, r, t) = \sum_{m=0}^\infty r^m \phi_m(x, t).
 \end{equation}
@@ -433,8 +433,8 @@ Using \eqref{eq:potapr} in the boundary condition \eqref{eq:wall_bc} at $r = r^w
 Substituting \eqref{eq:potapr} and \eqref{eq:pressure} into the Bernoulli equation \eqref{eq:bernoulli} at $r = r^w$, we eliminate pressure to obtain the momentum equation:
 \begin{equation}\label{eq:momentump1}
 \begin{split}
-\partial_t \phi_0 & - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \partial_t \phi_0 + \frac{\varepsilon}{2} \left[ (\partial_x \phi_0)^2 - \delta^2 \frac{(r^w)^2}{2} \partial_x \phi_0 \partial_x^3 \phi_0 \right] + \frac{\varepsilon \delta^2}{8} (r^w)^2 (\partial_x^2 \phi_0)^2 \\
-& + \varepsilon \kappa \left[ \phi_0 - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \phi_0 \right] + \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta) = O(\delta^4).
+\partial_t \phi_0 & - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \partial_t \phi_0 + \frac{\eps}{2} \left[ (\partial_x \phi_0)^2 - \delta^2 \frac{(r^w)^2}{2} \partial_x \phi_0 \partial_x^3 \phi_0 \right] + \frac{\eps \delta^2}{8} (r^w)^2 (\partial_x^2 \phi_0)^2 \\
+& + \eps \kappa \left[ \phi_0 - \delta^2 \frac{(r^w)^2}{4} \partial_x^2 \phi_0 \right] + \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta) = O(\delta^4).
 \end{split}
 \end{equation}
 Defining the horizontal velocity at the vessel center as $w(x, t) = \partial_x \phi_0(x, t)$, we rewrite \eqref{eq:massp1} and \eqref{eq:momentump1} as:
@@ -442,14 +442,14 @@ Defining the horizontal velocity at the vessel center as $w(x, t) = \partial_x \
   \partial_t \eta + r^w_x w + \frac{r^w}{2} \partial_x w - \delta^2 \frac{(r^w)^2 r^w_x}{4} \partial_x^2 w - \delta^2 \frac{(r^w)^3}{16} \partial_x^3 w = \O(\delta^4),
 \end{equation}
 \begin{equation}\label{eq:momentump2}
-  \partial_t w + \partial_x (\beta \eta) + \varepsilon w \partial_x w - \frac{\delta^2}{4} \partial_x \left[ (r^w)^2 \Gamma \right] + \varepsilon \kappa \left[ w - \frac{\delta^2}{4} \partial_x \left( (r^w)^2 \partial_x w \right) \right] + \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta) = \O(\delta^4),
+  \partial_t w + \partial_x (\beta \eta) + \eps w \partial_x w - \frac{\delta^2}{4} \partial_x \left[ (r^w)^2 \Gamma \right] + \eps \kappa \left[ w - \frac{\delta^2}{4} \partial_x \left( (r^w)^2 \partial_x w \right) \right] + \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta) = \O(\delta^4),
 \end{equation}
 where:
 \begin{equation}\label{eq:gamma}
-  \Gamma = \partial_x \partial_t w + \varepsilon w \partial_x^2 w - \frac{\varepsilon}{2} (\partial_x w)^2.
+  \Gamma = \partial_x \partial_t w + \eps w \partial_x^2 w - \frac{\eps}{2} (\partial_x w)^2.
 \end{equation}
 
-The system \eqref{eq:massp2}--\eqref{eq:momentump2} resembles a Serre-type system, capturing the leading-order dynamics of blood flow in a compliant vessel. The equations account for nonlinearity ($\varepsilon$), dispersion ($\delta^2$), and vessel wall effects ($\alpha$, $\beta$, $\gamma$). Higher-order approximations of the velocity potential could further refine this model, enhancing its accuracy for physiological applications \cite{Mitsotakis2019}.
+The system \eqref{eq:massp2}--\eqref{eq:momentump2} resembles a Serre-type system, capturing the leading-order dynamics of blood flow in a compliant vessel. The equations account for nonlinearity ($\eps$), dispersion ($\delta^2$), and vessel wall effects ($\alpha$, $\beta$, $\gamma$). Higher-order approximations of the velocity potential could further refine this model, enhancing its accuracy for physiological applications \cite{Mitsotakis2019}.
 
 \subsubsection{Enhanced Serre-type system}\label{sec:cbsys}
 
@@ -471,18 +471,18 @@ Substituting \eqref{eq:w_from_utheta} into the mass equation \eqref{eq:massp2}, 
 \begin{equation}\label{eq:massp4}
   \partial_t \eta + r^w_x u^\theta + \frac{r^w}{2} \partial_x u^\theta + \delta^2 \frac{(2 \theta^2 - 1) (r^w)^2 r^w_x}{4} \partial_x^2 u^\theta + \delta^2 \frac{(2 \theta^2 - 1) (r^w)^3}{16} \partial_x^3 u^\theta = \O(\delta^4).
 \end{equation}
-Using the vessel wall velocity $r^w_t = \varepsilon \partial_t \eta$ and approximating from \eqref{eq:massp4}:
+Using the vessel wall velocity $r^w_t = \eps \partial_t \eta$ and approximating from \eqref{eq:massp4}:
 \begin{equation}\label{eq:rw_t}
-  r^w_t = \varepsilon \partial_t \eta = -\varepsilon r^w_x u^\theta - \varepsilon \frac{r^w}{2} \partial_x u^\theta + \O(\varepsilon \delta^2),
+  r^w_t = \eps \partial_t \eta = -\eps r^w_x u^\theta - \eps \frac{r^w}{2} \partial_x u^\theta + \O(\eps \delta^2),
 \end{equation}
 we substitute \eqref{eq:w_from_utheta} into the momentum equation \eqref{eq:momentump2} to obtain:
 \begin{equation}\label{eq:momentump4}
-  \partial_t u^\theta + \partial_x (\beta \eta) + \varepsilon u^\theta \partial_x u^\theta + \frac{\delta^2}{4} \left\{ \theta^2 (r^w)^2 \partial_x \Gamma - \partial_x [(r^w)^2 \Gamma] \right\} + \varepsilon \kappa Q + R = \O(\delta^4),
+  \partial_t u^\theta + \partial_x (\beta \eta) + \eps u^\theta \partial_x u^\theta + \frac{\delta^2}{4} \left\{ \theta^2 (r^w)^2 \partial_x \Gamma - \partial_x [(r^w)^2 \Gamma] \right\} + \eps \kappa Q + R = \O(\delta^4),
 \end{equation}
 where:
 \begin{equation}\label{eq:gamman}
 \begin{aligned}
-  \Gamma &= \partial_x \partial_t u^\theta + \varepsilon u^\theta \partial_x^2 u^\theta - \frac{\varepsilon}{2} (\partial_x u^\theta)^2, \\
+  \Gamma &= \partial_x \partial_t u^\theta + \eps u^\theta \partial_x^2 u^\theta - \frac{\eps}{2} (\partial_x u^\theta)^2, \\
   Q &= u^\theta + \frac{\delta^2}{4} (\theta^2 - 1) (r^w)^2 \partial_x^2 u^\theta - \delta^2 r^w r^w_x \partial_x u^\theta, \\
   R &= \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta).
 \end{aligned}
@@ -1161,12 +1161,12 @@ To study solitary wave dynamics in the Boussinesq system, we implement a pseudo-
 
 The Boussinesq system, modeling nonlinear dispersive waves, is given by:
 \begin{equation}\label{eq:bousneww1}
-  \partial_t \eta + \frac{r_0}{2} \partial_x \bar{u} + \frac{\epsilon}{2} \eta \partial_x \bar{u} + \epsilon \partial_x \eta \bar{u} - \frac{\delta^2 r_0^3}{48} \partial_x^3 \bar{u} = 0,
+  \partial_t \eta + \frac{r_0}{2} \partial_x \bar{u} + \frac{\eps}{2} \eta \partial_x \bar{u} + \eps \partial_x \eta \bar{u} - \frac{\delta^2 r_0^3}{48} \partial_x^3 \bar{u} = 0,
 \end{equation}
 \begin{equation}\label{eq:bousneww2}
-  \partial_t \bar{u} + \epsilon \bar{u} \partial_x \bar{u} - \frac{\alpha r_0 \delta^2}{2} \partial_x^2 \partial_t \bar{u} + \beta \partial_x \eta + \delta^2 \beta \gamma \partial_x \partial_t \eta - \frac{\delta^2 r_0^2}{6} \partial_x^2 \partial_t \bar{u} = 0,
+  \partial_t \bar{u} + \eps \bar{u} \partial_x \bar{u} - \frac{\alpha r_0 \delta^2}{2} \partial_x^2 \partial_t \bar{u} + \beta \partial_x \eta + \delta^2 \beta \gamma \partial_x \partial_t \eta - \frac{\delta^2 r_0^2}{6} \partial_x^2 \partial_t \bar{u} = 0,
 \end{equation}
-where $\eta(x,t)$ is the free surface elevation, $\bar{u}(x,t)$ is the velocity, $r_0$ is a reference radius, $\epsilon$ and $\delta$ are nonlinearity and dispersion parameters, and $\alpha$, $\beta$, $\gamma$ are system parameters. For this study, we set $\gamma = 0$.
+where $\eta(x,t)$ is the free surface elevation, $\bar{u}(x,t)$ is the velocity, $r_0$ is a reference radius, $\eps$ and $\delta$ are nonlinearity and dispersion parameters, and $\alpha$, $\beta$, $\gamma$ are system parameters. For this study, we set $\gamma = 0$.
 
 The pseudo-spectral solver transforms the variables $\eta(x,t)$ and $\bar{u}(x,t)$ into Fourier space using the Fourier transform, where $\hat{\eta}(k,t) = \mathcal{F}\{\eta\}$ and $\hat{\bar{u}}(k,t) = \mathcal{F}\{\bar{u}\}$. The Fourier transform relationships are:
 \[
@@ -1174,10 +1174,10 @@ The pseudo-spectral solver transforms the variables $\eta(x,t)$ and $\bar{u}(x,t
 \]
 Applying the Fourier transform to \eqref{eq:bousneww1} and \eqref{eq:bousneww2}, we obtain:
 \begin{equation}\label{eq:fourier_eta}
-  \partial_t \hat{\eta} = - \frac{r_0}{2} (\ui k \hat{\bar{u}}) - \frac{\epsilon}{2} \mathcal{F}\{\eta \partial_x \bar{u}\} - \epsilon \mathcal{F}\{(\partial_x \eta) \bar{u}\} + \frac{\delta^2 r_0^3}{48} (-\ui k^3 \hat{\bar{u}}),
+  \partial_t \hat{\eta} = - \frac{r_0}{2} (\ui k \hat{\bar{u}}) - \frac{\eps}{2} \mathcal{F}\{\eta \partial_x \bar{u}\} - \eps \mathcal{F}\{(\partial_x \eta) \bar{u}\} + \frac{\delta^2 r_0^3}{48} (-\ui k^3 \hat{\bar{u}}),
 \end{equation}
 \begin{equation}\label{eq:fourier_u}
-  \partial_t \hat{\bar{u}} = - \frac{\epsilon \ui k \mathcal{F}\{\bar{u} \bar{u}\} + \beta \ui k \hat{\eta}}{1 + \frac{r_0 \delta^2 k^2 (3 \alpha + r_0)}{6}},
+  \partial_t \hat{\bar{u}} = - \frac{\eps \ui k \mathcal{F}\{\bar{u} \bar{u}\} + \beta \ui k \hat{\eta}}{1 + \frac{r_0 \delta^2 k^2 (3 \alpha + r_0)}{6}},
 \end{equation}
 where the denominator in \eqref{eq:fourier_u} accounts for the dispersive terms involving $\partial_x^2 \partial_t \bar{u}$.
 
@@ -1200,11 +1200,10 @@ The Boussinesq system is solved using the pseudo-spectral solver described previ
 \[
   \tilde{c} = \sqrt{\dfrac{\beta r_0}{2}}.
 \]
-This value is obtained by analyzing the linearized Boussinesq system up to $\O(\epsilon + \delta^2)$, as shown in the following proof:
+This value is obtained by analyzing the linearized Boussinesq system up to $\O(\eps + \delta^2)$, as shown in the following proof:
 \begin{proof}
   Consider the linearized Boussinesq system:
-  \begin{equation}
-  \label{eq:peruve}
+  \begin{equation}\label{eq:peruve}
   \begin{cases}
   \partial_t \eta + \frac{r_0}{2} \partial_x \bar{u} = 0, \\
   \partial_t \bar{u} + \beta \partial_x \eta = 0.
