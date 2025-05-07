@@ -175,7 +175,7 @@ The Korteweg-de Vries (KdV) and Benjamin-Bona-Mahony (BBM) equations are classic
 
 In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The modulational instability analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
 
-This manuscript is organized as follows. First, in \cref{sec:model}, we describe the parent-level mathematical model along with the physical assumptions on which it is based. This section begins with the dimensional formulation of the base model, followed by its dimensionless counterpart. We then derive a new fully nonlinear weakly dispersive model, including detailed analysis of velocity field asymptotic expansion, mass conservation, and intermediate conclusions. The section continues with the classical cylindrical Boussinesq equations and concludes with unidirectional model equations, including the Korteweg--de Vries and Benjamin--Bona--Mahony formulations. Next, we analyze the dispersion relations of these models, providing insights into their wave propagation characteristics. Finally, Appendix~\ref{sec:windkessel} presents a Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations, connecting our continuum models to classical hemodynamic analogies.
+This manuscript is organized as follows. First, in \cref{sec:model}, we present the parent-level mathematical model and the underlying physical assumptions, including both dimensional and dimensionless formulations. We then derive a new fully nonlinear weakly dispersive model, detailing the asymptotic expansion of the velocity field, mass conservation, and intermediate results. This is followed by the classical cylindrical Boussinesq equations and unidirectional reductions, such as the Korteweg--de Vries and Benjamin--Bona--Mahony models. We proceed with an in-depth analysis of the dispersion relations of these models (\cref{sec:dispersion}), shedding light on their wave propagation characteristics. The manuscript then explores numerical simulations (\cref{sec:numerics}), Stokes expansions (\cref{sec:stokes}), and the conservation laws and symmetries inherent in the models (\cref{sec:cons_sym}). A dedicated section addresses the modulational instability analysis (\cref{sec:MI}). The paper concludes with a discussion of the main findings (\cref{sec:discussion}) and perspectives for future research (\cref{sec:perspectives}). Several supporting sections address acknowledgements, conflict of interest, data availability, and supplementary information. Finally, Appendix~\ref{sec:windkessel} presents a Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations, connecting our continuum models to classical hemodynamic analogies.
 
 \section{Mathematical modelling}
 \label{sec:model}
@@ -1045,8 +1045,7 @@ and, by virtue of \eqref{eq:5.11},
 \end{equation}
 The entire derivation has been cross-checked symbolically in \textsc{Maple}; the annotated worksheet is provided in the accompanying codes repository.
 
-\section{Dispersion relations}
-\label{sec:disp}
+\section{Dispersion relations}\label{sec:dispersion}
 
 We first examine the linear dispersion characteristics of the full three-dimensional model and compare them with those obtained from the linearised Euler equations by following \cite{Mitsotakis2018}:
 \begin{equation}\label{eq:lin_u}
@@ -1156,7 +1155,162 @@ Elimination of $\bar{u}_{\,0}$ gives the quadratic dispersion relation
 
 \paragraph{Remarks.} The algebraic relations \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous} demonstrate that both the classical and the modified depth-averaged models reproduce the low-frequency branch of the exact dispersion curve with the correct slope. The modified formulation retains this agreement while reducing the high-frequency error introduced by the classical Boussinesq truncation, thereby reinforcing its suitability for simulating arterial pulse waves over physiologically relevant wavelengths.
 
-\section{Stokes expansions}
+\section{Numerical simulations}\label{sec:numerics}
+
+To study solitary wave dynamics in the Boussinesq system, we implement a pseudo-spectral solver with a filtering method (\cite{BonaCh}). This approach leverages spectral methods for high-precision solutions and incorporates filtering techniques to stabilize solitary wave simulations, ensuring accurate capture of their propagation characteristics \cite{Trefethen2000, Boyd2000}.
+
+The Boussinesq system, modeling nonlinear dispersive waves, is given by:
+\begin{equation}\label{eq:bousneww1}
+  \partial_t \eta + \frac{r_0}{2} \partial_x \bar{u} + \frac{\epsilon}{2} \eta \partial_x \bar{u} + \epsilon \partial_x \eta \bar{u} - \frac{\delta^2 r_0^3}{48} \partial_x^3 \bar{u} = 0,
+\end{equation}
+\begin{equation}\label{eq:bousneww2}
+  \partial_t \bar{u} + \epsilon \bar{u} \partial_x \bar{u} - \frac{\alpha r_0 \delta^2}{2} \partial_x^2 \partial_t \bar{u} + \beta \partial_x \eta + \delta^2 \beta \gamma \partial_x \partial_t \eta - \frac{\delta^2 r_0^2}{6} \partial_x^2 \partial_t \bar{u} = 0,
+\end{equation}
+where $\eta(x,t)$ is the free surface elevation, $\bar{u}(x,t)$ is the velocity, $r_0$ is a reference radius, $\epsilon$ and $\delta$ are nonlinearity and dispersion parameters, and $\alpha$, $\beta$, $\gamma$ are system parameters. For this study, we set $\gamma = 0$.
+
+The pseudo-spectral solver transforms the variables $\eta(x,t)$ and $\bar{u}(x,t)$ into Fourier space using the Fourier transform, where $\hat{\eta}(k,t) = \mathcal{F}\{\eta\}$ and $\hat{\bar{u}}(k,t) = \mathcal{F}\{\bar{u}\}$. The Fourier transform relationships are:
+\[
+  \mathcal{F}\{\partial_x \eta\} = \ui k \hat{\eta}, \quad \mathcal{F}\{\partial_x^2 \bar{u}\} = -k^2 \hat{\bar{u}}, \quad \mathcal{F}\{\partial_x^3 \bar{u}\} = -\ui k^3 \hat{\bar{u}}.
+\]
+Applying the Fourier transform to \eqref{eq:bousneww1} and \eqref{eq:bousneww2}, we obtain:
+\begin{equation}\label{eq:fourier_eta}
+  \partial_t \hat{\eta} = - \frac{r_0}{2} (\ui k \hat{\bar{u}}) - \frac{\epsilon}{2} \mathcal{F}\{\eta \partial_x \bar{u}\} - \epsilon \mathcal{F}\{(\partial_x \eta) \bar{u}\} + \frac{\delta^2 r_0^3}{48} (-\ui k^3 \hat{\bar{u}}),
+\end{equation}
+\begin{equation}\label{eq:fourier_u}
+  \partial_t \hat{\bar{u}} = - \frac{\epsilon \ui k \mathcal{F}\{\bar{u} \bar{u}\} + \beta \ui k \hat{\eta}}{1 + \frac{r_0 \delta^2 k^2 (3 \alpha + r_0)}{6}},
+\end{equation}
+where the denominator in \eqref{eq:fourier_u} accounts for the dispersive terms involving $\partial_x^2 \partial_t \bar{u}$.
+
+\subsection{Filtering Method and Time Integration}
+
+To stabilize solitary wave solutions and reduce numerical noise, we employ a filtering method, which effectively dampens high-frequency oscillations while preserving the solitary wave's key features \cite{BonaCh, Trefethen2000}. The computational grid is defined with a refined spatial discretization to capture the wave profile accurately, and the time-stepping is adjusted to ensure stability. The solver initializes $\eta(x,0)$ and $\bar{u}(x,0)$ with given solitary wave profiles, transforming them into Fourier space to obtain $\hat{\eta}(k,0)$ and $\hat{\bar{u}}(k,0)$. Temporal integration is performed using MATLAB's ODE113 solver, a variable-step, variable-order (VSVO) Adams--Bashforth--Moulton PECE solver with orders $1$ to $13$ (typically using order $12$ with a $13$th-order error estimate for extrapolation). This solver is well-suited for both stiff and non-stiff systems, providing efficient and accurate time evolution \cite{Boyd2000}. Initial tests of the pseudo-spectral solver with filtering demonstrate reliable convergence and stable solitary wave propagation, consistent with the expected behavior of the Boussinesq system. The filtering method effectively mitigates numerical instabilities, yielding precise solutions. Future work will involve thorough validation against analytical solutions and experimental data to ensure accuracy and robustness \cite{BonaCh,Trefethen2000}.
+
+To simulate solitary wave dynamics in the Boussinesq system, accurate numerical approximations of solitary waves are essential. While generating clean solitary waves in a laboratory is challenging, we demonstrate that numerical generation is straightforward using a filtering procedure, even without exact solutions \cite{BDM2}. This method produces reliable initial conditions for studying wave collisions and interactions.
+
+The filtering procedure generates clean solitary waves by evolving an approximate wave profile and isolating the leading solitary wave from dispersive tails. The process is as follows:
+\begin{description}
+  \item{\textbf{Initial Wave Approximation}:} Start with an initial wave profile $\eta(x,0)$ and $\bar{u}(x,0)$ resembling a solitary wave, such as a low-order approximation. The profile need not be exact but should approximate the expected shape and amplitude.
+  \item{\textbf{Numerical Evolution}:} Evolve the initial profile in a long computational domain using the Boussinesq system \eqref{eq:bousneww1}--\eqref{eq:bousneww2}, allowing the solitary wave to separate from dispersive tails and smaller waves over time.
+  \item{\textbf{Isolation of Solitary Wave}:} Once the leading solitary wave is distinct, isolate it by setting the remaining disturbances (dispersive tails) to zero. Shift the solitary wave to the left of the spatial domain for further refinement.
+  \item{\textbf{Iterative Refinement}:} Repeat the evolution and isolation process as needed. Typically, one iteration suffices to produce a clean solitary wave.
+\end{description}
+This filtering method effectively removes numerical noise and dispersive components, yielding high-precision solitary wave solutions \cite{BDM2}.
+
+The Boussinesq system is solved using the pseudo-spectral solver described previously, with spatial derivatives computed in Fourier space and temporal integration performed using MATLAB's ODE113 solver. The computational domain has a length $L = 400$ and grid spacing $\Delta X = \frac{2}{N}$ with $N = 32\,768$. Parameters are set as $\alpha = \beta = r_0 = 1$, and the characteristic speed is derived as:
+\[
+  \tilde{c} = \sqrt{\dfrac{\beta r_0}{2}}.
+\]
+This value is obtained by analyzing the linearized Boussinesq system up to $\O(\epsilon + \delta^2)$, as shown in the following proof:
+\begin{proof}
+  Consider the linearized Boussinesq system:
+  \begin{equation}
+  \label{eq:peruve}
+  \begin{cases}
+  \partial_t \eta + \frac{r_0}{2} \partial_x \bar{u} = 0, \\
+  \partial_t \bar{u} + \beta \partial_x \eta = 0.
+  \end{cases}
+  \end{equation}
+  Assume solutions of the form:
+  \[
+  \eta(x,t) = \eta_0 \exp(i k (x - \tilde{c} t)), \quad \bar{u}(x,t) = \bar{u}_0 \exp(i k (x - \tilde{c} t)).
+  \]
+  Substituting into \eqref{eq:peruve}, we obtain:
+  \[
+  \begin{cases}
+  -i k \tilde{c} \eta_0 + \frac{r_0}{2} i k \bar{u}_0 = 0, \\
+  -i k \tilde{c} \bar{u}_0 + \beta i k \eta_0 = 0.
+  \end{cases}
+  \]
+  For non-trivial solutions, the determinant of the coefficient matrix must vanish, yielding:
+  \[
+  \tilde{c}^2 = \frac{\beta r_0}{2} \implies \tilde{c} = \sqrt{\frac{\beta r_0}{2}}.
+  \]
+\end{proof}
+
+\subsubsection{Initial Conditions and Solitary Wave Solutions}
+
+To generate initial conditions, we use solitary wave solutions of the Korteweg-de Vries (KdV) equation with $\gamma = 0$:
+\begin{equation}\label{eq:kdvnumerical}
+  \partial_t \eta\ +\ \tilde{c} \partial_x \eta\ +\ \frac{5}{2} \frac{1}{r_0} \tilde{c} \eta \partial_x \eta\ +\ \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48} \partial_x^3 \eta\ =\ 0.
+\end{equation}
+The first-order solitary wave solution is:
+\begin{equation}\label{eq:num1}
+  \eta(x,t)\ =\ A \sech^2 \left( \frac{1}{2} \kappa (x - c t) \right),
+\end{equation}
+\begin{multline}\label{eq:num2}
+  \bar{u}(x,t)\ =\ \frac{c_0}{a} A \sech^2 \left( \frac{1}{2} \kappa (x - c t) \right) - \frac{c_0}{4 a r_0} \left[ A \sech^2 \left( \frac{1}{2} \kappa (x - c t) \right) \right]^2 + \\
+  \frac{c_0 r_0 (5 + 12 \alpha)}{48 a} \partial_x^2 \left[ A \sech^2 \left( \frac{1}{2} \kappa (x - c t) \right) \right],
+\end{multline}
+where $c_0 = \frac{a}{r_0} \sqrt{\frac{2 E h}{\rho r_0}}$ is a modified Moens-Korteweg speed, and the wave parameters are:
+\[
+  \kappa = \sqrt{\frac{40 \tilde{c} A}{3 r_0^2 (4 \tilde{\alpha} \tilde{c} + r_0)}}, \quad c = \tilde{c} \left( 1 + \frac{5 A}{6 r_0} \right).
+\]
+These solutions are used as initial conditions, evolved, and filtered to produce clean solitary waves.
+
+\subsubsection{Numerical Results}
+
+Solitary waves of varying amplitudes $A$ from $0.05$ to $1.0$ were generated, producing heights $A_s$ from $0.0431$ to $1.1603$, as detailed in Table \ref{tab2.2}. The table compares simulated speeds $c_s$ with theoretical speeds $c$.
+
+\begin{table}
+  \caption{\label{tab2.2} Estimated solitary wave speed and amplitude for the cylindrical Boussinesq system \eqref{eq:bousnew1}--\eqref{eq:bousnew2}.}
+  \begin{center}
+  \begin{tabular}{ |c       c       c       c | c       c       c       c | } 
+   \hline
+    A & $A_{\,s}$ & $c_{\,s}$ & c& A & $A_{\,s}$ & $c_{\,s}$ & c\\
+    \hline
+   0.05 & 0.0431 & 0.7324 & 0.7325& 0.55 & 0.5460 & 0.9521 & 1.0288 \\
+   \hline
+   0.1 & 0.0853 & 0.7551& 0.7573 & 0.6 &  0.6066 & 0.9736 & 1.0645\\ 
+   \hline
+   0.15 &  0.1297 & 0.7785 & 0.7835 & 0.65 & 0.6693 & 0.9938 & 1.1015\\
+   \hline
+   0.2 & 0.1757 & 0.8015 & 0.8106 & 0.7 &   0.7338 & 1.0130 & 1.1395\\ 
+   \hline
+   0.25 & 0.2231 & 0.8242 & 0.8385& 0.75 & 0.8003 & 1.0317 & 1.1787 \\
+    \hline
+   0.3 & 0.2723 & 0.8466 & 0.8675 & 0.8 & 0.8687 & 1.0498 & 1.2190\\
+   \hline
+   0.35 & 0.3232 & 0.8687 & 0.8975 & 0.85 & 0.9389  & 1.0679 & 1.2603 \\
+    \hline
+   0.4 &  0.3760 & 0.8910 & 1.2321 & 0.9 & 1.0109 & 1.0853 &1.13028\\
+    \hline
+    0.45 & 0.4307  & 0.9116 & 0.9609 & 0.95 & 1.0847&1.1022 & 1.3462  \\
+    \hline
+    0.5 &   0.4874 & 0.9327 & 0.9943 & 1 & 1.1603 & 1.1189 & 1.3908\\
+   \hline
+  \end{tabular}
+  \end{center}
+\end{table}
+
+Figure \ref{fig:3.6} illustrates the space-time evolution of a solitary wave with initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$, showing stable propagation. Figure \ref{fig:3.7} depicts the time evolution for $A = 0.4$ (height $A_s = 0.3760$) at times $t = 1, 80, 100, 150$, demonstrating the development of a solitary wave followed by a dispersive tail. At $t = 150$, the solitary wave is isolated by shifting it left by $130.4$ units and setting the tail to zero, yielding a clean solution. Figure \ref{fig:3.8} compares the amplitude-speed relationship of the Boussinesq system with the KdV model, showing good agreement for small amplitudes.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{figs/numerique_bouss.jpg}
+  \caption{Space-time plot of the KdV soliton \eqref{eq:kdvnumerical} evolution under the Boussinesq system \eqref{eq:bousneww1}--\eqref{eq:bousneww2} dynamics for initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$. Parameters are reported in Table \ref{tab2.2}.}
+  \label{fig:3.6}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{figs/t1.jpg}
+  \includegraphics[width=0.6\linewidth]{figs/t80.jpg}
+  \includegraphics[width=0.6\linewidth]{figs/t100.jpg}
+  \includegraphics[width=0.65\linewidth]{figs/t150.jpg}
+  \caption{Time evolution of a solitary wave with initial amplitude $A = 0.4$ at $t = 1, 80, 100, 150$, showing the solitary wave followed by a dispersive tail.}
+  \label{fig:3.7}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{figs/my_figure1.jpg}
+  \caption{Comparison of amplitude-speed relationship between the Boussinesq system and the KdV model.}
+  \label{fig:3.8}
+\end{figure}
+
+The filtering procedure generates clean solitary wave solutions by iteratively refining approximate profiles, effectively isolating the solitary wave from dispersive tails. This method is robust for the Boussinesq system, where exact solutions may not exist due to nonlinear term complexities \cite{BDM2}. The numerical results, validated through Table \ref{tab2.2} and Figures \ref{fig:3.6}--\ref{fig:3.8}, confirm stable solitary wave propagation and good agreement with KdV predictions for small amplitudes. Large-amplitude solutions, while less physically relevant due to model assumptions, test the algorithm's robustness. This approach provides reliable initial conditions for studying wave interactions, enhancing our understanding of nonlinear wave dynamics in shallow water systems.
+
+\section{Stokes expansions}\label{sec:stokes}
 
 In this section, we employ Stokes expansion techniques to analyze the nonlinear wave solutions of our derived models. Stokes expansions provide a systematic approach to construct periodic wave solutions in weakly nonlinear regimes, revealing how nonlinearity affects the dispersion relation and wave profiles. We will focus particularly on applying this methodology to the KdV and BBM reductions of our cylindrical Boussinesq system, demonstrating how the interplay between nonlinearity and dispersion shapes the propagation characteristics of arterial pulse waves. This analysis will further elucidate the amplitude-dependent modifications to wave speed and structure that are essential for accurately modeling blood flow dynamics in elastic vessels.
 
@@ -1850,7 +2004,7 @@ where $A(X, T_1, T_2)$ is the complex amplitude modulating on the slow scales, $
 \end{equation*}
 These expansions reflect the contributions of derivatives across both fast and slow scales, enabling us to separate the dynamics at different orders of $\eps$.
 
-\subsubsection{Multi-Scale Analysis with Small Dissipation}
+\subsubsection{Multi-Scale Analysis with SNegligiblemall Dissipation}
 
 In this section, we continue the multi-scale analysis of the KdV--Burgers equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\eps^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the Nonlinear Schr\"odinger (NLS) equation for the amplitude of the wave train.
 
@@ -1874,7 +2028,7 @@ c_g = \frac{d \omega}{d k} = a - 3 c k^2.
 \]
 
 At $\O(\eps^2)$, the equation becomes:
-\begin{equation}\label{eq:second_order}
+\begin{equation}\label{eq:second_order_a}
   \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
 \end{equation}
 where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side includes terms proportional to $\exp(\pm i \theta)$ and $\exp(\pm 2 i \theta)$. The resonant terms proportional to $\exp(\pm i \theta)$ would lead to secular growth in $\eta_1$ and must be eliminated by imposing:
@@ -1889,7 +2043,7 @@ We assume a solution for $\eta_1$ of the form:
 \begin{equation}\label{eq:eta1_form}
   \eta_1 = B_0(X, T_1, T_2) + \left[ B_1(X, T_1, T_2) e^{i \theta} + \text{c.c.} \right] + \left[ B_2(X, T_1, T_2) e^{2 i \theta} + \text{c.c.} \right].
 \end{equation}
-Substituting into \eqref{eq:second_order} and matching terms proportional to $\exp(2 i \theta)$, we find:
+Substituting into \eqref{eq:second_order_a} and matching terms proportional to $\exp(2 i \theta)$, we find:
 \begin{equation}\label{eq:B2_solution}
   B_2 = \frac{b}{6 c k^2} A^2,
 \end{equation}
@@ -2008,7 +2162,7 @@ Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{
     \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0, \quad \omega = a k - c k^3,
     \]
     with group velocity $c_g = a - 3 c k^2$.
-    \item At $O(\eps^2)$: The second-order equation \eqref{eq:second_order}, secular condition \eqref{eq:secular_elimination}, and solution for $B_2$ \eqref{eq:B2_solution}:
+    \item At $O(\eps^2)$: The second-order equation \eqref{eq:second_order_a}, secular condition \eqref{eq:secular_elimination}, and solution for $B_2$ \eqref{eq:B2_solution}:
     \[
     A(X, T_1, T_2) = A(X - c_g T_1, T_2), \quad B_2 = \frac{b}{6 c k^2} A^2.
     \]
@@ -2040,9 +2194,9 @@ where:
   \nu^\star = \frac{-2 \ui k b^2 + \ui k b}{c k^2} = \frac{\ui k b (1 - 2 b)}{c k^2}.
 \]
 Rewriting in standard NLS form:
-\begin{equation*}%\label{eq:NLS_final_intermediate}
-i \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
-\end{equation*}
+\begin{equation}\label{eq:NLS_final_intermediate}
+  \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
+\end{equation}
 
 \subsubsection{Instability analysis}
 
@@ -2062,7 +2216,7 @@ where $a_0 \in \mathbb{R}^+$ is the amplitude. To study stability, we introduce 
 \begin{equation}\label{eq:perturbation_case1}
   A(\zeta, T_2) = A_0(T_2) [1 + a(\zeta, T_2)], \quad |a| \ll 1.
 \end{equation}
-Substituting into \eqref{eq:NLS1} and linearizing, we obtain:
+Substituting into \eqref{eq:NLS_final} and linearizing, we obtain:
 \begin{equation}\label{eq:linearized_case1}
   \ui \partial_{T_2} a = 3 k \partial_{\zeta}^2 a - \beta a_0^2 (a + a^*),
 \end{equation}
@@ -2122,7 +2276,7 @@ The stability depends on the sign and magnitude of $6 N k - 2 d Q$, with instabi
 The multi-scale analysis of the KdV--Burgers equation \eqref{eq:kdv_burgers} for a slowly modulated wave train $\eta_0 = A \exp(\ui \theta) + \text{c.c.}$ reveals how dissipation affects the governing Nonlinear Schr\"odinger (NLS) equations and the modulational instability of plane wave solutions. The results vary with the dissipation coefficient $d$:
 
 \begin{description}
-  \item{\textbf{Negligible Dissipation ($d = O(\eps^3)$):}} The NLS equation \eqref{eq:NLS1} is purely dispersive with a cubic nonlinearity. The modulational instability analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
+  \item{\textbf{Negligible Dissipation ($d = O(\eps^3)$):}} The NLS equation \eqref{eq:NLS_final} is purely dispersive with a cubic nonlinearity. The modulational instability analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
   \item{\textbf{Significant Dissipation ($d = O(1)$):}} The modified NLS equation \eqref{eq:NLS_final_diss} includes a dissipative term $i d \partial_\zeta^2 A$, altering the dynamics. The instability condition \eqref{eq:dispersion_case2} depends on the coefficient $6 N k - 2 d Q$, indicating that dissipation modifies the range of unstable wave numbers, potentially stabilizing or destabilizing the wave depending on system parameters.
   \item{\textbf{Intermediate Dissipation ($d = O(\eps^2)$, $d = \eps^2 \tilde{d}$):}} The NLS equation \eqref{eq:NLS_final_intermediate} introduces a linear dissipative term $i k^2 \tilde{d} A$. While modulational instability was not analyzed here, the presence of dissipation suggests a modified instability threshold, requiring further perturbation analysis.
 \end{description}
@@ -2154,7 +2308,7 @@ Substituting \eqref{eq:nb3} into \eqref{eq:BBM1}, applying the slow scales \eqre
   \left(\partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right)\eta_1 = 0,
 \end{equation}
 where $a = \tilde{c}$, $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$, $c = \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $d = -\frac{r_0}{4} \gamma \tilde{\beta}$. For $\eta_1 = A(\xi, \tau) \exp(i \theta) + \text{c.c.}$, this yields the dispersion relation:
-\begin{equation}\label{eq:dispersion_bbm}
+\begin{equation}\label{eq:dispersion_bbm_a}
   \omega = \frac{a k}{1 + c k^2} + \ui \frac{d k^2}{1 + c k^2}.
 \end{equation}
 The group velocity is:
@@ -2163,7 +2317,7 @@ The group velocity is:
 \]
 
 At $\O(\eps^2)$, the equation is:
-\begin{equation}\label{eq:second_order}
+\begin{equation}\label{eq:second_order_b}
   \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_2 = \left( p \partial_\xi - a \partial_\xi + 2 c \partial_t \partial_x \partial_\xi - c p \partial_x^2 \partial_\xi - 2 d \partial_x \partial_\xi \right) \eta_1 - b \partial_x (\eta_1 \eta_1).
 \end{equation}
 The right-hand side includes terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_2$, resonant terms proportional to $\exp(\pm \ui \theta)$ are set to zero, confirming the group velocity $p$ above. The non-resonant terms give:
@@ -2180,7 +2334,7 @@ we find:
 \end{equation}
 
 At $\O(\eps^3)$, the equation is:
-\begin{multline}\label{eq:third_order}
+\begin{multline}\label{eq:third_order_b}
   \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_3 = - \left( \partial_\tau - c \partial_\tau \partial_\xi^2 + 2 c p \partial_x \partial_\xi^2 - c \partial_x^2 \partial_\tau + d \partial_\xi^2 \right) \eta_1 \\
 - \left( -p \partial_\xi + a \partial_\xi - 2 c \partial_t \partial_x \partial_\xi + c p \partial_x^2 \partial_\xi + 2 d \partial_x \partial_\xi \right) \eta_2 - b \partial_x (\eta_1 \eta_2).
 \end{multline}
@@ -2233,7 +2387,7 @@ where $a^*$ is the complex conjugate of $a$. Assuming $a = u(\xi, \tau) + \ui v(
 \end{pmatrix} \begin{pmatrix} u \\ v \end{pmatrix}.
 \end{equation}
 Seeking solutions of the form $(u, v) \propto \exp(i q \xi - i \lambda \tau)$, we substitute into \eqref{eq:matrix_bbm} to obtain the dispersion relation:
-\begin{equation}\label{eq:dispersion_bbm}
+\begin{equation}\label{eq:dispersion_bbm_b}
   \lambda^2 = M^2 q^4 - 2 N M a_0^2 q^2.
 \end{equation}
 The stability of the plane wave depends on the sign of $\lambda^2$:
@@ -2243,9 +2397,9 @@ The stability of the plane wave depends on the sign of $\lambda^2$:
 \end{itemize}
 Instability occurs when $M N > 0$ and $q^2 < \dfrac{2 N a_0^2}{M}$, as the quadratic term dominates for small $q$. The interplay between $M$ (dispersion/dissipation) and $N$ (nonlinearity) governs the instability threshold.
 
-The dispersion relation \eqref{eq:dispersion_bbm} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous BBM system. The coefficients $M$ and $N$, derived from the BBM parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
+The dispersion relation \eqref{eq:dispersion_bbm_b} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous BBM system. The coefficients $M$ and $N$, derived from the BBM parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
 
-\section{Conclusions and discussion}
+\section{Conclusions and discussion}\label{sec:discussion}
 
 In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels featuring viscoelastic walls. Grounded in the assumption of axisymmetric flow and considering an ideal fluid for simplicity, we have developed a coherent hierarchy of asymptotic models that capture the complex dynamics governing these intricate systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axi-symmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}.
 
@@ -2257,7 +2411,7 @@ Our analytical exploration provided valuable insights into the fundamental chara
 
 The methodologies and insights developed in this work contribute significantly to our understanding of pulsatile flow within deformable vessels and represent a valuable addition to the broader fields of fluid dynamics and mathematical modeling. As we conclude, we anticipate that our findings will stimulate further investigations and contribute to the ongoing dialogue in this dynamic field, positioning this research at the forefront of discussions on complex fluid systems.
 
-\section{Perspectives}
+\section{Perspectives}\label{sec:perspectives}
 
 This work provides a foundational understanding of the mathematical and numerical modeling of nonlinear wave propagation in fluid systems. However, several aspects remain open to further exploration and offer opportunities for extending the research presented here. Building upon the results of this study, we identify multiple promising directions for future research that would expand the scope of our analysis.
 
