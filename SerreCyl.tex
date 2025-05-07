@@ -107,8 +107,15 @@
 \makeglossaries
 
 \newacronym{ibvp}{IBVP}{Initial Boundary Value Problem}
-\newacronym{sgn}{SGN}{Serre-Green-Naghdi}
+\newacronym{sgn}{SGN}{Serre--Green--Naghdi}
 \newacronym{pde}{PDE}{Partial Differential Equation}
+\newacronym{bbm}{BBM}{Benjamin--Bona--Mahony}
+\newacronym{kdv}{KdV}{Korteweg--de Vries}
+\newacronym{kdvb}{KdVB}{Korteweg--de Vries--Burgers}
+\newacronym{cnls}{NLS}{Nonlinear Schr\"odinger}
+\newacronym{mi}{MI}{Modulational Instability}
+\newacronym{fpu}{FPU}{Fermi--Pasta--Ulam}
+\newacronym{bf}{BF}{Benjamin--Feir}
 
 \DeclareMathOperator{\sech}{sech}
 
@@ -139,7 +146,7 @@
 
 \begin{abstract}
 
-In this study, we investigate the dynamics of pulsatile flow in viscoelastic vessels, beginning with the axisymmetric full Euler equations with a free surface. Though highly accurate, this comprehensive model presents considerable analytical and computational challenges. To address these difficulties, we derive the fully nonlinear cylindrical Serre equations, which describe the propagation of long-crested pulses in cylindrical vessels. However, due to the complexity of these equations, we proceed by applying the weak nonlinearity assumption, leading to the derivation of the cylindrical Boussinesq equations. These equations offer a more tractable model while still capturing essential dispersive and nonlinear effects. In the final step, we derive the classical unidirectional approximations, such as the Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) equations, further simplifying the wave propagation analysis in this setting. Additionally, we investigate the modulation of periodic waves and establish the existence of modulational instability within this context, providing new insights into the stability of wave trains in cylindrical geometries. The results presented in this work contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in modelling blood flow in large arteries.
+In this study, we investigate the dynamics of pulsatile flow in viscoelastic vessels, beginning with the axisymmetric full Euler equations with a free surface. Though highly accurate, this comprehensive model presents considerable analytical and computational challenges. To address these difficulties, we derive the fully nonlinear cylindrical \acrfull{sgn} equations, which describe the propagation of long-crested pulses in cylindrical vessels. However, due to the complexity of these equations, we proceed by applying the weak nonlinearity assumption, leading to the derivation of the cylindrical Boussinesq equations. These equations offer a more tractable model while still capturing essential dispersive and nonlinear effects. In the final step, we derive the classical unidirectional approximations, such as the \acrfull{kdv} and \acrfull{bbm} equations, further simplifying the wave propagation analysis in this setting. Additionally, we investigate the modulation of periodic waves and establish the existence of \acrfull{mi} within this context, providing new insights into the stability of wave trains in cylindrical geometries. The results presented in this work contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in modelling blood flow in large arteries.
 
 % Please include a maximum of five keywords
 \keywords{blood flows; axisymmetric flows; compliant vessels; long wave model; nonlinear dispersive systems}
@@ -169,13 +176,13 @@ The \acrshort{sgn} equations, despite being one-dimensional (1D) models, still r
 
 The cylindrical Boussinesq equations are derived from the \acrshort{sgn} equations under a weak nonlinearity assumption, and they maintain some dispersive effects that are essential for capturing certain aspects of wave propagation in blood vessels. The balance between nonlinear and dispersive effects is known to be important for understanding the formation of stable pulses, and these equations allow the study of this balance through various analytical and numerical techniques. The Boussinesq equations, like the Serre equations, are also 1D models. However, by applying this assumption, they will generally lose their capacity to model the steepening of waves or shocks as they are derived under the assumption that nonlinear terms are small. While they are mathematically simpler than the Serre equations, they may still require significant computational resources for numerical wave propagation and stability studies.
 
-Finally, we derive classical unidirectional approximations, including the Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) equations, to further simplify the wave propagation analysis. These unidirectional models are particularly useful in studying wave modulation and stability. Notably, we explore the modulation of periodic waves and establish the existence of modulational instability, which provides new insights into the stability of wave trains in cylindrical vessels. Our findings contribute to a deeper understanding of fluid-structure interactions in biomedical applications and offer new perspectives on the modelling of blood flow in large arteries. The results presented in this paper contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in the modelling of blood flow in large arteries. By providing a hierarchy of models ranging from the full Euler equations to simplified unidirectional approximations, this work offers a comprehensive framework for analyzing pulsatile flow in viscoelastic vessels across various scales and levels of complexity.
+Finally, we derive classical unidirectional approximations, including the \acrfull{kdv} and \acrfull{bbm} equations, to further simplify the wave propagation analysis. These unidirectional models are particularly useful in studying wave modulation and stability. Notably, we explore the modulation of periodic waves and establish the existence of \acrfull{mi}, which provides new insights into the stability of wave trains in cylindrical vessels. Our findings contribute to a deeper understanding of fluid-structure interactions in biomedical applications and offer new perspectives on the modelling of blood flow in large arteries. The results presented in this paper contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in the modelling of blood flow in large arteries. By providing a hierarchy of models ranging from the full Euler equations to simplified unidirectional approximations, this work offers a comprehensive framework for analyzing pulsatile flow in viscoelastic vessels across various scales and levels of complexity.
 
-The Korteweg-de Vries (KdV) and Benjamin-Bona-Mahony (BBM) equations are classical unidirectional models which describe wave propagation, and they are widely used in various fields of physics and engineering to study long-wave phenomena. Both of these equations are further simplifications of the Boussinesq system. While the KdV and BBM equations are both unidirectional models, they differ in their treatment of dispersive effects. The KdV equation captures the balance between nonlinearity and dispersion in a certain way, which leads to solitary wave solutions. On the other hand, the BBM equation is a valid alternative model when one is interested in modelling phenomena in which dispersion is dominated by a different type of balance than that provided by the KdV. They can also both be more amenable to wave modulation and stability studies due to their relatively simple form. The KdV and BBM equations are derived under strong assumptions, including that the wave propagation is primarily unidirectional and that nonlinear and dispersive effects are weak, so their applicability is limited to specific regimes of the flow. While these models may not fully capture the complexity of blood flow, they offer valuable insight into the basic mechanisms of wave propagation and can be useful for studying wave modulation and stability.
+The \acrfull{kdv} and \acrfull{bbm} equations are classical unidirectional models which describe wave propagation, and they are widely used in various fields of physics and engineering to study long-wave phenomena. Both of these equations are further simplifications of the Boussinesq system. While the \acrshort{kdv} and \acrshort{bbm} equations are both unidirectional models, they differ in their treatment of dispersive effects. The \acrshort{kdv} equation captures the balance between nonlinearity and dispersion in a certain way, which leads to solitary wave solutions. On the other hand, the \acrshort{bbm} equation is a valid alternative model when one is interested in modelling phenomena in which dispersion is dominated by a different type of balance than that provided by the \acrshort{kdv}. They can also both be more amenable to wave modulation and stability studies due to their relatively simple form. The \acrshort{kdv} and \acrshort{bbm} equations are derived under strong assumptions, including that the wave propagation is primarily unidirectional and that nonlinear and dispersive effects are weak, so their applicability is limited to specific regimes of the flow. While these models may not fully capture the complexity of blood flow, they offer valuable insight into the basic mechanisms of wave propagation and can be useful for studying wave modulation and stability.
 
-In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The modulational instability analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
+In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The \acrshort{mi} analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
 
-This manuscript is organized as follows. First, in \cref{sec:model}, we present the parent-level mathematical model and the underlying physical assumptions, including both dimensional and dimensionless formulations. We then derive a new fully nonlinear weakly dispersive model, detailing the asymptotic expansion of the velocity field, mass conservation, and intermediate results. This is followed by the classical cylindrical Boussinesq equations and unidirectional reductions, such as the Korteweg--de Vries and Benjamin--Bona--Mahony models. We proceed with an in-depth analysis of the dispersion relations of these models (\cref{sec:dispersion}), shedding light on their wave propagation characteristics. The manuscript then explores numerical simulations (\cref{sec:numerics}), Stokes expansions (\cref{sec:stokes}), and the conservation laws and symmetries inherent in the models (\cref{sec:cons_sym}). A dedicated section addresses the modulational instability analysis (\cref{sec:MI}). The paper concludes with a discussion of the main findings (\cref{sec:discussion}) and perspectives for future research (\cref{sec:perspectives}). Several supporting sections address acknowledgements, conflict of interest, data availability, and supplementary information. Finally, Appendix~\ref{sec:windkessel} presents a Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations, connecting our continuum models to classical hemodynamic analogies.
+This manuscript is organized as follows. First, in \cref{sec:model}, we present the parent-level mathematical model and the underlying physical assumptions, including both dimensional and dimensionless formulations. We then derive a new fully nonlinear weakly dispersive model, detailing the asymptotic expansion of the velocity field, mass conservation, and intermediate results. This is followed by the classical cylindrical Boussinesq equations and unidirectional reductions, such as the \acrfull{kdv} and \acrfull{bbm} models. We proceed with an in-depth analysis of the dispersion relations of these models (\cref{sec:dispersion}), shedding light on their wave propagation characteristics. The manuscript then explores numerical simulations (\cref{sec:numerics}), Stokes expansions (\cref{sec:stokes}), and the conservation laws and symmetries inherent in the models (\cref{sec:cons_sym}). A dedicated section addresses the \acrshort{mi} analysis (\cref{sec:MI}). The paper concludes with a discussion of the main findings (\cref{sec:discussion}) and perspectives for future research (\cref{sec:perspectives}). Several supporting sections address acknowledgements, conflict of interest, data availability, and supplementary information. Finally, Appendix~\ref{sec:windkessel} presents a Windkessel model for pulsatile flow in viscoelastic vessels based on Serre-type approximations, connecting our continuum models to classical hemodynamic analogies.
 
 \section{Mathematical modelling}
 \label{sec:model}
@@ -806,7 +813,7 @@ where here $c_{\;0}\,=\,\displaystyle\frac{a}{r_{\;0}}\,\sqrt{\frac{2\,E\,h}{ \r
 \begin{equation}\label{eq:bouss2d}
   u^{\;\star}_{\;t^{\star}}\, + \,\eta^{\;\star}_{\;x^{\star}}\, + \,2\,\eps\,u^{\;\star}\,u^{\;\star}_{\;x^{\,\star}}\, + \;\frac{1}{2}\,\delta^{\;2}\,\alpha\,\eta^{\;\star}_{\;x^{\star}t^{\star}t^{\star}}\, + \,\gamma^{\;\star}\,\delta^{\;2}\,\eta^{\;\star}_{\;x^{\star}\,t^{\star}}\, - \;\frac{1}{6}\;\delta^{\;2}\,u^{\;\star}_{\,x^{\star}x^{\star}t^{\star}}\,=\,0,
 \end{equation}
-where $\gamma^{\;\star}\,\eqdef\,\displaystyle\frac{1}{2}\,\frac{\sigma}{\eps\,\delta^{\;2}}\,\gamma\,$, $\sigma\,\eqdef\,\frac{c_{\;0}}{\lambda}\,$,  and $\eps\,\eqdef\frac{a}{r_{\;0}}\,$, $\delta\,\eqdef\,\frac{r_{\;0}}{\lambda}\,$. As it is well known, all previous systems of equations describe the two-way propagation of nonlinear waves. In this Section, we will derive equations that describe nonlinear waves travelling essentially in one chosen direction. The two most celebrated models of this class are the KdV and BBM equations \cite{KdV, bona, Bona1975a, Zabusky1971, Dutykh2013a, Dutykh2014d, Dutykh2014a}. The BBM equation, in particular, serves as the foundation for our zero-dimensional Windkessel model presented in Appendix~\ref{sec:windkessel}.
+where $\gamma^{\;\star}\,\eqdef\,\displaystyle\frac{1}{2}\,\frac{\sigma}{\eps\,\delta^{\;2}}\,\gamma\,$, $\sigma\,\eqdef\,\frac{c_{\;0}}{\lambda}\,$,  and $\eps\,\eqdef\frac{a}{r_{\;0}}\,$, $\delta\,\eqdef\,\frac{r_{\;0}}{\lambda}\,$. As it is well known, all previous systems of equations describe the two-way propagation of nonlinear waves. In this Section, we will derive equations that describe nonlinear waves travelling essentially in one chosen direction. The two most celebrated models of this class are the \acrshort{kdv} and \acrshort{bbm} equations \cite{KdV, bona, Bona1975a, Zabusky1971, Dutykh2013a, Dutykh2014d, Dutykh2014a}. The \acrshort{bbm} equation, in particular, serves as the foundation for our zero-dimensional Windkessel model presented in Appendix~\ref{sec:windkessel}.
 
 In order to derive such models, we observe first that \cref{eq:bouss1d} can be read to the first order as
 \begin{equation*}
@@ -861,7 +868,7 @@ Integrating the last relations in~$x^{\star}$ we obtain
   B=\Bigl(\frac{5+12\,\alpha}{48}\Bigr)\,\eta^{\;\star}_{x^{\star}x^{\star}}
   -\,\frac{1}{2}\,\gamma^{\;\star}\,\eta^{\;\star}_{x^{\star}}\,,
 \end{equation*}
-and the resulting KdV--Burgers equation reads
+and the resulting \acrshort{kdv}--Burgers equation reads
 \begin{equation}\label{eq:5.10}
   \eta^{\;\star}_{t^{\star}}\,+\,\eta^{\;\star}_{x^{\star}}
   \,+\,\frac{5}{2}\,\eps\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}
@@ -879,7 +886,7 @@ where $\tilde{c}=\sqrt{E\,h/(2\,\rho\,r_{0})}$ is the classical Moens--Korteweg 
   \omega=\tilde{c}\,k - \frac{r_{0}\,\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)}{48}\,k^{3} - \frac{\ui}{4}\,r_{0}\,\gamma\,\tilde{\beta}\,k^{2}\,.
 \end{equation*}
 
-\paragraph{BBM--Burgers limit.} Replacing the third‐order spatial derivative by its BBM proxy yields (this regularization approach is also employed in our Windkessel model derivation in Appendix~\ref{sec:windkessel})
+\paragraph{\acrshort{bbm}--Burgers limit.} Replacing the third‐order spatial derivative by its \acrshort{bbm} proxy yields (this regularization approach is also employed in our Windkessel model derivation in Appendix~\ref{sec:windkessel})
 \begin{equation}\label{eq:5.11}
   \eta^{\;\star}_{t^{\star}}\,+\,\eta^{\;\star}_{x^{\star}}
   \,+\,\frac{5}{2}\,\eps\,\eta^{\;\star}\,\eta^{\;\star}_{x^{\star}}
@@ -922,11 +929,11 @@ whose closed‐form solution matches the profiles given above.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figs/KdVBBMSW.eps}
-  \caption{\emph{Comparison of travelling-wave profiles generated by the KdV and BBM equations at several successive instants~$t$.}}
+  \caption{\emph{Comparison of travelling-wave profiles generated by the \acrshort{kdv} and \acrshort{bbm} equations at several successive instants~$t$.}}
   \label{fig:2}
 \end{figure}
 
-The initial disturbance is a solitary wave of amplitude $A\,=\,0.0035$. The near-perfect overlap of the two families of curves at all reported times confirms that the BBM regularisation reproduces, to leading order, the dispersive and nonlinear balance captured by the KdV equation, thereby validating the asymptotic model for the haemodynamic parameters considered here. Figure~\ref{fig:2} juxtaposes the solitary-wave solutions obtained from the KdV and BBM models for a vessel of undisturbed radius $r_{\,0}=0.01\,\mathsf{m}$, wall thickness $h=3\times10^{-4}\,\mathsf{m}$, Young’s modulus $E=4.1\times10^{5}\,\mathsf{kg\,m^{-1}\,s^{-2}}$, wall density $\rho^{\;\omega}=10^{3}\,\mathsf{kg\,m^{-3}}$, and computational length $L=0.4\,\mathsf{m}$.
+The initial disturbance is a solitary wave of amplitude $A\,=\,0.0035$. The near-perfect overlap of the two families of curves at all reported times confirms that the \acrshort{bbm} regularisation reproduces, to leading order, the dispersive and nonlinear balance captured by the \acrshort{kdv} equation, thereby validating the asymptotic model for the haemodynamic parameters considered here. Figure~\ref{fig:2} juxtaposes the solitary-wave solutions obtained from the \acrshort{kdv} and \acrshort{bbm} models for a vessel of undisturbed radius $r_{\,0}=0.01\,\mathsf{m}$, wall thickness $h=3\times10^{-4}\,\mathsf{m}$, Young’s modulus $E=4.1\times10^{5}\,\mathsf{kg\,m^{-1}\,s^{-2}}$, wall density $\rho^{\;\omega}=10^{3}\,\mathsf{kg\,m^{-3}}$, and computational length $L=0.4\,\mathsf{m}$.
 
 \subsubsection{Travelling-wave reduction of the cylindrical model}
 \label{sec:cyl_travelling_wave}
@@ -1025,7 +1032,7 @@ Restoring the original parameters,
   B_{\,1}:=\frac{2b\,\delta^{\,2}}{3\,\eps},
   \label{eq:lem}
 \end{equation}
-which is a well-known integrable third-order ODE of the KdV type \cite{Newell1977}. Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
+which is a well-known integrable third-order ODE of the \acrshort{kdv} type \cite{Newell1977}. Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
 \begin{equation*}
   \eta(\zeta)\ =\ 3\,A_{\,1}\,
   \sech^{2}\,\Bigl[
@@ -1136,7 +1143,7 @@ Elimination of $\bar{u}_{\,0}$ gives the quadratic dispersion relation
   \;+\;\beta\,k\;=\;0.
 \end{equation}
 
-\paragraph{Comparison of phase speeds.} The phase speeds furnished by \eqref{eq:disp_euler}, \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous}, together with those of the classical KdV and BBM reductions, are depicted in \cref{fig:disp} for
+\paragraph{Comparison of phase speeds.} The phase speeds furnished by \eqref{eq:disp_euler}, \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous}, together with those of the classical \acrshort{kdv} and \acrshort{bbm} reductions, are depicted in \cref{fig:disp} for
 \[
   r_{\,0}=0.01\,\mathsf{m}, \qquad
   h=3\times10^{-4}\,\mathsf{m}, \qquad
@@ -1228,7 +1235,7 @@ This value is obtained by analyzing the linearized Boussinesq system up to $\O(\
 
 \subsubsection{Initial Conditions and Solitary Wave Solutions}
 
-To generate initial conditions, we use solitary wave solutions of the Korteweg-de Vries (KdV) equation with $\gamma = 0$:
+To generate initial conditions, we use solitary wave solutions of the \acrfull{kdv} equation with $\gamma = 0$:
 \begin{equation}\label{eq:kdvnumerical}
   \partial_t \eta\ +\ \tilde{c} \partial_x \eta\ +\ \frac{5}{2} \frac{1}{r_0} \tilde{c} \eta \partial_x \eta\ +\ \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48} \partial_x^3 \eta\ =\ 0.
 \end{equation}
@@ -1281,12 +1288,12 @@ Solitary waves of varying amplitudes $A$ from $0.05$ to $1.0$ were generated, pr
   \end{center}
 \end{table}
 
-Figure \ref{fig:3.6} illustrates the space-time evolution of a solitary wave with initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$, showing stable propagation. Figure \ref{fig:3.7} depicts the time evolution for $A = 0.4$ (height $A_s = 0.3760$) at times $t = 1, 80, 100, 150$, demonstrating the development of a solitary wave followed by a dispersive tail. At $t = 150$, the solitary wave is isolated by shifting it left by $130.4$ units and setting the tail to zero, yielding a clean solution. Figure \ref{fig:3.8} compares the amplitude-speed relationship of the Boussinesq system with the KdV model, showing good agreement for small amplitudes.
+Figure \ref{fig:3.6} illustrates the space-time evolution of a solitary wave with initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$, showing stable propagation. Figure \ref{fig:3.7} depicts the time evolution for $A = 0.4$ (height $A_s = 0.3760$) at times $t = 1, 80, 100, 150$, demonstrating the development of a solitary wave followed by a dispersive tail. At $t = 150$, the solitary wave is isolated by shifting it left by $130.4$ units and setting the tail to zero, yielding a clean solution. Figure \ref{fig:3.8} compares the amplitude-speed relationship of the Boussinesq system with the \acrshort{kdv} model, showing good agreement for small amplitudes.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.95\linewidth]{figs/numerique_bouss.jpg}
-  \caption{Space-time plot of the KdV soliton \eqref{eq:kdvnumerical} evolution under the Boussinesq system \eqref{eq:bousneww1}--\eqref{eq:bousneww2} dynamics for initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$. Parameters are reported in Table \ref{tab2.2}.}
+  \caption{Space-time plot of the \acrshort{kdv} soliton \eqref{eq:kdvnumerical} evolution under the Boussinesq system \eqref{eq:bousneww1}--\eqref{eq:bousneww2} dynamics for initial amplitude $A = 0.1$ from $t = 0$ to $t = 1050$. Parameters are reported in Table \ref{tab2.2}.}
   \label{fig:3.6}
 \end{figure}
 
@@ -1300,24 +1307,24 @@ Figure \ref{fig:3.6} illustrates the space-time evolution of a solitary wave wit
   \label{fig:3.7}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}
   \centering
   \includegraphics[width=0.65\linewidth]{figs/my_figure1.jpg}
-  \caption{Comparison of amplitude-speed relationship between the Boussinesq system and the KdV model.}
+  \caption{Comparison of amplitude-speed relationship between the Boussinesq system and the \acrshort{kdv} model.}
   \label{fig:3.8}
 \end{figure}
 
-The filtering procedure generates clean solitary wave solutions by iteratively refining approximate profiles, effectively isolating the solitary wave from dispersive tails. This method is robust for the Boussinesq system, where exact solutions may not exist due to nonlinear term complexities \cite{BDM2}. The numerical results, validated through Table \ref{tab2.2} and Figures \ref{fig:3.6}--\ref{fig:3.8}, confirm stable solitary wave propagation and good agreement with KdV predictions for small amplitudes. Large-amplitude solutions, while less physically relevant due to model assumptions, test the algorithm's robustness. This approach provides reliable initial conditions for studying wave interactions, enhancing our understanding of nonlinear wave dynamics in shallow water systems.
+The filtering procedure generates clean solitary wave solutions by iteratively refining approximate profiles, effectively isolating the solitary wave from dispersive tails. This method is robust for the Boussinesq system, where exact solutions may not exist due to nonlinear term complexities \cite{BDM2}. The numerical results, validated through Table \ref{tab2.2} and Figures \ref{fig:3.6}--\ref{fig:3.8}, confirm stable solitary wave propagation and good agreement with \acrshort{kdv} predictions for small amplitudes. Large-amplitude solutions, while less physically relevant due to model assumptions, test the algorithm's robustness. This approach provides reliable initial conditions for studying wave interactions, enhancing our understanding of nonlinear wave dynamics in shallow water systems.
 
 \section{Stokes expansions}\label{sec:stokes}
 
-In this section, we employ Stokes expansion techniques to analyze the nonlinear wave solutions of our derived models. Stokes expansions provide a systematic approach to construct periodic wave solutions in weakly nonlinear regimes, revealing how nonlinearity affects the dispersion relation and wave profiles. We will focus particularly on applying this methodology to the KdV and BBM reductions of our cylindrical Boussinesq system, demonstrating how the interplay between nonlinearity and dispersion shapes the propagation characteristics of arterial pulse waves. This analysis will further elucidate the amplitude-dependent modifications to wave speed and structure that are essential for accurately modeling blood flow dynamics in elastic vessels.
+In this section, we employ Stokes expansion techniques to analyze the nonlinear wave solutions of our derived models. Stokes expansions provide a systematic approach to construct periodic wave solutions in weakly nonlinear regimes, revealing how nonlinearity affects the dispersion relation and wave profiles. We will focus particularly on applying this methodology to the \acrshort{kdv} and \acrshort{bbm} reductions of our cylindrical Boussinesq system, demonstrating how the interplay between nonlinearity and dispersion shapes the propagation characteristics of arterial pulse waves. This analysis will further elucidate the amplitude-dependent modifications to wave speed and structure that are essential for accurately modeling blood flow dynamics in elastic vessels.
 
-\subsection{Weakly nonlinear Stokes expansion for the KdV reduction}
+\subsection{Weakly nonlinear Stokes expansion for the \acrshort{kdv} reduction}
 
 Stokes' pioneering investigations of periodic gravity waves, first published in 1847, revealed two fundamental facts that remain central to non-linear dispersive‐wave theory: \textit{(i)} coherent periodic wave-trains are admissible even when the governing equations are non-linear, and \textit{(ii)} the dispersion relation acquires an explicit dependence on the wave amplitude. The latter feature gives rise to qualitatively new phenomena rather than mere numerical corrections.
 
-We apply Stokes' method to the KdV reduction
+We apply Stokes' method to the \acrshort{kdv} reduction
 \begin{equation}\label{eq:kdv_red}
   \eta_{t}
   +\tilde{c}\,\eta_{x}
@@ -1327,17 +1334,9 @@ We apply Stokes' method to the KdV reduction
    \eta_{xxx}
   =0,
 \end{equation}
-obtained by setting $\gamma=0$ in \eqref{eq:KdVdim}. Introducing the small parameter $\eps$ and the travelling phase
-\(
-  \theta=kx-\omega t,
-\)
-we seek an expansion
+obtained by setting $\gamma = 0$ in \eqref{eq:KdVdim}. Introducing the small parameter $\eps$ and the travelling phase $\theta=kx-\omega t$, we seek an expansion
 \begin{equation}\label{eq:stokes_ansatz}
-  \frac{\eta}{r_{0}}
-  =\eps\,\xi_{1}(\theta)
-   +\eps^{2}\,\xi_{2}(\theta)
-   +\eps^{3}\,\xi_{3}(\theta)
-   +\dots.
+  \frac{\eta}{r_{0}} = \eps\,\xi_{1}(\theta) + \eps^{2}\,\xi_{2}(\theta) + \eps^{3}\,\xi_{3}(\theta) + \dots.
 \end{equation}
 With the abbreviations
 \[
@@ -1384,7 +1383,7 @@ A particular solution of \eqref{eq:h3} is then
 The above sequence of calculations can be summarized in the form of the following theorem, which provides a closed-form expression for the periodic wave solution and the corresponding nonlinear dispersion relation up to third order in the perturbation parameter.
 
 \begin{theorem}\label{thm:stokes_periodic}
-Let $\eps\ll1$ and let $k>0$ be fixed. To third order in $\eps$ the KdV equation \eqref{eq:kdv_red} possesses a $2\pi/k$-periodic Stokes wave of the form
+Let $\eps\ll1$ and let $k>0$ be fixed. To third order in $\eps$ the \acrshort{kdv} equation \eqref{eq:kdv_red} possesses a $2\pi/k$-periodic Stokes wave of the form
 \begin{equation}\label{eq:eta_series}
   \frac{\eta}{r_{0}}
   =\eps\cos\theta
@@ -1404,11 +1403,11 @@ where the non-linear dispersion relation is
 The phase speed thus increases quadratically with amplitude, demonstrating the amplitude-dependent dispersion characteristic of Stokes waves.
 \end{theorem}
 
-Theorem~\ref{thm:stokes_periodic} recovers the classical Stokes expansion for the KdV equation, with coefficients determined by the underlying physical parameters $\tilde{c}$, $\tilde{\alpha}$, and $r_{0}$. The result confirms that even weak non-linearity modifies the linear dispersion relation by an $\O(\eps^{2})$ term proportional to the square of the wave amplitude.
+Theorem~\ref{thm:stokes_periodic} recovers the classical Stokes expansion for the \acrshort{kdv} equation, with coefficients determined by the underlying physical parameters $\tilde{c}$, $\tilde{\alpha}$, and $r_{0}$. The result confirms that even weak non-linearity modifies the linear dispersion relation by an $\O(\eps^{2})$ term proportional to the square of the wave amplitude.
 
-\subsection{Weakly nonlinear Stokes expansion for the BBM reduction}
+\subsection{Weakly nonlinear Stokes expansion for the \acrshort{bbm} reduction}
 
-Consider the Benjamin-Bona-Mahony (BBM) reduction obtained from the long-wave model,
+Consider the \acrfull{bbm} reduction obtained from the long-wave model,
 \begin{equation}\label{eq:BBM}
   \eta_{t}
   +\tilde{c}\,\eta_{x}
@@ -1416,7 +1415,7 @@ Consider the Benjamin-Bona-Mahony (BBM) reduction obtained from the long-wave mo
   -\frac{(12\tilde{\alpha}+3r_{0})\,r_{0}}{48}\,\eta_{xxt}
   =0,
 \end{equation}
-where, for simplicity, $\gamma=0$ has been set. Denoting
+where, for simplicity, $\gamma = 0$ has been set. Denoting
 \[
   a^{\ast}=\tilde{c},\qquad
   b^{\ast}=\frac{5\tilde{c}}{2r_{0}},\qquad
@@ -1479,7 +1478,7 @@ cancels this term. Integrating once then yields
 
 The above sequence of calculations can be summarized in the form of the following theorem, which provides a closed-form expression for the periodic wave solution and the corresponding nonlinear dispersion relation up to third order in the perturbation parameter.
 \begin{theorem}\label{thm:bbm_stokes}
-Let $\eps\ll1$ and $k>0$. The BBM equation \eqref{eq:BBM} possesses a $2\pi/k$-periodic Stokes wave of the form
+Let $\eps\ll1$ and $k>0$. The \acrshort{bbm} equation \eqref{eq:BBM} possesses a $2\pi/k$-periodic Stokes wave of the form
 \begin{equation}\label{eq:bbm_eta_series}
   \frac{\eta}{r_{0}}
   =\eps\cos\theta
@@ -1502,14 +1501,14 @@ Consequently, the phase speed obeys
 \(
   c_{\mathrm{ph}}=\omega/k
 \)
-and increases quadratically with the wave amplitude, reflecting the weakly non-linear character of the BBM model.
+and increases quadratically with the wave amplitude, reflecting the weakly non-linear character of the \acrshort{bbm} model.
 \end{theorem}
 
-Theorem~\ref{thm:bbm_stokes} mirrors the result obtained earlier for the KdV equation, but with the BBM-specific linear dispersion
+Theorem~\ref{thm:bbm_stokes} mirrors the result obtained earlier for the \acrshort{kdv} equation, but with the \acrshort{bbm}-specific linear dispersion
 \(
   \omega_{0}(k)=a^{\ast}k/(1+c^{\ast}k^{2})
 \)
-and modified amplitude coefficients. Together with Theorem~\ref{thm:stokes_periodic}, it emphasises that both the KdV and BBM reductions support periodic Stokes waves whose speeds are augmented by non-linearity, thereby enriching the spectrum of observable dynamics in pulsatile blood-flow models.
+and modified amplitude coefficients. Together with Theorem~\ref{thm:stokes_periodic}, it emphasises that both the \acrshort{kdv} and \acrshort{bbm} reductions support periodic Stokes waves whose speeds are augmented by non-linearity, thereby enriching the spectrum of observable dynamics in pulsatile blood-flow models.
 
 \section{Conservation laws and symmetries}
 \label{sec:cons_sym}
@@ -1907,16 +1906,13 @@ All multipliers, conserved vectors, and symmetry generators have been derived wi
 
 \section{Modulational instability analysis}\label{sec:MI}
 
-The cubic \emph{non-linear Schrödinger} (NLS) equation,
+The cubic \acrfull{cnls} equation,
 \begin{equation}\label{eq:NLS}
-  \mathrm{i}\,\psi_{t}
-  +\psi_{xx}
-  +|\psi|^{2}\psi
-  =0,
+  \ui\,\psi_{t} + \psi_{xx} + |\psi|^{2}\psi = 0\,,
 \end{equation}
-is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \cite{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretisations \cite{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968). Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the NLS to lower-order models such as the KdV and BBM equations; see the reviews by Peregrine (1983) and Hammack \&\ Henderson (1993) for historical details.
+is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \cite{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretisations \cite{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968). Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the \acrshort{cnls} to lower-order models such as the \acrshort{kdv} and \acrshort{bbm} equations; see the reviews by \cite{Peregrine1983} and \cite{Hammack1993} for historical details.
 
-\subsection{Plane waves and modulational instability}
+\subsection{Plane waves and \acrfull{mi}}
 
 Equation \eqref{eq:NLS} admits the spatially homogeneous solution
 \begin{equation}\label{eq:plane_wave}
@@ -1938,12 +1934,11 @@ Thus long‐wave perturbations with
 \(
   0<q^{2}<2|A|^{2}
 \)
-grow exponentially in time, a manifestation of the \emph{Benjamin--Feir (modulational) instability}.
+grow exponentially in time, a manifestation of the \acrfull{bf} or \acrfull{mi}.
 
-\begin{theorem}[Benjamin--Feir criterion]\label{thm:MI}
+\begin{theorem}[\acrlong{bf} criterion]\label{thm:MI}
   Let $\psi_{0}$ be the plane-wave solution \eqref{eq:plane_wave} of the
-  focusing NLS equation \eqref{eq:NLS}. Then $\psi_{0}$ is modulationally
-  unstable: for every wavenumber $q$ satisfying
+  focusing \acrshort{cnls} equation \eqref{eq:NLS}. Then $\psi_{0}$ is modulationally unstable: for every wavenumber $q$ satisfying
   \(
     0<q^{2}<2|A|^{2},
   \)
@@ -1966,11 +1961,11 @@ grow exponentially in time, a manifestation of the \emph{Benjamin--Feir (modulat
     \lambda_{\mathrm{c}}=\pi/|A|.
   \)
 \end{theorem}
-Theorem~\ref{thm:MI} furnishes the standard Benjamin--Feir instability criterion and will serve as the reference point for the modulational stability of the KdV- and BBM-derived NLS envelopes obtained in the preceding sections.
+Theorem~\ref{thm:MI} furnishes the standard \acrlong{bf} instability criterion and will serve as the reference point for the modulational stability of the \acrshort{kdv}- and \acrshort{bbm}-derived \acrshort{cnls} envelopes obtained in the preceding sections.
 
-\subsection{Modulational instability analysis in KdV wave packets}
+\subsection{Modulational instability analysis in \acrshort{kdv} wave packets}
 
-This section derives the cubic non-linear Schr\"odinger (NLS) equation from the Korteweg--de Vries--Burgers (KdV--Burgers) equation using a systematic multiple-scales expansion. The KdV--Burgers equation models wave propagation with dispersion, non-linearity, and dissipation, while the NLS equation governs the slow modulation of nearly monochromatic wave trains. The derivation clarifies the transformation process and the physical implications of each term. The KdV--Burgers equation is given by
+This section derives the cubic \acrfull{cnls} equation from the \acrfull{kdvb} equation using a systematic multiple-scales expansion. The \acrshort{kdvb} equation models wave propagation with dispersion, non-linearity, and dissipation, while the \acrshort{cnls} equation governs the slow modulation of nearly monochromatic wave trains. The derivation clarifies the transformation process and the physical implications of each term. The \acrshort{kdvb} equation is given by
 \begin{equation}
   \eta_{t} + \tilde{c} \eta_{x} + \frac{5 \tilde{c}}{2 r_{0}} \eta \eta_{x} + \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_{0}) r_{0}}{48} \eta_{xxx} - \frac{r_{0} \tilde{\beta} \gamma}{4} \eta_{xx} = 0,
   \label{eq:kdv_burgers}
@@ -2005,17 +2000,15 @@ These expansions reflect the contributions of derivatives across both fast and s
 
 \subsubsection{Multi-Scale Analysis with SNegligiblemall Dissipation}
 
-In this section, we continue the multi-scale analysis of the KdV--Burgers equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\eps^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the Nonlinear Schr\"odinger (NLS) equation for the amplitude of the wave train.
+In this section, we continue the multi-scale analysis of the \acrshort{kdvb} equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\eps^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the \acrfull{cnls} equation for the amplitude of the wave train.
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
-\begin{equation}
-\label{eq:leading_order}
-\left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0,
+Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
+\begin{equation}\label{eq:leading_order}
+  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0,
 \end{equation}
 where $a = \tilde{c}$, $c = \dfrac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $\eta_0 = A(X, T_1, T_2) \exp(\ui \theta) + \text{c.c.}$, with $\theta = k x - \omega t$. This yields the dispersion relation:
-\begin{equation}
-\label{eq:dispersion}
-\omega = a k - c k^3.
+\begin{equation}\label{eq:dispersion}
+  \omega = a k - c k^3.
 \end{equation}
 The phase velocity is:
 \[
@@ -2023,7 +2016,7 @@ s = \frac{\omega}{k} = a - c k^2,
 \]
 indicating dispersion since $s$ depends on the wave number $k$. The group velocity, which governs the propagation of the wave packet's envelope, is:
 \[
-c_g = \frac{d \omega}{d k} = a - 3 c k^2.
+  c_g = \frac{d \omega}{d k} = a - 3 c k^2.
 \]
 
 At $\O(\eps^2)$, the equation becomes:
@@ -2072,16 +2065,16 @@ since $a - 3 c k^2 = c_g$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_
 \begin{equation*}%\label{eq:NLS_intermediate}
   \ui \partial_{T_2} A - 3 k \partial_X^2 A + \frac{b^2 k A |A|^2}{6 c k^2} - \frac{k b A \phi}{3 c k^2} = 0\,.
 \end{equation*}
-Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the NLS equation:
+Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLS_final}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0.
 \end{equation}
 
 \subsubsection{Multi-Scale Analysis with Significant Dissipation}
 
-In this section, we extend the multi-scale analysis of the KdV--Burgers equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified Nonlinear Schr\"odinger (NLS) equation.
+In this section, we extend the multi-scale analysis of the \acrshort{kdvb} equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified \acrfull{cnls} equation.
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV-Burgers equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
+Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:leading_order_diss}
   \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_0 = 0,
 \end{equation}
@@ -2145,16 +2138,16 @@ since $a - 3 c k^2 = \text{Re}(c_g)$. Substituting $B_0$ and $B_2$ into \eqref{e
 \begin{equation*}%\label{eq:NLS_intermediate_diss}
   \partial_{T_2} A + 3 \ui k \partial_X^2 A + d \partial_X^2 A + i k b^2 \left( \frac{1}{6 c k^2 - 2 \ui d k} - \frac{1}{3 c k^2 - 2 \ui d k} \right) |A|^2 A = 0.
 \end{equation*}
-Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \frac{1}{3 c k^2 - 2 \ui d k}$, and rewriting in standard form, we obtain the modified NLS equation:
+Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \frac{1}{3 c k^2 - 2 \ui d k}$, and rewriting in standard form, we obtain the modified \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLS_final_diss}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + i d \partial_\zeta^2 A + i k b^2 (m - n) |A|^2 A = 0.
 \end{equation}
 
 \subsubsection{Multi-scale Analysis with Intermediate Dissipation}
 
-In this section, we perform a multi-scale analysis of the KdV--Burgers equation for the case where the dissipative term coefficient is $d = \O(\eps^2)$, \emph{i.e.}, $d = \eps^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified Nonlinear Schr\"odinger (NLS) equation. 
+In this section, we perform a multi-scale analysis of the \acrshort{kdvb} equation for the case where the dissipative term coefficient is $d = \O(\eps^2)$, \emph{i.e.}, $d = \eps^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified \acrfull{cnls} equation. 
 
-Substituting the ansatz \eqref{eq:ansatz} into the KdV--Burgers equation \eqref{eq:kdv_burgers}, the equations at $\O(\eps)$ and $\O(\eps^2)$ are identical to those in the first case ($d = \O(\eps^3)$), as the dissipative term $d \partial_x^2 \eta$ only appears at $\O(\eps^3)$ or higher. Thus, we have:
+Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers}, the equations at $\O(\eps)$ and $\O(\eps^2)$ are identical to those in the first case ($d = \O(\eps^3)$), as the dissipative term $d \partial_x^2 \eta$ only appears at $\O(\eps^3)$ or higher. Thus, we have:
 \begin{itemize}
     \item At $\O(\eps)$: The leading-order equation \eqref{eq:leading_order} and dispersion relation \eqref{eq:dispersion}:
     \[
@@ -2192,18 +2185,18 @@ where:
 \[
   \nu^\star = \frac{-2 \ui k b^2 + \ui k b}{c k^2} = \frac{\ui k b (1 - 2 b)}{c k^2}.
 \]
-Rewriting in standard NLS form:
+Rewriting in standard \acrshort{cnls} form:
 \begin{equation}\label{eq:NLS_final_intermediate}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
 \end{equation}
 
 \subsubsection{Instability analysis}
 
-Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \cite{Benjamin1967a, Yuen1975, Yuen1980, Remoissenet1996} and light waves in optical fibers \cite{Tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic Nonlinear Schr\"odinger (NLS) equation on periodic domains reveal recurrent behavior reminiscent of the Fermi--Pasta--Ulam phenomenon \cite{Fermi1955, Yuen1978, Hafizi1981}.
+Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \cite{Benjamin1967a, Yuen1975, Yuen1980, Remoissenet1996} and light waves in optical fibers \cite{Tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic \acrfull{cnls} equation on periodic domains reveal recurrent behavior reminiscent of the \acrfull{fpu} phenomenon \cite{Fermi1955, Yuen1978, Hafizi1981}.
 
 \subsubsection*{Case 1: Negligible Dissipation ($d = \O(\eps^3)$)}
 
-For the NLS equation \eqref{eq:NLS_final}:
+For the \acrfull{cnls} equation \eqref{eq:NLS_final}:
 \[
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0, \quad \beta = \frac{b^2}{6 c k}, \quad \zeta = X - c_g T_1,
 \]
@@ -2234,7 +2227,7 @@ If $\beta k > 0$, then for small $q^2 < -\frac{2 \beta a_0^2}{3 k}$, $\lambda^2 
 
 \subsubsection*{Case 2: Significant Dissipation ($d = O(1)$)}
 
-For the modified NLS equation \eqref{eq:NLS_final_diss}:
+For the modified \acrshort{cnls} equation \eqref{eq:NLS_final_diss}:
 \[
 i \partial_{T_2} A - 3 k \partial_\zeta^2 A + i d \partial_\zeta^2 A + i k b^2 (m - n) |A|^2 A = 0,
 \]
@@ -2272,18 +2265,18 @@ The stability depends on the sign and magnitude of $6 N k - 2 d Q$, with instabi
 
 \subsubsection*{Summary of Multi-Scale Analysis and Modulational Instability}
 
-The multi-scale analysis of the KdV--Burgers equation \eqref{eq:kdv_burgers} for a slowly modulated wave train $\eta_0 = A \exp(\ui \theta) + \text{c.c.}$ reveals how dissipation affects the governing Nonlinear Schr\"odinger (NLS) equations and the modulational instability of plane wave solutions. The results vary with the dissipation coefficient $d$:
+The multi-scale analysis of the \acrshort{kdv}--Burgers equation \eqref{eq:kdv_burgers} for a slowly modulated wave train $\eta_0 = A \exp(\ui \theta) + \text{c.c.}$ reveals how dissipation affects the governing \acrfull{cnls} equations and the \acrshort{mi} of plane wave solutions. The results vary with the dissipation coefficient $d$:
 
 \begin{description}
-  \item{\textbf{Negligible Dissipation ($d = O(\eps^3)$):}} The NLS equation \eqref{eq:NLS_final} is purely dispersive with a cubic nonlinearity. The modulational instability analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
-  \item{\textbf{Significant Dissipation ($d = O(1)$):}} The modified NLS equation \eqref{eq:NLS_final_diss} includes a dissipative term $i d \partial_\zeta^2 A$, altering the dynamics. The instability condition \eqref{eq:dispersion_case2} depends on the coefficient $6 N k - 2 d Q$, indicating that dissipation modifies the range of unstable wave numbers, potentially stabilizing or destabilizing the wave depending on system parameters.
-  \item{\textbf{Intermediate Dissipation ($d = O(\eps^2)$, $d = \eps^2 \tilde{d}$):}} The NLS equation \eqref{eq:NLS_final_intermediate} introduces a linear dissipative term $i k^2 \tilde{d} A$. While modulational instability was not analyzed here, the presence of dissipation suggests a modified instability threshold, requiring further perturbation analysis.
+  \item{\textbf{Negligible Dissipation ($d = O(\eps^3)$):}} The \acrshort{cnls} equation \eqref{eq:NLS_final} is purely dispersive with a cubic nonlinearity. The \acrshort{mi} analysis \eqref{eq:dispersion_case1} shows that plane waves are unstable for wave numbers $q^2 < -\frac{2 \beta a_0^2}{3 k}$ when $\beta k > 0$, driven by the interplay of dispersion and nonlinearity.
+  \item{\textbf{Significant Dissipation ($d = O(1)$):}} The modified \acrshort{cnls} equation \eqref{eq:NLS_final_diss} includes a dissipative term $i d \partial_\zeta^2 A$, altering the dynamics. The instability condition \eqref{eq:dispersion_case2} depends on the coefficient $6 N k - 2 d Q$, indicating that dissipation modifies the range of unstable wave numbers, potentially stabilizing or destabilizing the wave depending on system parameters.
+  \item{\textbf{Intermediate Dissipation ($d = O(\eps^2)$, $d = \eps^2 \tilde{d}$):}} The \acrshort{cnls} equation \eqref{eq:NLS_final_intermediate} introduces a linear dissipative term $i k^2 \tilde{d} A$. While \acrshort{mi} was not analyzed here, the presence of dissipation suggests a modified instability threshold, requiring further perturbation analysis.
 \end{description}
-These findings underscore the complex interplay between nonlinearity, dispersion, and dissipation in nonlinear wave dynamics. The derived NLS equations and instability conditions provide critical insights into the stability of wave trains in dispersive media, with applications to physical systems like water waves and optical fibers.
+These findings underscore the complex interplay between nonlinearity, dispersion, and dissipation in nonlinear wave dynamics. The derived \acrshort{cnls} equations and instability conditions provide critical insights into the stability of wave trains in dispersive media, with applications to physical systems like water waves and optical fibers.
 
-\subsection{Modulational instability analysis in BBM wave packets}
+\subsection{Modulational instability analysis in \acrshort{bbm} wave packets}
 
-The Benjamin--Bona--Mahony (BBM) equation models the unidirectional propagation of long waves in dispersive systems, offering an alternative to the Korteweg-de Vries (KdV) equation with improved high-frequency behavior. In normalized variables, the viscous BBM equation is:
+The \acrfull{bbm} equation models the unidirectional propagation of long waves in dispersive systems, offering an alternative to the \acrfull{kdv} equation with improved high-frequency behavior. In normalized variables, the viscous \acrshort{bbm} equation is:
 \begin{equation}\label{eq:BBM1}
   \partial_t \eta + \tilde{c} \partial_x \eta + \frac{5}{2} \frac{1}{r_0} \tilde{c} \eta \partial_x \eta - \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48} \partial_x^2 \partial_t \eta - \frac{r_0}{4} \gamma \tilde{\beta} \partial_x^2 \eta = 0,
 \end{equation}
@@ -2349,7 +2342,7 @@ The $\exp(i \theta)$ resonant terms yield:
 \begin{equation}\label{eq:resonance_bbm}
   \left( -\partial_\tau - \ui \omega c \partial_\xi^2 - 2 \ui k p c \partial_\xi^2 - c \ui k^2 \partial_\tau - d \partial_\xi^2 \right) A - b \ui k (A C + A^* B) = 0.
 \end{equation}
-Substituting $B$ and $C$, we obtain the NLS equation:
+Substituting $B$ and $C$, we obtain the \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLSBBM}
   \partial_\tau A + \ui M \partial_\xi^2 A + \ui N A |A|^2 = 0,
 \end{equation}
@@ -2358,15 +2351,15 @@ where:
   M = \frac{\omega c + 2 k p c - \ui d}{1 + c k^2}, \qquad N = \frac{b k (\nu + \sigma)}{1 + c k^2}.
 \]
 
-The derivation of the NLS equation \eqref{eq:NLSBBM} from the viscous BBM equation provides a framework for understanding the modulation of wave packets in dispersive systems with viscosity. The coefficients $M$ and $N$ encapsulate the effects of dispersion, dissipation, and nonlinearity, offering insights into wave stability and dynamics in applications such as water waves.
+The derivation of the \acrshort{cnls} equation \eqref{eq:NLSBBM} from the viscous \acrshort{bbm} equation provides a framework for understanding the modulation of wave packets in dispersive systems with viscosity. The coefficients $M$ and $N$ encapsulate the effects of dispersion, dissipation, and nonlinearity, offering insights into wave stability and dynamics in applications such as water waves.
 
 \subsubsection{Instability Analysis}
 
-Modulational instability (MI) is a key phenomenon in nonlinear wave systems, where small perturbations to a plane wave can grow exponentially, leading to complex dynamics. Here, we analyze the stability of plane wave solutions to the Nonlinear Schrödinger (NLS) equation \eqref{eq:NLSBBM} derived from the viscous Benjamin--Bona--Mahony (BBM) equation:
+\acrfull{mi} is a key phenomenon in nonlinear wave systems, where small perturbations to a plane wave can grow exponentially, leading to complex dynamics. Here, we analyze the stability of plane wave solutions to the \acrfull{cnls} equation \eqref{eq:NLSBBM} derived from the viscous \acrfull{bbm} equation:
 \[
   \partial_\tau A + \ui M \partial_\xi^2 A + \ui N A |A|^2 = 0,
 \]
-where $M = \dfrac{\omega c + 2 k p c - \ui d}{1 + c k^2}$, $N = \dfrac{b k (\nu + \sigma)}{1 + c k^2}$, and the coefficients are defined as in the previous derivation. The NLS equation \eqref{eq:NLSBBM} admits a plane wave solution of the form:
+where $M = \dfrac{\omega c + 2 k p c - \ui d}{1 + c k^2}$, $N = \dfrac{b k (\nu + \sigma)}{1 + c k^2}$, and the coefficients are defined as in the previous derivation. The \acrshort{cnls} equation \eqref{eq:NLSBBM} admits a plane wave solution of the form:
 \begin{equation}\label{eq:plane_wave_bbm}
   A_0(\tau) = a_0 \exp(-\ui N a_0^2 \tau),
 \end{equation}
@@ -2392,21 +2385,21 @@ Seeking solutions of the form $(u, v) \propto \exp(i q \xi - i \lambda \tau)$, w
 The stability of the plane wave depends on the sign of $\lambda^2$:
 \begin{itemize}
   \item If $\lambda^2 > 0$, perturbations oscillate, indicating stability.
-  \item If $\lambda^2 < 0$, perturbations grow exponentially, indicating modulational instability.
+  \item If $\lambda^2 < 0$, perturbations grow exponentially, indicating \acrshort{mi}.
 \end{itemize}
 Instability occurs when $M N > 0$ and $q^2 < \dfrac{2 N a_0^2}{M}$, as the quadratic term dominates for small $q$. The interplay between $M$ (dispersion/dissipation) and $N$ (nonlinearity) governs the instability threshold.
 
-The dispersion relation \eqref{eq:dispersion_bbm_b} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous BBM system. The coefficients $M$ and $N$, derived from the BBM parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
+The dispersion relation \eqref{eq:dispersion_bbm_b} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous \acrshort{bbm} system. The coefficients $M$ and $N$, derived from the \acrshort{bbm} parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
 
 \section{Conclusions and discussion}\label{sec:discussion}
 
 In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels featuring viscoelastic walls. Grounded in the assumption of axisymmetric flow and considering an ideal fluid for simplicity, we have developed a coherent hierarchy of asymptotic models that capture the complex dynamics governing these intricate systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axi-symmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}.
 
-Acknowledging the impact of viscous stresses in bio-fluids, we extended our study to incorporate these effects, traditionally addressed through hyperbolic systems of equations. The constraints posed by cylindrical symmetry prompted us to propose various weakly dispersive extensions, enhancing the accuracy of fluid dynamics representation in deformable vessels. Our research began with an in-depth scrutiny of the fully nonlinear regime, resulting in the formulation of a Serre--Green--Naghdi (SGN) system in cylindrical geometry. This system generalises the planar SGN equations to realistic vascular settings and serves as the parent model from which all subsequent approximations descend.
+Acknowledging the impact of viscous stresses in bio-fluids, we extended our study to incorporate these effects, traditionally addressed through hyperbolic systems of equations. The constraints posed by cylindrical symmetry prompted us to propose various weakly dispersive extensions, enhancing the accuracy of fluid dynamics representation in deformable vessels. Our research began with an in-depth scrutiny of the fully nonlinear regime, resulting in the formulation of a \acrfull{sgn} system in cylindrical geometry. This system generalises the planar \acrshort{sgn} equations to realistic vascular settings and serves as the parent model from which all subsequent approximations descend.
 
-To enhance tractability, we presented a derivation of the weakly nonlinear counterpart of our Serre-type system. Additionally, we introduced one-dimensional reductions exemplified by Korteweg--de Vries (KdV) and Benjamin--Bona--Mahony (BBM) type equations, further simplifying the system while preserving essential dynamics.
+To enhance tractability, we presented a derivation of the weakly nonlinear counterpart of our \acrshort{sgn} system. Additionally, we introduced one-dimensional reductions exemplified by \acrfull{kdv} and \acrfull{bbm} type equations, further simplifying the system while preserving essential dynamics.
 
-Our analytical exploration provided valuable insights into the fundamental characteristics of these newly formulated systems. We systematically examined symmetries, conservation laws, and Whitham solitons, offering a comprehensive perspective on their behavior. Linear properties, such as dispersion relations, were meticulously discussed in relation to the base model. Furthermore, through multi-scale analysis, we derived Nonlinear Schrödinger equations and investigated modulational instability, shedding light on the emergence of Stokes waves from both KdV and BBM equations.
+Our analytical exploration provided valuable insights into the fundamental characteristics of these newly formulated systems. We systematically examined symmetries, conservation laws, and Whitham solitons, offering a comprehensive perspective on their behavior. Linear properties, such as dispersion relations, were meticulously discussed in relation to the base model. Furthermore, through multi-scale analysis, we derived cubic \acrfull{cnls} equations and investigated \acrshort{mi}, shedding light on the emergence of Stokes waves from both \acrshort{kdv} and \acrshort{bbm} equations.
 
 The methodologies and insights developed in this work contribute significantly to our understanding of pulsatile flow within deformable vessels and represent a valuable addition to the broader fields of fluid dynamics and mathematical modeling. As we conclude, we anticipate that our findings will stimulate further investigations and contribute to the ongoing dialogue in this dynamic field, positioning this research at the forefront of discussions on complex fluid systems.
 
@@ -2414,13 +2407,13 @@ The methodologies and insights developed in this work contribute significantly t
 
 This work provides a foundational understanding of the mathematical and numerical modeling of nonlinear wave propagation in fluid systems. However, several aspects remain open to further exploration and offer opportunities for extending the research presented here. Building upon the results of this study, we identify multiple promising directions for future research that would expand the scope of our analysis.
 
-A natural extension of this work involves the study of solitary wave solutions for the Serre--Green--Naghdi system in cylindrical coordinates. A comprehensive numerical investigation of this system would provide valuable insights into the stability, shape, and velocity of such solitary waves. Moreover, understanding how these waves interact in cylindrical settings would significantly enhance our knowledge of wave dynamics in confined geometries.
+A natural extension of this work involves the study of solitary wave solutions for the \acrfull{sgn} system in cylindrical coordinates. A comprehensive numerical investigation of this system would provide valuable insights into the stability, shape, and velocity of such solitary waves. Moreover, understanding how these waves interact in cylindrical settings would significantly enhance our knowledge of wave dynamics in confined geometries.
 
 The reduced 0D system derived in this article offers a simplified framework for analyzing complex fluid dynamics. A detailed numerical study of this system would enable validation of the theoretical results and exploration of its dynamical features. Such an analysis could uncover critical aspects of its solution space, including fixed points, oscillatory behavior, and transitions between regimes, helping identify practical scenarios where this reduced model can serve as a reliable approximation for more complex systems.
 
-Further advancement in this field would benefit from deriving and studying the nonlinear Schr\"odinger (NLS) equations for the Serre--Green--Naghdi system in cylindrical coordinates and for the Boussinesq system. This investigation would include examining modulation instability phenomena in these systems, shedding light on the stability and evolution of wave trains in cylindrical geometries.
+Further advancement in this field would benefit from deriving and studying the \acrfull{cnls} equations for the \acrshort{sgn} system in cylindrical coordinates and for the Boussinesq system. This investigation would include examining modulation instability phenomena in these systems, shedding light on the stability and evolution of wave trains in cylindrical geometries.
 
-Additionally, finding and characterizing Stokes waves in the Serre--Green--Naghdi and Boussinesq systems in cylindrical coordinates represents an essential step toward a complete understanding of these models. This analysis would complement the solitary wave solutions and provide further insights into the dynamics of nonlinear waves in such configurations.
+Additionally, finding and characterizing Stokes waves in the \acrshort{sgn} and Boussinesq systems in cylindrical coordinates represents an essential step toward a complete understanding of these models. This analysis would complement the solitary wave solutions and provide further insights into the dynamics of nonlinear waves in such configurations.
 
 These perspectives aim to extend the theoretical and numerical framework developed in this study, contributing to a deeper understanding of nonlinear wave propagation in fluid dynamics. The proposed extensions not only advance the theoretical and numerical understanding of the systems studied in this work but also hold significant implications for biomedical applications. The investigation of nonlinear wave phenomena in cylindrical geometries is particularly relevant for modeling blood flow in arteries, where such configurations naturally occur. By addressing these perspectives, future research can provide deeper insights into the mechanics of pulse propagation in blood vessels, bridging the gap between mathematical modeling and physiological applications, and offering new tools for understanding and predicting hemodynamic behaviors in real-world scenarios.
 
@@ -2466,7 +2459,7 @@ Windkessel and other lumped-parameter models are often derived from electrical-c
 
 In the electrical analogy, pressure plays the role of voltage, whereas flow rate corresponds to current. A two-element Windkessel model incorporates arterial compliance and total peripheral resistance. Here the compliance of the systemic arteries is represented by a capacitor \(\!C\) \(\bigl[\mathsf{cm^{3}\,mmHg^{-1}}\bigr]\), and the peripheral vascular resistance is represented by a resistor \(R\) \(\bigl[\mathsf{mmHg\,s\,cm^{-3}}\bigr]\). The inflow rate \(Q(t)\) \([\mathsf{cm^{3}\,s^{-1}}]\) corresponds to an electric current, whereas the outlet pressure \(P(t)\) \([\mathsf{mmHg}]\) corresponds to a voltage source.
 
-In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous BBM-type equation,
+In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous \acrshort{bbm}-type equation,
 \begin{equation}\label{eq:chap6.1}
   \eta_{\,t}
   +\tilde{c}\,\eta_{\,x}
@@ -2535,6 +2528,6 @@ and setting
   +48\,\tilde{c}\,(\eta_{2}-\eta_{1})=0.
 \end{equation}
 
-By integrating the governing BBM-type equation over space, we have derived a consistent 0D system that provides a compact yet accurate description of the haemodynamics in a compliant arterial segment. Such lumped models, when embedded in larger cardiovascular networks, furnish an invaluable tool for predicting pressure-flow relations and assessing ventricular afterload in both physiological and pathological conditions.
+By integrating the governing \acrshort{bbm}-type equation over space, we have derived a consistent 0D system that provides a compact yet accurate description of the haemodynamics in a compliant arterial segment. Such lumped models, when embedded in larger cardiovascular networks, furnish an invaluable tool for predicting pressure-flow relations and assessing ventricular afterload in both physiological and pathological conditions.
 
 \end{document}
