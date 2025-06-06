@@ -5,11 +5,11 @@
 %
 % lineno: Adds line numbers.
 %
-% serif: Sets the body font to be serif.
+% serif: Sets the body font to be serif. 
 %
-% twocolumn: Sets the body text in two-column layout.
-%
-% num-refs: Uses numerical citation and references style
+% twocolumn: Sets the body text in two-column layout. 
+% 
+% num-refs: Uses numerical citation and references style 
 %           (Vancouver-authoryear).
 %
 % alpha-refs: Uses author-year citation and references style
@@ -23,8 +23,8 @@
 % 1) Do not use either num-refs or alpha-refs in documentclass.
 % 2) Load natbib package with the options set as needed.
 % 3) Use the \bibliographystyle command to specify the style
-%
-% Included NJD styles are:
+% 
+% Included NJD styles are: 
 %   WileyNJD-ACS
 %   WileyNJD-AMA
 %   WileyNJD-AMS
@@ -32,7 +32,7 @@
 %   WileyNJD-Harvard
 %   WileyNJD-VANCOUVER
 %
-% or you may upload an alternative .bst file
+% or you may upload an alternative .bst file 
 % (if requested by the journal).
 %
 % Examples:
@@ -187,14 +187,14 @@ This manuscript is organized as follows. First, in \cref{sec:model}, we present 
 \section{Mathematical modelling}
 \label{sec:model}
 
-Mathematical models of blood flow range from the complex three-dimensional CFD-type models \citep{Roe2005} to very simplified zero-dimensional lumped models \citep{Milisic2004, Alastruey2008} (see also Appendix~\ref{sec:windkessel} for our Windkessel model approach). In the present study, we take an intermediate point of view, where we follow the system's evolution in time and along the longitudinal direction\footnote{The so-called unsteady one-dimensional models.} \citep{Sherwin2003, Alastruey2011} while the processes taking place in the transverse direction are modelled based on the long wave assumption \citep{Lavrentiev1947, Serre1956, BCL, Khakimzyanov2019}. This point of view has already been adopted in our previous studies \citep{Mitsotakis2018, Mitsotakis2019} in the weakly nonlinear regime. In the present study, we relieve this assumption in our developments as far as possible.
+Mathematical models of blood flow range from complex three-dimensional CFD-type models \citep{Roe2005} to very simplified zero-dimensional lumped models \citep{Milisic2004, Alastruey2008} (see also Appendix~\ref{sec:windkessel} for our Windkessel model approach). In the present study, we take an intermediate point of view, where we follow the system's evolution in time and along the longitudinal direction\footnote{The so-called unsteady one-dimensional models.} \citep{Sherwin2003, Alastruey2011} while the processes taking place in the transverse direction are modelled based on the long wave assumption \citep{Lavrentiev1947, Serre1956, BCL, Khakimzyanov2019}. This point of view has already been adopted in our previous studies \citep{Mitsotakis2018, Mitsotakis2019} in the weakly nonlinear regime. In the present study, we relieve this assumption in our developments as far as possible.
 
-We assume that we have an incompressible flow\footnote{Estimates show that the Mach number for blood flows is below $\O\,(10^{-3})$, which justifies the incompressibility assumption.} of an ideal and homogeneous\footnote{The fluid homogeneity assumption is justified by comparing the typical pressure variations with the bulk modulus of the blood. A simple computation shows that the relative variation of the density is of the order of $\O\,(5\times 10^{-6})\,$, which justifies our homogeneity assumption.} fluid. This flow takes place in an elastic cylindrical vessel as schematically depicted in \cref{fig:sketch3d}. Moreover, the blood flow in large arteries is mostly laminar\footnote{The laminarity assumption can be discussed further. Despite the relatively high velocities in large arteries, the blood viscosity and the vessels' small diameter keep the Reynolds number in a range where laminar flow predominates. In addition, blood flow in the arteries is pulsatile due to rhythmic pumping of the heart. This pulsatility can actually stabilize the flow and delay the transition to turbulence.}. In order to simplify the problem and reduce its physical dimensionality, we assume the flow and, consequently, the deformation of the vessel's walls to be axisymmetric\footnote{This approximate symmetry applies particularly to major arteries, such as the aorta and carotid arteries, which are approximately cylindrical with a nearly circular cross-section under normal physiological conditions. The lack of curvature minimizes asymmetric flow disturbances in straight sections of the arteries, supporting the axisymmetric assumption.}. The difference between axisymmetric and general deformation is schematically depicted in \cref{fig:axisym}.
+We assume that we have an incompressible flow\footnote{Rough estimates show that the Mach number for blood flows is of the order of $\O\,(10^{-3})$ which justifies the incompressibility assumption.} of an ideal and homogeneous\footnote{The fluid homogeneity assumption is justified by comparing the typical pressure variations with the bulk modulus of the blood. A simple computation shows that the relative variation of the density is of the order of $\O\,(5\times 10^{-6})\,$, which justifies our homogeneity assumption.} fluid. This flow takes place in an elastic cylindrical vessel as schematically depicted in \cref{fig:sketch3d}. Moreover, the blood flow in large arteries is mostly laminar\footnote{The laminarity assumption can be discussed further. Despite the relatively high velocities in large arteries, the blood viscosity and the vessels' small diameter keep the Reynolds number in a range where laminar flow predominates. In addition, blood flow in the arteries is pulsatile due to rhythmic pumping of the heart. This pulsatility can actually stabilize the flow and delay the transition to turbulence.}. In order to simplify the problem and reduce its physical dimensionality, we assume the flow and, consequently, the deformation of the vessel's walls to be axisymmetric\footnote{This approximate symmetry applies particularly to major arteries, such as the aorta and carotid arteries, which are approximately cylindrical with a nearly circular cross-section under normal physiological conditions. The lack of curvature minimizes asymmetric flow disturbances in straight sections of the arteries, supporting the axisymmetric assumption.}. The difference between axisymmetric and general deformation is schematically depicted in \cref{fig:axisym}. 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.55\linewidth]{sketch.pdf}
-    \caption{Sketch of a cylindrical elastic vessel subject to an axisymmetric deformation filled with an ideal fluid.}
+    \caption{Sketch of a cylindrical elastic vessel subject to an axi-symmetric deformation filled with an ideal fluid.}
     \label{fig:sketch3d}
 \end{figure}
 
@@ -203,7 +203,7 @@ We assume that we have an incompressible flow\footnote{Estimates show that the M
     \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=\linewidth]{Axis.pdf}
-        \caption{An axisymmetric deformation.}
+        \caption{An axi-symmetric deformation.}
         \label{fig:axi}
      \end{subfigure}
      \begin{subfigure}{0.49\textwidth}
@@ -212,11 +212,11 @@ We assume that we have an incompressible flow\footnote{Estimates show that the M
         \caption{A generic deformation.}
         \label{fig:gen}
     \end{subfigure}
-    \caption{A schematic illustration of an axisymmetric (left panel) and a generic (right panel) deformations of initially cylindrical vessel cross-section. In the sequel, we are going to employ the polar coordinates in the $Oyz$ plane.}
+    \caption{A schematic illustration of an axi-symmetric (left panel) and a generic (right panel) deformations of initially cylindrical vessel cross-section. In the sequel, we are going to employ the polar coordinates in the $Oyz$ plane.}
     \label{fig:axisym}
 \end{figure}
 
-Finally, we apply the long wave approximation \citep{Dutykh2007, Khakimzyanov2019}. This simplifying assumption can be justified in the following way. Indeed, the Moens--Korteweg celerity $c_{MK} = \O\,(10^2)$ \si{cm \per s} \citep{Tijsseling2012, Lagree2000} and the hear pulsation period is $t_{h} = \O\,(1)$ \si{s}. Consequently, the pulse wavelength can be estimated to be $\lambda = c_{MK}\cdot t_{h} = \O\,(10^2)$ \si{cm}, which is much larger than a typical diameter or arteries approximately equal to $\O\,(1)$ \si{cm}. Henceforth, the long wave assumption can be justified in this way. It is also well known that long waves are much less affected by viscosity \citep{Boussinesq1895, Lamb1932, Dutykh2007}, which allows us to adopt the ideal fluid assumption. If necessary, the dissipative effects can be added later along the lines of our previous works on this topic \citep{DutykhDias2007, Dutykh2008a, Dutykh2009c, Mitsotakis2019}. We note that the long-wave approximation is not, \emph{per se}, new in this context. However, historically, it has been used to derive hydrostatic models, \emph{cf.} \cite{Lambert1958, Formaggia2003, Quarteroni2004, Delestre2013}. The models resulting from this approach are usually of hyperbolic type similar to Saint-Venant equations originating from hydraulics and water pipe flow modeling \citep{Bourdarias2007a, Bourdarias2007, Bourdarias2012}. The peculiarity of our approach is that we go one step further in the hierarchy of models, namely, we include frequency dispersion effects \citep{Khakimzyanov2016c}.
+Finally, we apply the long wave approximation \citep{Dutykh2007, Khakimzyanov2019}. This simplifying assumption can be justified in the following way. Indeed, the Moens--Korteweg celerity $c_{MK} = \O\,(10^2)$ \si{cm \per s} \citep{Tijsseling2012, Lagree2000} and the hear pulsation period is $t_{h} = \O\,(1)$ \si{s}. Consequently, the pulse wavelength can be estimated to be $\lambda = c_{MK}\cdot t_{h} = \O\,(10^2)$ \si{cm}, which is much larger than a typical diameter or arteries approximately equal to $\O\,(1)$ \si{cm}. Henceforth, the long wave assumption can be justified in this way. It is also well known that long waves are much less affected by viscosity \citep{Boussinesq1895, Lamb1932, Dutykh2007}, which allows us to adopt the ideal fluid assumption. If necessary, the dissipative effects can be added later along the lines of our previous works on this topic \citep{DutykhDias2007, Dutykh2008a, Dutykh2009c, Mitsotakis2019}. We would like to mention that the long wave approximation is not new \emph{per se}. However, historically, it has been used to derive hydrostatic models, \emph{cf.} \cite{Lambert1958, Formaggia2003, Quarteroni2004, Delestre2013}. The models resulting from this approach are usually of hyperbolic type similar to Saint-Venant equations originating from hydraulics and water pipe flow modeling \citep{Bourdarias2007a, Bourdarias2007, Bourdarias2012}. The peculiarity of our approach is that we go one step further in the hierarchy of models, namely, we include frequency dispersion effects \citep{Khakimzyanov2016c}.
 
 \subsection{Base model: dimensional formulation}
 
@@ -234,15 +234,15 @@ where $\rho$ is the constant fluid density, $u$ and $v$ are horizontal and radia
 \begin{equation*}
     v\,(x,\,0,\,t)\ =\ 0\,.
 \end{equation*}
-The elastic wall kinematic impermeability condition reads
+The elastic wall kinematic impermeability condition reads:
 \begin{equation*}
   \eta_{t}\ +\ r^{w}_{x}\cdot u\ =\ v\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,.
 \end{equation*}
-The dynamic boundary condition expressing the force balance on the vessel wall is given by
+The dynamic boundary condition is nothing else but the expression of the force balance written on vessel walls:
 \begin{equation*}
     \rho^{w}\,h\,\eta_{tt}\ =\ p^{w}\ -\ \frac{E\,h}{r_{\,0}^{\,2}\,(1\,-\,\nu^2)}\:\eta\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,,
 \end{equation*}
-where $\rho^{w}$ is the wall density, $p^{w}$ is the pressure exerted by the fluid on the elastic wall, $h$ is the wall thickness, $E$ and $\nu$ characterize the elastic properties (Young modulus and Poisson ratio correspondingly) of the vessel. In this study, we assume for simplicity that $E$, $\nu$, $\rho^{w}$, and $h$ are constant.
+where $\rho^{w}$ is the wall density, $p^{w}$ is the pressure exerted by the fluid on the elastic wall, $h$ is the wall thickness, $E$ and $\nu$ characterize the elastic properties (Young modulus and Poisson ratio correspondingly) of the vessel. In this study, we assume for simplicity that $E$, $\nu$, $\rho^{w}$, and $h$ are constants.
 
 \subsection{Potential model: dimensional formulation}
 
@@ -266,18 +266,18 @@ Here the instantaneous wall position is
 \(
   r^{w}=r_{0}(x)+\eta(x,t),
 \)
-with $r_{0}$ the unperturbed radius and $\eta$ the wall displacement. Under the potential-flow assumption, the continuity equation becomes
+with $r_{0}$ the unperturbed radius and $\eta$ the wall displacement. Under the potential-flow assumption the continuity equation becomes
 \begin{equation}\label{eq:massp}
   r\,\phi_{xx}\ +\ \bigl(r\,\phi_{r}\bigr)_{r}\ =\ 0, \qquad 0\ <\ r\ <\ r^{w}\,,
 \end{equation}
-while the kinematic boundary conditions are given by
+while the kinematic boundary conditions read
 \begin{align}
   \phi_{r}&=0,
   & r&=0, \label{eq:bc1p}\\[2pt]
   \phi_{r}&=\eta_{t}+r^{w}_{x}\,\phi_{x},
   & r&=r^{w}(x,t).\label{eq:bc2p}
 \end{align}
-Equations \eqref{eq:bernouli}--\eqref{eq:bc2p} furnish the starting point for the long-wave asymptotics carried out below.
+Equations \eqref{eq:bernouli}--\eqref{eq:bc2p} furnish the starting point for the long-wave asymptotics carried out in the sequel of this study.
 
 \subsubsection{Variational principles}
 \label{sec:var_principles}
@@ -296,8 +296,6 @@ where $\phi\,(\,x,\,r,\,t\,)$ and $r^{\,w}\,(\,x,\,t\,)$ are allowed to vary sub
   \\[0.5em]
   +\,\delta\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\biggl(\,\frac{1}{2}\;\alpha\,\eta_{\,t}^{\,2} \,-\,\frac{1}{2}\;\beta\,\eta^{\,2} \,-\,p^{\,w}\,\eta\,\biggr)\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,.
 \end{multline}
-{\color{red}***adjust brackets***}
-
 Natural boundary conditions at $r\,=\,0$ and $r\,=\,r^{\,w}$ follow from the careful integration of \eqref{eq:chap5.1}. We consider the following decomposition:
 \begin{enumerate}
 \item $\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,x}\,\delta \phi_{\,x}\,\mathrm{d}r\,=\,\int_{\,0}^{\,r^{\,w}}\,\bigl[\,r\,\phi_{\,x}\,\delta \phi\,\bigr]_{\,x}\,\mathrm{d}r\,-\,\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,xx}\,\delta \phi\,\mathrm{d}r =\,-\,r_{\,x}^{\,w}\,r^{\,w}\,\phi_{\,x}\,\delta \phi\,\biggr|_{\,r\,=\,r^{\,w}}\,+\,\partial_{\,x}\,\int_{\,0}^{\,r^{\,w}}\,r\,\phi_{\,x}\,\delta \phi\,\mathrm{d}r\,,$
@@ -314,8 +312,6 @@ Substituting all these contributions into \eqref{eq:chap5.1}, we obtain
   -\,\bigl[\,r\,\phi_{\,r}\,\delta \phi\,\bigr]_{\,r\,=\,0} \,-\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,r\,\phi_{\,xx}\,+\,\phi_{\,r}\,+\,r\,\phi_{\,rr}\,\bigr)\,\delta \phi\,\mathrm{d}r\,\Biggr]\,\mathrm{d}x\,\mathrm{d}t \\
   +\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\bigl(\,-\,\alpha\,\eta_{\,tt}\,-\,\beta\,\eta\,+\,p^{\,w}\,\bigr)\,\delta \eta\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,.
 \end{multline*}
-{\color{red}***adjust brackets***}
-
 Taking $\delta r^{\,w}\,=\,0$ and assuming $\delta \phi\big|_{\,r\,=\,r^{\,w}}\,=\,\delta \phi\big|_{\,r\,=\,0}\,=\,0\,$, and noting that $\delta \phi$ is otherwise arbitrary, we deduce the following system:
 \begin{align}
   \phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,-\,\alpha\,\eta_{\,tt}\,-\,\beta\,\eta\,+\,p^{\,w} &=\,0 \,, & r\,=\,r^{\,w}\,(x,\,t)\,, \label{eq:chap5.2}\\[0.5em]
@@ -348,7 +344,7 @@ We now consider the motion governed by equations \eqref{eq:chap5.2}–\eqref{eq:
     -\mathbb{I} & 0
   \end{pmatrix},
 \end{equation}
-where $\delta\mathcal{H}$ denotes the Gâteaux (variational) derivative (cf. Section \ref{sec:cons_sym}), $\psi\,\equiv\,\phi\,(\,x,\,r,\,t\,)|_{\,r\,=\,r^{\,w}\,(\,x,\,t\,)}$ is the surface potential, and the Hamiltonian density and total energy are given by
+where $\delta\mathcal{H}$ denotes the Gâteaux (variational) derivative, $\psi\,\equiv\,\phi\,(\,x,\,r,\,t\,)|_{\,r\,=\,r^{\,w}\,(\,x,\,t\,)}$ is the surface potential, and the Hamiltonian density and total energy are given by
 \begin{equation}
   H\,=\,\frac{1}{2}\,\int_{0}^{\eta}\,|\,\nabla\phi\,|^{\,2}\,\mathrm{d}r\,+\,\biggl(\,-\,\frac{1}{2}\,\alpha\,\eta_{\,t}^{\,2}\,-\,\frac{1}{2}\,\beta\,\eta^{\,2}\,+\,p^{\,w}\,\eta\,\biggr), \qquad
   \mathcal{H}\,=\,\int_{\mathbb{R}}\,H\,\mathrm{d}x\,.
@@ -380,7 +376,7 @@ Applying the mean value theorem to the integral over the interval $[\eta,\,\eta+
   -\,\beta\,\int_{\mathbb{R}}\,\eta\,\delta\eta\,\mathrm{d}x
   +\,\int_{\mathbb{R}}\,p^{\,w}\,\delta\eta\,\mathrm{d}x\,.
 \end{equation*}
-The Hamiltonian evolution equations take the form
+Therefore, the non-canonical Hamiltonian evolution equations take the form
 \begin{equation}
   \begin{pmatrix}
     \eta_{\,t} \\
@@ -391,7 +387,7 @@ The Hamiltonian evolution equations take the form
     -\,\frac{1}{2}\,|\,\nabla\phi\,|^{\,2}\,+\,\alpha\,\eta_{\,tt}\,+\,\beta\,\eta\,-\,p^{\,w}
   \end{pmatrix},
 \end{equation}
-recovering the dynamic and kinematic boundary conditions \eqref{eq:chap5.2} and \eqref{eq:chap5.5}, respectively. It is important to emphasise that the operator $\mathcal{J}$ is skew-symmetric and satisfies the Jacobi identity (cf. \citet{Nutku1987}), thus qualifying as a legitimate Hamiltonian operator.
+which recover the dynamic and kinematic boundary conditions \eqref{eq:chap5.2} and \eqref{eq:chap5.5}, respectively. It is important to emphasise that the operator $\mathcal{J}$ is skew-symmetric and satisfies the Jacobi identity (cf. \citet{Nutku1987}), thus qualifying as a legitimate Hamiltonian operator.
 
 In conclusion, the derivation and analysis of the non-canonical Hamiltonian structure provide a robust and systematic framework for investigating complex dynamical systems governed by nonlinear wave equations. The geometric properties of the Hamiltonian operator, including skew-symmetry and the Jacobi identity, ensure consistency with the underlying physics. This insight not only strengthens the theoretical foundations but also enhances the practical modelling of nonlinear dispersive systems in mathematical physics.
 
@@ -403,13 +399,13 @@ We introduce non-dimensional and scaled variables to normalize the Euler equatio
 \begin{equation}\label{eq:ndv}
   \eta^* = \frac{\eta}{a}, \quad x^* = \frac{x}{\lambda}, \quad r^* = \frac{r}{R}, \quad t^* = \frac{t}{T}, \quad \phi^* = \frac{\phi}{\lambda \eps \tilde{c}}, \quad p^* = \frac{p}{\eps \rho \tilde{c}^2},
 \end{equation}
-where $\eta$ is the vessel wall displacement, $a$ is the typical wall deviation, $\lambda$ is the typical wavelength, $R$ is the vessel radius, $T = \lambda / \tilde{c}$ is the time scale, $\tilde{c} = \sqrt{E h / 2 \rho R}$ is the Moens-Korteweg speed, $\phi$ is the velocity potential, $p$ is the pressure, $\rho$ is the fluid density, $E$ is the Young's modulus, and $h$ is the wall thickness \citep{Fung1993}. The non-dimensional parameters are given by
+where $\eta$ is the vessel wall displacement, $a$ is the typical wall deviation, $\lambda$ is the typical wavelength, $R$ is the vessel radius, $T = \lambda / \tilde{c}$ is the time scale, $\tilde{c} = \sqrt{E h / 2 \rho R}$ is the Moens-Korteweg speed, $\phi$ is the velocity potential, $p$ is the pressure, $\rho$ is the fluid density, $E$ is the Young's modulus, and $h$ is the wall thickness \citep{Fung1993}. The non-dimensional parameters are:
 \begin{equation}\label{eq:parameters}
   \eps = \frac{a}{R}, \qquad \delta = \frac{R}{\lambda},
 \end{equation}
 where $\eps = O(1)$ characterizes nonlinearity, and $\delta^2 \ll 1$ indicates weak dispersion. The external pressure is assumed zero, typical for blood flow models.
 
-In non-dimensional form (dropping asterisks for simplicity), the governing equations and boundary conditions are given by
+In non-dimensional form (dropping asterisks for simplicity), the governing equations and boundary conditions are:
 \begin{align}
 & \partial_t \phi + \frac{\eps}{2} (\partial_x \phi)^2 + \frac{\eps}{2 \delta^2} (\partial_r \phi)^2 + p + \eps \kappa \phi = 0, \quad \text{at } r = r^w, \label{eq:bernoulli} \\
 & \delta^2 r \partial_x^2 \phi + \partial_r (r \partial_r \phi) = 0, \quad 0 < r < r^w, \label{eq:laplace} \\
@@ -417,7 +413,7 @@ In non-dimensional form (dropping asterisks for simplicity), the governing equat
 & \partial_r \phi = \delta^2 \partial_t \eta + \delta^2 [r_0(x) + \eps \eta] \partial_x \phi, \quad \text{at } r = r^w, \label{eq:wall_bc} \\
 & p = \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta), \quad \text{at } r = r^w, \label{eq:pressure}
 \end{align}
-where $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \eps / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, {\color{red} ***Clarify the physical meaning of $\gamma$. Define $\gamma^*$.***}  and $\rho_w$ is the wall density (\emph{cf.} \citet{Mitsotakis2019}). Following standard asymptotic techniques \citep{BCS}, we expand the velocity potential $\phi$ as:
+where $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \eps / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \citet{Mitsotakis2019}). Following standard asymptotic techniques \citep{BCS}, we expand the velocity potential $\phi$ as:
 \begin{equation}\label{eq:potential}
   \phi(x, r, t) = \sum_{m=0}^\infty r^m \phi_m(x, t).
 \end{equation}
@@ -543,7 +539,7 @@ The non-singularity condition along the symmetry axis reads:
 \end{equation}
 Above, we introduced the following notation:
 \begin{equation*}
-  \tilde{\alpha}\,\coloneqq\;\frac{\rho^{\,w}\,h}{\rho}\; \quad \text{and} \ \quad \tilde{\beta}(\,x\,)\,\coloneqq\, \frac{E\,h}{\rho\,r_{\,0}^{\,2}\,(\,x\,)}\;.
+  \tilde{\alpha}\,\coloneqq\;\frac{\rho^{\,w}\,h}{\rho}\; \quad \text{and} \ \quad \tilde{\beta}(\,x\,)\,\coloneqq\, \frac{E\,h}{\rho\,r_{\,0}^{\,2}\,(\,x\,)}\;. 
 \end{equation*}
 Then,
 \begin{equation*}
@@ -667,7 +663,7 @@ The asymptotic evaluation of the following integral requires the representation 
 \end{multline*}
 \cref{eq:vTb} can be substituted into the fluid particle vertical acceleration $\Gamma\,(\,x,\,r,\,t\,)$ to obtain the following asymptotic approximation:
 \begin{multline*}
-  \Gamma\,(\,x,\,r,\,t\,)\,=\,v_{\,t}\,+\,\eps\,u\,v_{\,x}\,+\,\eps\,v\,v_{\,r}\ =\ -\;\frac{r}{2}\;\bar{u}_{\,xt}\,-\;\frac{r}{2}\;\eps\,\bar{u}\,\bar{u}_{\,xx}\,+\,\eps\; \frac{r}{4}\;(\,\bar{u}_{\,x}\,)^{\,2}\, +\, \O\,(\,\delta^{\,2}\,)\, =\\
+  \Gamma\,(\,x,\,r,\,t\,)\,=\,v_{\,t}\,+\,\eps\,u\,v_{\,x}\,+\,\eps\,v\,v_{\,r}\ =\ -\;\frac{r}{2}\;\bar{u}_{\,xt}\,-\;\frac{r}{2}\;\eps\,\bar{u}\,\bar{u}_{\,xx}\,+\,\eps\; \frac{r}{4}\;(\,\bar{u}_{\,x}\,)^{\,2}\, +\, \O\,(\,\delta^{\,2}\,)\, =\\ 
   -\,\frac{r}{2}\;\bigl[\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\,\frac{\eps}{2}\;(\,\bar{u}_{\,x}\,)^{\,2}\,\bigr]\, + \,\O\,(\,\delta^{\,2}\,)\,.
 \end{multline*}
 Combining the previous developments, we can state asymptotically one of the governing equations of the cylindrical \acrfull{sgn} system:
@@ -680,7 +676,7 @@ Combining the previous developments, we can state asymptotically one of the gove
 
 \subsubsection{The mass conservation}
 
-In this Section, we are going to derive the second equation of what will become the cylindrical \acrshort{sgn} system. Namely, this equation will play the r\^ole of the mass conservation equation in more classical shallow water-type systems \citep{Dutykh2013, Dutykh2011b, Dutykh2014c, Dutykh2014f, Clamond2019, cheviakov2024analytical}. For this, we return to the integrated version of the continuity \cref{eq:contint}, and we substitute the approximation \eqref{eq:urep} for the horizontal velocity:
+In this Section, we are going to derive the second equation of what will become the cylindrical \acrshort{sgn} system. Namely, this equation will play the r\^ole of the mass conservation equation in more classical shallow water-type systems \citep{Dutykh2013, Dutykh2011b, Dutykh2014c, Dutykh2014f, Clamond2019}. For this, we return to the integrated version of the continuity \cref{eq:contint}, and we substitute the approximation \eqref{eq:urep} for the horizontal velocity:
 \begin{multline*}
   \int_{\,0}^{\,r^{\,w}}r\,u_{\,x}\,\mathrm{d}\,r\,=\, \int_{\,0}^{\,r^{\,w}}r\,\biggl(\,\bar{u}\,+\,\Bigl(\,\frac{1}{12}\;\delta^{\,2}\,(\,r^{w}\,)^{\,2}\,-\;\frac{1}{4}\;\delta^{\,2}r^{\,2}\,\Bigr)\,\bar{u}_{\,xx}\,\biggr)_{\,x}\,\mathrm{d}\,r\,+\,\O\,(\,\delta^{\,4}\,)\ =\\
   \bar{u}_{\,x}\int_{\,0}^{\,r^{\,w}}r\,\mathrm{d}\,r\,+\; \frac{\delta^{\,2}}{6}\;r^{\,w}_{\,x}r^{\,w}\,\bar{u}_{\,xx} \int_{\,0}^{\,r^{\,w}}r\,\mathrm{d}\,r\,+\;\frac{\delta^{2}}{12}\;\bar{u}_{\,xxx}\int_{\,0}^{\,r^{\,w}}r\,(\,r^{\,w}\,)^{\,2}\,\mathrm{d}\,r\,-\;\frac{\delta^{\,2}}{4}\;\bar{u}_{\,xxx} \int_{0}^{r^{\,w}}r^{\,3}\,\mathrm{d}r\ =\\
@@ -694,7 +690,7 @@ The last equation after division by $r^w$ constitutes the desired mass conservat
 
 \subsubsection{Intermediate conclusions}
 
-In this Section, we would like to summarize the developments made to this point. We also remind that no assumption on the nonlinearity parameter has been made so far, \emph{i.e.} $\eps\,=\,\O\,(\,1\,)\,$. On the other hand, all this progress has been made thanks to the long wave assumption that can be expressed as $\delta\, \ll \, 1\,$. We summarize below the two governing equations, which will be the prototype of the future cylindrical \acrshort{sgn} system to be presented below after some little additional efforts\footnote{In reality, we just divided both equations by $r^{w} > 0$ which does not vanish in normal (healthy) conditions.}:
+In this Section, we would like to summarize the developments made so far. We also remind that no assumption on the nonlinearity parameter has been made so far, \emph{i.e.} $\eps\,=\,\O\,(\,1\,)\,$. On the other hand, all this progress has been made thanks to the long wave assumption that can be expressed as $\delta\, \ll \, 1\,$. We summarize below the two governing equations, which will be the prototype of the future cylindrical \acrshort{sgn} system to be presented below after some little additional efforts\footnote{In reality, we just divided both equations by $r^{w} > 0$ which does not vanish in normal (healthy) conditions.}:
 \begin{equation}\label{eq:se1}
   \frac{r^{\,w}}{2}\;\bar{u}_{\,x}\,+\;\frac{\delta^{\,2}}{12}\;r^{\,w}_{\,x}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{48}\;(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,xxx}\,+\,\eta_{\;t}\,+\,r^{\,w}_{\,x}\,u^{\,w}\,(\,x,\,t\,)\ =\ \O\,(\,\delta^{\,4}\,)\,,
 \end{equation}
@@ -748,12 +744,12 @@ and after some simplification, we arrive at the following simple formula:
 \end{equation*}
 In the last equation, we may use the asymptotic representation \eqref{eq:urep} for $u\,(x,\,r,\,t)$ in terms of $\bar{u}\,(\,x,\,t\,)\,$:
 \begin{multline*}
-  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\,(\,x,\,t\,)\,+\,\delta^{\,2}\,\left[\;\frac{1}{12}\;(\,r^{\,w}\,)^{\,2}\,-\;\frac{1}{4}\;r^{\,2}\,\right]\,\bar{u}_{\,xx}\,(\,x,\,t\,)\\
+  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\,(\,x,\,t\,)\,+\,\delta^{\,2}\,\left[\;\frac{1}{12}\;(\,r^{\,w}\,)^{\,2}\,-\;\frac{1}{4}\;r^{\,2}\,\right]\,\bar{u}_{\,xx}\,(\,x,\,t\,)\\ 
   -\,\delta^{\,2}\,\left(\,\bar{u}\,(\,x,\,t\,)\, +\;\frac{1}{12}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\,(\,x,\,t\,)\,-\;\frac{1}{4}\;\delta^{\,2}\,r^{\,2}\,\bar{u}_{\,xx}\,(\,x,\,t\,)\,\right)_{\,xx}\cdot\frac{(\,r^{\,w}\,)^{\,2}\,-\,r^{\,2}}{\,4}\;+\,\O\,(\,\delta^{\,4}\,)
 \end{multline*}
 and after a series of asymptotic simplifications, we obtain the final result of this Section:
 \begin{equation*}
-  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\, -
+  u^{\,w}\,(\,x,\,t\,)\,=\,\bar{u}\, - 
   \;\frac{1}{6}\;\delta^{\,2}\,(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,xx}\, + \,\O\,(\,\delta^{\,4}\,)\,.
 \end{equation*}
 
@@ -768,7 +764,7 @@ The asymptotic formula obtained in the previous Section allows us to rewrite the
    +\\
    \frac{\eps\,\delta^{\,2}}{12}\;(\,r^{\,w}\,)^{\,3}\,\bar{u}_{\,x}\,\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{6}\;\frac{\partial}{\partial x}\;\bigl[ \,(\,r^{\,w}\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\bigr]\,=\,\O\,(\,\delta^{\,4}\,)\,.
 \end{multline*}
-In order to close the system above, we can remember that $r^{\,w}$ can be expressed through a known function and the unknown $\eta$ as $r^{\,w}\,\equiv\, r_{\,0}\,(\,x\,)\,+\,\eps\,\eta\,(\,x,\,t\,)\,$. Then, we obtain the following system of \acrshort{pde}s with variable coefficients, which constitute the fully nonlinear weakly dispersive \acrfull{sgn} equations in the cylindrical axisymmetric setting:
+In order to close the system above, we can remember that $r^{\,w}$ can be expressed through a known function and the unknown $\eta$ as $r^{\,w}\,\equiv\, r_{\,0}\,(\,x\,)\,+\,\eps\,\eta\,(\,x,\,t\,)\,$. Then, we obtain the following system of \acrshort{pde}s with variable coefficients, which constitute the celebrated fully nonlinear weakly dispersive \acrfull{sgn} equations in the cylindrical axi-symmetric setting:
 \begin{equation}\label{eq:sgn1}
   \frac{r_{\,0}}{2}\,\bar{u}_{\;x} \,+\,\eps\,\frac{\eta}{2}\,\bar{u}_{\;x}\,-\,\frac{\eps\,\delta^{\,2}}{12}\,\eta_{\,x}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,2}\,\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{48}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,3}\,\bar{u}_{\,xxx}+\,\eta_{\,t} \,+\,\eps\,\eta_{\,x}\,\bar{u}\,=\,0,
 \end{equation}
@@ -778,11 +774,9 @@ In order to close the system above, we can remember that $r^{\,w}$ can be expres
 \,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\biggr]=\,0.
 \end{multline}
 
-{\color{red}***Do we want to write this full SGN system in dimensional physical variables? If so, this is a good place for that.***}
-
 \subsection{Classical cylindrical Boussinesq equations}
 
-The cylindrical \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} presented above currently seems to be intractable to our analytical and numerical techniques. In order to be able to continue our investigation, we would like to adopt the simplifying assumption of weak nonlinearity while staying in the so-called \emph{Boussinesq regime} \citep{DMII, Dutykh2014f, Dutykh2007, DMS1, cheviakov2024analytical}, i.e., $\eps\ \ll\ 1$ while ${\eps}/{\delta^2}\ =\ \O(1)\,$. For the sake of simplicity, we shall also assume that the vessel radius $r_0\ =\ \mathrm{const}$. Under these assumptions, the \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} can be simplified to the following classical Boussinesq-type equations:
+The cylindrical \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} presented above currently seems to be intractable to our analytical and numerical techniques. In order to be able to continue our investigation, we would like to adopt the simplifying assumption of weak nonlinearity while staying in the so-called Boussinesq regime \citep{DMII, Dutykh2014f, Dutykh2007, DMS1}, \emph{i.e.} $\eps\ \ll\ 1$ while $\frac{\eps}{\delta^2}\ =\ \O(1)\,$. For the sake of simplicity, we shall also assume that the vessel radius $r_0\ =\ \mathrm{const}$. Under these assumptions, the \acrshort{sgn} system \eqref{eq:sgn1}, \eqref{eq:sgn2} can be simplified to the following classical Boussinesq-type equations:
 \begin{equation}\label{eq:5.1}
   \frac{r^{\,w}}{2}\;\bar{u}_{\,x}\,-\;\frac{\delta^{\,2}}{48}\;\,(\,r_{\,0}\,)^{\,3}\,\bar{u}_{\,xxx}\,+\,\eta_{\;t}\,+\,r^{\,w}_{\,x}\,\bar{u}\,=\,\O\,(\,\delta^{\,4}\,+\,\eps\,\delta^{\,2}\,)\,,
 \end{equation}
@@ -803,26 +797,24 @@ The last system can be easily recast in physical variables after neglecting the 
 \begin{equation}\label{eq:bouss2}
   \bar{u}_{\,t}\, + \,\bar{u}\,\bar{u}_{\,x}\, + \,\tilde{\alpha}\,\eta_{\;xtt}\, + \,\tilde{\beta}\,\eta_{\;x}\, + \,\tilde{\beta}\,\tilde{\gamma}\,\eta_{\;xt}\, - \,\frac{r_{\,0}^{\,2}}{6}\;\bar{u}_{\,xxt}\, = \,0\,,
 \end{equation}
-where the coefficients $\tilde{\alpha}>0$, $\tilde{\beta}\geq 0$, $\tilde{\gamma}$, and $r_{\,0}\,>\,0$ is the constant vessel radius.
+where $r_{\,0}\,>\,0$ is the vessel constant radius.
 
-{\color{red}***Does it make sense to write down a ``shallow water"-type system here when $\delta=0$? It will be C-integrable as the usual 1D one when $r_0=const$.***}
-
-To compare the present model with that proposed in \cite{Mitsotakis2019} {\color{red}*** give eqn numbers in their paper, or just write equations here, for simplicity of comparison by reader***}, one observes that the latter employed the potential flow formulation, whereas the current study utilises a velocity-pressure formulation. Furthermore, their model incorporates a viscous frequency parameter associated with Rayleigh damping, which is set to zero in our analysis. Accordingly, these distinctions underscore that the two systems are not equivalent representations of the Boussinesq model.
+To compare the present model with that proposed in \cite{Mitsotakis2019}, one observes that the latter employed the potential flow formulation, whereas the current study utilises a velocity-pressure formulation. Furthermore, their model incorporates a viscous frequency parameter associated with Rayleigh damping, which is set to zero in our analysis. Accordingly, these distinctions underscore that the two systems are not equivalent representations of the Boussinesq model.
 
 \subsection{Unidirectional model equations}\label{sec:nondim}
 
-In this Section, we continue the derivation of simplified weakly dispersive models for axisymmetric flows. Namely, we are about to apply the unidirectional\footnote{In some works, mostly in the field of optics, \emph{e.g.} \cite{Agrawal1979}, it is also referred to as the paraxial approximation.} wave propagation approximation. For this, we introduce the following non-dimensional variables:
+In this Section, we continue the derivation of simplified weakly dispersive models for axi-symmetric flows. Namely, we are about to apply the unidirectional\footnote{In some works, mostly in the field of optics, \emph{e.g.} \cite{Agrawal1979}, it is also referred to as the paraxial approximation.} wave propagation approximation. For this, we introduce the following non-dimensional variables:
 \begin{equation*}
    \eta^{\star}\,=\;\frac{\eta}{a}\,, \qquad x^{\,\star}\,=\,\frac{x}{\lambda}\,, \qquad r^{\,\star}\,=\,\frac{r}{r_{\,0}}\,,\,\qquad t^{\star}\,=\,\frac{t}{T}\,,\qquad u^{\star}\,=\,\frac{u}{c_{\,0}}\,,
 \end{equation*}
-where $c_{\;0}\,=\,\displaystyle\frac{a}{r_{\;0}}\,\sqrt{\frac{2\,E\,h}{ \rho\,r_{\;0}}}$ is a modified Moens-Korteweg characteristic speed and and $T\,=\,2\,\displaystyle\frac{a\,\lambda}{r_{\;0}\,c_{\;0}}$. System \eqref{eq:bouss1}, \eqref{eq:bouss2} in these dimensionless variables reads
+where here $c_{\;0}\,=\,\displaystyle\frac{a}{r_{\;0}}\,\sqrt{\frac{2\,E\,h}{ \rho\,r_{\;0}}}$ is a modified Moens-Korteweg characteristic speed and and $T\,=\,2\,\displaystyle\frac{a\,\lambda}{r_{\;0}\,c_{\;0}}$. System \eqref{eq:bouss1}, \eqref{eq:bouss2} in these dimensionless variables reads
 \begin{equation}\label{eq:bouss1d}
   \eta^{\;\star}_{\;t^{\star}}\,+\,u^{\;\star}_{\;x^{\star}} \,+\, \eps\,\eta^{\;\star}\,u^{\;\star}_{\;x^{\;\star}}\,+\,2\,\eps\,\eta^{\;\star}_{\;x^{\star}}\,u^{\;\star}\,-\,\frac{\delta^{\;2}}{24}\,u^{\;\star}_{\;x^{\star}x^{ \star}x{\star}}\,=\,0\,,
 \end{equation}
 \begin{equation}\label{eq:bouss2d}
   u^{\;\star}_{\;t^{\star}}\, + \,\eta^{\;\star}_{\;x^{\star}}\, + \,2\,\eps\,u^{\;\star}\,u^{\;\star}_{\;x^{\,\star}}\, + \;\frac{1}{2}\,\delta^{\;2}\,\alpha\,\eta^{\;\star}_{\;x^{\star}t^{\star}t^{\star}}\, + \,\gamma^{\;\star}\,\delta^{\;2}\,\eta^{\;\star}_{\;x^{\star}\,t^{\star}}\, - \;\frac{1}{6}\;\delta^{\;2}\,u^{\;\star}_{\,x^{\star}x^{\star}t^{\star}}\,=\,0,
 \end{equation}
-where $\gamma^{\;\star}\,\eqdef\,\displaystyle\frac{1}{2}\,\frac{\sigma}{\eps\,\delta^{\;2}}\,\gamma\,$, $\sigma\,\eqdef\,\frac{c_{\;0}}{\lambda}\,$,  and $\eps\,\eqdef\frac{a}{r_{\;0}}\,$, $\delta\,\eqdef\,\frac{r_{\;0}}{\lambda}\,$. As it is well known, all previous systems of equations describe the two-way propagation of nonlinear waves. In this Section, we will derive equations that describe nonlinear waves travelling essentially in one chosen direction. The two most celebrated models of this class are the \acrshort{kdv} and \acrshort{bbm} equations \citep{KdV, bona, Bona1975a, Zabusky1971, Dutykh2013a, Dutykh2014d, Dutykh2014a, Cheviakov2021, cheviakov2024analytical}. The \acrshort{bbm} equation, in particular, serves as the foundation for our zero-dimensional Windkessel model presented in Appendix~\ref{sec:windkessel}.
+where $\gamma^{\;\star}\,\eqdef\,\displaystyle\frac{1}{2}\,\frac{\sigma}{\eps\,\delta^{\;2}}\,\gamma\,$, $\sigma\,\eqdef\,\frac{c_{\;0}}{\lambda}\,$,  and $\eps\,\eqdef\frac{a}{r_{\;0}}\,$, $\delta\,\eqdef\,\frac{r_{\;0}}{\lambda}\,$. As it is well known, all previous systems of equations describe the two-way propagation of nonlinear waves. In this Section, we will derive equations that describe nonlinear waves travelling essentially in one chosen direction. The two most celebrated models of this class are the \acrshort{kdv} and \acrshort{bbm} equations \citep{KdV, bona, Bona1975a, Zabusky1971, Dutykh2013a, Dutykh2014d, Dutykh2014a}. The \acrshort{bbm} equation, in particular, serves as the foundation for our zero-dimensional Windkessel model presented in Appendix~\ref{sec:windkessel}.
 
 In order to derive such models, we observe first that \cref{eq:bouss1d} can be read to the first order as
 \begin{equation*}
@@ -916,22 +908,24 @@ The linear dispersion relation of this model can be easily computed:
                  {48\,+\,r_{0}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)k^{2}}.
 \end{equation}
 
-\paragraph{Classical solitary and cnoidal waves in the dissipation‐free case.} When $\gamma=0$, the PDEs \cref{eq:KdVdim} and \cref{eq:BBMdim} reduce to the classical \acrshort{kdv} and \acrshort{bbm} equations, for which, among others, exact traveling wave and traveling periodic cnoidal wave solutions are well known. (For details, see, e.g., \cite{cheviakov2024analytical} and references therein.) In particular, the \acrshort{kdv} equation \cref{eq:KdVdim} supports solitary waves propagating with a constant speed $c_{s}$:
-\begin{equation}\label{sol:KdV:bbM:soli}
-  \eta(x,t)=\eta_0 \;+\; \mathcal{A}\,\sech^{2}\,\left(\mathcal{K}\,(x-c_{s}t-x_0)\right),
-\end{equation}
-where $c_s$, $x_0$, and $\mathcal{K}$ are arbitrary constants, and
-\[ %see exact_sol_AS.mw
-\eta_0 = -\tfrac{1}{10}\dfrac{r_0}{\tilde{c}} \left(\mathcal{K}^2 \tilde{c} r_0 (4 \tilde{\alpha} + r_0) + 4(\tilde{c}-c_s)\right)\,,\qquad \mathcal{A} = \tfrac{3}{10} r_0^2 \mathcal{K}^2 \left(4 \tilde{\alpha}  + r_0\right).
-\]
-A parallel computation for the \acrshort{bbm} equation \cref{eq:BBMdim} ($\gamma=0$) yields solitary wave profiles \eqref{sol:KdV:bbM:soli} with arbitrary $c_s$ and $\mathcal{K}$ and
-\[%see exact_sol_AS.mw
-\eta_0 = -\tfrac{1}{10}\dfrac{r_0}{\tilde{c}} \left(\mathcal{K}^2 c_s r_0 (4 \tilde{\alpha} + r_0) + 4(\tilde{c}-c_s)\right)\,,\qquad \mathcal{A} = \tfrac{3}{10} \dfrac{c_s}{\tilde{c}}r_0^2 \mathcal{K}^2 \left(4 \tilde{\alpha}  + r_0\right).
-\]
-These solitary waves, however, do not have ``particle"-like properties of \acrshort{kdv} solitons, neither does the \acrshort{bbm} equation support multi-soliton solutions.
-
-Figure~\ref{fig:2} juxtaposes the solitary-wave solutions obtained from the \acrshort{kdv} and \acrshort{bbm} models for a vessel of undisturbed radius $r_{\,0}=0.01\,\mathsf{m}$, wall thickness $h=3\times10^{-4}\,\mathsf{m}$, Young’s modulus $E=4.1\times10^{5}\,\mathsf{kg\,m^{-1}\,s^{-2}}$, wall density $\rho^{\;\omega}=10^{3}\,\mathsf{kg\,m^{-3}}$, and computational length $L=0.4\,\mathsf{m}$.
-The near-perfect overlap of the two families of curves at all reported times confirms that the \acrshort{bbm} regularisation reproduces, to leading order, the dispersive and nonlinear balance captured by the \acrshort{kdv} equation, thereby validating the asymptotic model for the haemodynamic parameters considered here.
+\paragraph{Classical solitary waves (dissipation‐free).} If $\gamma=0$, \cref{eq:KdVdim} supports solitary waves propagating with $c_{s} = \tilde{c}\bigl(1+5A/(6\,r_{0})\bigr)$:
+\begin{equation*}
+  \eta(x,t)=\frac{6\bigl(c_{s}-\tilde{c}\bigr)r_{0}}{5\tilde{c}}\;
+  \sech^{2}\,\biggl(\sqrt{\frac{12\bigl(c_{s}-\tilde{c}\bigr)}{\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}}\;(x-c_{s}t)\biggr).
+\end{equation*}
+A parallel computation for \cref{eq:BBMdim} furnishes
+\begin{equation*}
+  \eta(x,t)=\frac{6\bigl(c_{s}-\tilde{c}\bigr)r_{0}}{5\tilde{c}}\;
+  \sech^{2}\,\biggl(\,\sqrt{\frac{12\bigl(c_{s}-\tilde{c}\bigr)}{c_{s}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}}\;(x-c_{s}t)\,\biggr).
+\end{equation*}
+Indeed, setting $\eta=\eta(\zeta)$ with $\zeta=x-c_{s}t$, substituting into \cref{eq:KdVdim},
+integrating twice delivers
+\begin{equation*}
+  \frac{\tilde{c}\bigl(12\,\tilde{\alpha}+3\,r_{0}\bigr)r_{0}}{96}\,(\eta')^{2}
+  \,+\,\frac{(-c_{s}+\tilde{c})}{2}\,\eta^{2}
+  \,+\,\frac{5}{12}\,\frac{\tilde{c}}{r_{0}}\,\eta^{3}\,=\,0,
+\end{equation*}
+whose closed‐form solution matches the profiles given above.
 
 \begin{figure}
   \centering
@@ -940,32 +934,14 @@ The near-perfect overlap of the two families of curves at all reported times con
   \label{fig:2}
 \end{figure}
 
-In a similar manner, for both equations, one has another class of traveling wave solutions given by periodic cnoidal waves in terms of Jacobi elliptic cosine function $\rm{cn}(\cdot,k)$ of modulus $k$, $0<k<1$:
-\begin{equation}\label{sol:KdV:bbM:cn}
-  \eta(x,t)=\eta_0 \;+\; \mathcal{A}\,\rm{cn}^{2}\,\left(\mathcal{K}\,(x-c_{s}t-x_0),\,k\right),
-\end{equation}
-For the \acrshort{kdv} equation \cref{eq:KdVdim} with $\gamma=0$, the cnoidal wave parameters are given by
-\[%see exact_sol_AS.mw
-\eta_0 = -\tfrac{1}{10}\dfrac{r_0}{\tilde{c}} \left(\mathcal{K}^2 \tilde{c} r_0 (2k^2-1) (4 \tilde{\alpha} + r_0) + 4(\tilde{c}-c_s)\right)\,,\qquad \mathcal{A} = \tfrac{3}{10} r_0^2 \mathcal{K}^2 k^2 \left(4 \tilde{\alpha}  + r_0\right),
-\]
-and arbitrary $\mathcal{K}$, $k$, $x_0$, and $c_s$. The PDE \cref{eq:BBMdim} with $\gamma=0$ admits the periodic solutions \eqref{sol:KdV:bbM:cn} with parameters
-\[%see exact_sol_AS.mw
-\eta_0 = -\tfrac{1}{10}\dfrac{r_0}{\tilde{c}} \left(\mathcal{K}^2 c_s r_0 (2k^2-1) (4 \tilde{\alpha} + r_0) + 4(\tilde{c}-c_s)\right)\,,\qquad \mathcal{A} = \tfrac{3}{10} \dfrac{c_s}{\tilde{c}}r_0^2 \mathcal{K}^2  k^2 \left(4 \tilde{\alpha}  + r_0\right).
-\]
-The Jacobi elliptic cosine is a doubly periodic functions in the complex plane, with the real period of $\rm{cn}(z,k)$ given by
-\[
-T = \dfrac{2\pi}{{\rm AGM}(1,\sqrt{1-k^2})}\,,
-\]
-and ${\rm AGM}(a,b)$ denotes the Gauss' arithmetic-geometric mean of two nonnegative real numbers $a$, $b$.
-In the limit $k\to 1^-$, cnoidal periodic waves undergo a cnoidal-solitary transition, and the periodic solutions \eqref{sol:KdV:bbM:cn} reduce to solitary waves \eqref{sol:KdV:bbM:soli}. The opposite limit yields harmonic waves: $\lim_{k\to 0^{+}}\rm{cn}(z,k) = \cos z$.
-
+The initial disturbance is a solitary wave of amplitude $A\,=\,0.0035$. The near-perfect overlap of the two families of curves at all reported times confirms that the \acrshort{bbm} regularisation reproduces, to leading order, the dispersive and nonlinear balance captured by the \acrshort{kdv} equation, thereby validating the asymptotic model for the haemodynamic parameters considered here. Figure~\ref{fig:2} juxtaposes the solitary-wave solutions obtained from the \acrshort{kdv} and \acrshort{bbm} models for a vessel of undisturbed radius $r_{\,0}=0.01\,\mathsf{m}$, wall thickness $h=3\times10^{-4}\,\mathsf{m}$, Young’s modulus $E=4.1\times10^{5}\,\mathsf{kg\,m^{-1}\,s^{-2}}$, wall density $\rho^{\;\omega}=10^{3}\,\mathsf{kg\,m^{-3}}$, and computational length $L=0.4\,\mathsf{m}$.
 
 \subsubsection{Travelling-wave reduction of the cylindrical model}
 \label{sec:cyl_travelling_wave}
 
-In this Section, we derive exact solitary wave solutions for the variable-coefficient cylindrical Boussinesq-type model \eqref{eq:bouss1}, \eqref{eq:bouss2}. The derivation follows the computer-algebra strategy of \cite{Dutykh2007}, implemented symbolically in \textsc{Maple}. We look for solutions that depend on a single travelling coordinate
+In this Section, we derive exact solitary-wave solutions for the variable-coefficient cylindrical Boussinesq-type model \eqref{eq:bouss1}, \eqref{eq:bouss2}. The derivation follows the computer-algebra strategy of \cite{Dutykh2007}, implemented symbolically in \textsc{Maple}. We look for solutions that depend on a single travelling coordinate
 \begin{equation*}
-  \zeta \;\coloneqq\; x - c\,t - x_0,
+  \zeta \;\coloneqq\; x - c\,t,
 \end{equation*}
 so that
 \begin{equation*}
@@ -983,7 +959,7 @@ Substituting this expression into \cref{eq:5.2} yields the cylindrical Boussines
        \;+\;\frac{\eps}{2}\,\eta\,\bar{u}_{\,x}
        \;+\;\eps\,\eta_{\,x}\,\bar{u}
        \;-\;\frac{\delta^{\,2}}{48}\,r_{\,0}^{\,3}\,\bar{u}_{\,xxx}
-       =\O\,\bigl(\delta^{\,4},\eps\,\delta^{\,2}\bigr),
+       =\O\,\bigl(\delta^{\,4},\eps\,\delta^{\,2}\bigr), 
   \label{eq:bousnew1}\\
   \bar{u}_{\,t}
   &\;+\;\eps\,\bar{u}\,\bar{u}_{\,x}
@@ -1038,13 +1014,13 @@ whose unique positive solution is\footnote{The positive root is selected to guar
 \begin{equation*}
   A^{\,2}\ =\ \frac{9\,e\,(d+f)}{6\,a\,(d+f)\ -\ 2\,b}, \qquad c\ =\ \frac{2\,b}{3\,(d+f)}\,A.
 \end{equation*}
-Restoring the original parameters, one has
-\begin{equation}\label{eq:rad:soli:A:c}
+Restoring the original parameters,
+\begin{equation*}
   A\ =\ 6\,\sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}, \qquad
   c\ =\ \frac{r_{\,0}}{6\alpha+2}\,\sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}\,.
-\end{equation}
+\end{equation*}
 
-\paragraph{Scalar traveling wave equation.} With the compatibility conditions \eqref{eq:compat} enforced, either of the relations \eqref{eq:5.13}, \eqref{eq:5.14} becomes
+\paragraph{Scalar solitary wave equation.} With the compatibility conditions \eqref{eq:compat} enforced, either of the relations \eqref{eq:5.13}, \eqref{eq:5.14} becomes
 \begin{equation}
   A_{\,1}\,\eta^{\,\prime}
   \;-\;
@@ -1057,26 +1033,25 @@ Restoring the original parameters, one has
   B_{\,1}:=\frac{2b\,\delta^{\,2}}{3\,\eps},
   \label{eq:lem}
 \end{equation}
-which is a well-known integrable third-order ODE of the \acrshort{kdv} type \citep{Newell1977}. Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution, which yields
-\begin{equation}\label{eq:cyl:sol:sech2}
-  \eta(x,t)\ =\eta_0~ + ~\ 12\,B_{\,1}\,\mathcal{K}^2
-  \sech^{2}\,\left[\mathcal{K}\;(x-ct-x_0)\right],
+which is a well-known integrable third-order ODE of the \acrshort{kdv} type \citep{Newell1977}. Provided $A_{\,1}B_{\,1}>0$, equation \eqref{eq:lem} admits the classical $\sech^{2}$ solitary-wave solution:
+\begin{equation*}
+  \eta(\zeta)\ =\ 3\,A_{\,1}\,
+  \sech^{2}\,\Bigl[
+    \frac12\,\sqrt{A_{\,1}/B_{\,1}}\;(\zeta-\zeta_{\,0})
+  \Bigr], \qquad \zeta_{\,0}\ \in\ \R.
+\end{equation*}
+Re-expressed through the physical parameters,
+\begin{equation}
+  \eta(\zeta)\ =\ -\,\frac{3\,r_{\,0}\,(7+18\alpha)}{54\alpha+18}\,
+  \sech^{2}\,\Bigl[\frac{\zeta}{2\delta}\,\sqrt{\frac{28+72\alpha}{r_{\,0}^{\,2}(3\alpha+1)}}\Bigr], \label{eq:solitarybouss1}
 \end{equation}
-where $\eta_0=A_1-4B_1\mathcal{K}^2$, and $K$, $x_0$ are arbitrary constants, and in terms of physical parameters,
-\[
-  A_1 = \dfrac{r_0\left(7r_0 + 18\alpha\right)}{18\left(3\alpha + r_0\right)\eps},\qquad
-  B_1 = \dfrac{r_0^3\,\delta^2}{72\,\eps}.
-\]
-The horizontal velocity $\bar{u}\,(\zeta)$ has a similar form; it is given by \eqref{eq:5.11a} with $A$ defined in \eqref{eq:rad:soli:A:c}.
-
-In a similar manner, cnoidal wave solutions arise. Indeed, the ODE \eqref{eq:lem} admits solutions of the form
-\begin{equation}\label{eq:cyl:sol:cn2}
-  \eta(x,t)\ =\eta_0~ + ~\ 12\,B_{\,1}\,\mathcal{K}^2 k^2
-  \rm{cn}^{2}\,\left(\mathcal{K}\;(x-ct-x_0), k\right),
+and, by virtue of \eqref{eq:5.11},
+\begin{equation}
+  \bar{u}(\zeta)\ =\ \frac{r_{\,0}\,(7+18\alpha)}{3\alpha+1}\,
+  \sqrt{\frac{\beta\,(3\alpha+1)}{r_{\,0}\,(36\alpha+11)}}\,
+  \sech^{2}\,\Bigl[\frac{\zeta}{2\delta}\,\sqrt{\frac{28+72\alpha}{r_{\,0}^{\,2}(3\alpha+1)}}\Bigr]. \label{eq:solitarybouss2}
 \end{equation}
-where $\eta_0=A_1 - 4B_1\mathcal{K}^2 (2k^2-1)$, and $K$, $k$, and $x_0$ are arbitrary constants, and $\bar{u}\,(\zeta)$ is again given by \eqref{eq:5.11a}, \eqref{eq:rad:soli:A:c}.
-
-
+The entire derivation has been cross-checked symbolically in \textsc{Maple}; the annotated worksheet is provided in the accompanying codes repository.
 
 \section{Dispersion relations}\label{sec:dispersion}
 
@@ -1092,7 +1067,7 @@ We first examine the linear dispersion characteristics of the full three-dimensi
 \end{equation}
 subject to the boundary conditions
 \begin{equation}\label{eq:lin_bc_kin}
-  v\,\left(x,r^{\,w},t\right)\;=\;\eta_{\,t}\,\left(x,t\right),
+  v\,\left(x,r^{\,w},t\right)\;=\;\eta_{\,t}\,\left(x,t\right), 
 \end{equation}
 \begin{equation}\label{eq:lin_bc_dyn}
   p^{\,w}\,\left(x,t\right)\; = \;\rho^{\,w}h\,\eta_{\,tt}\,\left(x,t\right)\; + \;\frac{E\,h}{\rho_{\,0}^{\,2}}\,
@@ -1286,17 +1261,17 @@ Solitary waves of varying amplitudes $A$ from $0.05$ to $1.0$ were generated, pr
 \begin{table}
   \caption{\label{tab2.2} Estimated solitary wave speed and amplitude for the cylindrical Boussinesq system \eqref{eq:bousnew1}--\eqref{eq:bousnew2}.}
   \begin{center}
-  \begin{tabular}{ |c       c       c       c | c       c       c       c | }
+  \begin{tabular}{ |c       c       c       c | c       c       c       c | } 
    \hline
     A & $A_{\,s}$ & $c_{\,s}$ & c& A & $A_{\,s}$ & $c_{\,s}$ & c\\
     \hline
    0.05 & 0.0431 & 0.7324 & 0.7325& 0.55 & 0.5460 & 0.9521 & 1.0288 \\
    \hline
-   0.1 & 0.0853 & 0.7551& 0.7573 & 0.6 &  0.6066 & 0.9736 & 1.0645\\
+   0.1 & 0.0853 & 0.7551& 0.7573 & 0.6 &  0.6066 & 0.9736 & 1.0645\\ 
    \hline
    0.15 &  0.1297 & 0.7785 & 0.7835 & 0.65 & 0.6693 & 0.9938 & 1.1015\\
    \hline
-   0.2 & 0.1757 & 0.8015 & 0.8106 & 0.7 &   0.7338 & 1.0130 & 1.1395\\
+   0.2 & 0.1757 & 0.8015 & 0.8106 & 0.7 &   0.7338 & 1.0130 & 1.1395\\ 
    \hline
    0.25 & 0.2231 & 0.8242 & 0.8385& 0.75 & 0.8003 & 1.0317 & 1.1787 \\
     \hline
@@ -1539,48 +1514,54 @@ and modified amplitude coefficients. Together with Theorem~\ref{thm:stokes_perio
 \section{Conservation laws and symmetries}
 \label{sec:cons_sym}
 
-Every transformation that maps the solution manifold of a system of differential equations into may be called a \emph{symmetry}. The classical method of Sophus Lie provides a systematic procedure for constructing single- and multi-parameter \emph{Lie groups} of point, contact, and higher-order symmetries, and has been successfully employed for algebraic, ordinary, and partial differential equations (for a review and details, see, e.g., \citet{olver2000applications, Bluman2010} and references therein). Analogous computational frameworks exist for the determination of nonlocal symmetries. Closely related methodologies have been developed for approximate symmetries, symmetries of difference schemes, and those of integro-differential equations (e.g, \cite{Ibragimov1995, dorodnitsyn2010applications, tarayrah2023two, druzhkov2024relationship}). A closely related notion is that of \emph{equivalence transformations} that connect and simplify families of models that involve arbitrary functions and/or parameters (\citet{cheviakov2017symbolic} and references therein).
+Every transformation that maps the solution manifold of a system of differential equations (DEs) into itself is termed a \emph{symmetry}. The classical Lie method furnishes a systematic procedure for constructing single- and multi-parameter Lie groups of point symmetries and has been successfully employed for algebraic, ordinary, and partial differential equations \cite{Cheviakov2007}. Analogous computational frameworks exist for the determination of contact and higher-order symmetries, as well as for non-local symmetries. Closely related methodologies have been developed for approximate symmetries, symmetries of difference schemes, and those of integro-differential equations; see, for instance, the extensive compendium in \cite{Ibragimov1995}.
 
-Similarly to symmetries, local and nonlocal conservation laws of a system of differential equations are coordinate-independent entities encoding the geometric structure of the system's solution manifold. Conservation laws are locally given by divergence expressions vanishing on the solution set, or more generally, differential forms closed on the solution set of a given model. Conservation laws encode fundamental physical properties of the underlying process; classical examples include the conservation of mass, momentum, charge, and energy. Conservation laws are widely used in analysis, including existence, uniqueness, and global solution behaviour \citep{Lax1968, Olver1993, Evans2010, Knops1984, cheviakov2024analytical}. They likewise play a fundamental role in geometric analyses of solution manifolds and in the design of robust numerical schemes that preserve key physical quantities \citep{LeVeque2002, cheviakov2020invariant}. Moreover, local conservation laws can be used to introduce nonlocal (potential) variables, thereby generating PDE systems nonlocally related to a given one \citep{Bluman1987, Sjoberg2004, Bluman2010}.
+Information about a PDE system's conservation laws is indispensable for a profound understanding of its symmetry structure. Conservation laws encode the fundamental physical invariants of the underlying process and underpin analytical results on existence, uniqueness, and stability \cite{Olver1993, Evans2010}. They likewise play a pivotal rôle in geometric analyses of solution manifolds \cite{Bluman1987} and in the design of robust numerical schemes that preserve key physical quantities \cite{LeVeque2002}.
 
-For partial differential equations, the computation of symmetries, conservation laws, and related analytical structures often require the formulation and solution of systems of \emph{determining equations} satisfied by the unknown symmetry and conservation law components. Such determining equations can form overdetermined linear systems containing from dozens to thousands of equations. Exact symbolic software has been employed for generation, simplification, and solution of such systems for a long time. In this work, computations are performed in \textsc{Maple} using the \texttt{GeM} package \citep{Cheviakov2007, cheviakov2010computation, cheviakov2010symbolic, cheviakov2017symbolic, GeMpage}. In particular, package routines assist in the generation of symmetry and conservation law determining equations, necessary substitutions on the solution set, splitting, flux computation, output, and more.
+In this section we introduce the recently developed \textsc{Maple} package \texttt{GeM} \cite{Cheviakov2007}. The package provides fully automated routines for the local symmetry analysis of ODEs and PDEs and for the systematic search of conservation laws. All determining equations are generated symbolically in a form amenable to efficient automatic reduction and solution.
 
 \subsection{Conservation laws}\label{ssec:CL}
 
-%The four standard flux-construction techniques, together with the direct method for conservation-law derivation, have all been implemented symbolically in \texttt{GeM} \citep{Cheviakov2007}. Package routines return the determining equations in a form suitable for automatic reduction and solution. They are capable of treating high-order systems with numerous dependent and independent variables and can typically be executed on a standard desktop computer.
+Divergence expressions that vanish on the solution set of a PDE system represent its \emph{local conservation laws}. Such laws arise ubiquitously: classical examples include the conservation of mass, momentum, charge, and energy. For time-dependent systems on bounded domains they yield first integrals, while for ODEs they provide conserved quantities \cite{Cheviakov2010}. Conservation laws play a decisive rôle in the analytical theory of nonlinear PDEs, notably in the study of stability and in the construction of numerical schemes \cite{Lax1968, Knops1984}. Moreover, a local conservation law often serves to introduce non-local (potential) variables, thereby generating auxiliary PDE systems with identical solution sets \cite{Bluman1987, Sjoberg2004}.
 
-Consider an $N$-equation PDE system with independent and dependent variables
-$ x=(x^{1},\dots,x^{n})$,\\ $u(x)=(u^{1}(x),\dots,u^{m}(x))$,
-written in differential function notation
+The four standard flux-construction techniques, together with the direct method for conservation-law derivation, have all been implemented symbolically in \texttt{GeM} \cite{Cheviakov2007}. Package routines return the determining equations in a form suitable for automatic reduction and solution. They are capable of treating high-order systems with numerous dependent and independent variables and can typically be executed on a standard desktop computer.
+
+Consider an $N$-equation PDE system of order $K$ for
+\[
+  x=(x^{1},\dots,x^{n}),\qquad
+  u(x)=(u^{1}(x),\dots,u^{m}(x)),
+\]
+written compactly as
 \begin{equation}\label{eq:chap4.1}
   L^{\sigma}[u]\;=\;L^{\sigma}\bigl(x,u,\partial u,\dots,\partial^{K}u\bigr)\;=\;0,
   \qquad \sigma \in \{1,\dots,N\}.
 \end{equation}
-where we denote partial derivatives using the subscript notation
+We denote first-order derivatives by
 \[
-u^{\nu}_{\,i_{1}\ldots i_{p}} \;=\; \dfrac{\partial^p u^{\nu}}{\partial i_{1}\ldots \partial i_{p}},\qquad
+  u^{\nu}_{\,i}\;=\;\pd{u^{\nu}}{x^{i}}, 
+\]
+and collect all derivatives of order~$p$ in
+\begin{equation}\label{eq:chap4.7}
   \partial^{p}u\;=\;
   \Bigl\{\,
-      u^{\nu}_{\,i_{1}\ldots i_{p}} \,\bigm|\,
+      \partial_{x^{i_{1}}\dots x^{i_{p}}} u^{\nu} \,\bigm|\,
       \nu \in \{1,\dots,m\},\;
       i_{1},\dots,i_{p} \in \{1,\dots,n\}
   \Bigr\}.
-\]
-The solution set of the PDE system \eqref{eq:chap4.1} represents a hypersurface in the \emph{jet space} $J^K(x|u)$ whose coordinates are all elements of $x$, $u$, $\partial u$, $\ldots$, $\partial^{K}u$.
-
-The PDE system \eqref{eq:chap4.1} is written in a \emph{solved form} with respect to the \emph{leading derivatives} $\{u^{\,j_{\sigma}}_{\,i_{\sigma,1}\dots i_{\sigma,s}}\}_{\sigma=1}^{N}$ if its equations are given by
+\end{equation}
+A \emph{solved form} of \eqref{eq:chap4.1} is obtained when
 \begin{equation}\label{eq:chap4.5}
   L^{\sigma}[u]\;=\;
   u^{\,j_{\sigma}}_{\,i_{\sigma,1}\dots i_{\sigma,s}}
   \;-\;
-  M^{\sigma}[u]
+  M^{\sigma}\bigl(x,u,\partial u,\dots,\partial^{K}u\bigr)
   \;=\;0,
   \qquad
   \sigma=1,\dots,N,
 \end{equation}
-where neither the leading derivatives nor their differential consequences appear in the right-hand sides $M^{\sigma}[u]$.
+where $1\leq j_{\sigma}\leq m$, $s\leq K$, and $1\leq i_{\sigma,k}\leq n$. The set $\{u^{\,j_{\sigma}}_{\,i_{\sigma,1}\dots i_{\sigma,s}}\}_{\sigma=1}^{N}$ contains $N$ linearly independent leading derivatives that do not appear in the right-hand sides $M^{\sigma}$.
 
-\paragraph{Total derivatives and Euler operators.} The \emph{total derivative} with respect to $x^{i}$ is a chain rule-type linear operator
+\paragraph{Total and Euler operators.} The total derivative with respect to $x^{i}$ is
 \[
   D_{i}\;=\;
   \pd{}{x^{i}}
@@ -1593,21 +1574,19 @@ where neither the leading derivatives nor their differential consequences appear
   \;+\;\dots,
   \qquad i \in \{1,\dots,n\}.
 \]
-(Here and below, summation in repeated indices is assumed.) The \emph{Euler operator} (also called variational or Gâteaux derivative) with respect to a dependent variable $u^\nu$ is a linear differential operator acting on differential functions as follows:
+The Euler operator acting on a differential function $U(x)$ is
 \begin{equation}\label{eq:chap4.4}
-  E_{u^\nu}\;=\;
-  \pd{}{u^\nu}
+  E_{U}\;=\;
+  \pd{}{U}
   \;-\;
-  D_{i}\pd{}{u^\nu_{\,i}}
+  D_{i}\pd{}{U_{\,i}}
   \;+\;
   \dots
   \;+\;
   (-1)^{s}\,D_{i_{1}}\dots D_{i_{s}}
-  \pd{}{u^\nu_{\,i_{1}\dots i_{s}}}
-  \;+\;\dots ,
-  \qquad \nu \in \{1,\dots,m\}.
+  \pd{}{U_{\,i_{1}\dots i_{s}}}
+  \;+\;\dots
 \end{equation}
-
 
 \paragraph{Local conservation laws.} A divergence expression
 \begin{equation}\label{eq:chap4.2}
@@ -1620,201 +1599,311 @@ where neither the leading derivatives nor their differential consequences appear
   D_{n}\phi^{n}
   \;=\;0
 \end{equation}
-holding on solutions of~\eqref{eq:chap4.1} is called a (divergence-type) \emph{local conservation law}. The fluxes $\phi^{i}$ may depend on $x$, $u$, and finitely many derivatives of~$u$. Global forms of conservation laws \eqref{eq:chap4.2} are obtained through their integration in spatial domains; if one of the independent variables is time, $x^1\equiv t$, then a global conservation law relates a time rate of change of a global quantity in a spatial domain $\mathcal{V}$ to the total flux through its boundary $\partial\mathcal{V}$. Conservation laws of a given model form a linear space, with linear combinations corresponding to further conservation laws. This space is considered modulo \emph{trivial} conservation laws (for details, see, e.g., \citet{anco2020different}). In practice, one is interested in finding all nontrivial linearly independent conservation laws of a given PDE system.
+valid on the solution set of~\eqref{eq:chap4.1} is called a local conservation law. The fluxes $\phi^{i}$ may depend on $x$, $u$, and finitely many derivatives of~$u$.
 
-\paragraph{Direct construction by multipliers.} Local conservation laws of PDE systems can be systematically constructed using the method involving multipliers (characteristics). We summarize this method briefly; for details and original references, see  \cite{Bluman2010}. A set of functions
-$\{\Lambda_{\sigma}[u]\}_{\sigma=1}^{N}$ that satisfy
+A conservation law \eqref{eq:chap4.2} is \emph{trivial} if
+\[
+  \phi^{i}\;=\;A^{i}[u]\;+\;D_{j}H^{ij}[u],
+\]
+where $A^{i}$ vanishes on solutions of~\eqref{eq:chap4.1} and $\operatorname{div}H \equiv 0$ identically.
+
+\paragraph{Direct construction by multipliers.} Non-trivial conservation laws arise from multipliers
+$\{\Lambda_{\sigma}(x,U,\partial U,\dots,\partial^{\ell}U)\}_{\sigma=1}^{N}$ that satisfy
 \begin{equation}\label{eq:chap4.3}
-  \Lambda_{\sigma}[u]\,L^{\sigma}[u]
+  \Lambda_{\sigma}[U]\,L^{\sigma}[U]
   \;\equiv\;
-  D_{i}\,\tilde{\phi}^{i}[u]
+  D_{i}\,\phi^{i}[U],
 \end{equation}
-identically for an arbitrary vector function $u(x)$. Then on the solution set of~\eqref{eq:chap4.1}, the left-hand side of \eqref{eq:chap4.3} vanishes, yielding a local conservation law $D_{i}\,\tilde{\phi}^{i}[u]=0$. The direct method builds on the fundamental geometric property of the Euler operator that a function $F[u]$ is a divergence expression if and only if $E_{u^\nu}F[u]\equiv 0$ identically for all $\nu=1,\dots,m$. The sequence of the direct method is as follows.
+identically in the jet space. On any solution $U=u$ of~\eqref{eq:chap4.1} the right-hand side of \eqref{eq:chap4.3} vanishes, yielding a local conservation law. Completeness of the direct method has been established for broad classes of systems, including those in (generalised) Kovalevskaya form \cite{Olver1993}:
+\begin{theorem}\label{thm:char_form}
+  For every local conservation law $D_{i}\phi^{i}[u]=0$ of a system in solved form~\eqref{eq:chap4.5}, there exists an equivalent conservation law whose fluxes contain no leading derivatives, viz.
+  \[
+      D_{i}\,\tilde{\phi}^{i}[U]
+      \;=\;
+      \widetilde{\Lambda}_{\sigma}[U]\,
+      \bigl(
+          U^{\,j_{\sigma}}_{\,i_{\sigma,1}\dots i_{\sigma,s}}
+          -M^{\sigma}[U]
+      \bigr),
+  \]
+  for some non-singular multipliers $\{\widetilde{\Lambda}_{\sigma}\}_{\sigma=1}^{N}$. The correspondence between conservation laws and multiplier sets is, however, not always one-to-one.
+\end{theorem}
 
-\begin{enumerate}
-  \item Specify the dependence of the multipliers.
-  \item Take a linear combination $K = \Lambda_{\sigma}[u]\,L^{\sigma}[u]$.
-  \item Write down the conservation law determining equations
-\begin{equation}\label{eq:DirectM:DetEq}
-  E_{u^\nu} K \equiv 0,\qquad \nu=1,\dots,m.
-\end{equation}
-  \item Because the application of the Euler operator may increase the differential order of a differential function it's applied to, one splits the determining equations \eqref{eq:DirectM:DetEq} by setting to zero coefficients at all derivatives of $u$ that do not enter $K$.
-  \item The split determining equations are solved for the multiplier set  $\{\Lambda_{\sigma}[u]\}$.
-  \item A procedure to invert the divergence is applied to \eqref{eq:chap4.3} to determine (up to equivalence) the flux vector $\{\tilde{\phi}^{i}[u]\}$ (see, e.g., \citet{cheviakov2010computation}).
+\paragraph{The \texttt{GeM} workflow.}
+A typical sequence for conservation-law computation in \texttt{GeM} proceeds as follows:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Initialisation:}
+        \verb|restart;|\\
+        \verb|read("d:/gem32_12.mpl"):|\\
+        \verb|with(GeM): with(linalg): with(DEtools): with(PDEtools):|
+  \item \textbf{Declaration of variables:}\\
+        \verb|gem_decl_vars(indeps=[...], deps=[...], freefunc=[...], freeconst=[...]);|
+  \item \textbf{Input of the PDE system:}\\
+        \verb|gem_decl_eqs([...], solve_for=[...]);|
+  \item \textbf{Generation of determining equations:}\\
+        \verb|det_eqs := gem_conslaw_det_eqs([...]);|
+  \item \textbf{Selection of unknown multipliers:}\\
+        \verb|CL_multipliers := gem_conslaw_multipliers();|
+  \item \textbf{Reduction of the over-determined system:}\\
+        \verb|simplified_eqs := DEtools[rifsimp](det_eqs, CL_multipliers, mindim=1);|
+  \item \textbf{Solution of determining equations:}\\
+        \verb|multipliers_sol := pdsolve(simplified_eqs[Solved]);|
+  \item \textbf{Computation of fluxes:}\\
+        \verb|gem_get_CL_fluxes(multipliers_sol);|
 \end{enumerate}
 
-All of the above steps have been implemented for symbolic computations in \texttt{Maple}/\texttt{GeM}.
-
-The completeness of the direct method has been established by \cite{martinez1979noether} for a broad class of systems (those having an \emph{extended Kovalevskaya form}). In particular, for every local conservation law of a given system of that type, there corresponds an equivalent conservation law with fluxes $\{\tilde{\phi}^{i}[u]\}$ that has the characteristic form \eqref{eq:chap4.3} for some set of multipliers $\{\Lambda_{\sigma}[u]\}$.
-
-Infinite (countable or uncountable) sets of local conservation laws can arise for some PDE systems; in particular, this is the case for linear and integrable systems (see \citet{cheviakov2024analytical} for a review). Such conservation laws may be also calculated obtained by the direct multiplier method, however, if a hierarchy of conservation laws involves derivatives of unbounded differential order, the direct method would provide only the complete set of conservation laws up to a user-specified order.
-
-%\paragraph{The \texttt{GeM} workflow.}
-%A typical sequence for conservation-law computation in \texttt{GeM} proceeds as follows:
-%\begin{enumerate}[label=(\roman*)]
-%  \item \textbf{Initialisation:}
-%        \verb|restart;|\\
-%        \verb|read("d:/gem32_12.mpl"):|\\
-%        \verb|with(GeM): with(linalg): with(DEtools): with(PDEtools):|
-%  \item \textbf{Declaration of variables:}\\
-%        \verb|gem_decl_vars(indeps=[...], deps=[...], freefunc=[...], freeconst=[...]);|
-%  \item \textbf{Input of the PDE system:}\\
-%        \verb|gem_decl_eqs([...], solve_for=[...]);|
-%  \item \textbf{Generation of determining equations:}\\
-%        \verb|det_eqs := gem_conslaw_det_eqs([...]);|
-%  \item \textbf{Selection of unknown multipliers:}\\
-%        \verb|CL_multipliers := gem_conslaw_multipliers();|
-%  \item \textbf{Reduction of the over-determined system:}\\
-%        \verb|simplified_eqs := DEtools[rifsimp](det_eqs, CL_multipliers, mindim=1);|
-%  \item \textbf{Solution of determining equations:}\\
-%        \verb|multipliers_sol := pdsolve(simplified_eqs[Solved]);|
-%  \item \textbf{Computation of fluxes:}\\
-%        \verb|gem_get_CL_fluxes(multipliers_sol);|
-%\end{enumerate}
-
 \subsection{Symmetries}\label{ssec:symm}
+\textbf{}
+A \emph{symmetry group} of a differential equation maps each solution to another solution. Continuous (Lie) symmetries are therefore inherent to every non-trivial system. The foundational concepts were introduced by \textsc{Sophus Lie} in the late nineteenth century and have since evolved into a versatile tool for analysing ODEs and PDEs.
 
-For an $n$-dimensional independent variable $x$ and $m$-component dependent variable $u$, a one-parameter ($a$) Lie group of point transformations has the form
-\begin{equation}\label{eq:tr:pt}
-  (x')^{i}=f^{i}(x,u;a), \qquad
-  (u')^{\nu}=g^{\nu}(x,u;a),
+For an $n$-dimensional independent variable $x$ and $m$-component dependent variable $u$, a one-parameter group of point transformations reads
+\[
+  (x')^{i}=f^{i}(x,u;\eps), \qquad
+  (u')^{\nu}=g^{\nu}(x,u;\eps),
   \qquad
   i \in \{1,\dots,n\},\;
   \nu \in \{1,\dots,m\},
-\end{equation}
-or infinitesimally,
+\]
+or, in infinitesimal form,
 \[
-  (x')^{i}=x^{i}+a\,\xi^{i}(x,u)+\mathcal{O}(a^{2}),\qquad
-  (u')^{\nu}=u^{\nu}+a\,\eta^{\nu}(x,u)+\mathcal{O}(a^{2}).
+  (x')^{i}=x^{i}+\eps\,\xi^{i}(x,u)+\mathcal{O}(\eps^{2}),\qquad
+  (u')^{\nu}=u^{\nu}+\eps\,\eta^{\nu}(x,u)+\mathcal{O}(\eps^{2}).
 \]
 The associated generator is
 \[
   X=\xi^{i}(x,u)\,\pd{}{x^{i}}+\eta^{\nu}(x,u)\,\pd{}{u^{\nu}}.
 \]
-Its $K$-th prolongation is obtained via the standard formulae involving total derivatives $D_{i}$; for details, see \cite{olver2000applications, Bluman2010, cheviakov2024analytical}. The transformation \eqref{eq:tr:pt} is a \emph{symmetry} of~\eqref{eq:chap4.1} when it maps solutions $u(x)$ of~\eqref{eq:chap4.1} into solutions $u'(x')$ of the same system. Locally, the invariance criterion is given by the \emph{determining equations}
-\begin{equation}\label{eq:sym:det:eq}
+Its $K$-th prolongation is obtained via the standard formulae involving total derivatives $D_{i}$; cf. \eqref{eq:chap4.4}. The group is a symmetry of~\eqref{eq:chap4.1} iff
+\[
   X^{(K)}\,L^{\sigma}=0
   \quad\text{whenever}\quad
-  L^{\sigma}[u]=0,
-  \qquad \sigma \in \{1,\dots,N\}
-\end{equation}
-whose solutions are the symmetry components $\{\xi^{i}(x,u), \eta^{\nu}(x,u)\}$. Allowing for more general dependencies of symmetry components, one can obtain higher-order, nonlocal, and other types of symmetries of a given PDE system \eqref{eq:chap4.1} (see, e.g., \citet{olver2000applications, Bluman2010, cheviakov2024analytical} and references therein).
+  L^{\sigma}=0,
+  \qquad \sigma \in \{1,\dots,N\}.
+\]
 
-\paragraph{Local symmetry computation algorithm.}
-\begin{enumerate}
-  \item Specify the dependence of the multipliers. In case of contact or higher-order symmetries, use their evolutionary form: $\eta^{\nu}(x,u) \to \zeta^{\nu}[u]$, $\xi^{i}(x,u) \to 0$.
-  \item Write down the determining equations \eqref{eq:sym:det:eq}.
-  \item Substitute leading derivatives (and their differential consequences) from the solved form \eqref{eq:chap4.5} of the given system (and its differential consequences).
-  \item Because the determining equations \eqref{eq:sym:det:eq} will involve derivatives of $u$ of orders higher than those that $\{\xi^{i}(x,u), \eta^{\nu}(x,u)\}$ (or $\{\zeta^{\nu}[u]\}$) depend on, one splits the determining equations by setting to zero coefficients at all independent combinations of such higher-order derivatives of $u$.
-  \item The split determining equations are solved for the symmetry components.
-  \item In case of the point symmetry, the global group \eqref{eq:tr:pt} corresponding to the symmetry components is calculated.
+\paragraph{The \texttt{GeM} workflow for symmetries.}
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Initialisation.}
+  \item \textbf{Declaration of variables and parameters.}
+  \item \textbf{Input of the PDE system.}
+  \item \textbf{Generation of determining equations:}\\
+        \verb|det_eqs := gem_symm_det_eqs([...]);|
+  \item \textbf{Selection of symmetry components:}\\
+        \verb|sym_components := gem_symm_components();|
+  \item \textbf{Reduction of the system:}\\
+        \verb|simplified_eqs := DEtools[rifsimp](det_eqs, sym_components, mindim=1);|
+  \item \textbf{Solution of determining equations:}\\
+        \verb|symm_sol := pdsolve(simplified_eqs[Solved]);|
+  \item \textbf{Output of symmetries:}\\
+        \verb|gem_output_symm(symm_sol);|
 \end{enumerate}
 
-All of these steps have been implemented for symbolic computations in \texttt{Maple}/\texttt{GeM}.
+Detailed examples for both the Boussinesq and the full cylindrical blood-flow models are provided below, together with the resulting conservation laws, symmetry generators, and the corresponding one-parameter transformation groups.
 
-%
-%\paragraph{The \texttt{GeM} workflow for symmetries.}
-%\begin{enumerate}[label=(\roman*)]
-%  \item \textbf{Initialisation.}
-%  \item \textbf{Declaration of variables and parameters.}
-%  \item \textbf{Input of the PDE system.}
-%  \item \textbf{Generation of determining equations:}\\
-%        \verb|det_eqs := gem_symm_det_eqs([...]);|
-%  \item \textbf{Selection of symmetry components:}\\
-%        \verb|sym_components := gem_symm_components();|
-%  \item \textbf{Reduction of the system:}\\
-%        \verb|simplified_eqs := DEtools[rifsimp](det_eqs, sym_components, mindim=1);|
-%  \item \textbf{Solution of determining equations:}\\
-%        \verb|symm_sol := pdsolve(simplified_eqs[Solved]);|
-%  \item \textbf{Output of symmetries:}\\
-%        \verb|gem_output_symm(symm_sol);|
-%\end{enumerate}
+\paragraph{Conservation laws and symmetries for the Boussinesq system.}
 
-Conservation law and point symmetry computations for both the Boussinesq and the full cylindrical blood-flow models are provided below.
+For the cylindrical Boussinesq system \eqref{eq:bouss1}, \eqref{eq:bouss2} with constant radius $r_{0}$, a direct multiplier search yields the local conservation law
+\begin{multline}
+  \Bigl[\,\bar{u}
+         +\frac{1}{2}\,\tilde{\beta}\,\gamma\,\eta_{x}
+         +\frac{2}{3}\,\tilde{\alpha}\,\eta_{xt}
+         -\frac{1}{18}\,r_{0}^{2}\,\bar{u}_{xx}\Bigr]_{t}
+  +\Bigl[\,\frac{1}{2}\,\bar{u}^{2}
+        +\tilde{\beta}\,\eta
+        +\frac{1}{2}\,\tilde{\beta}\,\gamma\,\eta_{t}
+        -\frac{1}{9}\,r_{0}^{2}\,\bar{u}_{tx}
+        +\frac{1}{3}\,\tilde{\alpha}\,\eta_{tt}\Bigr]_{x}=0 .
+\end{multline}
+Here $\tilde{\alpha}= \mathsf{\rho^{w}\,h/\rho}$ and
+$\tilde{\beta}(x)=\mathsf{E\,h/(\rho\,r_{0}^{2})}$.
+The corresponding multipliers are
+\begin{itemize}
+  \item $\lambda_{1}(t,x,\eta,\bar{u},\dots)=0$,
+  \item $\lambda_{2}(t,x,\eta,\bar{u},\dots)=1$.
+\end{itemize}
 
-*************************
+The infinitesimal symmetry generators are
+\[
+  X_{1}=\partial_{x},
+  \qquad
+  X_{2}=\partial_{t},
+\]
+with associated point transformations
+\[
+  x' = x+\eps_{1},
+  \quad
+  t' = t,
+  \quad
+  \eta'=\eta,
+  \quad
+  \bar{u}'=\bar{u};
+  \qquad
+  x' = x,
+  \quad
+  t' = t+\eps_{2},
+  \quad
+  \eta'=\eta,
+  \quad
+  \bar{u}'=\bar{u}.
+\]
+These represent spatial and temporal translations.
 
+\paragraph{Conservation laws and symmetries of the full cylindrical model (constant unperturbed radius).} For $r_{0}=\mathrm{const}$, the governing equations read
+\begin{equation}\label{eq:d1}
+  \frac{(r_{0}+\eta)^{2}}{2}\,\bar{u}_{x}
+  -\frac{(r_{0}+\eta)^{3}}{12}\,\eta_{x}\,\bar{u}_{xx}
+  -\frac{(r_{0}+\eta)^{4}}{48}\,\bar{u}_{xxx}
+  +(r_{0}+\eta)\,\eta_{t}
+  +(r_{0}+\eta)\,\eta_{x}\,\bar{u}\ =\ 0,
+\end{equation}
+\begin{multline}\label{eq:d2}
+  (r_{0}+\eta)\,\bar{u}_{t}
+  +\frac{(r_{0}+\eta)^{2}}{6}\,\eta_{t}\,\bar{u}_{xx}
+  +(r_{0}+\eta)\,\bar{u}\,\bar{u}_{x}
+  +\frac{(r_{0}+\eta)^{2}}{6}\,\eta_{x}\,\bar{u}\,\bar{u}_{xx}
+  \\[2pt]
+  +\Bigl(\tilde{\alpha}\,\eta_{tt}
+        +\tilde{\beta}\,\eta
+        +\tilde{\beta}\,\gamma\,\eta_{t}\Bigr)_{x}\,(r_{0}+\eta)
+  +\frac{(r_{0}+\eta)^{3}}{12}\,\bar{u}_{x}\,\bar{u}_{xx}
+  -\frac{1}{6}\,\pd{}{x}
+        \Bigl[(r_{0}+\eta)^{3}
+              \bigl(\bar{u}_{xt}
+                    +\bar{u}\,\bar{u}_{xx}
+                    -\tfrac{1}{2}\,\bar{u}_{x}^{2}\bigr)\Bigr]\ =\ 0.
+\end{multline}
+In the multiplier ansatz adopted, \emph{two} independent sets are obtained:
+\[
+  \bigl\{\lambda_{1}=1,\;\lambda_{2}=0\bigr\},
+  \qquad
+  \bigl\{\lambda_{3}=0,\;
+         \lambda_{4}=\tfrac{1}{r_{0}+\eta}\bigr\}.
+\]
+Each set generates a distinct local conservation law.
 
-\subsection{Conservation laws and symmetries for the Boussinesq system}\label{ssec:symm:Bouss}
-%\paragraph{Conservation laws and symmetries for the Boussinesq system.}
-
-For the cylindrical Boussinesq system \eqref{eq:bouss1}, \eqref{eq:bouss2}, the direct conservation law construction method with multipliers depending on derivatives up to the second order yields a single the local conservation law arising from the PDE \eqref{eq:bouss2}:
-\begin{equation}\label{eq:Bsq:CL}
-  D_{t}\,\Bigl[\,\bar{u}  + \tilde{\alpha}\,\eta_{xt} + \tilde{\beta}\,\gamma\,\eta_{x}
-         -\frac{1}{6}\,r_{0}^{2}\,\bar{u}_{xx}\Bigr]
-  + D_{x}\,\Bigl[\,\frac{1}{2}\,\bar{u}^{2} + \tilde{\beta}\,\eta_{t}\Bigr]=0 .
+\paragraph{\textit{First conservation law}.} With $\lambda_{1}=1$ the characteristic form yields
+\begin{equation}\label{eq:a}
+  \Bigl[\eta\,r_{0}+\tfrac12\,\eta^{2}\Bigr]_{t}
+  +\Bigl[
+        -\tfrac1{48}\,\eta^{4}\,\bar{u}_{xx}
+        -\tfrac1{12}\,r_{0}\,\eta^{3}\,\bar{u}_{xx}
+        -\tfrac18\,r_{0}^{2}\,\eta^{2}\,\bar{u}_{xx}
+        -\tfrac1{12}\,r_{0}^{3}\,\eta\,\bar{u}_{xx}
+        -\tfrac1{48}\,r_{0}^{4}\,\bar{u}_{xx}
+        +\tfrac12\,\eta^{2}\,\bar{u}
+        +r_{0}\,\eta\,\bar{u}
+        +\tfrac12\,r_{0}^{2}\,\bar{u}
+  \Bigr]_{x}=0.
 \end{equation}
 
-For the general set of constants $\tilde{\alpha}$, $\tilde{\beta}$, $\gamma$, and $r_{0}$, the system \eqref{eq:bouss1}, \eqref{eq:bouss2} admits two point symmetry infinitesimal generators
+\paragraph{\textit{Second conservation law}.} With $\displaystyle\lambda_{4}=1/(r_{0}+\eta)$ one obtains
+\begin{multline}\label{eq:b}
+  \Bigl[
+        \bar{u}
+        +\tfrac12\,\tilde{\beta}\,\gamma\,\eta_{x}
+        -\tfrac1{18}\,r_{0}^{2}\,\bar{u}_{xx}
+        +\tfrac23\,\tilde{\alpha}\,\eta_{xt}
+        +\tfrac{5}{108}\,\bar{u}\,\eta_{x}^{2}
+        +\tfrac1{27}\,\bar{u}_{xx}\,\eta^{2}
+        +\tfrac1{36}\,r_{0}\,\bar{u}_{xx}\,\eta
+        \\[2pt]
+        -\tfrac{5}{108}\,\eta\,\eta_{x}\,\bar{u}_{x}
+        -\tfrac{5}{72}\,r_{0}\,\eta_{x}\,\bar{u}_{x}
+        +\tfrac{5}{108}\,\eta\,\eta_{xx}\,\bar{u}
+        +\tfrac{5}{72}\,r_{0}\,\eta_{xx}\,\bar{u}
+  \Bigr]_{t}
+  +\Bigl[
+        -\tfrac16\,\bar{u}\,\bar{u}_{xx}\,\eta^{2}
+        -\tfrac13\,r_{0}\,\bar{u}\,\bar{u}_{xx}\,\eta
+        -\tfrac16\,r_{0}^{2}\,\bar{u}\,\bar{u}_{xx}
+        \\[2pt]
+        +\tfrac18\,\bar{u}_{x}^{2}\,\eta^{2}
+        +\tfrac14\,r_{0}\,\bar{u}_{x}^{2}\,\eta
+        +\tfrac18\,r_{0}^{2}\,\bar{u}_{x}^{2}
+        -\tfrac{11}{54}\,\eta^{2}\,\bar{u}_{tx}
+        -\tfrac{13}{36}\,r_{0}\,\eta\,\bar{u}_{tx}
+        -\tfrac19\,r_{0}^{2}\,\bar{u}_{tx}
+        \\[2pt]
+        +\eta\,\tilde{\beta}
+        +\tfrac12\,\tilde{\beta}\,\gamma\,\eta_{t}
+        +\tfrac13\,\tilde{\alpha}\,\eta_{tt}
+        -\tfrac{5}{108}\,\bar{u}\,\eta\,\eta_{tx}
+        -\tfrac{5}{72}\,r_{0}\,\bar{u}\,\eta_{tx}
+        +\tfrac{5}{54}\,\bar{u}_{x}\,\eta\,\eta_{t}
+        +\tfrac{5}{36}\,r_{0}\,\bar{u}_{x}\,\eta_{t}
+        \\[2pt]
+        -\tfrac{5}{108}\,\eta\,\eta_{x}\,\bar{u}_{t}
+        -\tfrac{5}{72}\,r_{0}\,\eta_{x}\,\bar{u}_{t}
+        +\tfrac12\,\bar{u}^{2}
+  \Bigr]_{x}=0.
+\end{multline}
+Both conserved vectors \eqref{eq:a}, \eqref{eq:b} are of third order in spatial derivatives and reduce, in the weakly nonlinear limit $\eta \ll r_{0}$, to the classical mass and momentum balances for long waves in an elastic vessel.
+
+\paragraph{Symmetry generators.} For the constant-radius system the complete Lie algebra of point symmetries is spanned by
 \[
-  X_{1}=\partial_{x},  \qquad   X_{2}=\partial_{t},
+  X_{1}=\partial_{x},
+  \qquad
+  X_{2}=\partial_{t},
 \]
-associated with space and time translations. In the case when $\tilde{\beta}=0$, a scaling $t'=e^{a}t$, $\bar{u}'=e^{-a} \bar{u}$ is also admitted, generated by
+corresponding to spatial and temporal translations. The induced one-parameter groups act by
 \[
-  X_{3}=t \partial_{t} - \bar{u} \partial_{\bar{u}}.
+  (x,t,\eta,\bar{u})\;\mapsto\;
+  (x+\eps_{1},\,t,\,\eta,\,\bar{u}),
+  \qquad
+  (x,t,\eta,\bar{u})\;\mapsto\;
+  (x,\,t+\eps_{2},\,\eta,\,\bar{u}).
 \]
 
-
-\subsection{Conservation laws and symmetries of the full \acrfull{sgn} equations}\label{ssec:symm:Full}
-
-
-We now calculate and classify conservation laws and point symmetries of the cylindrical Serre–Green–Naghdi system \eqref{eq:sgn1}, \eqref{eq:sgn2} with respect to the forms of the constitutive function $r_0(x)$ and values of the constant parameters. It is naturally assumed that $r_0(x),\alpha, \eps, \delta \ne 0$.
-
-\paragraph{Conservation laws.} The direct method involving multiplies depending on $x$, $t$, $\eta$, $\bar{u}$ and their derivatives up to second order reveals no conservation laws for a general unperturbed vessel profile $r_0(x)$. In the constant cross-section case $r_0(x)=r_0=\rm const$, there are two admitted zero-order multiplier pairs
-\[
-(\Lambda_1,\Lambda_2)=(r_0+\eps \eta, 0), \qquad (\Lambda_1,\Lambda_2)=(0,1).
-\]
-Denoting again $r^{\,w}=r_0+\eps \eta$, the local divergence expressions with the corresponding density and flux pairs are found to be
-\begin{equation}\label{eq:SGN:CL:1}
-  D_{t}\,\left[\eta \left(r^{\,w}-\frac{1}{2}\eps \eta\right)\right]
-  + D_{x}\,\left[(r^{\,w})^2 \left(\frac{1}{2}\,\bar{u}  -\frac{\delta^2}{48}\,(r^{\,w})^2\,\bar{u}_{xx}\right) \right]=0\,,
+\paragraph{Conservation laws and symmetries of the full cylindrical model (variable unperturbed radius)}\label{par:variable_r0} For $r_{0}=r_{0}(x)$ and $r^{w}=r_{0}(x)+\eta(x,t)$ the governing equations assume the form \eqref{eq:sgn1}, \eqref{eq:sgn2}. Only a single non-trivial multiplier survives, $\lambda_{1}=1$, $\lambda_{2}=0$, giving the conservation law
+\begin{equation}
+  \Bigl[\eta\,r_{0}+\tfrac12\,\eta^{2}\Bigr]_{t}
+  +\Bigl[
+        -\tfrac1{48}\,\eta^{4}\,\bar{u}_{xx}
+        -\tfrac1{12}\,\eta^{3}\,r_{0}\,\bar{u}_{xx}
+        -\tfrac18\,\eta^{2}\,r_{0}^{2}\,\bar{u}_{xx}
+        -\tfrac1{12}\,\eta\,r_{0}^{3}\,\bar{u}_{xx}
+        -\tfrac1{48}\,r_{0}^{4}\,\bar{u}_{xx}
+        \\[2pt]
+        +\tfrac12\,\eta^{2}\,\bar{u}
+        +r_{0}\,\eta\,\bar{u}
+        +\tfrac12\,r_{0}^{2}\,\bar{u}
+  \Bigr]_{x}=0\,,
 \end{equation}
-\begin{equation}\label{eq:SGN:CL:2}
-\begin{array}{ll}
-  D_{t}\,\left[\bar{u} - \dfrac{\eps \delta^2}{6}r^{\,w} \eta_x\bar{u}_x  \right]
-  + D_{x}\,\left[
-    \beta \eta + \dfrac{\eps}{2}\bar{u}^2 + \delta^2 \left(
-          \alpha \eta_{tt} + \beta\gamma \eta_t  - \dfrac{1}{6}(r^{\,w})^2 \bar{u}_{xt} \right.\right.\\[2ex]
-          \qquad \qquad \qquad \qquad \left.\left.
-           +  \eps\left[
-                \dfrac{1}{6} r^{\,w} \eta_t \bar{u}_{x} + \dfrac{1}{24}(r^{\,w})^2 (3(\bar{u}_{x})^2 - 4\bar{u}\bar{u}_{xx} )
-              \right]
-    \right)
-  \right]=0\,.
-\end{array}
-\end{equation}
-{\color{red}*** What's the physical meaning of the 1st CL? For 2nd, it must be momentum***}
-
-
-\paragraph{Point symmetries.}
+which reduces to \eqref{eq:a} when $r_{0}$ is constant. The Lie algebra of point symmetries now depends on $r_{0}(x)$ and the parameters $\alpha$, $\beta$, $\gamma$. The seven representative cases obtained with \texttt{GeM} are listed below:
 \begin{itemize}
   \item[\textbf{Case 1.}]
-    General:\;
+    Generic data ($\alpha$, $\beta$, $\gamma$ arbitrary; $r_{0}(x)$ arbitrary):\;
     $X_{1}=\partial_{t}$.
   \item[\textbf{Case 2.}]
-    $r_{0}''=0$:\;
-    $X_{1}$, $X_{2}=\partial_{\eta}-\dfrac{1}{r'_{0}}\partial_{x}$.
+    $r_{0}''=0$ ($r_{0}=r_{00}+r_{01}x$):\;
+    $X_{1}=\partial_{t}$,\;
+    $X_{2}=\partial_{\eta}-\dfrac{1}{r_{01}}\partial_{x}$.
   \item[\textbf{Case 3.}]
     $\beta=0$:\;
-    $X_{1}$,\;  $X_{3}=t\,\partial_{t} - \bar{u}\,\partial_{\bar{u}}$.
+    $X_{1}=\partial_{t}$,\;
+    $X_{2}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$.
   \item[\textbf{Case 4.}]
     $\beta=0$ and $r_{0}''=0$:\;
-    $X_{1}$, $X_{2}$,\; $X_{3}$.
+    $X_{1}=\partial_{t}$,\;
+    $X_{2}=\partial_{\eta}-\dfrac{1}{r_{01}}\partial_{x}$,\;
+    $X_{3}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$.
   \item[\textbf{Case 5.}]
-    $r_{0}'=0$:\;
-    $X_{1}$, $X_{4}=\partial_{x}$.
+    $r_{0}'=0$ ($r_{0}=r_{00}$):\;
+    $X_{1}=\partial_{x}$,\;
+    $X_{2}=\partial_{t}$.
   \item[\textbf{Case 6.}]
-    $\beta=r_{0}'=0$:\;
-    $X_{1}$,\;$X_{3}$,\; $X_{4}$.
+    $\alpha=\gamma=r_{0}'=0$:\;
+    $X_{1}=\partial_{x}$,\;
+    $X_{2}=\partial_{t}$,\;
+    $X_{3}=t\,\partial_{x}+\partial_{\bar{u}}$.
+  \item[\textbf{Case 7.}]
+    $\alpha=\beta=r_{0}'=0$:\;
+    $X_{1}=\partial_{x}$,\;
+    $X_{2}=\partial_{t}$,\;
+    $X_{3}=t\,\partial_{x}+\partial_{\bar{u}}$,\;
+    $X_{4}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$.
   \end{itemize}
-
-In particular, we note that neither the full cylindrical Serre–Green–Naghdi system \eqref{eq:sgn1}, \eqref{eq:sgn2}, nor the Boussinesq system \eqref{eq:bouss1}, \eqref{eq:bouss2} are Galilei-invariant. {\color{red}***This is not a very great feature of a model... Can it be made Galilei-invariant by some substitution that would keep the equations correct to same asymptotic order in delta? Note that classical GN is Galilei-invariant... ***}
-
-
-
-
-
-
+All multipliers, conserved vectors, and symmetry generators have been derived with the \texttt{GeM} package in \textsc{Maple} \cite{Cheviakov2007}. Complete worksheets and verification scripts are provided in accompanying codes.
 
 \section{Modulational instability analysis}\label{sec:MI}
 
@@ -1822,7 +1911,7 @@ The cubic \acrfull{cnls} equation,
 \begin{equation}\label{eq:NLS}
   \ui\,\psi_{t} + \psi_{xx} + |\psi|^{2}\psi = 0\,,
 \end{equation}
-is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \citep{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretizations \citep{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968). Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the \acrshort{cnls} to lower-order models such as the \acrshort{kdv} and \acrshort{bbm} equations; see the reviews by \cite{Peregrine1983} and \cite{Hammack1993} for historical details.
+is the canonical envelope model for weakly non-linear, weakly dispersive wave packets \cite{Sulem1999, Zakharov1972}. It emerges, \textit{inter alia}, in non-linear optics, water-wave theory, Bose--Einstein condensates, and plasma physics, and admits both analytical solutions (in the integrable focusing case) and efficient numerical discretisations \cite{Agrawal2013, Taha1984}. The first systematic derivation of \eqref{eq:NLS} as a modulation equation for narrow-band wave trains was given independently by Benney--Newell (1967) and Zakharov (1968). Subsequent refinements include rigorous error estimates for water waves (Sulem \&\ Sulem 1992) and multi-scale expansions that connect the \acrshort{cnls} to lower-order models such as the \acrshort{kdv} and \acrshort{bbm} equations; see the reviews by \cite{Peregrine1983} and \cite{Hammack1993} for historical details.
 
 \subsection{Plane waves and \acrfull{mi}}
 
@@ -1887,20 +1976,20 @@ where \(\eta(x,t)\) represents the wave amplitude, and \(\tilde{c}\), \(r_{0}\),
   a = \tilde{c}, \qquad b = \frac{5 \tilde{c}}{2 r_{0}}, \qquad c = \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_{0}) r_{0}}{48}, \qquad d = -\frac{r_{0} \tilde{\beta} \gamma}{4}.
   \label{eq:coeffs}
 \end{equation}
-Here \(a\) relates to linear advection, \(b\) to nonlinear steepening, \(c\) to dispersion, and \(d\) to dissipation.
+Here, \(a\) relates to linear advection, \(b\) to non-linear steepening, \(c\) to dispersion, and \(d\) to dissipation.
 
 \subsection*{Multiple-Scales Expansion}
 
-To study the slowly varying dynamics of a wave train, we employ a multi-scale perturbation approach. We seek a solution of the form (\emph{cf.} \citet{Dias2005})
+To study the slowly varying dynamics of a wave train, we employ a multi-scale perturbation approach. We seek a solution of the form (\emph{cf.} \cite{Dias2005}):
 \begin{equation}
   \label{eq:ansatz}
   \eta(x,t) = \eps \left( \eta_0 + \eps \eta_1(x, X, t, T_1, T_2) + \eps^2 \eta_2(x, X, t, T_1, T_2) + \eps^3 \eta_3(x, X, t, T_1, T_2) + \dots \right),
 \end{equation}
-where $\eps \ll 1$ is a small parameter, and the slow scales are defined as
+where $\eps \ll 1$ is a small parameter, and the slow scales are defined as:
 \[
   X = \eps x, \quad T_1 = \eps t, \quad T_2 = \eps^2 t.
 \]
-Here, $\eta_0$ represents the leading-order wave train, and $\eta_1, \eta_2, \eta_3, \dots$ are higher-order corrections that depend on both fast scales ($x, t$) and slow scales ($X, T_1, T_2$). We assume the leading-order solution $\eta_0$ is a slowly modulated plane wave
+Here, $\eta_0$ represents the leading-order wave train, and $\eta_1, \eta_2, \eta_3, \dots$ are higher-order corrections that depend on both fast scales ($x, t$) and slow scales ($X, T_1, T_2$). We assume the leading-order solution $\eta_0$ is a slowly modulated plane wave:
 \begin{equation}\label{eq:wave_train}
   \eta_0 = A(X, T_1, T_2) \exp(i \theta(x, t)) + \text{c.c.},
 \end{equation}
@@ -1914,70 +2003,70 @@ These expansions reflect the contributions of derivatives across both fast and s
 
 In this section, we continue the multi-scale analysis of the \acrshort{kdvb} equation, focusing on the case where the dissipative term coefficient satisfies $d = \O(\eps^3)$. This assumption simplifies the perturbation analysis, allowing us to derive the \acrfull{cnls} equation for the amplitude of the wave train.
 
-Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain
+Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:leading_order}
   \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_0 = 0,
 \end{equation}
-where $a = \tilde{c}$, $c = \dfrac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $\eta_0 = A(X, T_1, T_2) \exp(\ui \theta) + \text{c.c.}$, with $\theta = k x - \omega t$. This yields the dispersion relation
+where $a = \tilde{c}$, $c = \dfrac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $\eta_0 = A(X, T_1, T_2) \exp(\ui \theta) + \text{c.c.}$, with $\theta = k x - \omega t$. This yields the dispersion relation:
 \begin{equation}\label{eq:dispersion}
   \omega = a k - c k^3.
 \end{equation}
-The phase velocity is
+The phase velocity is:
 \[
 s = \frac{\omega}{k} = a - c k^2,
 \]
-indicating dispersion since $s$ depends on the wave number $k$. The group velocity, which governs the propagation of the wave packet envelope, is given by
+indicating dispersion since $s$ depends on the wave number $k$. The group velocity, which governs the propagation of the wave packet's envelope, is:
 \[
   c_g = \frac{d \omega}{d k} = a - 3 c k^2.
 \]
 
-At $\O(\eps^2)$, the equation \eqref{eq:kdv_burgers} becomes
+At $\O(\eps^2)$, the equation becomes:
 \begin{equation}\label{eq:second_order_a}
-  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a( - 3 c k^2) \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
+  \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
 \end{equation}
-where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side includes terms proportional to $\exp(\pm i \theta)$ and $\exp(\pm 2 i \theta)$. The resonant terms proportional to $\exp(\pm i \theta)$ would lead to secular growth in $\eta_1$ and must be eliminated by imposing
+where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side includes terms proportional to $\exp(\pm i \theta)$ and $\exp(\pm 2 i \theta)$. The resonant terms proportional to $\exp(\pm i \theta)$ would lead to secular growth in $\eta_1$ and must be eliminated by imposing:
 \begin{equation}\label{eq:secular_elimination}
   \left( \partial_{T_1} + c_g \partial_X \right) \eta_0 = 0 \implies A(X, T_1, T_2) = A(X - c_g T_1, T_2).
 \end{equation}
-This indicates that the amplitude $A$ propagates at the group velocity $c_g$. The remaining non-resonant term is given by
+This indicates that the amplitude $A$ propagates at the group velocity $c_g$. The remaining non-resonant term is:
 \[
   \partial_x \left( \frac{1}{2} \eta_0^2 \right) = i k A^2 \exp(2 i \theta) + \text{c.c.}.
 \]
-We assume a solution for $\eta_1$ of the form
+We assume a solution for $\eta_1$ of the form:
 \begin{equation}\label{eq:eta1_form}
   \eta_1 = B_0(X, T_1, T_2) + \left[ B_1(X, T_1, T_2) e^{i \theta} + \text{c.c.} \right] + \left[ B_2(X, T_1, T_2) e^{2 i \theta} + \text{c.c.} \right].
 \end{equation}
-Substituting into \eqref{eq:second_order_a} and matching terms proportional to $\exp(2 i \theta)$, we find
+Substituting into \eqref{eq:second_order_a} and matching terms proportional to $\exp(2 i \theta)$, we find:
 \begin{equation}\label{eq:B2_solution}
   B_2 = \frac{b}{6 c k^2} A^2,
 \end{equation}
 while $B_0$ and $B_1$ remain undetermined at this order.
 
-At $\O(\eps^3)$, the equation \eqref{eq:kdv_burgers} yields
+At $\O(\eps^3)$, the equation is:
 \begin{equation}\label{eq:third_order}
   \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
 \end{equation}
-To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm \ui \theta)$. The $\theta$-independent terms give
+To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm \ui \theta)$. The $\theta$-independent terms give:
 \begin{equation}\label{eq:B0_equation}
   \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
 \end{equation}
-yielding
+yielding:
 \[
   B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
 \]
-where $\phi$ is an arbitrary function. The terms proportional to $\exp(i \theta)$ give
+where $\phi$ is an arbitrary function. The terms proportional to $\exp(i \theta)$ give:
 \begin{equation}\label{eq:resonant_theta}
   \ui \partial_{T_2} A - 3 k \partial_X^2 A + \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 + i k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
-To ensure $B_1$ depends only on $X - c_g T_1$, we set
+To ensure $B_1$ depends only on $X - c_g T_1$, we set:
 \[
 \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 = 0,
 \]
-because $a - 3 c k^2 = c_g$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta}, we obtain
+since $a - 3 c k^2 = c_g$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta}, we obtain:
 \begin{equation*}%\label{eq:NLS_intermediate}
   \ui \partial_{T_2} A - 3 k \partial_X^2 A + \frac{b^2 k A |A|^2}{6 c k^2} - \frac{k b A \phi}{3 c k^2} = 0\,.
 \end{equation*}
-Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the \acrshort{cnls} equation
+Assuming $\phi = 0$ (a common simplification for initial conditions), and defining $\zeta = X - c_g T_1$ and $\beta = \dfrac{b^2}{6 c k}$, we rewrite the equation as the \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLS_final}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \beta A |A|^2 = 0.
 \end{equation}
@@ -1986,11 +2075,11 @@ Assuming $\phi = 0$ (a common simplification for initial conditions), and defini
 
 In this section, we extend the multi-scale analysis of the \acrshort{kdvb} equation to the case where the dissipative term coefficient satisfies $d = \O(1)$. This introduces a significant dissipative effect, modifying the dispersion relation and resulting in a complex group velocity, ultimately leading to a modified \acrfull{cnls} equation.
 
-Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain
+Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers} and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:leading_order_diss}
   \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_0 = 0,
 \end{equation}
-where $a = \tilde{c}$, $c = \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$, $d = -\frac{r_0}{4} \tilde{\beta} \gamma$, and $\eta_0 = A(X, T_1, T_2) \exp(i \theta) + \text{c.c.}$, with $\theta = k x - \omega t$. This yields the dispersion relation
+where $a = \tilde{c}$, $c = \frac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$, $d = -\frac{r_0}{4} \tilde{\beta} \gamma$, and $\eta_0 = A(X, T_1, T_2) \exp(i \theta) + \text{c.c.}$, with $\theta = k x - \omega t$. This yields the dispersion relation:
 \begin{equation}\label{eq:dispersion_diss}
   \omega = a k - c k^3 + \ui d k^2.
 \end{equation}
@@ -2000,15 +2089,15 @@ The group velocity, accounting for dissipation, is:
 \end{equation}
 The imaginary component in $c_g$ reflects the dissipative effect on wave packet propagation.
 
-At $\O(\eps^2)$, the equation is
+At $\O(\eps^2)$, the equation is:
 \begin{equation}\label{eq:second_order_diss}
   \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_1 = - \left( \partial_{T_1} + a \partial_X - 3 c k^2 \partial_X + 2 \ui d k \partial_X \right) \eta_0 - b \partial_x \left( \frac{1}{2} \eta_0^2 \right),
 \end{equation}
-where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side contains terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_1$, we remove resonant terms proportional to $\exp(\pm \ui \theta)$ by imposing
+where $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$. The right-hand side contains terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_1$, we remove resonant terms proportional to $\exp(\pm \ui \theta)$ by imposing:
 \begin{equation}\label{eq:secular_elimination_diss}
   \left( \partial_{T_1} + c_g \partial_X \right) \eta_0 = 0 \implies A(X, T_1, T_2) = A(X - c_g T_1, T_2).
 \end{equation}
-This indicates that the amplitude $A$ propagates at the complex group velocity $c_g$. The non-resonant term is
+This indicates that the amplitude $A$ propagates at the complex group velocity $c_g$. The non-resonant term is:
 \[
 \partial_x \left( \frac{1}{2} \eta_0^2 \right) = \ui k A^2 \exp(2 \ui \theta) + \text{c.c.}.
 \]
@@ -2016,48 +2105,48 @@ We assume a solution for $\eta_1$ as in \eqref{eq:eta1_form}:
 \[
 \eta_1 = B_0(X, T_1, T_2) + \left[ B_1(X, T_1, T_2) \ue^{\ui \theta} + \text{c.c.} \right] + \left[ B_2(X, T_1, T_2) \ue^{2 \ui \theta} + \text{c.c.} \right].
 \]
-Substituting into \eqref{eq:second_order_diss} and matching terms proportional to $\exp(2 \ui \theta)$, we find
+Substituting into \eqref{eq:second_order_diss} and matching terms proportional to $\exp(2 \ui \theta)$, we find:
 \begin{equation}
 \label{eq:B2_solution_diss}
 B_2 = \frac{b}{6 c k^2 - 2 \ui d k} A^2,
 \end{equation}
 while $B_0$ and $B_1$ remain undetermined at this order.
 
-At $\O(\eps^3)$, the equation is given by
+At $\O(\eps^3)$, the equation is:
 \begin{multline}
 \label{eq:third_order_diss}
 \left( \partial_t + a \partial_x + c \partial_x^3 + d \partial_x^2 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 + d \partial_X^2 \right) \eta_0 \\
 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X + 2 d \partial_x \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
 \end{multline}
-To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm \ui \theta)$. The $\theta$-independent terms give
+To prevent secular growth, we eliminate resonant terms independent of $\theta$ and proportional to $\exp(\pm \ui \theta)$. The $\theta$-independent terms give:
 \begin{equation}
 \label{eq:B0_equation_diss}
   \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
 \end{equation}
-yielding
+yielding:
 \[
   B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2 - 2 \ui d k},
 \]
-where $\phi$ is an arbitrary function. The terms proportional to $\exp(\ui \theta)$ give
+where $\phi$ is an arbitrary function. The terms proportional to $\exp(\ui \theta)$ give:
 \begin{equation}\label{eq:resonant_theta_diss}
   \left( \partial_{T_2} + 3 \ui k \partial_X^2 + d \partial_X^2 \right) A + \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 + \ui k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
-Assuming $B_1$ depends only on $X - c_g T_1$, we set
+Assuming $B_1$ depends only on $X - c_g T_1$, we set:
 \[
 \left( \partial_{T_1} + (a - 3 c k^2) \partial_X \right) B_1 = 0,
 \]
-since $a - 3 c k^2 = \text{Re}(c_g)$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta_diss}, and assuming $\phi = 0$, we obtain
+since $a - 3 c k^2 = \text{Re}(c_g)$. Substituting $B_0$ and $B_2$ into \eqref{eq:resonant_theta_diss}, and assuming $\phi = 0$, we obtain:
 \begin{equation*}%\label{eq:NLS_intermediate_diss}
   \partial_{T_2} A + 3 \ui k \partial_X^2 A + d \partial_X^2 A + i k b^2 \left( \frac{1}{6 c k^2 - 2 \ui d k} - \frac{1}{3 c k^2 - 2 \ui d k} \right) |A|^2 A = 0.
 \end{equation*}
-Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \frac{1}{3 c k^2 - 2 \ui d k}$, and rewriting in standard form, we obtain the modified \acrshort{cnls} equation
+Defining $\zeta = X - c_g T_1$, $m = \frac{1}{6 c k^2 - 2 \ui d k}$, and $n = \frac{1}{3 c k^2 - 2 \ui d k}$, and rewriting in standard form, we obtain the modified \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLS_final_diss}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + i d \partial_\zeta^2 A + i k b^2 (m - n) |A|^2 A = 0.
 \end{equation}
 
 \subsubsection{Multi-scale Analysis with Intermediate Dissipation}
 
-In this section, we perform a multi-scale analysis of the \acrshort{kdvb} equation for the case where the dissipative term coefficient is $d = \O(\eps^2)$, \emph{i.e.}, $d = \eps^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified \acrfull{cnls} equation.
+In this section, we perform a multi-scale analysis of the \acrshort{kdvb} equation for the case where the dissipative term coefficient is $d = \O(\eps^2)$, \emph{i.e.}, $d = \eps^2 \tilde{d}$, with $\tilde{d}$ a constant. This intermediate dissipation strength affects the dynamics at higher orders, leading to a modified \acrfull{cnls} equation. 
 
 Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqref{eq:kdv_burgers}, the equations at $\O(\eps)$ and $\O(\eps^2)$ are identical to those in the first case ($d = \O(\eps^3)$), as the dissipative term $d \partial_x^2 \eta$ only appears at $\O(\eps^3)$ or higher. Thus, we have:
 \begin{itemize}
@@ -2073,7 +2162,7 @@ Substituting the ansatz \eqref{eq:ansatz} into the \acrshort{kdvb} equation \eqr
 \end{itemize}
 The coefficients are $a = \tilde{c}$, $b = \dfrac{5}{2} \dfrac{1}{r_0} \tilde{c}$, and $c = \dfrac{\tilde{c} (12 \tilde{\alpha} + 3 r_0) r_0}{48}$.
 
-At $\O(\eps^3)$, the dissipative term introduces a difference. The equation is
+At $\O(\eps^3)$, the dissipative term introduces a difference. The equation is:
 \begin{equation}\label{eq:third_order_intermediate}
   \left( \partial_t + a \partial_x + c \partial_x^3 \right) \eta_2 = - \left( \partial_{T_2} + 3 c \partial_x \partial_X^2 + \tilde{d} \partial_x^2 \right) \eta_0 - \left( \partial_{T_1} + a \partial_X + 3 c \partial_x^2 \partial_X \right) \eta_1 - b \partial_x ( \eta_0 \eta_1 ) - b \eta_0 \partial_X \eta_0.
 \end{equation}
@@ -2081,30 +2170,30 @@ The $\theta$-independent resonant terms yield the same equation as in the first 
 \[
   \left( \partial_{T_1} + a \partial_X \right) B_0 + b \partial_X |A|^2 = 0,
 \]
-giving
+giving:
 \[
   B_0 = \phi(X - a T_1) - \frac{b |A|^2 (X - c_g T_1)}{3 c k^2},
 \]
-where $\phi$ is an arbitrary function. For simplicity, we set $\phi = 0$. The terms proportional to $\exp(i \theta)$ give
+where $\phi$ is an arbitrary function. For simplicity, we set $\phi = 0$. The terms proportional to $\exp(i \theta)$ give:
 \begin{equation}\label{eq:resonant_theta_intermediate}
   \partial_{T_2} A + 3 \ui k \partial_X^2 A - k^2 \tilde{d} A + \ui k b \left( A B_0 + A^* B_2 \right) = 0.
 \end{equation}
-Substituting $B_0$ and $B_2$, and defining $\zeta = X - c_g T_1$, we obtain
+Substituting $B_0$ and $B_2$, and defining $\zeta = X - c_g T_1$, we obtain:
 \begin{equation*}%\label{eq:NLS_intermediate}
   \partial_{T_2} A + 3 \ui k \partial_\zeta^2 A - k^2 \tilde{d} A + \nu^\star A |A|^2 = 0,
 \end{equation*}
-where
+where:
 \[
   \nu^\star = \frac{-2 \ui k b^2 + \ui k b}{c k^2} = \frac{\ui k b (1 - 2 b)}{c k^2}.
 \]
-Rewriting it in a standard form, we finally arrive at the modified \acrfull{cnls} equation
+Rewriting in standard \acrshort{cnls} form:
 \begin{equation}\label{eq:NLS_final_intermediate}
   \ui \partial_{T_2} A - 3 k \partial_\zeta^2 A + \ui k^2 \tilde{d} A - \ui \nu^\star A |A|^2 = 0.
 \end{equation}
 
 \subsubsection{Instability analysis}
 
-Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \citep{Benjamin1967a, Yuen1975, Yuen1980, Remoissenet1996} and light waves in optical fibres \citep{Tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic \acrfull{cnls} equation on periodic domains reveal recurrent behaviour reminiscent of the \acrfull{fpu} phenomenon \citep{Fermi1955, Yuen1978, Hafizi1981}.
+Modulational instability is a fundamental phenomenon observed in nonlinear dispersive systems, such as surface waves on deep water \cite{Benjamin1967a, Yuen1975, Yuen1980, Remoissenet1996} and light waves in optical fibres \cite{Tai1986}. It describes the growth of small perturbations to a plane wave, leading to complex nonlinear dynamics. In one-dimensional systems, numerical simulations of the focusing cubic \acrfull{cnls} equation on periodic domains reveal recurrent behaviour reminiscent of the \acrfull{fpu} phenomenon \cite{Fermi1955, Yuen1978, Hafizi1981}.
 
 \subsubsection*{Case 1: Negligible Dissipation ($d = \O(\eps^3)$)}
 
@@ -2194,71 +2283,71 @@ The \acrfull{bbm} equation models the unidirectional propagation of long waves i
 \end{equation}
 where $\eta(x,t)$ is the wave field, $\tilde{c}$ is a characteristic speed, $r_0$, $\tilde{\alpha}$, $\tilde{\beta}$, and $\gamma$ are system parameters, and subscripts denote partial derivatives.
 
-To study nonlinear wave packets, we assume a slowly modulated wave train solution of the form
+To study nonlinear wave packets, we assume a slowly modulated wave train solution of the form:
 \begin{equation}\label{eq:nb1}
   \eta(x,t) = \eps A(\xi, \tau) \exp(i \theta) + \text{c.c.},
 \end{equation}
-where $A(\xi, \tau)$ is the complex amplitude, $\theta = k x - \omega t$ with wave number $k$ and frequency $\omega$, and ``c.c.'' denotes the complex conjugate. The slow scales are given by
+where $A(\xi, \tau)$ is the complex amplitude, $\theta = k x - \omega t$ with wave number $k$ and frequency $\omega$, and ``c.c.'' denotes the complex conjugate. The slow scales are:
 \begin{equation}\label{eq:nb2}
   \xi = \eps (x - p t), \qquad \tau = \eps^2 t,
 \end{equation}
-where $\eps \ll 1$ is a small parameter and $p$ is the group velocity to be determined. We expand the solution as an asymptotic series
+where $\eps \ll 1$ is a small parameter and $p$ is the group velocity to be determined. We expand the solution as an asymptotic series:
 \begin{equation}\label{eq:nb3}
   \eta(x,t) = \eps \eta_1 + \eps^2 \eta_2 + \eps^3 \eta_3 + \dots.
 \end{equation}
 
-Substituting \eqref{eq:nb3} into \eqref{eq:BBM1}, applying the slow scales \eqref{eq:nb2}, and collecting terms at $\O(\eps)$, we obtain
+Substituting \eqref{eq:nb3} into \eqref{eq:BBM1}, applying the slow scales \eqref{eq:nb2}, and collecting terms at $\O(\eps)$, we obtain:
 \begin{equation}\label{eq:first_order}
   \left(\partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right)\eta_1 = 0,
 \end{equation}
-where $a = \tilde{c}$, $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$, $c = \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $d = -\frac{r_0}{4} \gamma \tilde{\beta}$. For $\eta_1 = A(\xi, \tau) \exp(i \theta) + \text{c.c.}$, this yields the dispersion relation
+where $a = \tilde{c}$, $b = \frac{5}{2} \frac{1}{r_0} \tilde{c}$, $c = \frac{(12 \tilde{\alpha} + 3 r_0) r_0}{48}$, and $d = -\frac{r_0}{4} \gamma \tilde{\beta}$. For $\eta_1 = A(\xi, \tau) \exp(i \theta) + \text{c.c.}$, this yields the dispersion relation:
 \begin{equation}\label{eq:dispersion_bbm_a}
   \omega = \frac{a k}{1 + c k^2} + \ui \frac{d k^2}{1 + c k^2}.
 \end{equation}
-The group velocity is given by
+The group velocity is:
 \[
   p = \frac{d \omega}{d k} = \frac{a (1 - c k^2) + 2 \ui d k}{(1 + c k^2)^2}.
 \]
 
-At $\O(\eps^2)$, the equation is
+At $\O(\eps^2)$, the equation is:
 \begin{equation}\label{eq:second_order_b}
   \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_2 = \left( p \partial_\xi - a \partial_\xi + 2 c \partial_t \partial_x \partial_\xi - c p \partial_x^2 \partial_\xi - 2 d \partial_x \partial_\xi \right) \eta_1 - b \partial_x (\eta_1 \eta_1).
 \end{equation}
-The right-hand side includes terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_2$, resonant terms proportional to $\exp(\pm \ui \theta)$ are set to zero, confirming the group velocity $p$ above. The non-resonant terms give
+The right-hand side includes terms proportional to $\exp(\pm \ui \theta)$ and $\exp(\pm 2 \ui \theta)$. To eliminate secular growth in $\eta_2$, resonant terms proportional to $\exp(\pm \ui \theta)$ are set to zero, confirming the group velocity $p$ above. The non-resonant terms give:
 \begin{equation}\label{eq:second_order_nonresonant}
   \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_2 = - b \ui k A^2 \exp(2 \ui \theta) + \text{c.c.}.
 \end{equation}
-Assuming the solution form
+Assuming a solution:
 \begin{equation}\label{eq:eta2_solution}
   \eta_2 = B(\xi, \tau) \exp(2 \ui \theta) + \text{c.c.} + C(\xi, \tau),
 \end{equation}
-we find
+we find:
 \begin{equation}\label{eq:B_solution}
   B(\xi, \tau) = \sigma A^2, \quad \sigma = \frac{b (1 + c k^2)}{6 a c k^2 + 4 \ui c d k^3 - 2 \ui d k}.
 \end{equation}
 
-At $\O(\eps^3)$, the equation is given by
+At $\O(\eps^3)$, the equation is:
 \begin{multline}\label{eq:third_order_b}
   \left( \partial_t + a \partial_x - c \partial_t \partial_x^2 + d \partial_x^2 \right) \eta_3 = - \left( \partial_\tau - c \partial_\tau \partial_\xi^2 + 2 c p \partial_x \partial_\xi^2 - c \partial_x^2 \partial_\tau + d \partial_\xi^2 \right) \eta_1 \\
 - \left( -p \partial_\xi + a \partial_\xi - 2 c \partial_t \partial_x \partial_\xi + c p \partial_x^2 \partial_\xi + 2 d \partial_x \partial_\xi \right) \eta_2 - b \partial_x (\eta_1 \eta_2).
 \end{multline}
-Substituting \eqref{eq:nb1} and \eqref{eq:eta2_solution}, we eliminate resonant terms. The $\theta$-independent terms give
+Substituting \eqref{eq:nb1} and \eqref{eq:eta2_solution}, we eliminate resonant terms. The $\theta$-independent terms give:
 \begin{equation}\label{eq:C_equation}
   (p - a) \partial_\xi C + b \partial_\xi |A|^2 = 0,
 \end{equation}
-yielding
+yielding:
 \[
   C(\xi, \tau) = \nu |A|^2, \qquad \nu = \frac{b}{p - a} = \frac{b (1 + c k^2)^2}{-3 a c k^2 + 2 \ui d k - a c^2 k^4}.
 \]
-The $\exp(i \theta)$ resonant terms yield
+The $\exp(i \theta)$ resonant terms yield:
 \begin{equation}\label{eq:resonance_bbm}
   \left( -\partial_\tau - \ui \omega c \partial_\xi^2 - 2 \ui k p c \partial_\xi^2 - c \ui k^2 \partial_\tau - d \partial_\xi^2 \right) A - b \ui k (A C + A^* B) = 0.
 \end{equation}
-Substituting $B$ and $C$, we obtain the \acrshort{cnls} equation
+Substituting $B$ and $C$, we obtain the \acrshort{cnls} equation:
 \begin{equation}\label{eq:NLSBBM}
   \partial_\tau A + \ui M \partial_\xi^2 A + \ui N A |A|^2 = 0,
 \end{equation}
-where
+where:
 \[
   M = \frac{\omega c + 2 k p c - \ui d}{1 + c k^2}, \qquad N = \frac{b k (\nu + \sigma)}{1 + c k^2}.
 \]
@@ -2303,27 +2392,31 @@ Instability occurs when $M N > 0$ and $q^2 < \dfrac{2 N a_0^2}{M}$, as the quadr
 
 The dispersion relation \eqref{eq:dispersion_bbm_b} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous \acrshort{bbm} system. The coefficients $M$ and $N$, derived from the \acrshort{bbm} parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
 
-
-
 \section{Conclusions and discussion}\label{sec:discussion}
 
-In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels having viscoelastic walls. Starting with the assumption of axisymmetric flow of an ideal fluid, we have developed a hierarchy of asymptotic models that capture the complex dynamics governing these systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axisymmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}. The new model \eqref{eq:sgn1}, \eqref{eq:sgn2} incorporates viscoelastic effects of vessel walls, significantly generalizing the planar \acrshort{sgn} equations to realistic vascular settings and serving as the parent model from which all subsequent approximations descend.
+In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels featuring viscoelastic walls. Grounded in the assumption of axisymmetric flow and considering an ideal fluid for simplicity, we have developed a coherent hierarchy of asymptotic models that capture the complex dynamics governing these intricate systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axi-symmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}.
 
-As a further step towards simplification, we presented a derivation of the weakly nonlinear counterparts of our \acrshort{sgn} system: the Boussinesq-type models \eqref{eq:bouss1}, \eqref{eq:bouss2}  and \eqref{eq:bousnew1}, \eqref{eq:bousnew2}. Additionally, we introduced unidirectional models given by the \acrshort{kdv}--Burgers equation \eqref{eq:5.10} and its \acrshort{bbm}--Burgers counterpart \eqref{eq:5.11}, further simplifying the system while preserving essential dynamics.
+Acknowledging the impact of viscous stresses in bio-fluids, we extended our study to incorporate these effects, traditionally addressed through hyperbolic systems of equations. The constraints posed by cylindrical symmetry prompted us to propose various weakly dispersive extensions, enhancing the accuracy of fluid dynamics representation in deformable vessels. Our research began with an in-depth scrutiny of the fully nonlinear regime, resulting in the formulation of a \acrfull{sgn} system in cylindrical geometry. This system generalises the planar \acrshort{sgn} equations to realistic vascular settings and serves as the parent model from which all subsequent approximations descend.
 
-For the newly formulated PDE systems, we systematically examined symmetries, conservation laws, and traveling wave solutions; in particular, it was shown that the new models admit solitary wave and cnoidal periodic solutions given by \eqref{eq:cyl:sol:sech2} and \eqref{eq:cyl:sol:cn2} for the Boussinesq-type model \eqref{eq:bousnew1}, \eqref{eq:bousnew2} and by \eqref{sol:KdV:bbM:soli} and \eqref{sol:KdV:bbM:cn} for the unidirectional models. Linear properties of the new models, in particular, dispersion relations were considered in detail. 
+To enhance tractability, we presented a derivation of the weakly nonlinear counterpart of our \acrshort{sgn} system. Additionally, we introduced one-dimensional reductions exemplified by \acrfull{kdv} and \acrfull{bbm} type equations, further simplifying the system while preserving essential dynamics.
 
-Furthermore, through multi-scale analysis, we derived cubic \acrfull{cnls} describing wave packets within the model framework, and investigated the modulational instability. It has been shown that both
-the \acrshort{kdv} and \acrshort{bbm} reductions support periodic Stokes waves whose speeds are determined by the nonlinear effects.
+Our analytical exploration provided valuable insights into the fundamental characteristics of these newly formulated systems. We systematically examined symmetries, conservation laws, and Whitham solitons, offering a comprehensive perspective on their behavior. Linear properties, such as dispersion relations, were meticulously discussed in relation to the base model. Furthermore, through multi-scale analysis, we derived cubic \acrfull{cnls} equations and investigated \acrshort{mi}, shedding light on the emergence of Stokes waves from both \acrshort{kdv} and \acrshort{bbm} equations.
 
-The methodologies and new PDE models developed in this work contribute to the understanding of pulsatile flow within deformable vessels and may be of interest in the broader fields of fluid dynamics and mathematical modeling. 
+The methodologies and insights developed in this work contribute significantly to our understanding of pulsatile flow within deformable vessels and represent a valuable addition to the broader fields of fluid dynamics and mathematical modeling. As we conclude, we anticipate that our findings will stimulate further investigations and contribute to the ongoing dialogue in this dynamic field, positioning this research at the forefront of discussions on complex fluid systems.
 
 \section{Perspectives}\label{sec:perspectives}
 
-This work provides a set of physically and mathematically rich simplified mathematical models of nonlinear wave propagation in fluid systems bounded by elastic and viscoelastic walls, and studies analytical and numerical features of these models. Several aspects remain open to further exploration and offer opportunities for extending the presented research. One natural extension of this work involves the study of solitary wave solutions for the \acrfull{sgn} system in cylindrical coordinates. A comprehensive numerical investigation of this system would provide valuable into the stability, shape, and velocity of such solitary waves. Moreover, understanding how these waves interact in cylindrical settings would enhance our knowledge of wave dynamics in confined geometries. The reduced 0D (ODE) system derived in Appendix \ref{sec:windkessel} of this article offers a simplified framework for analyzing complex fluid dynamics. A detailed numerical study of this system would enable validation of the theoretical results and exploration of its dynamical features. Such an analysis could uncover critical aspects of its solution space, including fixed points, oscillatory behavior, and transitions between regimes, helping identify practical scenarios where this reduced model can serve as a reliable approximation for more complex systems.
+This work provides a foundational understanding of the mathematical and numerical modeling of nonlinear wave propagation in fluid systems. However, several aspects remain open to further exploration and offer opportunities for extending the research presented here. Building upon the results of this study, we identify multiple promising directions for future research that would expand the scope of our analysis.
 
-Further advancement in this field would benefit from deriving and studying the \acrfull{cnls} equations for the \acrshort{sgn} system in cylindrical coordinates and for the Boussinesq system. This investigation would include examining modulation instability phenomena in these systems, shedding light on the stability and evolution of wave trains in cylindrical geometries. Additionally, finding and characterizing Stokes waves in the \acrshort{sgn} and Boussinesq systems in the axially symmetric setting, as well as construction of other types of exact and approximate solutions, would represent an essential step toward a better understanding of these models. This would complement the basic solitary wave and periodic solutions and provide further insights into the dynamics of nonlinear waves in such configurations.
+A natural extension of this work involves the study of solitary wave solutions for the \acrfull{sgn} system in cylindrical coordinates. A comprehensive numerical investigation of this system would provide valuable insights into the stability, shape, and velocity of such solitary waves. Moreover, understanding how these waves interact in cylindrical settings would significantly enhance our knowledge of wave dynamics in confined geometries.
 
+The reduced 0D system derived in this article offers a simplified framework for analyzing complex fluid dynamics. A detailed numerical study of this system would enable validation of the theoretical results and exploration of its dynamical features. Such an analysis could uncover critical aspects of its solution space, including fixed points, oscillatory behavior, and transitions between regimes, helping identify practical scenarios where this reduced model can serve as a reliable approximation for more complex systems.
+
+Further advancement in this field would benefit from deriving and studying the \acrfull{cnls} equations for the \acrshort{sgn} system in cylindrical coordinates and for the Boussinesq system. This investigation would include examining modulation instability phenomena in these systems, shedding light on the stability and evolution of wave trains in cylindrical geometries.
+
+Additionally, finding and characterizing Stokes waves in the \acrshort{sgn} and Boussinesq systems in cylindrical coordinates represents an essential step toward a complete understanding of these models. This analysis would complement the solitary wave solutions and provide further insights into the dynamics of nonlinear waves in such configurations.
+
+These perspectives aim to extend the theoretical and numerical framework developed in this study, contributing to a deeper understanding of nonlinear wave propagation in fluid dynamics. The proposed extensions not only advance the theoretical and numerical understanding of the systems studied in this work but also hold significant implications for biomedical applications. The investigation of nonlinear wave phenomena in cylindrical geometries is particularly relevant for modeling blood flow in arteries, where such configurations naturally occur. By addressing these perspectives, future research can provide deeper insights into the mechanics of pulse propagation in blood vessels, bridging the gap between mathematical modeling and physiological applications, and offering new tools for understanding and predicting hemodynamic behaviors in real-world scenarios.
 
 \vspace*{1.5em}
 
@@ -2333,13 +2426,9 @@ The Maple (Maplesoft\texttrademark) scripts developed and used in this work, alo
 
 \url{https://github.com/dutykh/SerreCyl/}
 
-The GeM package for symmetry analysis of differential equations and related calculations is available on Alexei Cheviakov's web page
-
-\url{https://researchers.usask.ca/alexey-shevyakov/gem/}
-
 \section*{Acknowledgements}
 
-DD and REC would like to acknowledge the invaluable support of Prof. St\'ephane Gerbi (University Savoie Mont Blanc, Chamb\'ery, France), without whom this work would have appeared much later, or perhaps not at all. DD, DM, and REC would like to thank Dr. Herv\'e Le Meur (Universit\'e de Picardie Jules Verne, Amiens, France) for very helpful and enlightening discussions on the topics of nonlinear and dispersive waves. AC is grateful to NSERC of Canada for research support through a Discovery grant RGPIN-2024-04308.
+DD and REC would like to acknowledge the invaluable support of Prof. St\'ephane Gerbi (University Savoie Mont Blanc, Chamb\'ery, France), without whom this work would have appeared much later, or perhaps not at all. DD, DM, and REC would like to thank Dr. Herv\'e Le Meur (Universit\'e de Picardie Jules Verne, Amiens, France) for very helpful and enlightening discussions on the topics of nonlinear and dispersive waves.
 
 \section*{Conflict of interest}
 
@@ -2371,7 +2460,7 @@ Windkessel and other lumped-parameter models are often derived from electrical-c
 
 In the electrical analogy, pressure plays the role of voltage, whereas flow rate corresponds to current. A two-element Windkessel model incorporates arterial compliance and total peripheral resistance. Here the compliance of the systemic arteries is represented by a capacitor \(\!C\) \(\bigl[\mathsf{cm^{3}\,mmHg^{-1}}\bigr]\), and the peripheral vascular resistance is represented by a resistor \(R\) \(\bigl[\mathsf{mmHg\,s\,cm^{-3}}\bigr]\). The inflow rate \(Q(t)\) \([\mathsf{cm^{3}\,s^{-1}}]\) corresponds to an electric current, whereas the outlet pressure \(P(t)\) \([\mathsf{mmHg}]\) corresponds to a voltage source.
 
-In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous \acrshort{bbm}-type equation
+In what follows, we obtain a zero-dimensional (0D) ordinary differential system by spatially averaging the viscous \acrshort{bbm}-type equation,
 \begin{equation}\label{eq:chap6.1}
   \eta_{\,t}
   +\tilde{c}\,\eta_{\,x}
@@ -2389,18 +2478,34 @@ relation into~\eqref{eq:chap6.1} we obtain
   +\frac{(12\tilde{\alpha}+3r_{\,0})\,r_{\,0}}{48}\,\eta_{\,xtt}
   -\frac{r_{\,0}}{4}\,\gamma\,\tilde{\beta}\,\eta_{\,tt}=0.
 \end{equation}
+Multiplication by \(48\) yields
+\begin{equation}\label{eq:chap6.3}
+  48\,\eta_{\,t}
+  +48\,\tilde{c}\,\eta_{\,x}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  +(12\tilde{\alpha}+3r_{\,0})\,r_{\,0}\,\eta_{\,xtt}
+  -12\,r_{\,0}\,\gamma\,\tilde{\beta}\,\eta_{\,tt}=0.
+\end{equation}
 Introducing
 \[
   A^{\prime}=48,\qquad
   B^{\prime}=(12\tilde{\alpha}+3r_{\,0})\,r_{\,0},\qquad
   C^{\prime}=-12\,r_{\,0}\,\gamma\,\tilde{\beta},
 \]
-we integrate the equation~\eqref{eq:chap6.2} over \(x\in[a,b]\) and obtain
+equation~\eqref{eq:chap6.3} becomes
+\begin{equation}
+  A^{\prime}\,\eta_{\,t}
+  +48\,\tilde{c}\,\eta_{\,x}
+  +\frac{120\,\tilde{c}}{r_{\,0}}\,\eta\,\eta_{\,x}
+  +B^{\prime}\,\eta_{\,xtt}
+  +C^{\prime}\,\eta_{\,tt}=0.
+\end{equation}
+Integrating over \(x\in[a,b]\) gives
 \begin{multline}\label{eq:chap6.4}
   A^{\prime}\int_{a}^{b}\eta_{\,t}\,\ud x
   +48\,\tilde{c}\int_{a}^{b}\eta_{\,x}\,\ud x
   +\frac{120\,\tilde{c}}{r_{\,0}}\int_{a}^{b}\eta\,\eta_{\,x}\,\ud x
-  +B^{\prime}\int_{a}^{b}\eta_{\,xtt}\,\ud x
+  +B^{\prime}\int_{a}^{b}\eta_{\,xtt}\,\ud x\\
   +C^{\prime}\int_{a}^{b}\eta_{\,tt}\,\ud x=0.
 \end{multline}
 Defining
@@ -2421,10 +2526,9 @@ and setting
   +48\,\tilde{c}\,(\eta_{2}-\eta_{1})
   -B\,\ddot{\eta}_{1}
   +\frac{120\,\tilde{c}}{r_{\,0}}\bigl(\eta_{2}^{2}-\eta_{1}^{2}\bigr)
-  +48\,\tilde{c}\,(\eta_{2}-\eta_{1})=0,
+  +48\,\tilde{c}\,(\eta_{2}-\eta_{1})=0.
 \end{equation}
-where the dot denotes time differentiation.
 
-By integrating the governing \acrshort{bbm}-type equation over space, we have derived a consistent 0D system that provides a compact yet accurate description of the hemodynamics in a compliant arterial segment. Such lumped models, when embedded in larger cardiovascular networks, provide a useful tool for predicting pressure-flow relations and assessing ventricular afterload in both physiological and pathological conditions.
+By integrating the governing \acrshort{bbm}-type equation over space, we have derived a consistent 0D system that provides a compact yet accurate description of the haemodynamics in a compliant arterial segment. Such lumped models, when embedded in larger cardiovascular networks, furnish an invaluable tool for predicting pressure-flow relations and assessing ventricular afterload in both physiological and pathological conditions.
 
 \end{document}
