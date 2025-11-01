@@ -178,7 +178,7 @@ The cylindrical Boussinesq equations are derived from the \acrshort{sgn} equatio
 
 Finally, we derive classical unidirectional approximations, including the \acrfull{kdv} and \acrfull{bbm} equations, to further simplify the wave propagation analysis. These unidirectional models are particularly useful in studying wave modulation and stability. Notably, we explore the modulation of periodic waves and establish the existence of \acrfull{mi}, which provides new insights into the stability of wave trains in cylindrical vessels. Our findings contribute to a deeper understanding of fluid-structure interactions in biomedical applications and offer new perspectives on the modelling of blood flow in large arteries. The results presented in this paper contribute to a deeper understanding of fluid-structure interactions in biomedical applications, particularly in the modelling of blood flow in large arteries. By providing a hierarchy of models ranging from the full Euler equations to simplified unidirectional approximations, this work offers a comprehensive framework for analyzing pulsatile flow in viscoelastic vessels across various scales and levels of complexity.
 
-The \acrfull{kdv} and \acrfull{bbm} equations are classical unidirectional models which describe wave propagation, and they are widely used in various fields of physics and engineering to study long-wave phenomena. Both of these equations are further simplifications of the Boussinesq system. While the \acrshort{kdv} and \acrshort{bbm} equations are both unidirectional models, they differ in their treatment of dispersive effects. The \acrshort{kdv} equation captures the balance between nonlinearity and dispersion in a certain way, which leads to solitary wave solutions. On the other hand, the \acrshort{bbm} equation is a valid alternative model when one is interested in modelling phenomena in which dispersion is dominated by a different type of balance than that provided by the \acrshort{kdv}. They can also both be more amenable to wave modulation and stability studies due to their relatively simple form. The \acrshort{kdv} and \acrshort{bbm} equations are derived under strong assumptions, including that the wave propagation is primarily unidirectional and that nonlinear and dispersive effects are weak, so their applicability is limited to specific regimes of the flow. While these models may not fully capture the complexity of blood flow, they offer valuable insight into the basic mechanisms of wave propagation and can be useful for studying wave modulation and stability.
+The \acrfull{kdv} and \acrfull{bbm} equations are classical unidirectional models which describe wave propagation, and they are widely used in various fields of physics and engineering to study long-wave phenomena. Both of these equations are further simplifications of Boussinesq systems. While the \acrshort{kdv} and \acrshort{bbm} equations are both unidirectional models, they differ in their treatment of dispersive effects. Both equations capture the balance between nonlinearity and dispersion in a certain way, which leads to solitary wave solutions. They can also both be more amenable to wave modulation and stability studies due to their relatively simple form. The \acrshort{kdv} and \acrshort{bbm} equations are derived under strong assumptions, including that the wave propagation is primarily unidirectional and that nonlinear and dispersive effects are weak, so their applicability is limited to specific regimes of the flow. While these models may not fully capture the complexity of blood flow, they offer valuable insight into the basic mechanisms of wave propagation and can be useful for studying wave modulation and stability.
 
 In the context of blood flow in large arteries, these models can help to explain the relationship between the pulsatile nature of blood flow, the elastic and viscoelastic properties of the vessel wall, and the propagation of pressure waves. By considering a range of models of different levels of complexity, we will be able to evaluate the importance of different physical effects and parameters, such as the viscosity of blood, the stiffness of the vessel walls, and the presence of geometric features such as bifurcations and bends, and assess their influence on wave propagation and energy transport. The \acrshort{mi} analysis offers insights into the long-term stability of wave trains in arteries, which is important for understanding phenomena such as pulse wave reflections, the interaction of waves, and wave energy dissipation. This can contribute to a more complete understanding of blood flow dynamics in the cardiovascular system and the effects of factors such as ageing and disease on the mechanical properties of blood vessels.
 
@@ -494,6 +494,13 @@ where
   R &= \alpha \delta^2 \partial_x \partial_t^2 \eta + \delta^2 \gamma \partial_x (\beta \partial_t \eta).
 \end{aligned}
 \end{equation}
+Note, that from (\ref{eq:massp4}) $\partial_t\eta=-\left(r_x^w u^\theta+\frac{r^w}{2}\partial_xu^\theta\right)+O(\delta^2)$. Using this approximation, we can replace the quantity $R$ by the most convenient for numerical studies quantity
+\begin{equation}\label{eq:conv} 
+\tilde{R}=-\delta^2 \partial_x\left[ \alpha \partial_t\left(r_x^w u^\theta+\frac{r^w}{2}\partial_xu^\theta\right)+\gamma \beta \left(r_x^w u^\theta+\frac{r^w}{2}\partial_xu^\theta\right)\right]=R+O(\delta^4)\ ,
+\end{equation}
+where $r_t^w$ can be substituted by (\ref{eq:rw_t}) whenever it appears in (\ref{eq:conv}).
+
+
 Choosing $\theta^2 = {1}/{2}$ simplifies \eqref{eq:massp4} and \eqref{eq:momentump4}, yielding a familiar Serre-type formulation that balances dispersion and nonlinearity effectively for blood flow modeling. The refined system \eqref{eq:massp4}--\eqref{eq:momentump4} generalizes the velocity to any radial position, enhancing the model's flexibility for capturing blood flow variations across the vessel cross-section. The parameter $\theta$ allows tuning to specific radial locations, with $\theta^2 = \frac{1}{2}$ recovering a standard Serre-type system. The terms involving $\Gamma$, $Q$, and $R$ account for higher-order dispersive, nonlinear, and wall interaction effects, critical for accurate modeling of arterial waves \citep{Mitsotakis2019}.
 
 As an alternative approach, the mathematical modeling of blood flow suggests using the incompressible, ideal, and radially symmetric Euler equations. This framework, which assumes inviscid flow, will be developed further to complement the asymptotic system derived above, offering additional insights into arterial pulse dynamics.
@@ -698,6 +705,7 @@ In this Section, we would like to summarize the developments made so far. We als
    \bar{u}_{\,t}\,+\;\frac{\delta^{\,2}}{6}\;r^{\,w}_{\,t}\,r^{\,w}\,\bar{u}_{\,xx}\,+\,\eps\, r^{\,w}\,\bar{u}\,\bar{u}_{\,x}\,+\;\frac{\eps\,\delta^{\,2}}{6}\;r^{\,w}_{\,x}\,r^{\,w}\,\bar{u}\,\bar{u}_{\,xx}\,+\,\bigl(\,\alpha\,\delta^{\,2}\,\eta_{\;tt}\,+\,\beta\,\eta\, + \,\delta^{\,2}\,\beta\,\gamma\,\eta_{\;t}\,\bigr)_{\,x}\, +\\
    \frac{\eps\,\delta^{\,2}}{12}\;(\,r^{\,w}\,)^{\,2}\,\bar{u}_{\,x}\,\bar{u}_{\,xx}\,-\;\frac{\delta^{\,2}}{6\,r^{\,w}}\;\frac{\partial}{\partial x}\;\biggl[ \,(\,r^{\,w}\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-\;\frac{\eps}{2}\;(\,\bar{u}_{\,x}\,)^{\,2}\,\biggr]\,=\,\O\,(\,\delta^{\,4}\,)\,.
 \end{multline}
+
 In order to achieve our goals, we have to determine the trace of the horizontal velocity $u^{\,w}$ at the vessel wall. The following Section is entirely devoted to this task.
 
 \subsubsection{Horizontal velocity trace at the vessel wall}
@@ -773,6 +781,7 @@ In order to close the system above, we can remember that $r^{\,w}$ can be expres
   \frac{\eps\,\delta^{\,2}}{12}\,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,2}\,\bar{u}_{\,x}\bar{u}_{\,xx}\,-\,\frac{\delta^{\,2}}{6\,(r_{\,0}+\eps\,\eta)}\,\frac{\partial}{\partial x}\;\biggl[ \,(\,r_{\,0}\,+\,\eps\,\eta\,)^{\,3}\,(\,\bar{u}_{\,xt}\,+\,\eps\,\bar{u}\,\bar{u}_{\,xx}\,-
 \,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\biggr]=\,0.
 \end{multline}
+
 
 \subsection{Classical cylindrical Boussinesq equations}
 
@@ -2501,13 +2510,13 @@ equation~\eqref{eq:chap6.3} becomes
   +C^{\prime}\,\eta_{\,tt}=0.
 \end{equation}
 Integrating over \(x\in[a,b]\) gives
-\begin{multline}\label{eq:chap6.4}
+\begin{equation}\label{eq:chap6.4}
   A^{\prime}\int_{a}^{b}\eta_{\,t}\,\ud x
   +48\,\tilde{c}\int_{a}^{b}\eta_{\,x}\,\ud x
   +\frac{120\,\tilde{c}}{r_{\,0}}\int_{a}^{b}\eta\,\eta_{\,x}\,\ud x
-  +B^{\prime}\int_{a}^{b}\eta_{\,xtt}\,\ud x\\
+  +B^{\prime}\int_{a}^{b}\eta_{\,xtt}\,\ud x
   +C^{\prime}\int_{a}^{b}\eta_{\,tt}\,\ud x=0.
-\end{multline}
+\end{equation}
 Defining
 \[
   \hat{\eta}(t)=\frac{1}{b-a}\int_{a}^{b}\eta(x,t)\,\ud x,\qquad
