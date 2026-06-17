@@ -238,11 +238,11 @@ The elastic wall kinematic impermeability condition reads:
 \begin{equation*}
   \eta_{t}\ +\ r^{w}_{x}\cdot u\ =\ v\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,.
 \end{equation*}
-The dynamic boundary condition is nothing else but the expression of the force balance written on vessel walls:
+The dynamic boundary condition is nothing else but the expression of the force balance written on vessel walls. Modelling the wall as a \textsc{Kelvin}--\textsc{Voigt} viscoelastic solid, the elastic restoring stress is supplemented by a viscous stress proportional to the rate of deformation $\eta_{t}$, so that
 \begin{equation*}
-    \rho^{w}\,h\,\eta_{tt}\ =\ p^{w}\ -\ \frac{E\,h}{r_{\,0}^{\,2}\,(1\,-\,\nu^2)}\:\eta\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,,
+    \rho^{w}\,h\,\eta_{tt}\ =\ p^{w}\ -\ \frac{E\,h}{r_{\,0}^{\,2}\,(1\,-\,\nu^2)}\:\bigl(\,\eta\ +\ \gamma^{\ast}\,\eta_{t}\,\bigr)\ \quad\ \mbox{at}\ \quad\ r\ =\ r^{w}\,,
 \end{equation*}
-where $\rho^{w}$ is the wall density, $p^{w}$ is the pressure exerted by the fluid on the elastic wall, $h$ is the wall thickness, $E$ and $\nu$ characterize the elastic properties (Young modulus and Poisson ratio correspondingly) of the vessel. In this study, we assume for simplicity that $E$, $\nu$, $\rho^{w}$, and $h$ are constants.
+where $\rho^{w}$ is the wall density, $p^{w}$ is the pressure exerted by the fluid on the elastic wall, $h$ is the wall thickness, $E$ and $\nu$ characterize the elastic properties (Young modulus and Poisson ratio correspondingly) of the vessel, and $\gamma^{\ast}\ \geq\ 0$ is the wall \emph{stress-relaxation time} (with the dimension of time) characterising the wall viscoelasticity; the purely elastic wall is recovered in the limit $\gamma^{\ast}\ =\ 0$. Together with the fluid Rayleigh damping introduced below, this term accounts for the dissipative (non-conservative) mechanisms of the model. In this study, we assume for simplicity that $E$, $\nu$, $\rho^{w}$, $h$, and $\gamma^{\ast}$ are constants.
 
 \subsection{Potential model: dimensional formulation}
 
@@ -413,7 +413,7 @@ In non-dimensional form (dropping asterisks for simplicity), the governing equat
 & \partial_r \phi = \delta^2 \partial_t \eta + \delta^2 [r_0(x) + \eps \eta] \partial_x \phi, \quad \text{at } r = r^w, \label{eq:wall_bc} \\
 & p = \alpha \delta^2 \partial_t^2 \eta + \beta (\eta + \delta^2 \gamma \partial_t \eta), \quad \text{at } r = r^w, \label{eq:pressure}
 \end{align}
-where $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \eps / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \citet{Mitsotakis2019}). Following standard asymptotic techniques \citep{BCS}, we expand the velocity potential $\phi$ as:
+where $r^w = r_0(x) + \eps \eta$ is the non-dimensional vessel radius, $\kappa = \kappa^* \tilde{c} \eps / \lambda$ is a damping coefficient, $\alpha = \rho_w h / \rho R$, $\beta = 2 R^2 / r_0^2(x)$, $\gamma = \gamma^* \delta^2 T$, and $\rho_w$ is the wall density (\emph{cf.} \citet{Mitsotakis2019}). Here $\gamma^*$ is the dimensional wall stress-relaxation time of the \textsc{Kelvin}--\textsc{Voigt} constitutive law introduced above, and $\gamma$ is its dimensionless counterpart, scaled by $\delta^2 T$: it is the (non-negative) viscoelastic damping parameter that measures the strength of energy dissipation by the vessel wall. The viscoelastic contribution $\delta^2\beta\gamma\,\partial_t\eta$ in the pressure law \eqref{eq:pressure} is therefore a weakly dispersive correction, of order $\delta^2$, to the elastic wall response $\beta\eta$, and the elastic wall is recovered as $\gamma\to 0$. Following standard asymptotic techniques \citep{BCS}, we expand the velocity potential $\phi$ as:
 \begin{equation}\label{eq:potential}
   \phi(x, r, t) = \sum_{m=0}^\infty r^m \phi_m(x, t).
 \end{equation}
@@ -782,6 +782,15 @@ In order to close the system above, we can remember that $r^{\,w}$ can be expres
 \,\frac{\eps}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,)\,\biggr]=\,0.
 \end{multline}
 
+The system \eqref{eq:sgn1}, \eqref{eq:sgn2} is written in scaled variables, in which $\eps$ and $\delta$ play the r\^ole of bookkeeping parameters tracking the orders of nonlinearity and dispersion. Passing to dimensional (physical) variables amounts to setting $\eps\,=\,\delta\,=\,1$ and replacing the scaled wall coefficients $\alpha,\,\beta$ by their dimensional counterparts $\tilde{\alpha}\,=\,\rho^{w}\,h\,/\,\rho$ and $\tilde{\beta}\,=\,E\,h\,/\,(\,\rho\,r_{\,0}^{\,2}\,)$ (\emph{cf.} \eqref{eq:bouss2}). The fully nonlinear cylindrical \acrshort{sgn} system then reads
+\begin{equation}\label{eq:sgn1dim}
+  \frac{r_{\,0}}{2}\,\bar{u}_{\;x}\,+\,\frac{\eta}{2}\,\bar{u}_{\;x}\,-\,\frac{1}{12}\,\eta_{\,x}\,(\,r_{\,0}\,+\,\eta\,)^{\,2}\,\bar{u}_{\,xx}\,-\,\frac{1}{48}\,(\,r_{\,0}\,+\,\eta\,)^{\,3}\,\bar{u}_{\,xxx}\,+\,\eta_{\,t}\,+\,\eta_{\,x}\,\bar{u}\,=\,0\,,
+\end{equation}
+\begin{multline}\label{eq:sgn2dim}
+  \bar{u}_{\,t}\,+\,\bar{u}\bar{u}_{\,x}\,+\,\frac{1}{6}\,\eta_{\,t}\,(\,r_{\,0}\,+\,\eta\,)\,\bar{u}_{\;xx}\,+\,\frac{1}{6}\,\eta_{\,x}\,(\,r_{\,0}\,+\,\eta\,)\,\bar{u}\,\bar{u}_{\,xx}\,+\,\bigl(\,\tilde{\alpha}\,\eta_{\,tt}\,+\,\tilde{\beta}\,\eta\,+\,\tilde{\beta}\,\gamma\,\eta_{\,t}\,\bigr)_{\,x}\,+\\
+  \frac{1}{12}\,(\,r_{\,0}\,+\,\eta\,)^{\,2}\,\bar{u}_{\,x}\bar{u}_{\,xx}\,-\,\frac{1}{6\,(r_{\,0}+\eta)}\,\frac{\partial}{\partial x}\;\biggl[\,(\,r_{\,0}\,+\,\eta\,)^{\,3}\,\bigl(\,\bar{u}_{\,xt}\,+\,\bar{u}\,\bar{u}_{\,xx}\,-\,\frac{1}{2}\;(\,\bar{u}_{x}\,)^{\,2}\,\bigr)\,\biggr]\,=\,0\,.
+\end{multline}
+For a constant unperturbed radius $r_{0}$, multiplying the mass equation \eqref{eq:sgn1dim} by $(\,r_{\,0}\,+\,\eta\,)$ recovers exactly the divergence form \eqref{eq:d1}, \eqref{eq:d2} used in the conservation-law analysis of \cref{sec:cons_sym}.
 
 \subsection{Classical cylindrical Boussinesq equations}
 
@@ -804,11 +813,32 @@ The last system can be easily recast in physical variables after neglecting the 
   \frac{r_{\,0}}{2}\;\bar{u}_{\,x}\,+\;\frac{\eta}{2}\;\bar{u}_{\,x}\,+\,\eta_{\;t}\,-\;\frac{r_{\,0}^{\,3}}{48}\,\;\bar{u}_{\,xxx}\,+\,\eta_{\,x}\,\bar{u}\,=\,0\,,
 \end{equation}
 \begin{equation}\label{eq:bouss2}
-  \bar{u}_{\,t}\, + \,\bar{u}\,\bar{u}_{\,x}\, + \,\tilde{\alpha}\,\eta_{\;xtt}\, + \,\tilde{\beta}\,\eta_{\;x}\, + \,\tilde{\beta}\,\tilde{\gamma}\,\eta_{\;xt}\, - \,\frac{r_{\,0}^{\,2}}{6}\;\bar{u}_{\,xxt}\, = \,0\,,
+  \bar{u}_{\,t}\, + \,\bar{u}\,\bar{u}_{\,x}\, + \,\tilde{\alpha}\,\eta_{\;xtt}\, + \,\tilde{\beta}\,\eta_{\;x}\, + \,\tilde{\beta}\,\gamma\,\eta_{\;xt}\, - \,\frac{r_{\,0}^{\,2}}{6}\;\bar{u}_{\,xxt}\, = \,0\,,
 \end{equation}
-where $r_{\,0}\,>\,0$ is the vessel constant radius.
+where $r_{\,0}\,>\,0$ is the constant vessel radius, $\tilde{\alpha}\,=\,\rho^{w}\,h\,/\,\rho\,>\,0$ and $\tilde{\beta}\,=\,E\,h\,/\,(\,\rho\,r_{\,0}^{\,2}\,)\,\geq\,0$ are, respectively, the (dimensional) wall-inertia and wall-stiffness coefficients, and $\gamma\,\geq\,0$ is the dimensionless wall viscoelastic damping parameter introduced in \eqref{eq:pressure}.
 
-To compare the present model with that proposed in \cite{Mitsotakis2019}, one observes that the latter employed the potential flow formulation, whereas the current study utilises a velocity-pressure formulation. Furthermore, their model incorporates a viscous frequency parameter associated with Rayleigh damping, which is set to zero in our analysis. Accordingly, these distinctions underscore that the two systems are not equivalent representations of the Boussinesq model.
+We note in passing that in the non-dispersive limit $\delta\,\to\,0$ the dispersive terms drop out and the system \eqref{eq:bouss1}, \eqref{eq:bouss2} (and likewise the parent \acrshort{sgn} system) collapses to a first-order hyperbolic system of nonlinear shallow-water (\textsc{Saint}-\textsc{Venant}) type. For a uniform vessel ($r_{0}\,=\,\mathrm{const}$) this hydrostatic limit is C-integrable in the sense of \textsc{Calogero}, that is, it can be linearised by a hodograph transformation exactly as the classical one-dimensional shallow-water equations. The dispersive ($\O(\delta^{2})$) terms retained above are precisely what set the present weakly dispersive models apart from this hydrostatic limit. The following statement makes the C-integrability explicit.
+
+\begin{lemma}[Hodograph linearisation of the dispersionless limit]\label{lem:hodograph}
+For $r_{0}=\mathrm{const}$ and $\gamma=0$, the dispersionless ($\delta\to0$) limit of \eqref{eq:bouss1}--\eqref{eq:bouss2},
+\begin{equation}\label{eq:dispersionless}
+  \eta_{t}+\bar{u}\,\eta_{x}+\tfrac12\,(r_{0}+\eta)\,\bar{u}_{x}=0,\qquad
+  \bar{u}_{t}+\bar{u}\,\bar{u}_{x}+\tilde{\beta}\,\eta_{x}=0,
+\end{equation}
+is a strictly hyperbolic $2\times2$ system with characteristic speeds
+$\lambda_{\pm}=\bar{u}\pm\sqrt{\tilde{\beta}\,(r_{0}+\eta)/2}$. It therefore possesses two Riemann invariants and, away from simple waves, the hodograph transformation $(x,t)\mapsto(\eta,\bar{u})$ maps it to a \emph{linear} second-order equation of Euler--Poisson--Darboux type; the system is C-integrable in the sense of \textsc{Calogero}.
+\end{lemma}
+\begin{proof}
+Writing \eqref{eq:dispersionless} as $\mathbf{U}_{t}+\mathsf{A}(\mathbf{U})\,\mathbf{U}_{x}=0$ with $\mathbf{U}=(\eta,\bar{u})^{\top}$ gives $\mathsf{A}=\bigl(\begin{smallmatrix}\bar{u}&(r_{0}+\eta)/2\\ \tilde{\beta}&\bar{u}\end{smallmatrix}\bigr)$, whose eigenvalues are $\lambda_{\pm}=\bar{u}\pm\sqrt{\tilde{\beta}(r_{0}+\eta)/2}$ (computed in \texttt{scripts/verify\_hodograph.py}); since $\tilde{\beta}>0$ and $r_{0}+\eta>0$ these are real and distinct, so the system is strictly hyperbolic and genuinely nonlinear, hence endowed with Riemann invariants $R_{\pm}=\bar{u}\mp 2\sqrt{2\tilde{\beta}(r_{0}+\eta)}$ (up to normalisation). Because the coefficients of \eqref{eq:dispersionless} are independent of $(x,t)$, interchanging dependent and independent variables (the hodograph transformation) renders the equations linear in the unknowns $x(\eta,\bar{u})$, $t(\eta,\bar{u})$; eliminating one unknown yields a single linear second-order equation of Euler--Poisson--Darboux type, exactly as for the classical shallow-water system \citep{Whitham1999}. Linearisability by a point/hodograph change of variables is precisely C-integrability \citep{Calogero1991}.
+\end{proof}
+
+To compare the present model with that proposed in \citet{Mitsotakis2019}, we recall their dimensional cylindrical Boussinesq system (\emph{cf.} Eqs.~(3.6)--(3.7) therein), written here in the notation of the present paper:
+\begin{align}
+  & \eta_{\,t}\,+\,\frac{1}{2}\,(\,r_{\,0}\,+\,\eta\,)\,u_{\,x}\,+\,(\,r_{\,0}\,+\,\eta\,)_{\,x}\,u\,=\,0\,, \label{eq:MDLP1}\\
+  & \bigl(\,1\,-\,\tilde{\alpha}\,r_{\,0,\,xx}\,\bigr)\,u_{\,t}\,+\,\bigl(\,\tilde{\beta}\,\eta\,\bigr)_{\,x}\,+\,u\,u_{\,x}\,-\,\frac{(\,4\,\tilde{\alpha}\,+\,r_{\,0}\,)\,r_{\,0}}{8}\,u_{\,xxt}\,+\,\frac{(\,3\,\tilde{\alpha}\,+\,r_{\,0}\,)\,r_{\,0,\,x}}{2}\,\bigl(\,\tilde{\beta}\,\eta\,\bigr)_{\,xx}\,+\,\kappa\,u\,-\,\gamma\,\Bigl[\,\tilde{\beta}\,\bigl(\,r_{\,0,\,x}\,u\,+\,\tfrac{1}{2}\,r_{\,0}\,u_{\,x}\,\bigr)\,\Bigr]_{\,x}\,=\,0\,, \label{eq:MDLP2}
+\end{align}
+% NOTE for co-authors: Eqs. (eq:MDLP1)-(eq:MDLP2) are transcribed from Mitsotakis, Dutykh, Li & Peach (2019), Wave Motion 90, Eqs. (3.6)-(3.7). Please double-check the coefficients against the source before submission.
+where $\tilde{\alpha}$ and $\tilde{\beta}$ are as defined above, $\kappa$ is the viscous-frequency (\textsc{Rayleigh}) damping coefficient, and $\gamma$ the wall viscoelastic relaxation parameter. Comparing \eqref{eq:MDLP1}, \eqref{eq:MDLP2} with our system \eqref{eq:bouss1}, \eqref{eq:bouss2}, one observes that the latter was obtained from a potential-flow formulation, whereas the current study rests on a velocity--pressure formulation; consequently the dispersion is carried by different terms (a $\bar{u}_{xxx}$ term in our mass equation against a $u_{xxt}$ term in their momentum equation). Furthermore, their model retains the fluid Rayleigh damping $\kappa\,u$, which is set to zero in our analysis. Accordingly, these distinctions underscore that the two systems are not equivalent representations of the Boussinesq model.
 
 \subsection{Unidirectional model equations}\label{sec:nondim}
 
@@ -936,6 +966,43 @@ integrating twice delivers
 \end{equation*}
 whose closed‐form solution matches the profiles given above.
 
+We summarise these classical facts, together with the influence of the wall viscoelasticity, in the next two statements.
+
+\begin{proposition}[Solitary waves: existence, uniqueness and amplitude--speed law]\label{prop:solitary}
+Let $\gamma=0$ and $r_{0}=\mathrm{const}$. For every speed $c_{s}>\tilde{c}$ the cylindrical \acrshort{kdv} reduction \eqref{eq:KdVdim} admits a solitary wave
+\begin{equation}\label{eq:sw_profile}
+  \eta(x,t)=A\,\sech^{2}\!\bigl(K\,(x-c_{s}t)\bigr),\qquad
+  A=\frac{6\,(c_{s}-\tilde{c})\,r_{0}}{5\,\tilde{c}}\,,\qquad
+  K^{2}=\frac{10\,A}{r_{0}^{\,2}\,(12\,\tilde{\alpha}+3\,r_{0})}\,,
+\end{equation}
+which is even, positive and exponentially localised. It is the unique (up to translation) solitary-wave solution, and the amplitude--speed relation $c_{s}=\tilde{c}\,(1+5A/6r_{0})$ is a strictly increasing bijection of $(0,\infty)$ onto $(\tilde{c},\infty)$: taller pulses travel faster.
+\end{proposition}
+\begin{proof}
+With $\eta=\eta(\zeta)$, $\zeta=x-c_{s}t$, two integrations of \eqref{eq:KdVdim} subject to $\eta,\eta',\eta''\to0$ as $|\zeta|\to\infty$ give the first integral displayed above, which we rewrite as
+\begin{equation*}
+  (\eta')^{2}=\frac{48}{\tilde{c}\,(12\,\tilde{\alpha}+3\,r_{0})\,r_{0}}\;\eta^{2}\,\Bigl[(c_{s}-\tilde{c})-\tfrac{5\tilde{c}}{6r_{0}}\,\eta\Bigr].
+\end{equation*}
+The right-hand side is a cubic in $\eta$ with a double root at $\eta=0$ and a simple root at $\eta=A=6(c_{s}-\tilde{c})r_{0}/5\tilde{c}$. It is positive on $(0,A)$ precisely when $c_{s}>\tilde{c}$; the phase plane then has a unique orbit homoclinic to the saddle at the origin, symmetric about its maximum $\eta=A$. Separating variables and integrating yields the $\sech^{2}$ profile \eqref{eq:sw_profile} with $K^{2}$ obtained by matching the quadratic behaviour near the crest; uniqueness up to translation follows from uniqueness of the homoclinic orbit. Strict monotonicity of $A\mapsto c_{s}=\tilde{c}(1+5A/6r_{0})$ is immediate. The same argument applied to \eqref{eq:BBMdim} gives the companion profile quoted above.
+\end{proof}
+
+\begin{lemma}[Adiabatic viscoelastic attenuation]\label{lem:decay}
+Let $0<\gamma\ll1$. To leading order in the slowly-varying (adiabatic) approximation, the amplitude of the \acrshort{kdv} solitary wave \eqref{eq:sw_profile} decays according to
+\begin{equation}\label{eq:decay_law}
+  \frac{\ud A}{\ud t}=-\,C\,\gamma\,A^{2},\qquad
+  C=\frac{8\,\tilde{\beta}}{3\,r_{0}\,(12\,\tilde{\alpha}+3\,r_{0})}\,,\qquad\text{so}\qquad
+  A(t)=\frac{A_{0}}{1+C\,\gamma\,A_{0}\,t}\,.
+\end{equation}
+The pulse therefore attenuates algebraically, $A\sim(C\gamma t)^{-1}$, over the characteristic time $t_{\star}=(C\gamma A_{0})^{-1}$.
+\end{lemma}
+\begin{proof}
+For $\gamma>0$ the viscoelastic contribution to \eqref{eq:KdVdim} is the Burgers-type diffusion $-\tfrac{r_{0}\tilde{\beta}\gamma}{4}\,\eta_{xx}$. Multiplying \eqref{eq:KdVdim} by $\eta$ and integrating over $\mathbb{R}$, the advective, nonlinear and dispersive terms are exact $x$-derivatives and drop out, leaving the exact balance
+\begin{equation}\label{eq:L2balance}
+  \frac{\ud}{\ud t}\int_{\mathbb{R}}\tfrac12\,\eta^{2}\,\ud x=-\,\nu\int_{\mathbb{R}}\eta_{x}^{2}\,\ud x\le0,\qquad
+  \nu:=\frac{r_{0}\,\tilde{\beta}\,\gamma}{4}\ge0,
+\end{equation}
+the divergence identity behind which is verified symbolically in \texttt{scripts/verify\_energy.py}. Substituting the slowly-varying profile $\eta=A(t)\sech^{2}(K\zeta)$ with the width--amplitude relation $K^{2}=10A/[r_{0}^{2}(12\tilde{\alpha}+3r_{0})]$ and the integrals $\int\eta^{2}=\tfrac{4A^{2}}{3K}$, $\int\eta_{x}^{2}=\tfrac{16A^{2}K}{15}$ into \eqref{eq:L2balance} and simplifying gives \eqref{eq:decay_law} (the elementary algebra is checked in \texttt{scripts/verify\_soliton\_decay.py}). The excess mass is radiated into a small trailing shelf, consistent with the exact conservation of $\int\eta\,\ud x$.
+\end{proof}
+
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figs/KdVBBMSW.eps}
@@ -1062,6 +1129,35 @@ and, by virtue of \eqref{eq:5.11},
 \end{equation}
 The entire derivation has been cross-checked symbolically in \textsc{Maple}; the annotated worksheet is provided in the accompanying codes repository.
 
+\subsection{Consistency of the asymptotic model hierarchy}\label{sec:consistency}
+
+The systems derived above form a hierarchy of successive long-wave approximations. We now make precise, in the sense of asymptotic consistency \citep{Lannes2013, BCL, Israwi2011}, the order to which each model reproduces the parent axisymmetric dynamics. Here \emph{consistency} refers to the size of the residual produced when a (uniformly bounded) smooth solution of the finer system is substituted into the coarser one; in particular, \emph{no well-posedness of either system is assumed}---only an a~priori bounded solution.
+
+\begin{definition}\label{def:consistency}
+A reduced system $\mathcal{S}$ is \emph{consistent at order $\O(\mu)$} with the axisymmetric potential-flow problem \eqref{eq:bernoulli}--\eqref{eq:pressure} on $[0,T]$ if, for every solution $(\phi,\eta)$ of the latter whose relevant norms are bounded uniformly in $\delta,\eps\in(0,1]$ on $[0,T]$, the pair $(\eta,\bar{u})$---with $\bar{u}$ the depth-averaged axial velocity---satisfies $\mathcal{S}$ up to a residual $\mathbf{R}$ obeying $\|\mathbf{R}(t)\|_{H^{s}}\le C\,\mu$ for $t\in[0,T]$, the constant $C$ depending only on those bounds.
+\end{definition}
+
+\begin{theorem}[Consistency of the cylindrical \acrshort{sgn} system]\label{thm:consistency_sgn}
+The cylindrical \acrshort{sgn} system \eqref{eq:sgn1}--\eqref{eq:sgn2} is consistent at order $\O(\delta^{4})$ with the axisymmetric potential Euler problem.
+\end{theorem}
+\begin{proof}
+By the axis condition \eqref{eq:center_bc} the velocity potential admits the even expansion $\phi=\sum_{m\ge0}r^{2m}\phi_{2m}(x,t)$; substitution into the cylindrical Laplace equation \eqref{eq:laplace} produces the recurrence \eqref{eq:recurr}, solved by $\phi_{2}=-\tfrac{\delta^{2}}{4}\,\phi_{0,xx}$, $\phi_{4}=\tfrac{\delta^{4}}{64}\,\phi_{0,xxxx}$ and $\phi_{2m}=\O(\delta^{2m})$, i.e. the truncated potential \eqref{eq:potapr}. A direct computation shows that \eqref{eq:potapr} solves \eqref{eq:laplace} \emph{identically through} $\O(\delta^{4})$: the coefficients of $r^{1}$ and $r^{3}$ in $\delta^{2}r\,\phi_{xx}+\partial_{r}(r\,\phi_{r})$ vanish, leaving the bulk residual $\tfrac{\delta^{6}}{64}\,r^{5}\,\partial_{x}^{6}\phi_{0}=\O(\delta^{6})$, while the axis condition \eqref{eq:center_bc} holds exactly; this elementary but error-prone algebra is verified symbolically in \texttt{scripts/verify\_consistency.py}. Inserting \eqref{eq:potapr} into the wall conditions \eqref{eq:wall_bc}--\eqref{eq:pressure} and depth-averaging the continuity equation by the procedure of \cref{sec:cbsys} reproduces \eqref{eq:sgn1}--\eqref{eq:sgn2}, each discarded term carrying a factor $\delta^{4}$. Under the assumed uniform bounds the residual is therefore $\O(\delta^{4})$ in $H^{s}$.
+\end{proof}
+
+\begin{corollary}[Consistency of the Boussinesq system]\label{cor:consistency_bouss}
+In the Boussinesq regime $\eps\ll1$, $\eps/\delta^{2}=\O(1)$, the cylindrical Boussinesq system \eqref{eq:bouss1}--\eqref{eq:bouss2} is consistent with the \acrshort{sgn} system---and hence with the axisymmetric Euler problem---at order $\O(\eps\,\delta^{2}+\delta^{4})$.
+\end{corollary}
+\begin{proof}
+Discarding from \eqref{eq:sgn1}--\eqref{eq:sgn2} the terms quadratic in the nonlinearity parameter retains all $\O(1)$ and $\O(\delta^{2})$ contributions and removes only terms of order $\O(\eps\,\delta^{2})$; together with the $\O(\delta^{4})$ truncation of \cref{thm:consistency_sgn} this yields the stated residual, precisely the order $\O(\delta^{4}+\eps\,\delta^{2})$ already recorded on the right-hand sides of \eqref{eq:5.1}--\eqref{eq:5.2}.
+\end{proof}
+
+\begin{corollary}[Consistency of the unidirectional models]\label{cor:consistency_uni}
+For right-going initial data the \acrshort{kdv} \eqref{eq:KdVdim} and \acrshort{bbm} \eqref{eq:BBMdim} reductions are consistent with the cylindrical Boussinesq system at order $\O(\eps^{2}+\eps\,\delta^{2})$ on the time scale $\O(\eps^{-1})$.
+\end{corollary}
+\begin{proof}
+Factoring the bidirectional Boussinesq operator into counter-propagating parts and retaining only the right-going characteristic \citep{Olver1988a} introduces an $\O(\eps^{2}+\eps\,\delta^{2})$ error from the neglected reflected field and from the leading-order substitution $\partial_{t}\simeq-\tilde{c}\,\partial_{x}+\O(\eps+\delta^{2})$ used to recast the dispersive term in either the \acrshort{kdv} or the \acrshort{bbm} form; on the diffusive--dispersive time scale $\O(\eps^{-1})$ this residual remains controlled.
+\end{proof}
+
 \section{Dispersion relations}\label{sec:dispersion}
 
 We first examine the linear dispersion characteristics of the full three-dimensional model and compare them with those obtained from the linearised Euler equations by following \citep{Mitsotakis2018}:
@@ -1170,7 +1266,33 @@ Elimination of $\bar{u}_{\,0}$ gives the quadratic dispersion relation
   \label{fig:disp}
 \end{figure}
 
-\paragraph{Remarks.} The algebraic relations \eqref{eq:disp_bous} and \eqref{eq:disp_mod_bous} demonstrate that both the classical and the modified depth-averaged models reproduce the low-frequency branch of the exact dispersion curve with the correct slope. The modified formulation retains this agreement while reducing the high-frequency error introduced by the classical Boussinesq truncation, thereby reinforcing its suitability for simulating arterial pulse waves over physiologically relevant wavelengths.
+The graphical agreement of \cref{fig:disp} can be made precise: the reduced models reproduce the long-wave expansion of the exact dispersion relation to the order at which they were derived.
+
+\begin{lemma}[Asymptotic consistency of the dispersion relation]\label{lem:disp_consistency}
+Let $\tilde{\alpha}=\rho^{w}h/\rho$ and $\tilde{\beta}=E\,h/(\rho\,r_{0}^{2})$. As $k\,r_{0}\to0$, the exact linearised-Euler dispersion relation \eqref{eq:disp_euler} satisfies
+\begin{equation}\label{eq:disp_expansion}
+  \omega_{\,\eps}^{\,2}(k)=\tfrac12\,\tilde{\beta}\,r_{0}\,k^{2}\,
+  \Bigl[\,1-\bigl(\tfrac12\,\tilde{\alpha}\,r_{0}+\tfrac18\,r_{0}^{2}\bigr)\,k^{2}
+  +\O\bigl((k r_{0})^{4}\bigr)\Bigr].
+\end{equation}
+The leading coefficient equals the squared Moens--Korteweg speed, $\tfrac12\tilde{\beta}r_{0}=\tilde{c}^{\,2}$, and the cylindrical \acrshort{kdv} reduction \eqref{eq:KdVdim} reproduces both this coefficient and the $\O(k^{2})$ dispersive coefficient exactly; consequently
+\[
+  \omega_{\,\eps}(k)-\omega_{\mathrm{KdV}}(k)=\O\bigl((k r_{0})^{5}\bigr),
+\]
+i.e. the reduction is consistent with the full linear problem to relative order $\O(\delta^{4})$. The classical and modified Boussinesq relations \eqref{eq:disp_bous}, \eqref{eq:disp_mod_bous} share the same $\O(k^{2})$ branch.
+\end{lemma}
+\begin{proof}
+Insert the Maclaurin series $I_{0}(z)=1+z^{2}/4+z^{4}/64+\O(z^{6})$ and $I_{1}(z)=z/2+z^{3}/16+\O(z^{5})$, $z=k r_{0}$, into \eqref{eq:disp_euler} and expand the resulting rational function in $k$; collecting powers gives \eqref{eq:disp_expansion}. The cylindrical \acrshort{kdv} relation $\omega_{\mathrm{KdV}}=\tilde{c}\,k-\tfrac{\tilde{c}(12\tilde{\alpha}+3r_{0})r_{0}}{48}k^{3}$ yields $\omega_{\mathrm{KdV}}^{2}=\tilde{c}^{2}k^{2}\bigl[1-\tfrac{(12\tilde{\alpha}+3r_{0})r_{0}}{24}k^{2}+\dots\bigr]$, and $\tfrac{(12\tilde{\alpha}+3r_{0})r_{0}}{24}=\tfrac12\tilde{\alpha}r_{0}+\tfrac18 r_{0}^{2}$ coincides with the bracket in \eqref{eq:disp_expansion}; since $\tilde{c}^{2}=\tfrac12\tilde{\beta}r_{0}$ the two expansions agree through $\O(k^{4})$ in $\omega^{2}$, whence the stated error. The symbolic computation is recorded in \texttt{scripts/verify\_dispersion.py}.
+\end{proof}
+
+\begin{proposition}[Linear well-posedness and stability]\label{prop:linWP}
+For the linearised constant-radius reductions: \emph{(i)} if $\gamma=0$ then $\omega(k)\in\mathbb{R}$ for every $k$, so every Fourier mode is bounded and the linear initial-value problem is well-posed in each $H^{s}$; \emph{(ii)} if $\gamma>0$ then $\operatorname{Im}\omega(k)\le0$ for every $k$, so every mode decays and the linear evolution is an $L^{2}$-contraction. In particular none of the reductions exhibits a Hadamard (ill-posed) instability.
+\end{proposition}
+\begin{proof}
+For the \acrshort{kdv} reduction $\operatorname{Im}\omega=-\tfrac14 r_{0}\gamma\tilde{\beta}\,k^{2}$ and for the \acrshort{bbm} reduction $\operatorname{Im}\omega=-12\gamma r_{0}\tilde{\beta}k^{2}/\bigl(48+r_{0}(12\tilde{\alpha}+3r_{0})k^{2}\bigr)$, both $\le0$ for $\gamma\ge0$ and vanishing at $\gamma=0$. For the Boussinesq relation \eqref{eq:disp_bous} with $\gamma=0$ one solves $\omega^{2}=\beta k/\bigl[\alpha k(24r_{0}k+r_{0}^{3}k^{3})+48+8\delta^{2}r_{0}^{2}k^{2}\bigr]>0$, so $\omega$ is real. The sign computations are confirmed in \texttt{scripts/verify\_dispersion.py}.
+\end{proof}
+
+This settles, at the linear level, the well-posedness question deferred in \cref{sec:model}; the viscoelastic parameter $\gamma$ acts as a stabilising (dissipative) mechanism, while the modified Boussinesq formulation reduces the high-frequency error of the classical truncation, reinforcing its suitability for arterial pulse waves over physiologically relevant wavelengths.
 
 \section{Numerical simulations}\label{sec:numerics}
 
@@ -1790,7 +1912,7 @@ In the multiplier ansatz adopted, \emph{two} independent sets are obtained:
 \]
 Each set generates a distinct local conservation law.
 
-\paragraph{\textit{First conservation law}.} With $\lambda_{1}=1$ the characteristic form yields
+\paragraph{\textit{First conservation law: mass}.} With $\lambda_{1}=1$ the characteristic form yields the balance of mass (equivalently, of the fluid cross-sectional area):
 \begin{equation}\label{eq:a}
   \Bigl[\eta\,r_{0}+\tfrac12\,\eta^{2}\Bigr]_{t}
   +\Bigl[
@@ -1805,7 +1927,7 @@ Each set generates a distinct local conservation law.
   \Bigr]_{x}=0.
 \end{equation}
 
-\paragraph{\textit{Second conservation law}.} With $\displaystyle\lambda_{4}=1/(r_{0}+\eta)$ one obtains
+\paragraph{\textit{Second conservation law: momentum}.} With $\displaystyle\lambda_{4}=1/(r_{0}+\eta)$ one obtains the balance of momentum:
 \begin{multline}\label{eq:b}
   \Bigl[
         \bar{u}
@@ -1846,7 +1968,7 @@ Each set generates a distinct local conservation law.
         +\tfrac12\,\bar{u}^{2}
   \Bigr]_{x}=0.
 \end{multline}
-Both conserved vectors \eqref{eq:a}, \eqref{eq:b} are of third order in spatial derivatives and reduce, in the weakly nonlinear limit $\eta \ll r_{0}$, to the classical mass and momentum balances for long waves in an elastic vessel.
+Both conserved vectors \eqref{eq:a}, \eqref{eq:b} are of third order in spatial derivatives. In the weakly nonlinear limit $\eta \ll r_{0}$ they reduce, respectively, to the classical \emph{mass} and \emph{momentum} balances for long waves in an elastic vessel: the conserved density $\eta\,r_{0}+\tfrac12\,\eta^{2}$ of \eqref{eq:a} is the leading-order perturbation of the fluid cross-sectional area (hence a volume/mass measure), while the density of \eqref{eq:b} reduces to the depth-averaged velocity $\bar{u}$ and thus represents the momentum of the flow.
 
 \paragraph{Symmetry generators.} For the constant-radius system the complete Lie algebra of point symmetries is spanned by
 \[
@@ -1913,6 +2035,72 @@ which reduces to \eqref{eq:a} when $r_{0}$ is constant. The Lie algebra of point
     $X_{4}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$.
   \end{itemize}
 All multipliers, conserved vectors, and symmetry generators have been derived with the \texttt{GeM} package in \textsc{Maple} \cite{Cheviakov2007}. Complete worksheets and verification scripts are provided in accompanying codes.
+
+\paragraph{On Galilean invariance.} It is worth emphasising that the cylindrical \acrshort{sgn} and Boussinesq systems are, in general, \emph{not} invariant under the \textsc{Galilei} boost generated by $X\,=\,t\,\partial_{x}\,+\,\partial_{\bar{u}}$, that is, the transformation $x\,\mapsto\,x\,+\,V\,t$, $\bar{u}\,\mapsto\,\bar{u}\,+\,V$. The symmetry classification above makes the obstruction precise: this generator is admitted \emph{only} in Cases~6 and~7, namely when the vessel is uniform ($r_{0}'=0$) and the wall inertia and viscoelasticity are switched off ($\alpha=\gamma=0$). Equivalently, it is the wall-inertia term ($\alpha\,\eta_{tt}$), the viscoelastic relaxation ($\gamma$), and the geometric variation ($r_{0}(x)$) that break \textsc{Galilean} invariance. This is physically expected, and not a deficiency of the model: unlike the classical free-surface \textsc{Serre}--\textsc{Green}--\textsc{Naghdi} equations, the compliant wall endows the problem with a distinguished reference frame --- the laboratory frame in which the vessel is at rest --- so that boosts cannot be a symmetry once the wall responds dynamically. Restoring \textsc{Galilean} invariance through an asymptotically admissible change of variables would therefore amount to discarding precisely the fluid--structure coupling that the model is designed to capture.
+
+\subsection{Hamiltonian structure, Noether's theorem and invariant solutions}\label{ssec:hamiltonian}
+
+The symmetry classification above, together with the variational and Hamiltonian formulations of \cref{sec:var_principles}, endows the model hierarchy with a rich geometric structure, which we now record. Throughout this subsection $r_{0}=\mathrm{const}$ and, unless stated otherwise, $\gamma=0$.
+
+\begin{lemma}[Lie-algebra structure]\label{lem:lie_algebra}
+In the maximal-symmetry case $\tilde{\alpha}=\beta=r_{0}'=0$ (Case~7 above), the generators $X_{1}=\partial_{x}$, $X_{2}=\partial_{t}$, $X_{3}=t\,\partial_{x}+\partial_{\bar{u}}$, $X_{4}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$ span a four-dimensional solvable Lie algebra whose only non-vanishing commutators are
+\begin{equation}\label{eq:commutators}
+  [X_{2},X_{3}]=X_{1},\qquad [X_{2},X_{4}]=-X_{2},\qquad [X_{3},X_{4}]=X_{3}.
+\end{equation}
+In particular $\{X_{1},X_{2},X_{3}\}$ is the $(1+1)$-dimensional \textsc{Galilei} algebra, $X_{3}$ generating the boost.
+\end{lemma}
+\begin{proof}
+Direct evaluation of $[X_{i},X_{j}]=X_{i}X_{j}-X_{j}X_{i}$ on a smooth test function gives \eqref{eq:commutators}, all other brackets vanishing (verified in \texttt{scripts/verify\_lie\_algebra.py}). The derived algebra $\{X_{1},X_{2},X_{3}\}$ is nilpotent, so the full algebra is solvable.
+\end{proof}
+
+\begin{lemma}[Symmetry reductions and invariant solutions]\label{lem:reductions}
+\emph{(i)} Invariance under $X_{2}+c\,X_{1}=\partial_{t}+c\,\partial_{x}$ forces $\eta,\bar{u}$ to depend only on $\zeta=x-ct$ and reduces the constant-radius system to the travelling-wave ODEs of \cref{sec:cyl_travelling_wave}, of which the solitary wave of \cref{prop:solitary} is the homoclinic orbit. \emph{(ii)} When $\beta=0$ the scaling generator $X_{4}=\bar{u}\,\partial_{\bar{u}}-t\,\partial_{t}$ admits the self-similar invariant solution
+\begin{equation}\label{eq:selfsimilar}
+  \bar{u}(x,t)=\frac{G(x)}{t},\qquad \eta(x,t)=H(x),
+\end{equation}
+where $(G,H)$ solve the autonomous reduced system
+\begin{equation}\label{eq:selfsimilar_ode}
+  \Bigl(\tfrac{\tilde{\alpha}\,r_{0}}{2}+\tfrac{r_{0}^{2}}{6}\Bigr)G''+G\,G'-G=0,\qquad
+  -\tfrac{r_{0}^{3}}{48}\,G'''+\tfrac{r_{0}}{2}\,G'+\tfrac12\,H\,G'+G\,H'=0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+(i) The invariant-surface condition for $X=\partial_{t}+c\,\partial_{x}$ is $\eta_{t}+c\,\eta_{x}=0$ (and likewise for $\bar{u}$), whose general solution depends on $\zeta=x-ct$ only; substitution yields the travelling-wave system already integrated in \cref{sec:cyl_travelling_wave}. (ii) A functional basis of invariants of $X_{4}$ is $\{x,\eta,\bar{u}\,t\}$, giving \eqref{eq:selfsimilar}. Inserting \eqref{eq:selfsimilar} into the constant-radius, $\beta=\gamma=0$ Boussinesq system \eqref{eq:bousnew1}--\eqref{eq:bousnew2} (physical variables) and clearing the explicit powers of $t$ leaves the $t$-independent ODEs \eqref{eq:selfsimilar_ode}; the exact cancellation of all explicitly $t$-dependent terms is verified in \texttt{scripts/verify\_reductions.py}.
+\end{proof}
+
+\begin{proposition}[Noether correspondence]\label{prop:noether}
+Through the variational (\textsc{Luke}) formulation of \cref{sec:var_principles}, \textsc{Noether}'s first theorem pairs each one-parameter variational symmetry with a conservation law: time translation $\partial_{t}$ yields conservation of energy, space translation $\partial_{x}$ yields conservation of momentum \eqref{eq:b}, and the particle-relabelling (gauge) symmetry yields the mass/volume law \eqref{eq:a}. The assignment $X\mapsto(\text{conserved density})$ is an anti-homomorphism from the symmetry algebra of \cref{lem:lie_algebra} into the \textsc{Poisson} algebra of \cref{prop:poisson}.
+\end{proposition}
+\begin{proof}
+For a system in variational (equivalently, non-canonical \textsc{Hamiltonian}) form, \textsc{Noether}'s theorem associates with every divergence symmetry a local conserved current, and conversely \citep{Olver1993, Bluman2010, Benjamin1982}. The translations $\partial_{t},\partial_{x}$ are variational symmetries whenever they are point symmetries (Cases~5--7), and the corresponding currents are, respectively, the energy density (\cref{lem:energy}) and the momentum density of \eqref{eq:b}; the constant multiplier $\Lambda=1$ generating \eqref{eq:a} is the relabelling current. That brackets of generators map to (minus) \textsc{Poisson} brackets of the associated Hamiltonians is the standard momentum-map property \citep{Olver1993}.
+\end{proof}
+
+\begin{lemma}[Energy balance and dissipation]\label{lem:energy}
+The \acrshort{kdv} reduction \eqref{eq:KdVdim} admits the energy functional $E_{\mathrm{K}}=\int_{\mathbb{R}}\tfrac12\,\eta^{2}\,\ud x$ and the \acrshort{bbm} reduction \eqref{eq:BBMdim} the functional $E_{\mathrm{B}}=\int_{\mathbb{R}}\tfrac12\bigl(\eta^{2}+\tfrac{(12\tilde{\alpha}+3r_{0})r_{0}}{48}\,\eta_{x}^{2}\bigr)\ud x$. Along solutions decaying at infinity, both satisfy
+\begin{equation}\label{eq:energy_balance}
+  \frac{\ud E}{\ud t}=-\,\frac{r_{0}\,\tilde{\beta}\,\gamma}{4}\int_{\mathbb{R}}\eta_{x}^{2}\,\ud x\ \le\ 0.
+\end{equation}
+Hence for $\gamma=0$ the energy is exactly conserved---a third invariant beside mass \eqref{eq:a} and momentum \eqref{eq:b}---and for $\gamma>0$ it is monotonically non-increasing, providing an a~priori bound and identifying $\gamma$ as the \textsc{Kelvin}--\textsc{Voigt} dissipation rate.
+\end{lemma}
+\begin{proof}
+Pairing \eqref{eq:KdVdim} with $\eta$ and integrating over $\mathbb{R}$, the advective, nonlinear and dispersive terms are exact $x$-derivatives and integrate to zero, leaving $\tfrac{\ud}{\ud t}\!\int\tfrac12\eta^{2}=-\tfrac{r_{0}\tilde{\beta}\gamma}{4}\!\int\eta_{x}^{2}$. For \acrshort{bbm} the same conclusion follows on pairing the equation with $\eta$ and using the regularising operator $(1-c\,\partial_{x}^{2})$, which converts the time-derivative term into $\tfrac{\ud}{\ud t}E_{\mathrm{B}}$. Both divergence identities are verified in \texttt{scripts/verify\_energy.py}.
+\end{proof}
+
+\begin{proposition}[Poisson structure, Casimir and variational characterisation]\label{prop:poisson}
+With $\gamma=0$ the \acrshort{kdv} reduction \eqref{eq:KdVdim} is \textsc{Hamiltonian},
+\begin{equation}\label{eq:kdv_hamiltonian}
+  \eta_{t}=-\,\partial_{x}\,\frac{\delta\mathcal{H}}{\delta\eta},\qquad
+  \mathcal{H}=\int_{\mathbb{R}}\Bigl(\tfrac{a}{2}\,\eta^{2}+\tfrac{b}{6}\,\eta^{3}-\tfrac{c}{2}\,\eta_{x}^{2}\Bigr)\ud x,
+\end{equation}
+with $a=\tilde{c}$, $b=5\tilde{c}/2r_{0}$, $c=\tilde{c}(12\tilde{\alpha}+3r_{0})r_{0}/48$ and \textsc{Poisson} operator $\mathcal{J}=-\partial_{x}$; the mass $M=\int_{\mathbb{R}}\eta\,\ud x$ is its \textsc{Casimir}, $\mathcal{J}\,\delta M/\delta\eta=0$. The \acrshort{bbm} reduction is \textsc{Hamiltonian} with operator $\mathcal{J}=-(1-c\,\partial_{x}^{2})^{-1}\partial_{x}$ and Hamiltonian $\int_{\mathbb{R}}(\tfrac{a}{2}\eta^{2}+\tfrac{b}{6}\eta^{3})\,\ud x$, the mass again a \textsc{Casimir}. Finally the solitary wave of \cref{prop:solitary} is a critical point of the constrained energy $\mathcal{H}-c_{s}P$, $P=\int_{\mathbb{R}}\tfrac12\eta^{2}\,\ud x$: the Euler--Lagrange equation $\delta(\mathcal{H}-c_{s}P)/\delta\eta=0$ is its profile equation.
+\end{proposition}
+\begin{proof}
+The variational derivative $\delta\mathcal{H}/\delta\eta=a\,\eta+\tfrac{b}{2}\eta^{2}+c\,\eta_{xx}$ gives $-\partial_{x}\,\delta\mathcal{H}/\delta\eta=-(a\,\eta_{x}+b\,\eta\,\eta_{x}+c\,\eta_{xxx})$, which is \eqref{eq:KdVdim} at $\gamma=0$; since $\delta M/\delta\eta=1$ and $\partial_{x}1=0$, the mass is a \textsc{Casimir}. The \acrshort{bbm} statement follows identically after applying $(1-c\,\partial_{x}^{2})$. Lastly $\delta(\mathcal{H}-c_{s}P)/\delta\eta=c\,\eta_{xx}+(a-c_{s})\,\eta+\tfrac{b}{2}\eta^{2}=0$ coincides with the once-integrated travelling-wave equation of \cref{prop:solitary}. All three identities are verified in \texttt{scripts/verify\_poisson.py}.
+\end{proof}
+
+\begin{remark}\label{rem:biham}
+For $\gamma=0$ the \acrshort{kdv} reduction is, moreover, bi-\textsc{Hamiltonian} \citep{Magri1978}: it inherits the second \textsc{Poisson} structure and the recursion operator of the \textsc{Korteweg}--de~\textsc{Vries} hierarchy, hence an infinite sequence of conservation laws and complete integrability. The viscoelastic term ($\gamma>0$) breaks this structure, leaving the finite family of balances established above. The same integrable, defocusing character underlies the modulational stability established in \cref{sec:MI}.
+\end{remark}
 
 \section{Modulational instability analysis}\label{sec:MI}
 
@@ -2401,6 +2589,30 @@ Instability occurs when $M N > 0$ and $q^2 < \dfrac{2 N a_0^2}{M}$, as the quadr
 
 The dispersion relation \eqref{eq:dispersion_bbm_b} highlights the role of dispersion, dissipation, and nonlinearity in the stability of wave packets in the viscous \acrshort{bbm} system. The coefficients $M$ and $N$, derived from the \acrshort{bbm} parameters, determine the range of wave numbers $q$ for which instability occurs. This analysis provides insights into the dynamics of long waves in dispersive media, with applications to water waves and other nonlinear systems.
 
+\subsection{Comparison of the \acrshort{kdv} and \acrshort{bbm} packets: modulational stability}\label{ssec:MIcompare}
+
+Both reductions produce a cubic envelope equation of the canonical form $\ui A_{T}+P\,A_{\xi\xi}+Q\,A|A|^{2}=0$, for which the \textsc{Lighthill} criterion states that modulational instability occurs \emph{iff} $PQ>0$ (focusing). For the dissipation-free ($\gamma=0$) reductions,
+\begin{equation}\label{eq:lighthill}
+  \text{\acrshort{kdv}:}\quad P=-3k,\ \ Q=\beta=\frac{b^{2}}{6\,c\,k}\ \Rightarrow\ PQ=-\frac{b^{2}}{2c}<0;
+  \qquad
+  \text{\acrshort{bbm}:}\quad P=-M,\ \ Q=-N\ \Rightarrow\ PQ=MN,
+\end{equation}
+with $b,c$ the \acrshort{kdv} coefficients \eqref{eq:coeffs} ($c>0$) and $M,N$ the \acrshort{bbm} coefficients defined below \eqref{eq:NLSBBM}. The \acrshort{kdv} product is negative for \emph{every} carrier wavenumber; evaluating the \acrshort{bbm} coefficients for the physiological data of \cref{fig:disp} gives $MN<0$ throughout the long-wave range as well. Hence the following.
+
+\begin{proposition}[Modulational stability of the physiological pulse train]\label{prop:MIstable}
+For $\gamma=0$ and the physiological parameters of \cref{fig:disp}, the cylindrical \acrshort{kdv} and \acrshort{bbm} envelope equations are both of \emph{defocusing} type ($PQ<0$) for all carrier wavenumbers in the long-wave range $k\,r_{0}\lesssim1$. Consequently a slowly modulated arterial pulse train is modulationally stable and develops no \textsc{Benjamin}--\textsc{Feir} sidebands.
+\end{proposition}
+\begin{proof}
+For \acrshort{kdv}, \eqref{eq:lighthill} gives $PQ=-b^{2}/(2c)<0$ identically since $c>0$. For \acrshort{bbm} with $\gamma=0$ the coefficients reduce to $M=(\omega c+2kpc)/(1+ck^{2})$ and $N=bk(\nu+\sigma)/(1+ck^{2})$ with $\omega,p,\sigma,\nu$ as derived above; substituting the physiological values and scanning the carrier over $k\in(0,100]\,\mathsf{m^{-1}}$ (i.e. $kr_{0}\le1$) yields $MN<0$ throughout, as computed in \texttt{scripts/mi\_growth.py}, which also generates \cref{fig:mi}.
+\end{proof}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figs/mi_growth.pdf}
+  \caption{\em Modulational (in)stability of the cylindrical reductions for the physiological parameters of \cref{fig:disp} ($\gamma=0$). \emph{Left}: the sign of the \textsc{Lighthill} product ($-3k\beta$ for \acrshort{kdv}, $MN$ for \acrshort{bbm}) is negative across the long-wave range, so both envelopes are defocusing. \emph{Right}: $\lambda^{2}(q)$ remains positive for the \acrshort{kdv} and \acrshort{bbm} reductions (empty instability band), in contrast with a focusing reference \acrshort{cnls} (dotted), whose $\lambda^{2}$ becomes negative. Produced by \texttt{scripts/mi\_growth.py}.}
+  \label{fig:mi}
+\end{figure}
+
 \section{Conclusions and discussion}\label{sec:discussion}
 
 In this work, we have conducted a comprehensive investigation of pulsatile flow within deformable vessels featuring viscoelastic walls. Grounded in the assumption of axisymmetric flow and considering an ideal fluid for simplicity, we have developed a coherent hierarchy of asymptotic models that capture the complex dynamics governing these intricate systems. Our analysis centered on implementing model order reduction under the long-wave assumption of axi-symmetric Euler equations, which led to the derivation of novel asymptotic model equations offering a detailed portrayal of long-crested pulse propagation in deformable tubes with cylindrical symmetry. This conceptual framework builds upon foundations introduced in \cite{Mitsotakis2018}.
@@ -2431,7 +2643,7 @@ These perspectives aim to extend the theoretical and numerical framework develop
 
 \section*{Code availability}
 
-The Maple (Maplesoft\texttrademark) scripts developed and used in this work, along with the LaTeX source files of this article, are made openly available at the following URL:
+All scripts associated with this study are freely available. These comprise the Maple (Maplesoft\texttrademark) worksheets used for the conservation-law and symmetry computations, the Python (\textsc{SymPy}/\textsc{NumPy}/\textsc{Matplotlib}) scripts that symbolically verify the analytical results---the asymptotic consistency of the model hierarchy, the energy balances, the dispersion-relation expansion, the Lie-algebra and reduction computations, the Hamiltonian/Poisson structure, and the hodograph linearisation---and generate the modulational-instability figure, together with the complete LaTeX source files of this article. They are openly available at the following URL:
 
 \url{https://github.com/dutykh/SerreCyl/}
 

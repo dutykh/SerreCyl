@@ -24,7 +24,17 @@ The approach provides insight into the interplay between nonlinearity, dispersio
 
 ## How to Compile
 
-To compile the manuscript, run:
+The simplest way is the provided `Makefile`:
+
+```
+make           # build SerreCyl.pdf, then remove the intermediate files
+make build     # build but keep the intermediate files (faster reruns)
+make clean     # remove the intermediate files (keeps the PDF)
+make distclean # remove the intermediate files and the PDF
+```
+
+Equivalently, the manual sequence (pdflatex + bibtex + makeglossaries, then two
+further passes to resolve all references) is:
 
 ```
 pdflatex SerreCyl.tex
@@ -34,22 +44,39 @@ pdflatex SerreCyl.tex
 pdflatex SerreCyl.tex
 ```
 
-You may also use `latexmk` for automated compilation:
-
-```
-latexmk -pdf SerreCyl.tex
-```
+`latexmk -pdf SerreCyl` also works, with one `makeglossaries SerreCyl` run for the acronym list.
 
 ## File Structure
-- `SerreCyl.tex` — Main LaTeX manuscript
-- `biblio.bib` — Bibliography file
-- `figs/` — Figures used in the manuscript
-- `*.sty` — Style files (if any)
-- `.gitignore` — Ignores LaTeX build artifacts except the final PDF
+- `SerreCyl.tex` — main LaTeX manuscript
+- `biblio02.bib` — bibliography database
+- `Makefile` — build automation (see above)
+- `wiley-article.cls`, `WileyNJD-*.bst` — journal class and bibliography style
+- `figs/` — figures used in the manuscript
+- `scripts/` — Python (SymPy / NumPy / Matplotlib) scripts that symbolically verify
+  the analytical results and generate the modulational-instability figure
+- `maple/` — Maple worksheets for the conservation-law and symmetry computations
+- `.gitignore` — ignores LaTeX build artifacts except the final PDF
+
+## Reproducibility and symbolic verification
+
+The analytical results are accompanied by Python scripts in `scripts/` that verify the
+underlying algebra symbolically (SymPy) and generate the modulational-instability figure:
+
+- `verify_consistency.py` — Laplace residual `O(δ⁶)`, the crux of the SGN ⇄ Euler consistency theorem
+- `verify_dispersion.py` — asymptotic match of the Bessel and KdV dispersion relations; linear-stability signs
+- `verify_energy.py` — energy / `L²` balance identities for the KdV and BBM reductions
+- `verify_soliton_decay.py` — adiabatic amplitude-decay law of the solitary wave
+- `verify_lie_algebra.py` — commutators of the point symmetries (the Galilei algebra)
+- `verify_reductions.py` — travelling-wave and self-similar symmetry reductions
+- `verify_poisson.py` — Hamiltonian / Poisson structure, Casimir, variational characterisation of solitary waves
+- `verify_hodograph.py` — strict hyperbolicity of the dispersionless limit (hodograph / Euler–Poisson–Darboux)
+- `mi_growth.py` — modulational-stability diagnostics and the KdV-vs-BBM figure
+
+Run, for example, `python3 scripts/verify_dispersion.py`. Requirements: `sympy`, `numpy`, `matplotlib`.
 
 ## Code availability
 
-All Maple (Maplesoft™) scripts developed and used in this work, as well as the complete LaTeX source files of this article, are openly available in this repository:
+All Maple (Maplesoft™) worksheets and Python symbolic-verification scripts developed and used in this work, as well as the complete LaTeX source files of this article, are openly available in this repository:
 
 [https://github.com/dutykh/SerreCyl/](https://github.com/dutykh/SerreCyl/)
 
