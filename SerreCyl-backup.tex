@@ -92,8 +92,8 @@
 \affil[3]{Mathematics Department, Khalifa University of Science and Technology, PO Box 127788, Abu Dhabi, United Arab Emirates}
 \affil[4]{Victoria University of Wellington, School of Mathematics and Statistics, PO Box 600, Wellington 6149, New Zealand}
 
-\corraddress{Mathematics Department, Khalifa University of Science and Technology, PO Box 127788, Abu Dhabi, United Arab Emirates}
-\corremail{denys.dutykh@ku.ac.ae}
+\corraddress{Univ. Grenoble Alpes, Univ. Savoie Mont Blanc, CNRS, LAMA, 73000 Chamb\'ery, France.}
+\corremail{rimelcheikh1995@gmail.com}
 
 % \presentadd[\authfn{2}]{Department, Institution, City, State or Province, Postal Code, Country}
 
@@ -290,7 +290,7 @@ Two complementary variational frameworks are commonly employed for irrotational 
 \end{equation}
 where $\phi\,(\,x,\,r,\,t\,)$ and $r^{\,w}\,(\,x,\,t\,)$ are allowed to vary subject to the restrictions $\delta\,\phi\,=\,0$ and $\delta \,r^{\,w}\,=\,0$ at $x_{\,1},\,x_{\,2},\,t_{\,1}$ and $t_{\,2}$. The only difference from classical formulations using pressure expressions is that $r^{\,w}\,(\,x,\,t\,)$ variations are permitted here. Following standard procedures from the calculus of variations, equation \eqref{eq:chap5.1} becomes
 \begin{multline}
-  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\Biggr]_{\,r\,=\,r^{\,w}}\,\delta r^{\,w}
+  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\biggr\vert_{\,r\,=\,r^{\,w}}\,\delta r^{\,w}
   \\[0.5em]
   +\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,\phi_{\,x}\,\delta \phi_{\,x}\,+\,\phi_{\,r}\,\delta \phi_{\,r}\,+\,\delta \phi_{\,t}\,\bigr)\,r\,\mathrm{d}r\,\Biggr]\,\mathrm{d}x\,\mathrm{d}t
   \\[0.5em]
@@ -308,7 +308,7 @@ Additionally, we compute
 \end{equation*}
 Substituting all these contributions into \eqref{eq:chap5.1}, we obtain
 \begin{multline*}
-  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\Biggr]_{\,r\,=\,r^{\,w}}\,\delta r^{\,w} \\
+  \delta J\,=\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\Biggl[\biggl(\,\phi_{\,t}\,+\,\frac{1}{2}\;\phi_{\,x}^{\,2}\,+\,\frac{1}{2}\;\phi_{\,r}^{\,2}\,\biggr)\,r\,\biggr\vert_{\,r\,=\,r^{\,w}}\,\delta r^{\,w} \\
   -\,\bigl[\,r\,\phi_{\,r}\,\delta \phi\,\bigr]_{\,r\,=\,0} \,-\,\int_{\,0}^{\,r^{\,w}}\,\bigl(\,r\,\phi_{\,xx}\,+\,\phi_{\,r}\,+\,r\,\phi_{\,rr}\,\bigr)\,\delta \phi\,\mathrm{d}r\,\Biggr]\,\mathrm{d}x\,\mathrm{d}t \\
   +\,\int_{\,t_{\,1}}^{\,t_{\,2}}\,\int_{\,x_{\,1}}^{\,x_{\,2}}\,\bigl(\,-\,\alpha\,\eta_{\,tt}\,-\,\beta\,\eta\,+\,p^{\,w}\,\bigr)\,\delta \eta\,\mathrm{d}x\,\mathrm{d}t\,=\,0\,.
 \end{multline*}
@@ -403,7 +403,7 @@ where $\eta$ is the vessel wall displacement, $a$ is the typical wall deviation,
 \begin{equation}\label{eq:parameters}
   \eps = \frac{a}{R}, \qquad \delta = \frac{R}{\lambda},
 \end{equation}
-where $\eps = O(1)$ characterizes nonlinearity, and $\delta^2 \ll 1$ indicates weak dispersion. The external pressure is assumed zero, typical for blood flow models.
+where $\eps = O(1)$ characterizes nonlinearity, and $\delta^2 \ll 1$ indicates weak dispersion. The external pressure is assumed to be zero, typical for blood flow models.
 
 In non-dimensional form (dropping asterisks for simplicity), the governing equations and boundary conditions are:
 \begin{align}
