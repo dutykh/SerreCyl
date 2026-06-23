@@ -34,3 +34,4 @@
 *.run.xml
 # Do not ignore the resulting PDF file
 !*.pdf
+.tmp/
