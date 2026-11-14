@@ -1,0 +1,44 @@
+# Dr. Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, UAE)
+cff-version: 1.2.0
+message: "The manuscript is submitted and has no public record yet: if you use this repository, please cite it as given in this file."
+title: "SerreCyl: dispersive long-wave models of pulsatile blood flow in viscoelastic vessels"
+type: software
+authors:
+  - family-names: El Cheikh
+    given-names: Rim
+    affiliation: "Univ. Grenoble Alpes, Univ. Savoie Mont Blanc, CNRS, LAMA"
+  - family-names: Cheviakov
+    given-names: Alexei
+    affiliation: "University of Saskatchewan"
+    orcid: "https://orcid.org/0000-0002-9647-3683"
+  - family-names: Dutykh
+    given-names: Denys
+    affiliation: "Khalifa University of Science and Technology"
+    orcid: "https://orcid.org/0000-0001-5247-2788"
+  - family-names: Mitsotakis
+    given-names: Dimitrios
+    affiliation: "Victoria University of Wellington"
+    orcid: "https://orcid.org/0000-0003-2700-6093"
+repository-code: "https://github.com/dutykh/SerreCyl"
+license: LGPL-3.0-only
+version: 1.0.0
+date-released: "2026-11-14"
+keywords:
+  - blood-flow
+  - hemodynamics
+  - biomechanics
+  - viscoelasticity
+  - dispersive-waves
+  - wave-propagation
+  - serre-green-naghdi
+  - mathematical-modeling
+  - reproducible-research
+  - latex
+  - maple
+  - sympy
+abstract: >-
+  LaTeX source of a submitted manuscript on pulsatile blood flow in viscoelastic vessels, with the Maple worksheets and
+  the SymPy scripts that support it. From the axisymmetric Euler equations of an ideal fluid in a Kelvin–Voigt vessel,
+  the manuscript derives the cylindrical Serre–Green–Naghdi and Boussinesq equations and the Korteweg–de Vries and
+  Benjamin–Bona–Mahony reductions, and studies their dispersion relations, solitary waves, conservation laws, point
+  symmetries and modulational instability; the scripts verify its algebra symbolically.
